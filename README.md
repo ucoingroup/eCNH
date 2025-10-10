@@ -8,8 +8,11 @@ eCNH区块浏览器：
 https://solscan.io/token/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5
 
 
-eCNH流动池，
+eCNH-PYUSD流动池,
 https://www.orca.so/pools/4RdJnPy3nb821SqZdJZmvD4aixCVsjzcbhiLL32iTuRS
+<br />
+eCNH-USDC流动池,
+https://www.orca.so/pools/BHf1yCvj6qh2E1y2JLrjesP7RRC8XjBN3FyHeq45LnBZ
 
 
 **eCNH星际文明连接方案核心理念**
