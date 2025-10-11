@@ -1,4 +1,6 @@
 # eCNH-team
+<img width="256" height="256" alt="d84cc8b750ac12a0faadcdd1ccbc401a" src="https://github.com/user-attachments/assets/35d3fea6-efa1-49a4-9898-7678c5577eb5" />
+
 eCNH-team
 
 ![2f89aa5b2ad457a0fa7a779d219efbb1](https://github.com/user-attachments/assets/5b367362-6bb7-4864-a5ed-0e3176861872)
