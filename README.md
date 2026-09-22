@@ -28,9 +28,9 @@ https://www.orca.so/pools/BHf1yCvj6qh2E1y2JLrjesP7RRC8XjBN3FyHeq45LnBZ
 探索作为全球10大星际科幻探索战争游戏的通用游戏币，在虚拟世界中建立统一的经济体系。
 
 <br />
-稳定机制,Andromeda 1 eCNH ≈1 eCNH ≈ 1 CNH,<br />
+未来目标稳定机制,Andromeda 1 eCNH ≈1 eCNH ≈ 1 CNH,<br />
 
-1 eCNH ≈ 1 CNH，每日/每月允许±1-3%波动，同时通过与eaco和USDC,USDT,PYUSD,EURC等稳定币；
+未来目标 1 eCNH ≈ 1 CNH，每日/每月允许±1-3%波动，同时通过与eaco和USDC,USDT,PYUSD,EURC等稳定币；
 等100万亿eCNH全部流通之后，后续可以开通SOL,BTC,ETH,BNB,AVAX,DOGE,TRX等的兑换流通联动机制，确保价值稳定性。
 
 <br />
