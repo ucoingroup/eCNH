@@ -1,1 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="eCNH 2025 · 华夏币 — Offshore Chinese Yuan (CNH) on Solana. Community navigation hub: top 5 DEXs, top 5 block explorers, token details, on-chain activity, and disclaimers, in 6 languages.">
+<title>eCNH 2025 · 华夏币 — Offshore Chinese Yuan on Solana</title>
+<style>
+  /* ============================================================
+     eCNH 2025 — flat-canvas-product / financial-precision variant
+     Measured tokens: card radius 4–8px | control radius 4px |
+     display 32–48px | body 16px | support 10–14px | button 44–48px |
+     border 1px hairline | shadow none | entrance 160–240ms |
+     easing cubic-bezier(.22,1,.36,1) | section pad 80–96px
+     ============================================================ */
+  :root {
+    --bg: #ffffff;
+    --surface: #f6f8fb;
+    --surface-2: #eef2f7;
+    --ink: #0b1220;
+    --muted: #5b6675;
+    --line: #e4e9f0;
+    --accent: #1d4ed8;
+    --accent-soft: #e8eefc;
+    --accent-ink: #ffffff;
+    --up: #0e9f6e;
+    --down: #d64545;
+    --radius-card: 8px;
+    --radius-ctl: 4px;
+    --gutter: clamp(16px, 3vw, 40px);
+    --w-max: 1200px;
+    --font: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans", "Noto Sans Arabic", "Segoe UI Emoji", sans-serif;
+    --mono: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, "Courier New", monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0b0f16;
+      --surface: #11171f;
+      --surface-2: #182030;
+      --ink: #e8edf4;
+      --muted: #8b96a5;
+      --line: #232c3a;
+      --accent: #6d8dff;
+      --accent-soft: rgba(109, 141, 255, 0.14);
+      --accent-ink: #081019;
+      --up: #34d399;
+      --down: #f87171;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0b0f16;
+    --surface: #11171f;
+    --surface-2: #182030;
+    --ink: #e8edf4;
+    --muted: #8b96a5;
+    --line: #232c3a;
+    --accent: #6d8dff;
+    --accent-soft: rgba(109, 141, 255, 0.14);
+    --accent-ink: #081019;
+    --up: #34d399;
+    --down: #f87171;
+  }
 
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.35;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  a { color: var(--accent); }
+  ::selection { background: var(--accent); color: var(--accent-ink); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+
+  .container { max-width: var(--w-max); margin-inline: auto; padding-inline: var(--gutter); }
+
+  /* ---------- Header / nav ---------- */
+  .header {
+    position: sticky; top: 0; z-index: 60;
+    background: color-mix(in srgb, var(--bg) 90%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .header-inner {
+    max-width: var(--w-max); margin-inline: auto;
+    padding-inline: var(--gutter);
+    height: 64px; display: flex; align-items: center; gap: 16px;
+  }
+  .logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 16px; color: var(--ink); text-decoration: none; letter-spacing: 0.01em; }
+  .logo em { font-style: normal; color: var(--accent); }
+  .logo .logo-chip {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 30px; height: 30px; border-radius: var(--radius-ctl);
+    background: var(--accent); color: var(--accent-ink); font-weight: 700; font-size: 14px;
+  }
+  .nav { margin-inline-start: auto; display: flex; align-items: center; gap: 2px; }
+  .nav-link {
+    padding: 8px 12px; border-radius: var(--radius-ctl);
+    color: var(--muted); font-size: 14px; text-decoration: none; font-weight: 400;
+    transition: color .12s ease, background-color .12s ease;
+  }
+  .nav-link:hover { color: var(--ink); background: var(--surface); }
+  .nav-desktop { display: flex; align-items: center; gap: 2px; }
+  .nav-tools { display: flex; align-items: center; gap: 8px; }
+
+  .icon-btn {
+    width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center;
+    border: 1px solid var(--line); border-radius: var(--radius-ctl);
+    background: var(--bg); color: var(--ink); cursor: pointer;
+    transition: border-color .12s ease, background-color .12s ease;
+  }
+  .icon-btn:hover { border-color: var(--muted); background: var(--surface); }
+  .icon-btn svg { width: 17px; height: 17px; }
+
+  .lang-sw { display: flex; align-items: center; border: 1px solid var(--line); border-radius: var(--radius-ctl); overflow: hidden; }
+  .lang-btn {
+    appearance: none; border: 0; background: transparent; color: var(--muted);
+    font-size: 11.5px; font-weight: 600; padding: 7px 8px; cursor: pointer; line-height: 1;
+    transition: background-color .12s ease, color .12s ease;
+  }
+  .lang-btn + .lang-btn { border-inline-start: 1px solid var(--line); }
+  .lang-btn[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+
+  .menu-btn { display: none; }
+  .mobile-nav {
+    display: none; position: fixed; inset: 64px 0 auto 0; z-index: 59;
+    background: var(--bg); border-bottom: 1px solid var(--line);
+    padding: 10px var(--gutter) 18px; flex-direction: column; gap: 2px;
+  }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav .nav-link { padding: 12px 8px; font-size: 15px; border-radius: var(--radius-ctl); }
+  .mobile-nav .mobile-langs { margin-top: 10px; padding-top: 12px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 6px; }
+
+  /* ---------- Hero ---------- */
+  .hero { padding-block: clamp(48px, 7vw, 88px); }
+  .hero-grid { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(24px, 4vw, 40px); align-items: center; }
+  .kicker-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid var(--line); background: var(--surface);
+    padding: 6px 14px; border-radius: 999px; font-size: 13px; color: var(--muted);
+  }
+  .kicker-badge svg { width: 13px; height: 13px; color: var(--accent); }
+  h1 { font-size: clamp(32px, 4.6vw, 48px); font-weight: 400; line-height: 1.08; margin: 18px 0 0; text-wrap: balance; letter-spacing: -0.01em; }
+  h1 strong { font-weight: 600; }
+  .hero-sub { margin: 18px 0 0; color: var(--muted); font-size: 16px; line-height: 1.45; max-width: 54ch; }
+  .hero-cta { display: flex; gap: 12px; margin-top: clamp(24px, 3.5vw, 32px); flex-wrap: wrap; }
+
+  .btn {
+    height: 46px; padding-inline: 24px; border-radius: var(--radius-ctl);
+    font-weight: 600; font-size: 15px; display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid transparent; cursor: pointer; text-decoration: none;
+    transition: background-color .12s ease, border-color .12s ease, transform .1s ease;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn svg { width: 15px; height: 15px; }
+  .btn-primary { background: var(--accent); color: var(--accent-ink); }
+  .btn-primary:hover { filter: brightness(1.06); }
+  .btn-ghost { border-color: var(--line); color: var(--ink); background: transparent; }
+  .btn-ghost:hover { border-color: var(--muted); background: var(--surface); }
+
+  .stats-panel { border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); padding: clamp(20px, 2.6vw, 28px); }
+  .panel-title { font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 0 0 16px; font-weight: 600; }
+  .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-card); overflow: hidden; }
+  .stat { background: var(--bg); padding: 14px 16px; }
+  .stat-label { font-size: 11.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .stat-value { font-size: clamp(17px, 1.8vw, 21px); font-weight: 500; margin-top: 5px; font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+
+  .contract-row { display: flex; align-items: center; gap: 12px; margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line); }
+  .contract-code { font-family: var(--mono); font-size: 12.5px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1 1 auto; min-width: 0; direction: ltr; unicode-bidi: embed; }
+  .copy-btn {
+    flex: none; height: 38px; padding-inline: 12px; border-radius: var(--radius-ctl);
+    border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+    font-size: 13px; font-weight: 500; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: border-color .12s ease, background-color .12s ease;
+  }
+  .copy-btn:hover { border-color: var(--muted); background: var(--surface); }
+  .copy-btn svg { width: 14px; height: 14px; }
+  .copy-ok { border-color: var(--up); color: var(--up); }
+
+  /* ---------- Sections ---------- */
+  .section { padding-block: clamp(64px, 8vw, 96px); }
+  .section + .section { border-top: 1px solid var(--line); }
+  .section-head { margin-bottom: clamp(24px, 3.5vw, 40px); max-width: 720px; }
+  .kicker { display: block; font-size: 12.5px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+  .sec-title { font-size: clamp(22px, 3vw, 32px); font-weight: 400; margin: 10px 0 0; letter-spacing: -0.01em; line-height: 1.15; }
+  .lead { margin: 12px 0 0; color: var(--muted); font-size: 16px; line-height: 1.45; }
+
+  .list-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: clamp(16px, 2.4vw, 22px); }
+  .list-head .lh-note { color: var(--muted); font-size: 13px; }
+
+  .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: clamp(16px, 2vw, 24px); }
+  .card {
+    border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface);
+    padding: 22px 22px 18px; display: flex; flex-direction: column;
+    animation: rise .22s cubic-bezier(.22,1,.36,1) both;
+  }
+  .cards-grid .card:nth-child(2) { animation-delay: .03s; }
+  .cards-grid .card:nth-child(3) { animation-delay: .06s; }
+  .cards-grid .card:nth-child(4) { animation-delay: .09s; }
+  .cards-grid .card:nth-child(5) { animation-delay: .12s; }
+  .cards-grid .card:nth-child(6) { animation-delay: .15s; }
+  @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+  .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  .rank { font-variant-numeric: tabular-nums; font-size: 13px; color: var(--muted); font-weight: 600; white-space: nowrap; }
+  .card h3 { font-size: 19px; font-weight: 500; margin: 12px 0 2px; letter-spacing: -0.01em; }
+  .card .tag { display: inline-block; margin-top: 6px; padding: 3px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-size: 12px; font-weight: 600; }
+  .card p { color: var(--muted); font-size: 14.5px; line-height: 1.5; margin: 12px 0 0; flex: 1 1 auto; }
+  .card-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+  .domain { font-family: var(--mono); font-size: 12px; color: var(--accent); text-decoration: none; direction: ltr; unicode-bidi: embed; }
+  .domain:hover { text-decoration: underline; }
+  .card-link { font-size: 13.5px; font-weight: 600; color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+  .card-link:hover { color: var(--accent); }
+  .card-link svg { width: 13px; height: 13px; }
+
+  /* ---------- Spec (token details) ---------- */
+  .spec { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-card); overflow: hidden; }
+  .spec-row { display: grid; grid-template-columns: 200px 1fr; background: var(--bg); }
+  .spec-k { padding: 14px 18px; font-size: 13px; color: var(--muted); }
+  .spec-v { padding: 13px 18px; font-size: 13.5px; word-break: break-word; font-variant-numeric: tabular-nums; }
+  .spec-v.mono { font-family: var(--mono); font-size: 12.5px; direction: ltr; unicode-bidi: embed; }
+  .mean-list { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+  .mean-chip { padding: 3px 9px; border: 1px solid var(--line); border-radius: 999px; font-size: 12px; background: var(--surface); }
+
+  /* ---------- Activity ---------- */
+  .activity-panel { border: 1px dashed var(--line); border-radius: var(--radius-card); background: var(--surface); padding: clamp(24px, 3.5vw, 36px); text-align: center; }
+  .activity-panel .ap-ic { width: 44px; height: 44px; margin-inline: auto; border-radius: var(--radius-card); background: var(--accent-soft); color: var(--accent); display: flex; align-items: center; justify-content: center; }
+  .activity-panel .ap-ic svg { width: 20px; height: 20px; }
+  .activity-panel h3 { font-size: 19px; font-weight: 500; margin: 16px 0 8px; }
+  .activity-panel p { color: var(--muted); font-size: 14.5px; line-height: 1.5; max-width: 62ch; margin: 0 auto 20px; }
+  .mini-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; max-width: 560px; margin: 0 auto 22px; }
+  .mini-stat { border: 1px solid var(--line); border-radius: var(--radius-ctl); background: var(--bg); padding: 12px 14px; }
+  .mini-stat .ms-label { font-size: 11.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .mini-stat .ms-value { font-size: 17px; font-weight: 500; margin-top: 5px; font-variant-numeric: tabular-nums; }
+
+  /* ---------- About ---------- */
+  .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(16px, 2vw, 24px); align-items: start; }
+  .about-block { border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); padding: 24px; }
+  .about-block h3 { font-size: 17px; font-weight: 500; margin: 0 0 12px; display: flex; align-items: center; gap: 10px; }
+  .about-block h3 .blk-ic { width: 30px; height: 30px; border-radius: var(--radius-ctl); background: var(--accent-soft); color: var(--accent); display: inline-flex; align-items: center; justify-content: center; }
+  .about-block h3 .blk-ic svg { width: 15px; height: 15px; }
+  .about-block p { color: var(--muted); font-size: 14.5px; line-height: 1.6; margin: 10px 0 0; }
+  .vision-line { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 15px; }
+  .vision-line strong { font-weight: 600; }
+  .pool-links { display: grid; gap: 8px; margin-top: 14px; }
+  .pool-link { display: flex; align-items: center; gap: 10px; border: 1px solid var(--line); border-radius: var(--radius-ctl); background: var(--bg); padding: 10px 14px; text-decoration: none; color: var(--ink); font-size: 14px; transition: border-color .12s ease; }
+  .pool-link:hover { border-color: var(--muted); }
+  .pool-link .pl-ic { color: var(--accent); display: inline-flex; }
+  .pool-link .pl-ic svg { width: 14px; height: 14px; }
+  .pool-link .pl-arrow { margin-inline-start: auto; color: var(--muted); display: inline-flex; }
+  .pool-link .pl-arrow svg { width: 13px; height: 13px; }
+
+  /* ---------- Disclaimer ---------- */
+  .disclaimer { border: 1px solid var(--line); border-radius: var(--radius-card); padding: clamp(18px, 2.5vw, 26px); background: var(--bg); }
+  .disclaimer h3 { font-size: 15px; font-weight: 600; margin: 0 0 10px; }
+  .disclaimer p { margin: 0; color: var(--muted); font-size: 13.5px; line-height: 1.6; }
+
+  /* ---------- Footer ---------- */
+  .footer { border-top: 1px solid var(--line); padding: 44px 0 40px; color: var(--muted); font-size: 13px; }
+  .footer-inner { max-width: var(--w-max); margin-inline: auto; padding-inline: var(--gutter); display: grid; gap: 26px; }
+  .footer-note { font-size: 13px; color: var(--muted); max-width: 72ch; line-height: 1.55; }
+  .footer-links { display: flex; flex-wrap: wrap; gap: 8px 26px; }
+  .footer-links a { color: var(--muted); text-decoration: none; }
+  .footer-links a:hover { color: var(--ink); text-decoration: underline; }
+  .footer-block { border-top: 1px solid var(--line); padding-top: 20px; }
+  .ft-title { font-size: 12px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin: 0 0 12px; }
+  .link-line { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 8px 0; }
+  .link-line + .link-line { border-top: 1px dashed var(--line); }
+  .link-line a { font-family: var(--mono); font-size: 13px; color: var(--accent); text-decoration: none; word-break: break-all; direction: ltr; unicode-bidi: embed; }
+  .link-line a:hover { text-decoration: underline; }
+  .link-line .ll-tag { font-size: 11.5px; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 2px 8px; white-space: nowrap; }
+  .copyright { font-size: 12.5px; color: var(--muted); }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 1024px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 860px) {
+    .nav-desktop { display: none; }
+    .menu-btn { display: inline-flex; }
+    .lang-sw.desktop { display: none; }
+  }
+  @media (max-width: 640px) {
+    .spec-row { grid-template-columns: 1fr; }
+    .spec-k { padding: 12px 16px 0; }
+    .spec-v { padding: 8px 16px 14px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .stats-panel { padding: 18px; }
+    .btn { height: 44px; padding-inline: 18px; font-size: 14px; }
+  }
+  @media (max-width: 420px) {
+    .header-inner { gap: 10px; }
+    .logo span.txt { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.001s !important; animation-delay: 0s !important; transition-duration: 0.001s !important; }
+  }
+  [dir="rtl"] .lang-btn + .lang-btn { border-inline-start: 1px solid var(--line); }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a class="logo" href="#overview" aria-label="eCNH 2025 home">
+      <span class="logo-chip" aria-hidden="true">e</span>
+      <span class="txt">eCNH<em> 2025</em></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <div class="nav-desktop">
+        <a class="nav-link" href="#overview" data-i18n="nav.overview">Overview</a>
+        <a class="nav-link" href="#dex" data-i18n="nav.dex">DEXs</a>
+        <a class="nav-link" href="#explorers" data-i18n="nav.explorers">Explorers</a>
+        <a class="nav-link" href="#token" data-i18n="nav.token">Token</a>
+        <a class="nav-link" href="#activity" data-i18n="nav.activity">Activity</a>
+        <a class="nav-link" href="#about" data-i18n="nav.about">About</a>
+      </div>
+      <div class="nav-tools">
+        <div class="lang-sw desktop" role="group" aria-label="Language">
+          <button class="lang-btn" data-lang="en" lang="en" aria-pressed="true">EN</button>
+          <button class="lang-btn" data-lang="zh-CN" lang="zh-CN" aria-pressed="false">中文</button>
+          <button class="lang-btn" data-lang="es" lang="es" aria-pressed="false">ES</button>
+          <button class="lang-btn" data-lang="fr" lang="fr" aria-pressed="false">FR</button>
+          <button class="lang-btn" data-lang="ar" lang="ar" aria-pressed="false">عربي</button>
+          <button class="lang-btn" data-lang="ru" lang="ru" aria-pressed="false">РУ</button>
+        </div>
+        <button class="icon-btn theme-btn" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <svg id="icon-theme" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+          </svg>
+        </button>
+        <button class="icon-btn menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16"/>
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+    <a class="nav-link" href="#overview" data-i18n="nav.overview">Overview</a>
+    <a class="nav-link" href="#dex" data-i18n="nav.dex">DEXs</a>
+    <a class="nav-link" href="#explorers" data-i18n="nav.explorers">Explorers</a>
+    <a class="nav-link" href="#token" data-i18n="nav.token">Token</a>
+    <a class="nav-link" href="#activity" data-i18n="nav.activity">Activity</a>
+    <a class="nav-link" href="#about" data-i18n="nav.about">About</a>
+    <div class="mobile-langs" role="group" aria-label="Language">
+      <button class="lang-btn" data-lang="en" lang="en" aria-pressed="true">EN</button>
+      <button class="lang-btn" data-lang="zh-CN" lang="zh-CN" aria-pressed="false">中文</button>
+      <button class="lang-btn" data-lang="es" lang="es" aria-pressed="false">ES</button>
+      <button class="lang-btn" data-lang="fr" lang="fr" aria-pressed="false">FR</button>
+      <button class="lang-btn" data-lang="ar" lang="ar" aria-pressed="false">عربي</button>
+      <button class="lang-btn" data-lang="ru" lang="ru" aria-pressed="false">РУ</button>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- ================= OVERVIEW ================= -->
+  <section class="hero" id="overview">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <span class="kicker-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg>
+            <span data-i18n="hero.badge">eCNH on Solana</span>
+          </span>
+          <h1 data-i18n="hero.title">华夏币 eCNH — <strong>The Earth CNH Network</strong></h1>
+          <p class="hero-sub" data-i18n="hero.sub">eCNH = earth CNH = europe CNH = east CNH = ECNH = energy CNH. A community token bridging the offshore Chinese Yuan vision with the Solana ecosystem.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#dex">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 11V7a4 4 0 0 1 8 0v4"/><rect x="3" y="11" width="18" height="10" rx="2"/></svg>
+              <span data-i18n="hero.ctaDex">Explore DEXs</span>
+            </a>
+            <a class="btn btn-ghost" href="#explorers">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+              <span data-i18n="hero.ctaExplorer">View Explorers</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="stats-panel">
+          <p class="panel-title" data-i18n="stats.title">Live snapshot</p>
+          <div class="stats-grid">
+            <div class="stat">
+              <div class="stat-label" data-i18n="stats.price">Price</div>
+              <div class="stat-value">$0.00001067</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label" data-i18n="stats.change">24h change</div>
+              <div class="stat-value up">+107.28%</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label" data-i18n="stats.liquidity">Liquidity</div>
+              <div class="stat-value">$109.84</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label" data-i18n="stats.holders">Holders</div>
+              <div class="stat-value">320</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label" data-i18n="stats.fdv">Market cap / FDV</div>
+              <div class="stat-value">$1.07B</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label" data-i18n="stats.volume">24h volume</div>
+              <div class="stat-value">$18.82</div>
+            </div>
+          </div>
+          <div class="contract-row">
+            <code class="contract-code" id="contractCode">7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5</code>
+            <button class="copy-btn" type="button" data-copy="7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5" aria-label="Copy contract address">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span data-i18n="stats.copy">Copy</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DEX ================= -->
+  <section class="section" id="dex">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker" data-i18n="dex.kicker">Navigation</span>
+        <h2 class="sec-title" data-i18n="dex.title">Top 5 DEXs for eCNH</h2>
+        <p class="lead" data-i18n="dex.sub">Curated from Solana ecosystem trading activity in 2025. Listing on a DEX does not guarantee tradable liquidity.</p>
+      </div>
+      <div class="cards-grid">
+        <article class="card">
+          <div class="card-top"><span class="rank">#1</span></div>
+          <h3 data-i18n="dex.name1">HumidiFi</h3>
+          <span class="tag" data-i18n="dex.role1">Proprietary AMM / dark pool</span>
+          <p data-i18n="dex.note1">Handles a large share of Jupiter aggregator execution; a plausible routing path if liquidity returns.</p>
+          <div class="card-foot">
+            <a class="domain" href="https://humidifi.com" target="_blank" rel="noopener noreferrer">humidifi.com</a>
+            <a class="card-link" href="https://humidifi.com" target="_blank" rel="noopener noreferrer"><span data-i18n="common.visit">Visit</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="rank">#2</span></div>
+          <h3 data-i18n="dex.name2">Meteora</h3>
+          <span class="tag" data-i18n="dex.role2">Dynamic liquidity protocol</span>
+          <p data-i18n="dex.note2">Well suited for low-cap token launches and concentrated liquidity management.</p>
+          <div class="card-foot">
+            <a class="domain" href="https://meteora.ag" target="_blank" rel="noopener noreferrer">meteora.ag</a>
+            <a class="card-link" href="https://meteora.ag" target="_blank" rel="noopener noreferrer"><span data-i18n="common.visit">Visit</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="rank">#3</span></div>
+          <h3 data-i18n="dex.name3">Raydium</h3>
+          <span class="tag" data-i18n="dex.role3">Classic AMM + order book</span>
+          <p data-i18n="dex.note3">Among the earliest AMMs on Solana with substantial TVL.</p>
+          <div class="card-foot">
+            <a class="domain" href="https://raydium.io" target="_blank" rel="noopener noreferrer">raydium.io</a>
+            <a class="card-link" href="https://raydium.io" target="_blank" rel="noopener noreferrer"><span data-i18n="common.visit">Visit</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="rank">#4</span></div>
+          <h3 data-i18n="dex.name4">Orca</h3>
+          <span class="tag" data-i18n="dex.role4">User-friendly AMM</span>
+          <p data-i18n="dex.note4">eCNH pools (eCNH/PYUSD, eCNH/USDC) have been created on Orca — the DEX most directly related to eCNH.</p>
+          <div class="card-foot">
+            <a class="domain" href="https://www.orca.so" target="_blank" rel="noopener noreferrer">orca.so</a>
+            <a class="card-link" href="https://www.orca.so" target="_blank" rel="noopener noreferrer"><span data-i18n="common.visit">Visit</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="rank">#5</span></div>
+          <h3 data-i18n="dex.name5">Jupiter</h3>
+          <span class="tag" data-i18n="dex.role5">DEX aggregator</span>
+          <p data-i18n="dex.note5">Aggregates liquidity across DEXs; the entry where eCNH is most likely to be routed for swaps.</p>
+          <div class="card-foot">
+            <a class="domain" href="https://jup.ag" target="_blank" rel="noopener noreferrer">jup.ag</a>
+            <a class="card-link" href="https://jup.ag" target="_blank" rel="noopener noreferrer"><span data-i18n="common.visit">Visit</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="rank" data-i18n="dex.bonus">Bonus</span></div>
+          <h3 data-i18n="dex.bonusTitle">Orca pools</h3>
+          <span class="tag" data-i18n="dex.bonusRole">Reference pools</span>
+          <p data-i18n="dex.bonusNote">eCNH/PYUSD and eCNH/USDC pools created on Orca — direct pool pages for liquidity checks.</p>
+          <div class="card-foot" style="justify-content:flex-start;">
+            <a class="card-link" href="https://www.orca.so/pools/4RdJnPy3nb821SqZdJZmvD4aixCVsjzcbhiLL32iTuRS" target="_blank" rel="noopener noreferrer" style="font-family:var(--mono);font-size:12px;"><span>eCNH/PYUSD</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+            <a class="card-link" href="https://www.orca.so/pools/BHf1yCvj6qh2E1y2JLrjesP7RRC8XjBN3FyHeq45LnBZ" target="_blank" rel="noopener noreferrer" style="font-family:var(--mono);font-size:12px;"><span>eCNH/USDC</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXPLORERS ================= -->
+  <section class="section" id="explorers">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker" data-i18n="exp.kicker">Verification</span>
+        <h2 class="sec-title" data-i18n="exp.title">Top 5 Block Explorers</h2>
+        <p class="lead" data-i18n="exp.sub">Verify token info, holders, and on-chain state across Solana explorers.</p>
+      </div>
+      <div class="cards-grid">
+        <article class="card">
+          <div class="card-top"><span class="rank">#1</span></div>
+          <h3 data-i18n="exp.name1">Solscan</h3>
+          <span class="tag" data-i18n="exp.role1">Most used explorer</span>
+          <p data-i18n="exp.note1">Widely used Solana explorer with token info, wallet analysis, and transaction decoding.</p>
+          <div class="card-foot">
+            <a class="domain" href="https://solscan.io" target="_blank" rel="noopener noreferrer">solscan.io</a>
+            <a class="card-link" href="https://solscan.io/token/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5" target="_blank" rel="noopener noreferrer"><span data-i18n="common.open">Open</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="rank">#2</span></div>
+          <h3 data-i18n="exp.name2">Solana Explorer</h3>
+          <span class="tag" data-i18n="exp.role2">Official</span>
+          <p data-i18n="exp.note2">Officially maintained by the Solana Foundation; neutral and accurate data.</p>
+          <div class="card-foot">
+            <a class="domain" href="https://explorer.solana.com" target="_blank" rel="noopener noreferrer">explorer.solana.com</a>
+            <a class="card-link" href="https://explorer.solana.com/address/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5" target="_blank" rel="noopener noreferrer"><span data-i18n="common.open">Open</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="rank">#3</span></div>
+          <h3 data-i18n="exp.name3">Orb (Helius)</h3>
+          <span class="tag" data-i18n="exp.role3">AI deep-dive</span>
+          <p data-i18n="exp.note3">AI trade explanations, trade heatmaps, and history tracking for deep analysis.</p>
+          <div class="card-foot">
+            <a class="domain" href="https://orb.helius.dev" target="_blank" rel="noopener noreferrer">orb.helius.dev</a>
+            <a class="card-link" href="https://orb.helius.dev/address/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5" target="_blank" rel="noopener noreferrer"><span data-i18n="common.open">Open</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="rank">#4</span></div>
+          <h3 data-i18n="exp.name4">SolanaFM</h3>
+          <span class="tag" data-i18n="exp.role4">Tax & analytics</span>
+          <p data-i18n="exp.note4">Supports CSV export — suitable for tax and analytics workflows.</p>
+          <div class="card-foot">
+            <a class="domain" href="https://solana.fm" target="_blank" rel="noopener noreferrer">solana.fm</a>
+            <a class="card-link" href="https://solana.fm/address/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5" target="_blank" rel="noopener noreferrer"><span data-i18n="common.open">Open</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="rank">#5</span></div>
+          <h3 data-i18n="exp.name5">Solana Beach</h3>
+          <span class="tag" data-i18n="exp.role5">Network health</span>
+          <p data-i18n="exp.note5">Focused on validators and network health — great for staking and cluster data.</p>
+          <div class="card-foot">
+            <a class="domain" href="https://solanabeach.io" target="_blank" rel="noopener noreferrer">solanabeach.io</a>
+            <a class="card-link" href="https://solanabeach.io/address/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5" target="_blank" rel="noopener noreferrer"><span data-i18n="common.open">Open</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="rank" data-i18n="exp.bonus">Bonus</span></div>
+          <h3 data-i18n="exp.bonusTitle">OKX Link & X-Ray</h3>
+          <span class="tag" data-i18n="exp.bonusRole">Multilingual · readable</span>
+          <p data-i18n="exp.bonusNote">OKX Link explorer supports 11 languages; X-Ray converts complex transactions into readable summaries.</p>
+          <div class="card-foot" style="justify-content:flex-start;">
+            <a class="card-link" href="https://xray.helius.xyz/" target="_blank" rel="noopener noreferrer" style="font-family:var(--mono);font-size:12px;"><span>xray.helius.xyz</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TOKEN ================= -->
+  <section class="section" id="token">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker" data-i18n="token.kicker">On-chain facts</span>
+        <h2 class="sec-title" data-i18n="token.title">Token Details</h2>
+        <p class="lead" data-i18n="token.sub">Snapshot verified via OrbMarkets / Helius on 2025-09-23. Verify live data on a block explorer before acting.</p>
+      </div>
+      <div class="spec">
+        <div class="spec-row">
+          <div class="spec-k" data-i18n="token.contract">Contract address</div>
+          <div class="spec-v mono">7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-k" data-i18n="token.name">Name</div>
+          <div class="spec-v">华夏币 eCNH (eCNH)</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-k" data-i18n="token.chain">Chain</div>
+          <div class="spec-v">Solana (SPL)</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-k" data-i18n="token.supply">Total supply</div>
+          <div class="spec-v">99,999,999,996,433.82</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-k" data-i18n="token.created">Created</div>
+          <div class="spec-v">2025-09-28</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-k" data-i18n="token.creator">Creator</div>
+          <div class="spec-v mono">smmSYJocfVgKauB4qzwewBFD6dhLFgz1xQSMED7g6pV</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-k" data-i18n="token.desc">On-chain description</div>
+          <div class="spec-v" style="direction:ltr;text-align:start;">eaco for earth CNH, Offshore Chinese Yuan/CNH, 离岸人民币</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-k" data-i18n="token.meaning">Name meanings</div>
+          <div class="spec-v"><span class="mean-list"><span class="mean-chip">earth CNH</span><span class="mean-chip">europe CNH</span><span class="mean-chip">east CNH</span><span class="mean-chip">ECNH</span><span class="mean-chip">energy CNH</span></span></div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-k" data-i18n="token.mcap">Market cap / FDV</div>
+          <div class="spec-v">≈ $1.07B</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ACTIVITY ================= -->
+  <section class="section" id="activity">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker" data-i18n="act.kicker">Reality check</span>
+        <h2 class="sec-title" data-i18n="act.title">On-chain Activity</h2>
+        <p class="lead" data-i18n="act.sub">Honest snapshot of current market state — always verify with an explorer.</p>
+      </div>
+      <div class="activity-panel">
+        <div class="ap-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 13l3-3 3 3 5-5"/></svg>
+        </div>
+        <h3 data-i18n="act.emptyTitle">No active major trading market detected</h3>
+        <p data-i18n="act.emptySub">As of the latest snapshot, eCNH shows very low 24h volume ($18.82) with 320 holders. The primary market page currently reports “invalid or expired token”. Use the explorers above to verify the latest on-chain state.</p>
+        <div class="mini-stats">
+          <div class="mini-stat"><div class="ms-label" data-i18n="stats.volume">24h volume</div><div class="ms-value">$18.82</div></div>
+          <div class="mini-stat"><div class="ms-label" data-i18n="stats.holders">Holders</div><div class="ms-value">320</div></div>
+          <div class="mini-stat"><div class="ms-label" data-i18n="stats.fdv">FDV</div><div class="ms-value">≈$1.07B</div></div>
+        </div>
+        <a class="btn btn-ghost" href="https://solscan.io/token/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <span data-i18n="act.cta">Open Solscan</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker" data-i18n="about.kicker">Positioning</span>
+        <h2 class="sec-title" data-i18n="about.title">About 华夏币 eCNH</h2>
+        <p class="lead" data-i18n="about.sub">The offshore Chinese Yuan (CNH) story, brought to the Solana ecosystem as Earth CNH.</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-block">
+          <h3><span class="blk-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg></span><span data-i18n="about.missionTitle">Mission</span></h3>
+          <p data-i18n="about.missionBody">eCNH positions the offshore Chinese Yuan idea as a community token on Solana — part of the eaco family for Earth CNH. The project explores an inter-civilization connection plan: connecting the yuan's global use case with an open, borderless settlement layer.</p>
+          <div class="vision-line"><strong data-i18n="about.visionLabel">Community vision:</strong> <span data-i18n="about.visionValue">1 eCNH ≈ 1 CNH</span></div>
+        </div>
+        <div class="about-block">
+          <h3><span class="blk-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M4.8 6a9 9 0 0 0 0 12M19.2 6a9 9 0 0 1 0 12"/></svg></span><span data-i18n="about.poolsTitle">Reference liquidity pools</span></h3>
+          <p data-i18n="about.poolsBody">Pools created on Orca for direct liquidity checks. Pool state changes constantly — always confirm before interacting.</p>
+          <div class="pool-links">
+            <a class="pool-link" href="https://www.orca.so/pools/4RdJnPy3nb821SqZdJZmvD4aixCVsjzcbhiLL32iTuRS" target="_blank" rel="noopener noreferrer">
+              <span class="pl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+              <span>eCNH / PYUSD</span>
+              <span class="pl-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+            </a>
+            <a class="pool-link" href="https://www.orca.so/pools/BHf1yCvj6qh2E1y2JLrjesP7RRC8XjBN3FyHeq45LnBZ" target="_blank" rel="noopener noreferrer">
+              <span class="pl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+              <span>eCNH / USDC</span>
+              <span class="pl-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="disclaimer" style="margin-top:24px;">
+        <h3 data-i18n="disc.title">Disclaimer</h3>
+        <p data-i18n="disc.body">The DEX and explorer listings above are navigation references compiled from general Solana ecosystem market data. They do not represent that eCNH is listed or has tradable liquidity on all platforms. Cryptocurrency investment carries high risk; do not rely solely on this page when making decisions.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <p class="footer-note" data-i18n="footer.note">Data snapshot: 2025-09-23 (OrbMarkets / Helius). Chain: Solana. Token: 华夏币 eCNH. Prices, liquidity, and volume move quickly and are shown for reference only.</p>
+    <div class="footer-links">
+      <a href="https://orbmarkets.io/token/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5" target="_blank" rel="noopener noreferrer">OrbMarkets</a>
+      <a href="#dex" data-i18n="nav.dex">DEXs</a>
+      <a href="#explorers" data-i18n="nav.explorers">Explorers</a>
+      <a href="#token" data-i18n="nav.token">Token</a>
+      <a href="#activity" data-i18n="nav.activity">Activity</a>
+      <a href="#about" data-i18n="nav.about">About</a>
+    </div>
+    <div class="footer-block">
+      <p class="ft-title" data-i18n="footer.linksTitle">Related eCNH pages</p>
+      <div class="link-line">
+        <span class="ll-tag">UCOIN eCNH</span>
+        <a href="https://ucoingroup.github.io/eCNH/" target="_blank" rel="noopener noreferrer">https://ucoingroup.github.io/eCNH/</a>
+      </div>
+      <div class="link-line">
+        <span class="ll-tag">eCNH 2025</span>
+        <a href="https://ecnh.freedev.app/ecnh2025" target="_blank" rel="noopener noreferrer">https://ecnh.freedev.app/ecnh2025/</a>
+      </div>
+    </div>
+    <p class="copyright">© 2025 eCNH Community · <span data-i18n="footer.rights">All information is provided for reference only.</span></p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  var I18N = {
+    "en": {
+      "nav.overview": "Overview", "nav.dex": "DEXs", "nav.explorers": "Explorers",
+      "nav.token": "Token", "nav.activity": "Activity", "nav.about": "About",
+      "hero.badge": "eCNH on Solana",
+      "hero.title": "The Offshore Chinese Yuan, on Solana",
+      "hero.sub": "eCNH = earth CNH = europe CNH = east CNH = ECNH = energy CNH. A community token bridging the offshore Chinese Yuan vision with the Solana ecosystem.",
+      "hero.ctaDex": "Explore DEXs", "hero.ctaExplorer": "View Explorers",
+      "stats.title": "Live snapshot",
+      "stats.price": "Price", "stats.change": "24h change", "stats.liquidity": "Liquidity",
+      "stats.holders": "Holders", "stats.fdv": "Market cap / FDV", "stats.volume": "24h volume",
+      "stats.copy": "Copy",
+      "dex.kicker": "Navigation", "dex.title": "Top 5 DEXs for eCNH",
+      "dex.sub": "Curated from Solana ecosystem trading activity in 2025. Listing on a DEX does not guarantee tradable liquidity.",
+      "dex.name1": "HumidiFi", "dex.role1": "Proprietary AMM / dark pool",
+      "dex.note1": "Handles a large share of Jupiter aggregator execution; a plausible routing path if liquidity returns.",
+      "dex.name2": "Meteora", "dex.role2": "Dynamic liquidity protocol",
+      "dex.note2": "Well suited for low-cap token launches and concentrated liquidity management.",
+      "dex.name3": "Raydium", "dex.role3": "Classic AMM + order book",
+      "dex.note3": "Among the earliest AMMs on Solana with substantial TVL.",
+      "dex.name4": "Orca", "dex.role4": "User-friendly AMM",
+      "dex.note4": "eCNH pools (eCNH/PYUSD, eCNH/USDC) have been created on Orca — the DEX most directly related to eCNH.",
+      "dex.name5": "Jupiter", "dex.role5": "DEX aggregator",
+      "dex.note5": "Aggregates liquidity across DEXs; the entry where eCNH is most likely to be routed for swaps.",
+      "dex.bonus": "Bonus", "dex.bonusTitle": "Orca pools", "dex.bonusRole": "Reference pools",
+      "dex.bonusNote": "eCNH/PYUSD and eCNH/USDC pools created on Orca — direct pool pages for liquidity checks.",
+      "exp.kicker": "Verification", "exp.title": "Top 5 Block Explorers",
+      "exp.sub": "Verify token info, holders, and on-chain state across Solana explorers.",
+      "exp.name1": "Solscan", "exp.role1": "Most used explorer",
+      "exp.note1": "Widely used Solana explorer with token info, wallet analysis, and transaction decoding.",
+      "exp.name2": "Solana Explorer", "exp.role2": "Official",
+      "exp.note2": "Officially maintained by the Solana Foundation; neutral and accurate data.",
+      "exp.name3": "Orb (Helius)", "exp.role3": "AI deep-dive",
+      "exp.note3": "AI trade explanations, trade heatmaps, and history tracking for deep analysis.",
+      "exp.name4": "SolanaFM", "exp.role4": "Tax & analytics",
+      "exp.note4": "Supports CSV export — suitable for tax and analytics workflows.",
+      "exp.name5": "Solana Beach", "exp.role5": "Network health",
+      "exp.note5": "Focused on validators and network health — great for staking and cluster data.",
+      "exp.bonus": "Bonus", "exp.bonusTitle": "OKX Link & X-Ray", "exp.bonusRole": "Multilingual · readable",
+      "exp.bonusNote": "OKX Link explorer supports 11 languages; X-Ray converts complex transactions into readable summaries.",
+      "token.kicker": "On-chain facts", "token.title": "Token Details",
+      "token.sub": "Snapshot verified via OrbMarkets / Helius on 2025-09-23. Verify live data on a block explorer before acting.",
+      "token.contract": "Contract address", "token.name": "Name", "token.chain": "Chain",
+      "token.supply": "Total supply", "token.created": "Created", "token.creator": "Creator",
+      "token.desc": "On-chain description", "token.meaning": "Name meanings", "token.mcap": "Market cap / FDV",
+      "act.kicker": "Reality check", "act.title": "On-chain Activity",
+      "act.sub": "Honest snapshot of current market state — always verify with an explorer.",
+      "act.emptyTitle": "No active major trading market detected",
+      "act.emptySub": "As of the latest snapshot, eCNH shows very low 24h volume ($18.82) with 320 holders. The primary market page currently reports \u201cinvalid or expired token\u201d. Use the explorers above to verify the latest on-chain state.",
+      "act.cta": "Open Solscan",
+      "about.kicker": "Positioning", "about.title": "About 华夏币 eCNH",
+      "about.sub": "The offshore Chinese Yuan (CNH) story, brought to the Solana ecosystem as Earth CNH.",
+      "about.missionTitle": "Mission",
+      "about.missionBody": "eCNH positions the offshore Chinese Yuan idea as a community token on Solana — part of the eaco family for Earth CNH. The project explores an inter-civilization connection plan: connecting the yuan's global use case with an open, borderless settlement layer.",
+      "about.visionLabel": "Community vision:", "about.visionValue": "1 eCNH ≈ 1 CNH",
+      "about.poolsTitle": "Reference liquidity pools",
+      "about.poolsBody": "Pools created on Orca for direct liquidity checks. Pool state changes constantly — always confirm before interacting.",
+      "disc.title": "Disclaimer",
+      "disc.body": "The DEX and explorer listings above are navigation references compiled from general Solana ecosystem market data. They do not represent that eCNH is listed or has tradable liquidity on all platforms. Cryptocurrency investment carries high risk; do not rely solely on this page when making decisions.",
+      "common.visit": "Visit", "common.open": "Open",
+      "footer.note": "Data snapshot: 2025-09-23 (OrbMarkets / Helius). Chain: Solana. Token: 华夏币 eCNH. Prices, liquidity, and volume move quickly and are shown for reference only.",
+      "footer.linksTitle": "Related eCNH pages",
+      "footer.rights": "All information is provided for reference only."
+    },
+    "zh-CN": {
+      "nav.overview": "总览", "nav.dex": "DEX 导航", "nav.explorers": "浏览器", "nav.token": "代币详情", "nav.activity": "链上活动", "nav.about": "关于",
+      "hero.badge": "eCNH · Solana 链",
+      "hero.title": "华夏币 eCNH — 离岸人民币上链 Solana",
+      "hero.sub": "eCNH = earth CNH = europe CNH = east CNH = ECNH = energy CNH。以离岸人民币愿景连接 Solana 生态的社区代币。",
+      "hero.ctaDex": "浏览 DEX", "hero.ctaExplorer": "查看浏览器",
+      "stats.title": "实时数据快照",
+      "stats.price": "价格", "stats.change": "24H 涨跌", "stats.liquidity": "流动性",
+      "stats.holders": "持有者", "stats.fdv": "市值 / FDV", "stats.volume": "24H 成交量",
+      "stats.copy": "复制",
+      "dex.kicker": "导航参考", "dex.title": "eCNH 5 大 DEX",
+      "dex.sub": "基于 2025 年 Solana 生态交易活跃度整理。上线 DEX 不代表具备可交易流动性。",
+      "dex.name1": "HumidiFi", "dex.role1": "专有 AMM / 暗池",
+      "dex.note1": "承接 Jupiter 聚合器大量执行量，若流动性恢复可通过其路由成交。",
+      "dex.name2": "Meteora", "dex.role2": "动态流动性协议",
+      "dex.note2": "适合低市值代币启动与集中流动性管理。",
+      "dex.name3": "Raydium", "dex.role3": "传统 AMM + 订单簿",
+      "dex.note3": "Solana 最早的 AMM 之一，TVL 较高。",
+      "dex.name4": "Orca", "dex.role4": "用户友好型 AMM",
+      "dex.note4": "eCNH 池（eCNH/PYUSD、eCNH/USDC）已在 Orca 创建，是与 eCNH 关联最直接的 DEX。",
+      "dex.name5": "Jupiter", "dex.role5": "DEX 聚合器",
+      "dex.note5": "聚合多个 DEX 的流动性，是 eCNH 最可能被实际路由成交的入口。",
+      "dex.bonus": "补充", "dex.bonusTitle": "Orca 池", "dex.bonusRole": "参考池",
+      "dex.bonusNote": "已在 Orca 创建的 eCNH/PYUSD 与 eCNH/USDC 池，可直接查看流动性。",
+      "exp.kicker": "验证工具", "exp.title": "5 大区块链浏览器",
+      "exp.sub": "使用各类 Solana 浏览器核验代币信息、持有者与链上状态。",
+      "exp.name1": "Solscan", "exp.role1": "最常用浏览器",
+      "exp.note1": "最广泛使用的 Solana 浏览器，支持代币信息、钱包分析与交易解码。",
+      "exp.name2": "Solana Explorer", "exp.role2": "官方维护",
+      "exp.note2": "Solana 基金会官方维护，数据中立准确。",
+      "exp.name3": "Orb（Helius）", "exp.role3": "AI 深度分析",
+      "exp.note3": "AI 交易解释、交易热图与历史追踪，适合深度分析。",
+      "exp.name4": "SolanaFM", "exp.role4": "税务与分析",
+      "exp.note4": "支持 CSV 导出，适合税务与数据分析场景。",
+      "exp.name5": "Solana Beach", "exp.role5": "网络健康",
+      "exp.note5": "专注验证者与网络健康度监控，适合查看质押与集群数据。",
+      "exp.bonus": "补充", "exp.bonusTitle": "OKX Link 与 X-Ray", "exp.bonusRole": "多语言 · 易读",
+      "exp.bonusNote": "OKX Link 支持 11 种语言；X-Ray 可将复杂交易转为可读摘要。",
+      "token.kicker": "链上事实", "token.title": "代币详情",
+      "token.sub": "数据快照经 OrbMarkets / Helius 于 2025-09-23 核实。操作前请通过区块浏览器核验实时数据。",
+      "token.contract": "合约地址", "token.name": "名称", "token.chain": "链",
+      "token.supply": "总供应量", "token.created": "创建时间", "token.creator": "创建者",
+      "token.desc": "链上描述", "token.meaning": "名称释义", "token.mcap": "市值 / FDV",
+      "act.kicker": "现状核查", "act.title": "链上活动",
+      "act.sub": "如实呈现当前市场状态，请务必通过浏览器核验。",
+      "act.emptyTitle": "未检测到活跃的主要交易市场",
+      "act.emptySub": "截至最新快照，eCNH 24 小时成交量极低（$18.82），共有 320 名持有者；主市场页当前提示“无效或已过期代币”。请使用上方浏览器核验最新链上状态。",
+      "act.cta": "打开 Solscan",
+      "about.kicker": "定位", "about.title": "关于 华夏币 eCNH",
+      "about.sub": "把离岸人民币（CNH）的故事带到 Solana 生态，作为地球 CNH 的社区形态。",
+      "about.missionTitle": "使命",
+      "about.missionBody": "eCNH 将离岸人民币构想以社区代币形式落地 Solana——属于面向地球 CNH 的 eaco 家族，并探索星际文明连接方案：把人民币的全球场景接入开放、无国界的结算层。",
+      "about.visionLabel": "社区愿景：", "about.visionValue": "1 eCNH ≈ 1 CNH",
+      "about.poolsTitle": "参考流动性池",
+      "about.poolsBody": "已在 Orca 创建的参考池，可直达查看流动性。池子状态随时变化，交互前务必自行确认。",
+      "disc.title": "免责声明",
+      "disc.body": "以上 DEX 与浏览器清单是基于 Solana 生态整体市场数据整理的导航参考，不代表 eCNH 已在所有平台上线或具有可交易流动性。加密货币投资风险高，请勿仅依赖本页面信息做出决策。",
+      "common.visit": "前往", "common.open": "打开",
+      "footer.note": "数据快照：2025-09-23（OrbMarkets / Helius）。链：Solana。代币：华夏币 eCNH。价格、流动性与成交量变动迅速，仅供参考。",
+      "footer.linksTitle": "相关 eCNH 页面",
+      "footer.rights": "所有信息仅供参考。"
+    },
+    "es": {
+      "nav.overview": "Resumen", "nav.dex": "DEX", "nav.explorers": "Exploradores", "nav.token": "Token", "nav.activity": "Actividad", "nav.about": "Acerca",
+      "hero.badge": "eCNH en Solana",
+      "hero.title": "El yuan chino extraterritorial, en Solana",
+      "hero.sub": "eCNH = earth CNH = europe CNH = east CNH = ECNH = energy CNH. Un token comunitario que une la visión del yuan chino extraterritorial con el ecosistema Solana.",
+      "hero.ctaDex": "Explorar DEX", "hero.ctaExplorer": "Ver exploradores",
+      "stats.title": "Datos en vivo",
+      "stats.price": "Precio", "stats.change": "Cambio 24h", "stats.liquidity": "Liquidez",
+      "stats.holders": "Tenedores", "stats.fdv": "Cap. mercado / FDV", "stats.volume": "Volumen 24h",
+      "stats.copy": "Copiar",
+      "dex.kicker": "Navegación", "dex.title": "Top 5 DEX para eCNH",
+      "dex.sub": "Seleccionados según la actividad del ecosistema Solana en 2025. Estar listado no garantiza liquidez negociable.",
+      "dex.name1": "HumidiFi", "dex.role1": "AMM propio / dark pool",
+      "dex.note1": "Maneja gran parte de la ejecución del agregador Jupiter; una ruta plausible si la liquidez regresa.",
+      "dex.name2": "Meteora", "dex.role2": "Protocolo de liquidez dinámica",
+      "dex.note2": "Adecuado para lanzamientos de tokens de baja capitalización y gestión de liquidez concentrada.",
+      "dex.name3": "Raydium", "dex.role3": "AMM clásico + libro de órdenes",
+      "dex.note3": "Uno de los primeros AMM de Solana con TVL considerable.",
+      "dex.name4": "Orca", "dex.role4": "AMM fácil de usar",
+      "dex.note4": "Los pools de eCNH (eCNH/PYUSD, eCNH/USDC) se crearon en Orca: el DEX más directamente relacionado con eCNH.",
+      "dex.name5": "Jupiter", "dex.role5": "Agregador de DEX",
+      "dex.note5": "Agrega liquidez de varios DEX; la entrada más probable por donde se enrute eCNH.",
+      "dex.bonus": "Extra", "dex.bonusTitle": "Pools de Orca", "dex.bonusRole": "Pools de referencia",
+      "dex.bonusNote": "Pools eCNH/PYUSD y eCNH/USDC creados en Orca: páginas directas para revisar liquidez.",
+      "exp.kicker": "Verificación", "exp.title": "Top 5 Exploradores de Bloques",
+      "exp.sub": "Verifica información del token, tenedores y estado on-chain en los exploradores de Solana.",
+      "exp.name1": "Solscan", "exp.role1": "Explorador más usado",
+      "exp.note1": "Explorador de Solana muy usado con información de tokens, análisis de carteras y decodificación de transacciones.",
+      "exp.name2": "Solana Explorer", "exp.role2": "Oficial",
+      "exp.note2": "Mantenido oficialmente por la Solana Foundation; datos neutrales y precisos.",
+      "exp.name3": "Orb (Helius)", "exp.role3": "Análisis IA",
+      "exp.note3": "Explicaciones de trading con IA, mapas de calor y seguimiento histórico para análisis profundo.",
+      "exp.name4": "SolanaFM", "exp.role4": "Impuestos y análisis",
+      "exp.note4": "Compatible con exportación CSV: adecuado para impuestos y análisis.",
+      "exp.name5": "Solana Beach", "exp.role5": "Salud de la red",
+      "exp.note5": "Centrado en validadores y salud de la red: ideal para staking y datos de clúster.",
+      "exp.bonus": "Extra", "exp.bonusTitle": "OKX Link y X-Ray", "exp.bonusRole": "Multilingüe · legible",
+      "exp.bonusNote": "El explorador OKX Link admite 11 idiomas; X-Ray convierte transacciones complejas en resúmenes legibles.",
+      "token.kicker": "Hechos on-chain", "token.title": "Detalles del Token",
+      "token.sub": "Instantánea verificada vía OrbMarkets / Helius el 2025-09-23. Verifica los datos en vivo antes de actuar.",
+      "token.contract": "Dirección del contrato", "token.name": "Nombre", "token.chain": "Red",
+      "token.supply": "Suministro total", "token.created": "Creado", "token.creator": "Creador",
+      "token.desc": "Descripción on-chain", "token.meaning": "Significados del nombre", "token.mcap": "Cap. mercado / FDV",
+      "act.kicker": "Verificación real", "act.title": "Actividad on-chain",
+      "act.sub": "Instantánea honesta del estado actual del mercado; verifica siempre con un explorador.",
+      "act.emptyTitle": "No se detectó un mercado principal activo",
+      "act.emptySub": "Según la última instantánea, eCNH muestra un volumen de 24h muy bajo ($18.82) con 320 tenedores. La página del mercado principal informa actualmente “token inválido o caducado”. Usa los exploradores de arriba para verificar el estado on-chain.",
+      "act.cta": "Abrir Solscan",
+      "about.kicker": "Posicionamiento", "about.title": "Acerca de 华夏币 eCNH",
+      "about.sub": "La historia del yuan chino extraterritorial (CNH), llevada al ecosistema Solana como Earth CNH.",
+      "about.missionTitle": "Misión",
+      "about.missionBody": "eCNH presenta la idea del yuan chino extraterritorial como token comunitario en Solana, parte de la familia eaco para el Earth CNH, y explora un plan de conexión intercivilizacional: unir el caso de uso global del yuan con una capa de liquidación abierta y sin fronteras.",
+      "about.visionLabel": "Visión comunitaria:", "about.visionValue": "1 eCNH ≈ 1 CNH",
+      "about.poolsTitle": "Pools de liquidez de referencia",
+      "about.poolsBody": "Pools creados en Orca para revisar liquidez directamente. El estado de los pools cambia constantemente: confirma siempre antes de operar.",
+      "disc.title": "Descargo de responsabilidad",
+      "disc.body": "Las listas de DEX y exploradores anteriores son referencias de navegación basadas en datos generales del ecosistema Solana; no implican que eCNH esté listado o tenga liquidez negociable en todas las plataformas. Invertir en criptomonedas conlleva alto riesgo; no tomes decisiones basándote únicamente en esta página.",
+      "common.visit": "Visitar", "common.open": "Abrir",
+      "footer.note": "Instantánea de datos: 2025-09-23 (OrbMarkets / Helius). Red: Solana. Token: 华夏币 eCNH. Precio, liquidez y volumen cambian con rapidez y se muestran solo como referencia.",
+      "footer.linksTitle": "Páginas relacionadas de eCNH",
+      "footer.rights": "Toda la información se ofrece solo como referencia."
+    },
+    "fr": {
+      "nav.overview": "Vue d'ensemble", "nav.dex": "DEX", "nav.explorers": "Explorateurs", "nav.token": "Token", "nav.activity": "Activité", "nav.about": "À propos",
+      "hero.badge": "eCNH sur Solana",
+      "hero.title": "Le yuan chinois offshore, sur Solana",
+      "hero.sub": "eCNH = earth CNH = europe CNH = east CNH = ECNH = energy CNH. Un token communautaire reliant la vision du yuan chinois offshore à l'écosystème Solana.",
+      "hero.ctaDex": "Explorer les DEX", "hero.ctaExplorer": "Voir les explorateurs",
+      "stats.title": "Aperçu en direct",
+      "stats.price": "Prix", "stats.change": "Variation 24h", "stats.liquidity": "Liquidité",
+      "stats.holders": "Détenteurs", "stats.fdv": "Capitalisation / FDV", "stats.volume": "Volume 24h",
+      "stats.copy": "Copier",
+      "dex.kicker": "Navigation", "dex.title": "Top 5 des DEX pour eCNH",
+      "dex.sub": "Sélection basée sur l'activité de l'écosystème Solana en 2025. Être listé ne garantit pas une liquidité négociable.",
+      "dex.name1": "HumidiFi", "dex.role1": "AMM propriétaire / dark pool",
+      "dex.note1": "Gère une grande part de l'exécution de l'agrégateur Jupiter ; une route plausible si la liquidité revient.",
+      "dex.name2": "Meteora", "dex.role2": "Protocole de liquidité dynamique",
+      "dex.note2": "Adapté aux lancements de tokens à faible capitalisation et à la gestion de liquidité concentrée.",
+      "dex.name3": "Raydium", "dex.role3": "AMM classique + carnet d'ordres",
+      "dex.note3": "Parmi les premiers AMM de Solana avec un TVL conséquent.",
+      "dex.name4": "Orca", "dex.role4": "AMM convivial",
+      "dex.note4": "Les pools eCNH (eCNH/PYUSD, eCNH/USDC) ont été créés sur Orca — le DEX le plus directement lié à eCNH.",
+      "dex.name5": "Jupiter", "dex.role5": "Agrégateur de DEX",
+      "dex.note5": "Agrège la liquidité de plusieurs DEX ; l'entrée par laquelle eCNH sera probablement routé.",
+      "dex.bonus": "Bonus", "dex.bonusTitle": "Pools Orca", "dex.bonusRole": "Pools de référence",
+      "dex.bonusNote": "Pools eCNH/PYUSD et eCNH/USDC créés sur Orca — pages directes pour vérifier la liquidité.",
+      "exp.kicker": "Vérification", "exp.title": "Top 5 des Explorateurs de Blocs",
+      "exp.sub": "Vérifiez les infos du token, les détenteurs et l'état on-chain dans les explorateurs Solana.",
+      "exp.name1": "Solscan", "exp.role1": "Explorateur le plus utilisé",
+      "exp.note1": "Explorateur Solana très utilisé : infos de token, analyse de portefeuilles et décodage de transactions.",
+      "exp.name2": "Solana Explorer", "exp.role2": "Officiel",
+      "exp.note2": "Maintenu officiellement par la Solana Foundation ; données neutres et précises.",
+      "exp.name3": "Orb (Helius)", "exp.role3": "Analyse IA",
+      "exp.note3": "Explications de trading par IA, cartes de chaleur et suivi historique pour une analyse approfondie.",
+      "exp.name4": "SolanaFM", "exp.role4": "Impôts et analyse",
+      "exp.note4": "Prend en charge l'export CSV — adapté aux flux d'impôts et d'analyse.",
+      "exp.name5": "Solana Beach", "exp.role5": "Santé du réseau",
+      "exp.note5": "Axé sur les validateurs et la santé du réseau — idéal pour le staking et les données de cluster.",
+      "exp.bonus": "Bonus", "exp.bonusTitle": "OKX Link et X-Ray", "exp.bonusRole": "Multilingue · lisible",
+      "exp.bonusNote": "L'explorateur OKX Link prend en charge 11 langues ; X-Ray convertit les transactions complexes en résumés lisibles.",
+      "token.kicker": "Faits on-chain", "token.title": "Détails du Token",
+      "token.sub": "Instantané vérifié via OrbMarkets / Helius le 2025-09-23. Vérifiez les données en direct avant d'agir.",
+      "token.contract": "Adresse du contrat", "token.name": "Nom", "token.chain": "Réseau",
+      "token.supply": "Offre totale", "token.created": "Créé", "token.creator": "Créateur",
+      "token.desc": "Description on-chain", "token.meaning": "Significations du nom", "token.mcap": "Capitalisation / FDV",
+      "act.kicker": "Vérification réelle", "act.title": "Activité on-chain",
+      "act.sub": "Aperçu honnête de l'état actuel du marché — vérifiez toujours avec un explorateur.",
+      "act.emptyTitle": "Aucun marché principal actif détecté",
+      "act.emptySub": "Selon le dernier instantané, eCNH montre un volume 24h très faible ($18.82) avec 320 détenteurs. La page du marché principal signale actuellement « token invalide ou expiré ». Utilisez les explorateurs ci-dessus pour vérifier l'état on-chain.",
+      "act.cta": "Ouvrir Solscan",
+      "about.kicker": "Positionnement", "about.title": "À propos de 华夏币 eCNH",
+      "about.sub": "L'histoire du yuan chinois offshore (CNH), portée sur l'écosystème Solana comme Earth CNH.",
+      "about.missionTitle": "Mission",
+      "about.missionBody": "eCNH présente l'idée du yuan chinois offshore comme token communautaire sur Solana — membre de la famille eaco pour le Earth CNH, et explore un plan de connexion intercivilisationnel : relier l'usage global du yuan à une couche de règlement ouverte et sans frontières.",
+      "about.visionLabel": "Vision communautaire :", "about.visionValue": "1 eCNH ≈ 1 CNH",
+      "about.poolsTitle": "Pools de liquidité de référence",
+      "about.poolsBody": "Pools créés sur Orca pour vérifier la liquidité directement. L'état des pools change constamment — confirmez toujours avant d'interagir.",
+      "disc.title": "Avertissement",
+      "disc.body": "Les listes de DEX et d'explorateurs ci-dessus sont des références de navigation basées sur des données générales de l'écosystème Solana ; elles ne signifient pas qu'eCNH est listé ou dispose d'une liquidité négociable sur toutes les plateformes. L'investissement en cryptomonnaies comporte un risque élevé ; ne vous fiez pas uniquement à cette page pour décider.",
+      "common.visit": "Visiter", "common.open": "Ouvrir",
+      "footer.note": "Instantané des données : 2025-09-23 (OrbMarkets / Helius). Réseau : Solana. Token : 华夏币 eCNH. Prix, liquidité et volume évoluent rapidement et sont fournis à titre indicatif.",
+      "footer.linksTitle": "Pages eCNH associées",
+      "footer.rights": "Toutes les informations sont fournies à titre de référence uniquement."
+    },
+    "ar": {
+      "nav.overview": "نظرة عامة", "nav.dex": "منصات DEX", "nav.explorers": "المتصفحات", "nav.token": "التوكن", "nav.activity": "النشاط", "nav.about": "حول",
+      "hero.badge": "eCNH على سولانا",
+      "hero.title": "اليوان الصيني الخارجي، على سولانا",
+      "hero.sub": "eCNH = earth CNH = europe CNH = east CNH = ECNH = energy CNH. توكن مجتمعي يربط رؤية اليوان الصيني الخارجي بنظام سولانا البيئي.",
+      "hero.ctaDex": "استكشاف DEX", "hero.ctaExplorer": "عرض المتصفحات",
+      "stats.title": "بيانات مباشرة",
+      "stats.price": "السعر", "stats.change": "التغير 24س", "stats.liquidity": "السيولة",
+      "stats.holders": "الحائزون", "stats.fdv": "القيمة السوقية / FDV", "stats.volume": "الحجم 24س",
+      "stats.copy": "نسخ",
+      "dex.kicker": "تنقّل", "dex.title": "أفضل 5 منصات DEX لـ eCNH",
+      "dex.sub": "مجمعة بناءً على نشاط تداول نظام سولانا في 2025. الإدراج في المنصة لا يضمن سيولة قابلة للتداول.",
+      "dex.name1": "HumidiFi", "dex.role1": "AMM خاص / سوق داكن",
+      "dex.note1": "تتعامل مع جزء كبير من تنفيذ مجمّع Jupiter؛ مسار محتمل إذا عادت السيولة.",
+      "dex.name2": "Meteora", "dex.role2": "بروتوكول سيولة ديناميكي",
+      "dex.note2": "مناسب لإطلاق التوكنات منخفضة القيمة وإدارة السيولة المركزة.",
+      "dex.name3": "Raydium", "dex.role3": "AMM كلاسيكي + دفتر أوامر",
+      "dex.note3": "من أقدم منصات AMM على سولانا بقيمة إجمالية محجوزة كبيرة.",
+      "dex.name4": "Orca", "dex.role4": "AMM سهل الاستخدام",
+      "dex.note4": "تم إنشاء مجمعات eCNH (eCNH/PYUSD, eCNH/USDC) على Orca — وهي الأكثر ارتباطًا بـ eCNH مباشرة.",
+      "dex.name5": "Jupiter", "dex.role5": "مجمّع DEX",
+      "dex.note5": "يجمع السيولة من عدة منصات DEX؛ هو المدخل الأرجح الذي يُوجَّه عبره eCNH.",
+      "dex.bonus": "إضافي", "dex.bonusTitle": "مجمعات Orca", "dex.bonusRole": "مجمعات مرجعية",
+      "dex.bonusNote": "مجمعات eCNH/PYUSD وeCNH/USDC أُنشئت على Orca — صفحات مباشرة لفحص السيولة.",
+      "exp.kicker": "التحقق", "exp.title": "أفضل 5 متصفحات للبلوكشين",
+      "exp.sub": "تحقق من معلومات التوكن والحائزين والحالة على السلسلة عبر متصفحات سولانا.",
+      "exp.name1": "Solscan", "exp.role1": "المتصفح الأكثر استخدامًا",
+      "exp.note1": "متصفح سولانا الأوسع استخدامًا مع معلومات التوكن وتحليل المحافظ وفك تشفير المعاملات.",
+      "exp.name2": "Solana Explorer", "exp.role2": "رسمي",
+      "exp.note2": "تتم صيانته رسميًا من مؤسسة سولانا؛ بيانات محايدة ودقيقة.",
+      "exp.name3": "Orb (Helius)", "exp.role3": "تحليل بالذكاء الاصطناعي",
+      "exp.note3": "شروحات تداول بالذكاء الاصطناعي وخرائط حرارية وتتبع تاريخي للتحليل العميق.",
+      "exp.name4": "SolanaFM", "exp.role4": "الضرائب والتحليل",
+      "exp.note4": "يدعم تصدير CSV — مناسب لمهام الضرائب والتحليل.",
+      "exp.name5": "Solana Beach", "exp.role5": "صحة الشبكة",
+      "exp.note5": "يركز على المدققين وصحة الشبكة — ممتاز للتخزين وبيانات الكتلة.",
+      "exp.bonus": "إضافي", "exp.bonusTitle": "OKX Link وX-Ray", "exp.bonusRole": "متعدد اللغات · مقروء",
+      "exp.bonusNote": "متصفح OKX Link يدعم 11 لغة؛ X-Ray يحول المعاملات المعقدة إلى ملخصات مقروءة.",
+      "token.kicker": "حقائق على السلسلة", "token.title": "تفاصيل التوكن",
+      "token.sub": "لقطة تم التحقق منها عبر OrbMarkets / Helius بتاريخ 2025-09-23. تحقق من البيانات المباشرة قبل أي إجراء.",
+      "token.contract": "عنوان العقد", "token.name": "الاسم", "token.chain": "الشبكة",
+      "token.supply": "العرض الإجمالي", "token.created": "تاريخ الإنشاء", "token.creator": "المنشئ",
+      "token.desc": "الوصف على السلسلة", "token.meaning": "معاني الاسم", "token.mcap": "القيمة السوقية / FDV",
+      "act.kicker": "التحقق الفعلي", "act.title": "النشاط على السلسلة",
+      "act.sub": "لقطة صادقة للحالة السوقية الحالية — تحقق دائمًا عبر متصفح.",
+      "act.emptyTitle": "لا يوجد سوق رئيسي نشط",
+      "act.emptySub": "وفقًا لأحدث لقطة، يُظهر eCNH حجمًا منخفضًا جدًا خلال 24 ساعة (18.82 دولارًا) مع 320 حائزًا؛ صفحة السوق الرئيسية تعرض حاليًا «توكن غير صالح أو منتهي». استخدم المتصفحات أعلاه للتحقق من أحدث حالة على السلسلة.",
+      "act.cta": "فتح Solscan",
+      "about.kicker": "التموضع", "about.title": "حول 华夏币 eCNH",
+      "about.sub": "قصة اليوان الصيني الخارجي (CNH)، منقولة إلى نظام سولانا البيئي كـ Earth CNH.",
+      "about.missionTitle": "الرسالة",
+      "about.missionBody": "يقدّم eCNH فكرة اليوان الصيني الخارجي كتوكن مجتمعي على سولانا — جزء من عائلة eaco لـ Earth CNH، ويستكشف خطة تواصل بين الحضارات: ربط الاستخدام العالمي لليوان بطبقة تسوية مفتوحة بلا حدود.",
+      "about.visionLabel": "رؤية المجتمع:", "about.visionValue": "1 eCNH ≈ 1 CNH",
+      "about.poolsTitle": "مجمعات سيولة مرجعية",
+      "about.poolsBody": "مجمعات أُنشئت على Orca لفحص السيولة مباشرة. حالة المجمعات تتغير باستمرار — تحقق دائمًا قبل التعامل.",
+      "disc.title": "إخلاء مسؤولية",
+      "disc.body": "قوائم DEX والمتصفحات أعلاه مراجع إرشادية مبنية على بيانات عامة لنظام سولانا البيئي، ولا تعني أن eCNH مدرج أو يملك سيولة قابلة للتداول على جميع المنصات. الاستثمار في العملات الرقمية ينطوي على مخاطر عالية؛ لا تعتمد على هذه الصفحة وحدها عند اتخاذ القرارات.",
+      "common.visit": "زيارة", "common.open": "فتح",
+      "footer.note": "لقطة البيانات: 2025-09-23 (OrbMarkets / Helius). الشبكة: سولانا. التوكن: 华夏币 eCNH. الأسعار والسيولة والحجم تتغير بسرعة وتُعرض للتوضيح فقط.",
+      "footer.linksTitle": "صفحات eCNH ذات الصلة",
+      "footer.rights": "جميع المعلومات لأغراض مرجعية فقط."
+    },
+    "ru": {
+      "nav.overview": "Обзор", "nav.dex": "DEX", "nav.explorers": "Обозреватели", "nav.token": "Токен", "nav.activity": "Активность", "nav.about": "О проекте",
+      "hero.badge": "eCNH на Solana",
+      "hero.title": "Офшорный китайский юань — на Solana",
+      "hero.sub": "eCNH = earth CNH = europe CNH = east CNH = ECNH = energy CNH. Сообщество-токен, объединяющий видение офшорного китайского юаня с экосистемой Solana.",
+      "hero.ctaDex": "Изучить DEX", "hero.ctaExplorer": "Смотреть обозреватели",
+      "stats.title": "Живой снимок",
+      "stats.price": "Цена", "stats.change": "Изменение 24ч", "stats.liquidity": "Ликвидность",
+      "stats.holders": "Держатели", "stats.fdv": "Капитализация / FDV", "stats.volume": "Объём 24ч",
+      "stats.copy": "Копировать",
+      "dex.kicker": "Навигация", "dex.title": "Топ-5 DEX для eCNH",
+      "dex.sub": "Подборка по активности экосистемы Solana в 2025 году. Листинг на DEX не гарантирует ликвидность.",
+      "dex.name1": "HumidiFi", "dex.role1": "Собственный AMM / тёмный пул",
+      "dex.note1": "Обрабатывает большую долю исполнения агрегатора Jupiter; вероятный путь маршрутизации, если ликвидность вернётся.",
+      "dex.name2": "Meteora", "dex.role2": "Протокол динамической ликвидности",
+      "dex.note2": "Подходит для запуска низкокапитализированных токенов и управления концентрированной ликвидностью.",
+      "dex.name3": "Raydium", "dex.role3": "Классический AMM + стакан заявок",
+      "dex.note3": "Один из первых AMM на Solana со значительным TVL.",
+      "dex.name4": "Orca", "dex.role4": "Дружелюбный AMM",
+      "dex.note4": "Пулы eCNH (eCNH/PYUSD, eCNH/USDC) созданы на Orca — самый прямой из связанных с eCNH DEX.",
+      "dex.name5": "Jupiter", "dex.role5": "Агрегатор DEX",
+      "dex.note5": "Агрегирует ликвидность множества DEX; наиболее вероятная точка маршрутизации eCNH.",
+      "dex.bonus": "Бонус", "dex.bonusTitle": "Пулы Orca", "dex.bonusRole": "Справочные пулы",
+      "dex.bonusNote": "Пулы eCNH/PYUSD и eCNH/USDC созданы на Orca — прямые страницы для проверки ликвидности.",
+      "exp.kicker": "Проверка", "exp.title": "Топ-5 блокчейн-обозревателей",
+      "exp.sub": "Проверяйте информацию о токене, держателях и состояние сети в обозревателях Solana.",
+      "exp.name1": "Solscan", "exp.role1": "Самый популярный",
+      "exp.note1": "Широко используемый обозреватель Solana: информация о токенах, анализ кошельков и декодирование транзакций.",
+      "exp.name2": "Solana Explorer", "exp.role2": "Официальный",
+      "exp.note2": "Официально поддерживается Solana Foundation; нейтральные и точные данные.",
+      "exp.name3": "Orb (Helius)", "exp.role3": "ИИ-анализ",
+      "exp.note3": "ИИ-объяснения сделок, тепловые карты и история для глубокого анализа.",
+      "exp.name4": "SolanaFM", "exp.role4": "Налоги и аналитика",
+      "exp.note4": "Поддерживает экспорт CSV — подходит для налогов и аналитики.",
+      "exp.name5": "Solana Beach", "exp.role5": "Здоровье сети",
+      "exp.note5": "Фокус на валидаторах и здоровье сети — отлично для стейкинга и данных кластера.",
+      "exp.bonus": "Бонус", "exp.bonusTitle": "OKX Link и X-Ray", "exp.bonusRole": "Многоязычный · читаемый",
+      "exp.bonusNote": "Обозреватель OKX Link поддерживает 11 языков; X-Ray превращает сложные транзакции в читаемые сводки.",
+      "token.kicker": "Факты сети", "token.title": "Детали токена",
+      "token.sub": "Снимок проверен через OrbMarkets / Helius 2025-09-23. Проверяйте данные в обозревателе перед действиями.",
+      "token.contract": "Адрес контракта", "token.name": "Название", "token.chain": "Сеть",
+      "token.supply": "Общая эмиссия", "token.created": "Создан", "token.creator": "Создатель",
+      "token.desc": "Описание в сети", "token.meaning": "Значения названия", "token.mcap": "Капитализация / FDV",
+      "act.kicker": "Проверка фактов", "act.title": "Активность в сети",
+      "act.sub": "Честный снимок текущего состояния рынка — всегда проверяйте через обозреватель.",
+      "act.emptyTitle": "Активного основного рынка не обнаружено",
+      "act.emptySub": "По последнему снимку eCNH показывает очень низкий объём за 24 часа ($18.82) и 320 держателей; страница основного рынка сообщает «недействительный или истёкший токен». Используйте обозреватели выше для проверки актуального состояния сети.",
+      "act.cta": "Открыть Solscan",
+      "about.kicker": "Позиционирование", "about.title": "О 华夏币 eCNH",
+      "about.sub": "История офшорного китайского юаня (CNH), воплощённая в экосистеме Solana как Earth CNH.",
+      "about.missionTitle": "Миссия",
+      "about.missionBody": "eCNH представляет идею офшорного китайского юаня как сообщество-токен на Solana — часть семейства eaco для Earth CNH, и исследует план межцивилизационной связи: соединить глобальный сценарий использования юаня с открытым слоем расчётов без границ.",
+      "about.visionLabel": "Видение сообщества:", "about.visionValue": "1 eCNH ≈ 1 CNH",
+      "about.poolsTitle": "Справочные пулы ликвидности",
+      "about.poolsBody": "Пулы созданы на Orca для прямой проверки ликвидности. Состояние пулов постоянно меняется — всегда проверяйте перед взаимодействием.",
+      "disc.title": "Отказ от ответственности",
+      "disc.body": "Списки DEX и обозревателей выше — навигационные ссылки на основе общих данных экосистемы Solana; они не означают, что eCNH размещён или имеет торгуемую ликвидность на всех платформах. Инвестиции в криптовалюты сопряжены с высоким риском; не принимайте решений, основываясь только на этой странице.",
+      "common.visit": "Перейти", "common.open": "Открыть",
+      "footer.note": "Снимок данных: 2025-09-23 (OrbMarkets / Helius). Сеть: Solana. Токен: 华夏币 eCNH. Цена, ликвидность и объём быстро меняются и приведены только для справки.",
+      "footer.linksTitle": "Связанные страницы eCNH",
+      "footer.rights": "Вся информация предоставлена только для справки."
+    }
+  };
+
+  function pick(dict, key) {
+    return Object.prototype.hasOwnProperty.call(dict, key) ? dict[key] : "";
+  }
+
+  var LANG_KEY = "ecnh2025_lang";
+  var THEME_KEY = "ecnh2025_theme";
+  var STORE_OK = false;
+  try { localStorage.setItem("__t", "1"); localStorage.removeItem("__t"); STORE_OK = true; } catch (e) { STORE_OK = false; }
+
+  var currentLang = "en";
+  try { if (STORE_OK) { var saved = localStorage.getItem(LANG_KEY); if (saved && I18N[saved]) currentLang = saved; } } catch (e) {}
+
+  function setLang(lang, persist) {
+    currentLang = lang;
+    var dict = I18N[lang];
+    document.documentElement.lang = lang;
+    document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
+    var nodes = document.querySelectorAll("[data-i18n]");
+    for (var i = 0; i < nodes.length; i++) {
+      var key = nodes[i].getAttribute("data-i18n");
+      nodes[i].textContent = pick(dict, key);
+    }
+    var titleMap = {
+      "en": "eCNH 2025 · 华夏币 — Offshore Chinese Yuan on Solana",
+      "zh-CN": "eCNH 2025 · 华夏币 — 离岸人民币 · Solana",
+      "es": "eCNH 2025 · 华夏币 — Yuan chino extraterritorial en Solana",
+      "fr": "eCNH 2025 · 华夏币 — Yuan chinois offshore sur Solana",
+      "ar": "eCNH 2025 · 华夏币 — اليوان الصيني الخارجي على سولانا",
+      "ru": "eCNH 2025 · 华夏币 — Офшорный китайский юань на Solana"
+    };
+    document.title = titleMap[lang] || titleMap["en"];
+    var btns = document.querySelectorAll("[data-lang]");
+    for (var j = 0; j < btns.length; j++) {
+      btns[j].setAttribute("aria-pressed", btns[j].getAttribute("data-lang") === lang ? "true" : "false");
+    }
+    if (persist && STORE_OK) {
+      try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
+    }
+  }
+  setLang(currentLang, false);
+
+  /* ---- theme (default follows system, manual toggle overrides) ---- */
+  var systemDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  var themeBtn = document.querySelector(".theme-btn");
+  function applyTheme(theme) {
+    if (theme === "dark") document.documentElement.setAttribute("data-theme", "dark");
+    else if (theme === "light") document.documentElement.setAttribute("data-theme", "light");
+    else document.documentElement.removeAttribute("data-theme");
+  }
+  var currentTheme = null;
+  try { if (STORE_OK) currentTheme = localStorage.getItem(THEME_KEY); } catch (e) {}
+  applyTheme(currentTheme);
+  if (themeBtn) {
+    themeBtn.addEventListener("click", function () {
+      var isDarkNow = document.documentElement.getAttribute("data-theme") === "dark" ||
+        (!document.documentElement.hasAttribute("data-theme") && (systemDark || window.matchMedia("(prefers-color-scheme: dark)").matches));
+      var next = isDarkNow ? "light" : "dark";
+      applyTheme(next);
+      try { if (STORE_OK) localStorage.setItem(THEME_KEY, next); } catch (e) {}
+    });
+  }
+
+  /* ---- copy contract ---- */
+  var copyBtns = document.querySelectorAll("[data-copy]");
+  function doCopy(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text).then(function () { return true; }, function () { return legacyCopy(text); });
+    }
+    return Promise.resolve(legacyCopy(text));
+  }
+  function legacyCopy(text) {
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    ta.setSelectionRange(0, text.length);
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    document.body.removeChild(ta);
+    return ok;
+  }
+  for (var c = 0; c < copyBtns.length; c++) {
+    copyBtns[c].addEventListener("click", function () {
+      var btn = this;
+      var text = btn.getAttribute("data-copy") || "";
+      doCopy(text).then(function (ok) {
+        btn.classList.add("copy-ok");
+        var label = btn.querySelector("span");
+        var original = label ? label.textContent : "";
+        var done = pick(I18N[currentLang], "stats.copy") === "Copy" ? "Copied!" : (I18N[currentLang]["stats.copy"] === "复制" ? "已复制！" : original + " ✓");
+        if (label) label.textContent = (ok ? done : original);
+        window.setTimeout(function () {
+          btn.classList.remove("copy-ok");
+          if (label) label.textContent = original;
+        }, 1600);
+      });
+    });
+  }
+
+  /* ---- mobile menu ---- */
+  var menuBtn = document.querySelector(".menu-btn");
+  var mobileNav = document.getElementById("mobileNav");
+  if (menuBtn && mobileNav) {
+    menuBtn.addEventListener("click", function () {
+      var open = mobileNav.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    mobileNav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        mobileNav.classList.remove("open");
+        if (menuBtn) menuBtn.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+
+  /* ---- language buttons (desktop + mobile) ---- */
+  var langBtns = document.querySelectorAll("[data-lang]");
+  for (var l = 0; l < langBtns.length; l++) {
+    langBtns[l].addEventListener("click", function () {
+      setLang(this.getAttribute("data-lang"), true);
+    });
+  }
+})();
+</script>
+</body>
+</html>
