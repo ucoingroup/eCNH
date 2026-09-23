@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="eCNH Global Investment View 2026 - a research reference of global opportunities behind eCNH, the digital offshore CNH on Solana: cross-border payments, DeFi liquidity, cross-chain, regional nodes, DAO governance, allocation. Six languages, one public contract. Not investment advice.">
+<title>eCNH Global Investment View 2026 · Solana Digital CNH</title>
+<meta name="design-suite-artifact-kind" content="website">
+<meta name="design-suite-delivery-adapter" content="static-export">
+<meta name="design-suite-delivery-format" content="single-html">
+<meta name="design-suite-asset-policy" content="inline-base64">
+<meta name="design-suite-export-mode" content="single-file">
+<meta name="theme-color" content="#070f1f">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="eCNH Invest">
+<meta property="og:title" content="eCNH Global Investment View 2026 · Solana Digital CNH">
+<meta property="og:description" content="A research reference of global opportunities behind eCNH: payments, liquidity, cross-chain, nodes, DAO, allocation. Six languages, one public contract. Not investment advice.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA2NCA2NCc+PHJlY3Qgd2lkdGg9JzY0JyBoZWlnaHQ9JzY0JyByeD0nMTQnIGZpbGw9JyMwNzBmMWYnLz48dGV4dCB4PSczMicgeT0nNDInIGZvbnQtZmFtaWx5PSdBcmlhbCcgZm9udC1zaXplPScyNicgZm9udC13ZWlnaHQ9J2JvbGQnIGZpbGw9JyM1OGE2ZmYnIHRleHQtYW5jaG9yPSdtaWRkbGUnPkVJTjwvdGV4dD48L3N2Zz4=">
+
+<style>
+:root{
+  --bg0:#070f1f; --bg1:#0b1f3a; --bg2:#10294f; --card:#0e2544; --card2:#123059;
+  --line:#1d3a66; --line2:#2a4c80; --text:#eaf3ff; --muted:#93a8c8;
+  --accent:#58a6ff; --accent2:#7ee0c0; --gold:#ffd479; --shadow:rgba(0,0,0,.45);
+  --radius:18px; --maxw:1180px;
+  --font-latin:'Segoe UI','Helvetica Neue',Arial,sans-serif;
+  --font-cjk:'PingFang SC','Microsoft YaHei','Noto Sans SC','Segoe UI',sans-serif;
+  --font-ar:'Segoe UI','Tahoma','Noto Kufi Arabic',Arial,sans-serif;
+}
+[data-theme="olive"]{
+  --bg0:#141a0f; --bg1:#22281c; --bg2:#2c3623; --card:#232b1b; --card2:#2b3620;
+  --line:#3a4a2c; --line2:#4b6038; --text:#f0f4e6; --muted:#a8b394;
+  --accent:#9aaa6f; --accent2:#d8c98a; --gold:#e3d9a0; --shadow:rgba(10,12,6,.5);
+}
+[data-theme="beige"]{
+  --bg0:#eae1cf; --bg1:#f3ecdf; --bg2:#faf6ec; --card:#f6efe0; --card2:#fbf6ea;
+  --line:#d9cdb4; --line2:#c3b393; --text:#26332f; --muted:#69756c;
+  --accent:#2c5f5a; --accent2:#a76f2f; --gold:#8a5a12; --shadow:rgba(90,75,45,.18);
+}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg0);color:var(--text);font-family:var(--font-latin);line-height:1.6;transition:background .35s,color .35s}
+[lang="zh-CN"] body,[lang="zh-CN"] .sec-head h2,[lang="zh-CN"] .hero h1{font-family:var(--font-cjk)}
+[lang="ar"] body,[lang="ar"] h1,[lang="ar"] h2,[lang="ar"] h3,[lang="ar"] p,[lang="ar"] a,[lang="ar"] button{font-family:var(--font-ar)}
+.container{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+a{color:var(--accent)}
+::selection{background:var(--accent);color:var(--bg0)}
+
+header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg0) 82%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.hbar{display:flex;align-items:center;gap:16px;padding:12px 24px;max-width:var(--maxw);margin:0 auto;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:8px;font-weight:800;font-size:17px;color:var(--text);text-decoration:none;white-space:nowrap}
+.brand .dot{width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+.navlinks{display:flex;gap:4px;flex:1;justify-content:center;flex-wrap:wrap}
+.navlinks a{padding:7px 13px;border-radius:999px;color:var(--muted);font-size:14.5px;font-weight:600;text-decoration:none}
+.navlinks a:hover{color:var(--text);background:var(--bg2)}
+.seg{display:flex;gap:4px;align-items:center;flex-wrap:wrap}
+.seg button{border:1px solid var(--line);background:var(--bg1);color:var(--muted);border-radius:999px;padding:5px 12px;font-size:13px;cursor:pointer}
+.seg button:hover{color:var(--text);border-color:var(--accent)}
+.seg button.on{background:var(--accent);border-color:var(--accent);color:var(--bg0);font-weight:700}
+.theme-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-inline-end:4px;vertical-align:1px}
+.theme-dot.cosmic{background:#58a6ff}.theme-dot.olive{background:#9aaa6f}.theme-dot.beige{background:#a76f2f}
+
+.hero{padding:92px 0 70px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 380px at 78% 8%,color-mix(in srgb,var(--accent) 22%,transparent),transparent 70%),radial-gradient(520px 320px at 14% 90%,color-mix(in srgb,var(--accent2) 14%,transparent),transparent 70%);pointer-events:none}
+.hero .container{position:relative}
+.eyebrow{font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent2);font-weight:700}
+.hero h1{font-size:clamp(34px,5.2vw,58px);line-height:1.12;margin:18px 0 14px;letter-spacing:-.01em}
+.hero h1 .hl{color:var(--accent)}
+.hero .sub{font-size:18px;color:var(--muted);max-width:780px;margin:0 0 12px}
+.hero-mission{font-size:15.5px;color:var(--text);opacity:.92;max-width:800px;margin:0 0 20px}
+.badge{display:inline-block;border:1px solid var(--accent2);color:var(--accent2);border-radius:999px;padding:4px 14px;font-size:12.5px;font-weight:700;letter-spacing:.06em}
+.cta-row{display:flex;gap:12px;margin:26px 0 40px;flex-wrap:wrap}
+.btn{display:inline-block;border:1px solid var(--line);background:var(--bg1);color:var(--text);border-radius:999px;padding:12px 26px;font-size:15px;font-weight:700;text-decoration:none;transition:transform .15s,border-color .2s}
+.btn:hover{border-color:var(--accent);transform:translateY(-1px)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg0)}
+.stats{display:flex;gap:14px;flex-wrap:wrap}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 22px;min-width:120px}
+.stat b{display:block;font-size:26px;color:var(--accent)}
+.stat span{font-size:13px;color:var(--muted)}
+
+section{padding:64px 0;border-top:1px solid var(--line)}
+.sec-head{max-width:840px;margin:0 auto 34px;text-align:center}
+.sec-head h2{font-size:clamp(26px,3.4vw,38px);margin:12px 0 8px;line-height:1.2}
+.sec-head .sub{font-size:15.5px;color:var(--muted);margin:0}
+.footnote{font-size:12.5px;color:var(--muted);text-align:center;margin:26px auto 0;max-width:820px;line-height:1.7}
+.sec-head-sub{font-size:14.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent2);font-weight:700;margin:22px 0 14px}
+
+.opp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.opp-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;gap:10px;position:relative;transition:transform .18s,border-color .2s}
+.opp-card:hover{transform:translateY(-3px);border-color:var(--accent)}
+.opp-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.opp-no{font-size:12px;font-weight:800;color:var(--gold);letter-spacing:.1em;white-space:nowrap}
+.opp-icon{width:40px;height:40px;border-radius:12px;background:color-mix(in srgb,var(--accent) 16%,var(--bg2));display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0}
+.opp-icon svg{width:23px;height:23px}
+.opp-cat{font-size:11px;font-weight:700;color:var(--accent2);border:1px solid var(--line);border-radius:999px;padding:2px 10px;display:inline-block;align-self:flex-start}
+.opp-card h3{font-size:17px;margin:0;line-height:1.35}
+.opp-row{font-size:13px;color:var(--text);line-height:1.6}
+.opp-row b{color:var(--accent2);font-weight:700}
+.opp-row .val{color:var(--muted)}
+.opp-risk{margin-top:auto;font-size:12px;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px;line-height:1.6}
+.opp-risk b{color:var(--gold);font-weight:700}
+
+.rg-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.rg-card{background:var(--card2);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.rg-card h3{font-size:16px;margin:0 0 6px}
+.rg-card .rg-role{font-size:13px;color:var(--accent2);font-weight:600;margin:0 0 10px}
+.rg-card p{font-size:13.5px;color:var(--muted);margin:0 0 10px;line-height:1.65}
+.rg-tags{display:flex;gap:6px;flex-wrap:wrap}
+.rg-tag{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:3px 11px;color:var(--text)}
+
+.lt-modes{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:34px}
+.lt-mode{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.lt-mode h4{font-size:14px;margin:0 0 6px;color:var(--accent)}
+.lt-mode p{font-size:12.5px;color:var(--muted);margin:0;line-height:1.65}
+.lt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.lt-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.lt-card h3{font-size:16px;margin:0 0 4px}
+.lt-count{font-size:12px;font-weight:800;color:var(--gold);letter-spacing:.08em;margin:0 0 8px}
+.lt-cos{font-size:12.5px;color:var(--accent2);margin:0 0 8px;line-height:1.7}
+.lt-how{font-size:13px;color:var(--text);line-height:1.65}
+.lt-how b{color:var(--accent2)}
+
+.fact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.fact-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.fact-card h3{font-size:14px;margin:0 0 6px;color:var(--accent2)}
+.fact-card p{font-size:12.5px;color:var(--muted);margin:0;line-height:1.65;word-break:break-word}
+.fact-card code{font-family:ui-monospace,Consolas,monospace;font-size:11px;word-break:break-all;color:var(--text)}
+
+.risk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.risk-card{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.risk-card h3{font-size:14.5px;margin:0 0 6px;color:var(--gold)}
+.risk-card p{font-size:12.5px;color:var(--muted);margin:0;line-height:1.65}
+
+footer{padding:54px 0 70px;border-top:1px solid var(--line);background:color-mix(in srgb,var(--bg1) 55%,transparent)}
+.ft-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:26px}
+.ft-box{margin:0 0 12px}
+.ft-t{font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent2);font-weight:700;margin:0 0 8px}
+.ft-code{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.ft-code code{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;word-break:break-all;color:var(--text);background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+.copybtn{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:6px 14px;font-size:12.5px;cursor:pointer}
+.copybtn:hover{border-color:var(--accent);color:var(--text)}
+.ft-box p{margin:0 0 10px;font-size:13px;color:var(--muted);line-height:1.7}
+.terms{font-size:13px;color:var(--muted)}
+.footrow{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:26px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.ft-brand{margin-top:18px;text-align:center}
+.ft-brand-line{font-size:13.5px;color:var(--muted);margin:4px 0;line-height:1.7}
+.ft-brand-line b{color:var(--text)}
+.ft-brand .big{font-size:15.5px;color:var(--text);font-weight:700}
+.ft-ext{margin-top:20px;text-align:center;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.ft-ext-link{display:inline-block;font-size:12px;color:var(--accent2);border:1px solid var(--line);border-radius:999px;padding:6px 14px;text-decoration:none;transition:border-color .2s,color .2s}
+.ft-ext-link:hover{border-color:var(--accent);color:var(--accent)}
+
+#toast{position:fixed;bottom:26px;inset-inline-start:50%;transform:translateX(-50%);background:var(--card2);color:var(--text);border:1px solid var(--accent);border-radius:999px;padding:10px 22px;font-size:14px;z-index:99;opacity:0;pointer-events:none;transition:opacity .25s}
+#toast.show{opacity:1}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:1024px){
+  .opp-grid{grid-template-columns:repeat(2,1fr)}
+  .fact-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:960px){
+  .rg-grid{grid-template-columns:1fr}
+  .risk-grid{grid-template-columns:1fr}
+  .lt-grid{grid-template-columns:1fr}
+  .lt-modes{grid-template-columns:1fr}
+  .ft-grid{grid-template-columns:1fr}
+  .navlinks{order:3;width:100%;justify-content:flex-start;overflow-x:auto;padding-bottom:4px}
+}
+@media (max-width:640px){
+  .opp-grid{grid-template-columns:1fr}
+  .fact-grid{grid-template-columns:1fr}
+  section{padding:46px 0}
+  .hero{padding:70px 0 54px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="hbar">
+    <a class="brand" href="#top"><span class="dot" aria-hidden="true"></span>eCNH Invest</a>
+    <nav class="navlinks" aria-label="Primary">
+      <a href="#opp" data-i18n="nav.opp">Opportunities</a>
+      <a href="#light50" data-i18n="nav.light">Top 50</a>
+      <a href="#regions" data-i18n="nav.regions">Regions</a>
+      <a href="#facts" data-i18n="nav.facts">Facts</a>
+      <a href="#risks" data-i18n="nav.risks">Risks</a>
+    </nav>
+    <div class="seg" role="group" aria-label="Language">
+      <button type="button" data-lang="zh-CN">中文</button>
+      <button type="button" data-lang="en" class="on">EN</button>
+      <button type="button" data-lang="fr">FR</button>
+      <button type="button" data-lang="ru">RU</button>
+      <button type="button" data-lang="es">ES</button>
+      <button type="button" data-lang="ar">عربية</button>
+    </div>
+    <div class="seg" role="group" aria-label="Theme">
+      <button type="button" data-theme-btn="cosmic" class="on"><span class="theme-dot cosmic" aria-hidden="true"></span><span data-i18n="theme.cosmic">Cosmic</span></button>
+      <button type="button" data-theme-btn="olive"><span class="theme-dot olive" aria-hidden="true"></span><span data-i18n="theme.olive">Olive</span></button>
+      <button type="button" data-theme-btn="beige"><span class="theme-dot beige" aria-hidden="true"></span><span data-i18n="theme.beige">Beige</span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow" data-i18n="hero.eyebrow">Solana · eCNH Global View</span>
+      <h1 data-i18n="hero.title">eCNH in a global view — <span class="hl">what opportunities</span> does the world see?</h1>
+      <p class="sub" data-i18n="hero.sub">A research reference of six global opportunity directions behind eCNH, the earth village's digital offshore CNH on Solana: payments, liquidity, cross-chain, regional nodes, DAO governance and allocation.</p>
+      <p class="hero-mission" data-i18n="hero.mission">eCNH carries a civilizational link spanning 3,000 years, toward the stars. This page reads that vision through a practical lens: where the world could interact, build and participate — always with risk clearly marked.</p>
+      <div><span class="badge" data-i18n="hero.badge">2026 · Research View</span></div>
+      <div class="cta-row">
+        <a class="btn primary" href="#opp" data-i18n="hero.cta1">Browse the 6 opportunities</a>
+        <a class="btn" href="#risks" data-i18n="hero.cta2">Read risks first</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>6</b><span id="statO" data-i18n="hero.stat.o">opportunity types</span></div>
+        <div class="stat"><b>4</b><span id="statR" data-i18n="hero.stat.r">regional views</span></div>
+        <div class="stat"><b>7</b><span id="statB" data-i18n="hero.stat.b">bridge targets</span></div>
+        <div class="stat"><b>50</b><span id="statL" data-i18n="hero.stat.l">light-asset brands</span></div>
+        <div class="stat"><b>1</b><span id="statC" data-i18n="hero.stat.c">contract</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPPORTUNITIES -->
+  <section id="opp" aria-labelledby="opp-h">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow" data-i18n="opp.eyebrow">Six directions</span>
+        <h2 id="opp-h" data-i18n="opp.h">Global opportunities around eCNH</h2>
+        <p class="sub" data-i18n="opp.sub">Each direction lists what the opportunity is, which regions it spans, how one could participate, and the risk that must be read first. This is a navigation reference, not advice.</p>
+      </div>
+      <div id="oppGrid" class="opp-grid"></div>
+      <p class="footnote reveal" data-i18n="opp.footnote">Opportunity descriptions are built from eCNH's published facts and Solana public data (2026-09 snapshot). None of them is a promise of return; always verify the contract and the current on-chain state yourself.</p>
+    </div>
+  </section>
+
+  <!-- LIGHT50: TOP 50 LIGHT-ASSET BRANDS x eCNH -->
+  <section id="light50" aria-labelledby="light50-h">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow" data-i18n="light.eyebrow">Global top 50 light-asset</span>
+        <h2 id="light50-h" data-i18n="light.h">How the top-50 world light-asset companies combine with eCNH</h2>
+        <p class="sub" data-i18n="light.sub">A reference panorama: 50 leading brand, IP and asset-light companies across seven categories, mapped to six ways their global business could interact with the eCNH digital-CNH ecosystem. Scenarios are research illustrations, not partnerships.</p>
+      </div>
+      <h3 class="sec-head-sub" data-i18n="light.modes">Six integration modes</h3>
+      <div id="ltModes" class="lt-modes"></div>
+      <h3 class="sec-head-sub" data-i18n="light.cats">Seven categories · 50 reference brands</h3>
+      <div id="ltGrid" class="lt-grid"></div>
+      <p class="footnote reveal" data-i18n="light.footnote">Company names are published facts (public market references). All integration scenarios are research illustrations of how eCNH's digital-CNH, cross-chain and regional-node design could fit such companies; none of them is a statement of a real partnership, listing or endorsement, and none is a promise of return.</p>
+    </div>
+  </section>
+
+  <!-- REGIONS -->
+  <section id="regions" aria-labelledby="regions-h">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow" data-i18n="regions.eyebrow">Regional view</span>
+        <h2 id="regions-h" data-i18n="regions.h">From six city nodes to the world</h2>
+        <p class="sub" data-i18n="regions.sub">Six global friendly cities map to four regional views; each region points to local ways to follow or participate, subject to local regulation.</p>
+      </div>
+      <div id="rgGrid" class="rg-grid"></div>
+    </div>
+  </section>
+
+  <!-- FACTS -->
+  <section id="facts" aria-labelledby="facts-h">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow" data-i18n="facts.eyebrow">Ecosystem facts</span>
+        <h2 id="facts-h" data-i18n="facts.h">The facts behind any opportunity</h2>
+        <p class="sub" data-i18n="facts.sub">Validation first. Every evaluation of an opportunity starts from these published facts, not from claims.</p>
+      </div>
+      <div class="fact-grid">
+        <div class="fact-card reveal"><h3 data-i18n="facts.f1t">Andromeda standard</h3><p data-i18n="facts.f1d">Community mirror reference: 1 eCNH ≈ 1 CNH (offshore renminbi digital image). Not a pegged or indexed product.</p></div>
+        <div class="fact-card reveal"><h3 data-i18n="facts.f2t">Supply</h3><p data-i18n="facts.f2d">100 trillion public tokens, full circulation, no minting authority after milestone.</p></div>
+        <div class="fact-card reveal"><h3 data-i18n="facts.f3t">Orca pools</h3><p data-i18n="facts.f3d">eCNH/PYUSD and eCNH/USDC pools are live on Orca; addresses below.</p><code dir="ltr">4RdJnPy3nb821SqZdJZmvD4aixCVsjzcbhiLL32iTuRS</code><br><code dir="ltr">BHf1yCvj6qh2E1y2JLrjesP7RRC8XjBN3FyHeq45LnBZ</code></div>
+        <div class="fact-card reveal"><h3 data-i18n="facts.f4t">Contract</h3><p data-i18n="facts.f4d">The one public contract on Solana mainnet (copy in footer):</p><code dir="ltr">7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5</code></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RISKS -->
+  <section id="risks" aria-labelledby="risks-h">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow" data-i18n="risks.eyebrow">Read first</span>
+        <h2 id="risks-h" data-i18n="risks.h">Risks and limitations</h2>
+        <p class="sub" data-i18n="risks.sub">Crypto assets carry high risk. This page is a research reference; nothing here is investment advice or a solicitation.</p>
+      </div>
+      <div class="risk-grid">
+        <div class="risk-card reveal"><h3 data-i18n="risks.r1t">No peg guarantee</h3><p data-i18n="risks.r1d">1 eCNH ≈ 1 CNH is a community mirror reference. The token is not pegged, not redeemable, and price may deviate widely from CNH.</p></div>
+        <div class="risk-card reveal"><h3 data-i18n="risks.r2t">Liquidity & DEX risk</h3><p data-i18n="risks.r2d">Liquidity may be thin or change; automated-market-maker pools expose providers to impermanent loss. Always check current pool depth.</p></div>
+        <div class="risk-card reveal"><h3 data-i18n="risks.r3t">Regulation varies</h3><p data-i18n="risks.r3d">Digital currency rules differ by jurisdiction; participation must respect local law. Regional pages are information maps, not permissions.</p></div>
+        <div class="risk-card reveal"><h3 data-i18n="risks.r4t">No promise of return</h3><p data-i18n="risks.r4d">Bridge planning, DAO governance and community building are roadmap views, not commitments of outcomes or returns.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="ft-grid">
+      <div>
+        <div class="ft-box">
+          <p class="ft-t" data-i18n="footer.contract">Contract</p>
+          <div class="ft-code">
+            <code id="contractAddr" dir="ltr">7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5</code>
+            <button type="button" class="copybtn" id="copyBtn" data-i18n="footer.copy">Copy address</button>
+          </div>
+        </div>
+        <p class="ft-box terms" data-i18n="footer.terms">Terms used: 华语 · 公益 · CNH</p>
+      </div>
+      <div>
+        <p class="ft-box" data-i18n="footer.disclaimer">Global Investment View of the eCNH 2026 plan. Not investment advice; all opportunity descriptions are navigation references based on published facts and Solana public data, and do not represent any live product endorsement or tradable liquidity guarantee.</p>
+        <p class="ft-box" data-i18n="footer.source">Snapshot source: Solana public explorers, 2026-09 data · OrbMarkets token page.</p>
+      </div>
+    </div>
+    <div class="footrow">
+      <span>eCNH · Global View · <span id="yearNow"></span></span>
+      <span data-i18n="footer.i18n">华语 / English / Français / Русский / Español / العربية</span>
+    </div>
+    <div class="ft-brand" role="note" aria-label="eCNH brand">
+      <p class="ft-brand-line big" data-i18n="brand.l1">eCNH, the earth village's own digital CNH; #WEB3</p>
+      <p class="ft-brand-line" data-i18n="brand.l2">eCNH = earth CNH = europe CNH = east CNH = ECNH = energy CNH</p>
+      <p class="ft-brand-line" data-i18n="brand.global">Earth &amp; Global Humanity Builds and Shares eCNH Together | 全球人类共建共享 eCNH</p>
+      <p class="ft-brand-line" data-i18n="brand.community">2026 eCNH Community · All information is for reference only</p>
+    </div>
+    <div class="ft-ext">
+      <a class="ft-ext-link" href="https://orbmarkets.io/token/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5" target="_blank" rel="noopener noreferrer" dir="ltr" data-i18n="brand.orb">View on OrbMarkets</a>
+      <a class="ft-ext-link" href="https://ucoingroup.github.io/eCNH/" target="_blank" rel="noopener noreferrer" dir="ltr">UCOIN eCNH</a>
+      <a class="ft-ext-link" href="https://ecnh.freedev.app/ecnh2025/" target="_blank" rel="noopener noreferrer" dir="ltr">eCNH 2025</a>
+      <a class="ft-ext-link" href="https://ecnh.freedev.app/ecnh2026/" target="_blank" rel="noopener noreferrer" dir="ltr">eCNH 2026</a>
+    </div>
+  </div>
+</footer>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  "use strict";
+
+  var I18N = {
+    en: {
+      "nav.opp": "Opportunities", "nav.regions": "Regions", "nav.facts": "Facts", "nav.risks": "Risks",
+      "hero.eyebrow": "Solana · eCNH Global View",
+      "hero.title": "eCNH in a global view — <span class=\"hl\">what opportunities</span> does the world see?",
+      "hero.sub": "A research reference of six global opportunity directions behind eCNH, the earth village's digital offshore CNH on Solana: payments, liquidity, cross-chain, regional nodes, DAO governance and allocation.",
+      "hero.mission": "eCNH carries a civilizational link spanning 3,000 years, toward the stars. This page reads that vision through a practical lens: where the world could interact, build and participate — always with risk clearly marked.",
+      "hero.badge": "2026 · Research View", "hero.cta1": "Browse the 6 opportunities", "hero.cta2": "Read risks first",
+      "hero.stat.o": "opportunity types", "hero.stat.r": "regional views", "hero.stat.b": "bridge targets", "hero.stat.c": "contract",
+      "opp.eyebrow": "Six directions", "opp.h": "Global opportunities around eCNH",
+      "opp.sub": "Each direction lists what the opportunity is, which regions it spans, how one could participate, and the risk that must be read first. This is a navigation reference, not advice.",
+      "opp.footnote": "Opportunity descriptions are built from eCNH's published facts and Solana public data (2026-09 snapshot). None of them is a promise of return; always verify the contract and the current on-chain state yourself.",
+      "opp.region": "Regions", "opp.how": "How to participate", "opp.risk": "Risk to read first",
+      "regions.eyebrow": "Regional view", "regions.h": "From six city nodes to the world",
+      "regions.sub": "Six global friendly cities map to four regional views; each region points to local ways to follow or participate, subject to local regulation.",
+      "facts.eyebrow": "Ecosystem facts", "facts.h": "The facts behind any opportunity",
+      "facts.sub": "Validation first. Every evaluation of an opportunity starts from these published facts, not from claims.",
+      "facts.f1t": "Andromeda standard", "facts.f1d": "Community mirror reference: 1 eCNH ≈ 1 CNH (offshore renminbi digital image). Not a pegged or indexed product.",
+      "facts.f2t": "Supply", "facts.f2d": "100 trillion public tokens, full circulation, no minting authority after milestone.",
+      "facts.f3t": "Orca pools", "facts.f3d": "eCNH/PYUSD and eCNH/USDC pools are live on Orca; addresses below.",
+      "facts.f4t": "Contract", "facts.f4d": "The one public contract on Solana mainnet (copy in footer):",
+      "risks.eyebrow": "Read first", "risks.h": "Risks and limitations",
+      "risks.sub": "Crypto assets carry high risk. This page is a research reference; nothing here is investment advice or a solicitation.",
+      "risks.r1t": "No peg guarantee", "risks.r1d": "1 eCNH ≈ 1 CNH is a community mirror reference. The token is not pegged, not redeemable, and price may deviate widely from CNH.",
+      "risks.r2t": "Liquidity & DEX risk", "risks.r2d": "Liquidity may be thin or change; automated-market-maker pools expose providers to impermanent loss. Always check current pool depth.",
+      "risks.r3t": "Regulation varies", "risks.r3d": "Digital currency rules differ by jurisdiction; participation must respect local law. Regional pages are information maps, not permissions.",
+      "risks.r4t": "No promise of return", "risks.r4d": "Bridge planning, DAO governance and community building are roadmap views, not commitments of outcomes or returns.",
+      "footer.contract": "Contract", "footer.copy": "Copy address", "footer.terms": "Terms used: 华语 · 公益 · CNH",
+      "footer.disclaimer": "Global Investment View of the eCNH 2026 plan. Not investment advice; all opportunity descriptions are navigation references based on published facts and Solana public data, and do not represent any live product endorsement or tradable liquidity guarantee.",
+      "footer.source": "Snapshot source: Solana public explorers, 2026-09 data · OrbMarkets token page.",
+      "footer.i18n": "华语 / English / Français / Русский / Español / العربية",
+      "brand.l1": "eCNH, the earth village's own digital CNH; #WEB3",
+      "brand.l2": "eCNH = earth CNH = europe CNH = east CNH = ECNH = energy CNH",
+      "brand.global": "Earth &amp; Global Humanity Builds and Shares eCNH Together | 全球人类共建共享 eCNH",
+      "brand.community": "2026 eCNH Community · All information is for reference only",
+      "brand.orb": "View on OrbMarkets",
+      "theme.cosmic": "Cosmic", "theme.olive": "Olive", "theme.beige": "Beige",
+      "toast.copied": "Contract address copied",
+      "nav.light": "Top 50",
+      "hero.stat.l": "light-asset brands",
+      "light.eyebrow": "Global top 50 light-asset",
+      "light.h": "How the top-50 world light-asset companies combine with eCNH",
+      "light.sub": "A reference panorama: 50 leading brand, IP and asset-light companies across seven categories, mapped to six ways their global business could interact with the eCNH digital-CNH ecosystem. Scenarios are research illustrations, not partnerships.",
+      "light.modes": "Six integration modes",
+      "light.cats": "Seven categories · 50 reference brands",
+      "light.footnote": "Company names are published facts (public market references). All integration scenarios are research illustrations of how eCNH's digital-CNH, cross-chain and regional-node design could fit such companies; none of them is a statement of a real partnership, listing or endorsement, and none is a promise of return."
+    },
+    "zh-CN": {
+      "nav.opp": "机会", "nav.regions": "区域", "nav.facts": "生态事实", "nav.risks": "风险",
+      "hero.eyebrow": "Solana · eCNH 全球视野",
+      "hero.title": "全球视野下的 eCNH —— 世界看到了<span class=\"hl\">哪些机会</span>？",
+      "hero.sub": "围绕 Solana 上地球村离岸数字货币 eCNH 的六大全球机会方向整理的研究参考：支付、流动性、跨链、区域节点、DAO 治理与配置参考。",
+      "hero.mission": "eCNH 承载着跨越 3000 年、通向星辰的文明连接。本页用务实的视角解读这一愿景：世界可以在哪些地方互动、共建与参与——并始终把风险标注清楚。",
+      "hero.badge": "2026 · 研究视角", "hero.cta1": "浏览六大机会", "hero.cta2": "先读风险",
+      "hero.stat.o": "类机会", "hero.stat.r": "类区域视角", "hero.stat.b": "条桥接目标", "hero.stat.c": "条合约",
+      "opp.eyebrow": "六大方向", "opp.h": "eCNH 相关的全球机会",
+      "opp.sub": "每个方向都列出：机会是什么、覆盖哪些区域、如何参与、以及务必先读的风险。这是导航参考，不是建议。",
+      "opp.footnote": "机会描述基于 eCNH 已发布事实与 Solana 公开数据（2026-09 快照）整理。任何一条都不构成收益承诺；请自行核验合约与当前链上状态。",
+      "opp.region": "覆盖区域", "opp.how": "参与方式", "opp.risk": "先读风险",
+      "regions.eyebrow": "区域视角", "regions.h": "从六大城市节点看向世界",
+      "regions.sub": "六个全球友好城市对应四类区域视角；每个区域指向本地化的关注或参与方式，并须遵守当地监管。",
+      "facts.eyebrow": "生态事实", "facts.h": "任何机会背后的事实",
+      "facts.sub": "先核验。评估任何机会都应从这些已发布事实出发，而非流言。",
+      "facts.f1t": "仙女座标准", "facts.f1d": "社区镜像参考：1 eCNH ≈ 1 CNH（离岸人民币数字镜像）。非挂钩、非指数产品。",
+      "facts.f2t": "供应量", "facts.f2d": "100 万亿公开代币，全部流通，里程碑后无增发主体。",
+      "facts.f3t": "Orca 双池", "facts.f3d": "Orca 上已上线 eCNH/PYUSD 与 eCNH/USDC 双池；地址如下。",
+      "facts.f4t": "合约", "facts.f4d": "Solana 主网上唯一的公开合约（页脚可复制）：",
+      "risks.eyebrow": "先读", "risks.h": "风险与局限",
+      "risks.sub": "加密资产风险高。本页是研究参考；任何内容都不构成投资建议或要约。",
+      "risks.r1t": "不保证挂钩", "risks.r1d": "1 eCNH ≈ 1 CNH 是社区镜像参考。该代币不挂钩、不可赎回，价格可能大幅偏离 CNH。",
+      "risks.r2t": "流动性与 DEX 风险", "risks.r2d": "流动性可能稀薄或变动；AMM 池的提供者面临无常损失。请随时核查当前池深。",
+      "risks.r3t": "监管因地区而异", "risks.r3d": "数字货币规则因司法辖区而异；参与须遵守当地法律。区域页面是信息地图，不是许可。",
+      "risks.r4t": "不承诺收益", "risks.r4d": "桥接规划、DAO 治理与社区共建是路线图视角，不是对结果或回报的承诺。",
+      "footer.contract": "合约地址", "footer.copy": "复制地址", "footer.terms": "用语：华语 · 公益 · CNH",
+      "footer.disclaimer": "eCNH 2026 计划全球投资机会视角。不构成投资建议；所有机会描述均为基于已发布事实与 Solana 公开数据的导航参考，不代表任何产品背书或可交易流动性保证。",
+      "footer.source": "快照来源：Solana 公开浏览器，2026-09 数据 · OrbMarkets 代币页。",
+      "footer.i18n": "华语 / English / Français / Русский / Español / العربية",
+      "brand.l1": "eCNH，地球村自己的数字 CNH；#WEB3",
+      "brand.l2": "eCNH = earth CNH = europe CNH = east CNH = ECNH = energy CNH",
+      "brand.global": "Earth &amp; Global Humanity Builds and Shares eCNH Together | 全球人类共建共享 eCNH",
+      "brand.community": "2026 eCNH Community · 所有信息仅供参考",
+      "brand.orb": "在 OrbMarkets 查看",
+      "theme.cosmic": "宇宙蓝", "theme.olive": "军绿", "theme.beige": "米黄",
+      "toast.copied": "合约地址已复制",
+      "nav.light": "轻资产50",
+      "hero.stat.l": "家轻资产品牌",
+      "light.eyebrow": "全球前50大轻资产",
+      "light.h": "全球前50大轻资产公司如何结合 eCNH 投资发展",
+      "light.sub": "参考全景：七个类别下 50 家领先品牌、IP 与轻资产公司，映射到其全球业务与 eCNH 数字 CNH 生态结合的六种方式。场景属于研究性推演，不代表实际合作。",
+      "light.modes": "六种结合模式",
+      "light.cats": "七个类别 · 50 家参考品牌",
+      "light.footnote": "公司名称均为公开事实（公共市场参考）。所有结合场景均为研究性推演，说明 eCNH 的数字 CNH、跨链与区域节点设计如何适配此类公司；不构成任何真实合作、上线或背书声明，也不构成收益承诺。"
+    },
+    fr: {
+      "nav.opp": "Opportunités", "nav.regions": "Régions", "nav.facts": "Faits", "nav.risks": "Risques",
+      "hero.eyebrow": "Solana · Vue mondiale eCNH",
+      "hero.title": "eCNH en vue mondiale — <span class=\"hl\">quelles opportunités</span> le monde voit-il ?",
+      "hero.sub": "Une référence de recherche sur six directions d'opportunités mondiales derrière eCNH, le CNH offshore numérique du village terrestre sur Solana : paiements, liquidité, inter-chaînes, nœuds régionaux, gouvernance DAO et allocation.",
+      "hero.mission": "eCNH porte un lien civilisationnel de 3 000 ans vers les étoiles. Cette page lit la vision avec un regard pratique : où le monde pourrait interagir, construire et participer — avec les risques clairement marqués.",
+      "hero.badge": "2026 · Vue de recherche", "hero.cta1": "Parcourir les 6 opportunités", "hero.cta2": "Lire d'abord les risques",
+      "hero.stat.o": "types d'opportunités", "hero.stat.r": "vues régionales", "hero.stat.b": "cibles de ponts", "hero.stat.c": "contrat",
+      "opp.eyebrow": "Six directions", "opp.h": "Opportunités mondiales autour d'eCNH",
+      "opp.sub": "Chaque direction indique ce qu'est l'opportunité, ses régions, comment y participer et le risque à lire d'abord. C'est une référence de navigation, pas un conseil.",
+      "opp.footnote": "Les descriptions sont bâties sur les faits publiés d'eCNH et les données publiques de Solana (instantané 2026-09). Aucune n'est une promesse de rendement ; vérifiez toujours le contrat et l'état on-chain.",
+      "opp.region": "Régions", "opp.how": "Comment participer", "opp.risk": "Risque à lire d'abord",
+      "regions.eyebrow": "Vue régionale", "regions.h": "Des six nœuds de villes au monde",
+      "regions.sub": "Six villes amies mondiales correspondent à quatre vues régionales ; chaque région propose des pistes locales de suivi ou participation, sous réserve de la réglementation locale.",
+      "facts.eyebrow": "Faits de l'écosystème", "facts.h": "Les faits derrière toute opportunité",
+      "facts.sub": "La validation d'abord. Toute évaluation doit partir de ces faits publiés, pas des rumeurs.",
+      "facts.f1t": "Standard Andromède", "facts.f1d": "Référence miroir communautaire : 1 eCNH ≈ 1 CNH (image numérique du renminbi offshore). Ni ancré, ni indiciel.",
+      "facts.f2t": "Offre", "facts.f2d": "100 000 milliards de jetons publics, pleine circulation, aucun autorité d'émission après le jalon.",
+      "facts.f3t": "Pools Orca", "facts.f3d": "Les pools eCNH/PYUSD et eCNH/USDC sont en ligne sur Orca ; adresses ci-dessous.",
+      "facts.f4t": "Contrat", "facts.f4d": "Le seul contrat public sur Solana mainnet (copie en pied de page) :",
+      "risks.eyebrow": "Lire d'abord", "risks.h": "Risques et limites",
+      "risks.sub": "Les actifs crypto comportent un risque élevé. Cette page est une référence de recherche ; rien ici n'est un conseil en investissement ni une sollicitation.",
+      "risks.r1t": "Pas de garantie d'ancrage", "risks.r1d": "1 eCNH ≈ 1 CNH est une référence miroir communautaire. Le jeton n'est ni ancré ni remboursable, et le prix peut s'écarter fortement du CNH.",
+      "risks.r2t": "Risque de liquidité & DEX", "risks.r2d": "La liquidité peut être faible ou varier ; les pools AMM exposent les fournisseurs à la perte impermanente. Vérifiez toujours la profondeur actuelle.",
+      "risks.r3t": "Réglementation variable", "risks.r3d": "Les règles sur les monnaies numériques diffèrent par juridiction ; la participation doit respecter la loi locale. Les pages régionales sont des cartes d'information, pas des permis.",
+      "risks.r4t": "Pas de promesse de rendement", "risks.r4d": "La planification des ponts, la gouvernance DAO et la construction communautaire sont des vues de feuille de route, pas des engagements de résultats ni de retours.",
+      "footer.contract": "Contrat", "footer.copy": "Copier l'adresse", "footer.terms": "Termes : 华语 · 公益 · CNH",
+      "footer.disclaimer": "Vue mondiale d'investissement du plan eCNH 2026. Pas un conseil en investissement ; toutes les descriptions sont des références de navigation basées sur des faits publiés et des données publiques de Solana, sans endosser de produit vivant ni garantir de liquidité.",
+      "footer.source": "Source : explorateurs publics Solana, données 2026-09 · page jeton OrbMarkets.",
+      "footer.i18n": "华语 / English / Français / Русский / Español / العربية",
+      "brand.l1": "eCNH, le CNH numérique du village terrestre ; #WEB3",
+      "brand.l2": "eCNH = earth CNH = europe CNH = east CNH = ECNH = energy CNH",
+      "brand.global": "Earth &amp; Global Humanity Builds and Shares eCNH Together | 全球人类共建共享 eCNH",
+      "brand.community": "2026 eCNH Community · Toutes les informations sont données à titre indicatif uniquement",
+      "brand.orb": "Voir sur OrbMarkets",
+      "theme.cosmic": "Cosmique", "theme.olive": "Olive", "theme.beige": "Beige",
+      "toast.copied": "Adresse du contrat copiée",
+      "nav.light": "Top 50",
+      "hero.stat.l": "marques asset-light",
+      "light.eyebrow": "Top 50 mondial asset-light",
+      "light.h": "Comment les 50 grandes entreprises mondiales à actifs légers se combinent avec eCNH",
+      "light.sub": "Panorama de référence : 50 marques, IP et entreprises à actifs légers réparties en sept catégories, reliées à six façons dont leurs activités mondiales pourraient interagir avec l'écosystème eCNH. Scénarios d'illustration, pas de partenariats.",
+      "light.modes": "Six modes d'intégration",
+      "light.cats": "Sept catégories · 50 marques de référence",
+      "light.footnote": "Les noms d'entreprises sont des faits publiés (références publiques de marché). Tous les scénarios sont des illustrations de recherche sur la façon dont le CNH numérique, le cross-chain et les nœuds régionaux d'eCNH pourraient s'adapter à ces entreprises ; aucun n'est une déclaration de partenariat, de cotation ou de soutien réel, ni une promesse de rendement."
+    },
+    ru: {
+      "nav.opp": "Возможности", "nav.regions": "Регионы", "nav.facts": "Факты", "nav.risks": "Риски",
+      "hero.eyebrow": "Solana · Глобальный взгляд на eCNH",
+      "hero.title": "eCNH в глобальном взгляде — <span class=\"hl\">какие возможности</span> видит мир?",
+      "hero.sub": "Исследовательский справочник по шести глобальным направлениям возможностей eCNH, цифрового офшорного юаня земной деревни на Solana: платежи, ликвидность, кросс-чейн, региональные узлы, DAO и аллокация.",
+      "hero.mission": "eCNH несёт цивилизационную связь на 3000 лет к звёздам. Эта страница читает видение практическим взглядом: где мир может взаимодействовать, строить и участвовать — с явно отмеченными рисками.",
+      "hero.badge": "2026 · Исследовательский взгляд", "hero.cta1": "Смотреть 6 возможностей", "hero.cta2": "Сначала про риски",
+      "hero.stat.o": "типов возможностей", "hero.stat.r": "региональных взглядов", "hero.stat.b": "целей мостов", "hero.stat.c": "контракт",
+      "opp.eyebrow": "Шесть направлений", "opp.h": "Глобальные возможности вокруг eCNH",
+      "opp.sub": "Каждое направление: что за возможность, какие регионы, как участвовать и какой риск прочитать сначала. Это навигационный справочник, не совет.",
+      "opp.footnote": "Описания построены на опубликованных фактах eCNH и публичных данных Solana (снимок 2026-09). Ни одно не является обещанием дохода; всегда проверяйте контракт и текущее состояние ончейна.",
+      "opp.region": "Регионы", "opp.how": "Как участвовать", "opp.risk": "Риск к прочтению",
+      "regions.eyebrow": "Региональный взгляд", "regions.h": "От шести городских узлов к миру",
+      "regions.sub": "Шесть дружественных городов мира соответствуют четырём региональным взглядам; каждый регион указывает местные способы следить или участвовать с учётом местного регулирования.",
+      "facts.eyebrow": "Факты экосистемы", "facts.h": "Факты за любой возможностью",
+      "facts.sub": "Сначала проверка. Оценка любой возможности исходит из этих опубликованных фактов, а не из заявлений.",
+      "facts.f1t": "Стандарт Андромеды", "facts.f1d": "Сообщественное зеркало: 1 eCNH ≈ 1 CNH (цифровой образ офшорного юаня). Не привязан и не индексный продукт.",
+      "facts.f2t": "Эмиссия", "facts.f2d": "100 триллионов публичных токенов, полное обращение, нет эмитента после вехи.",
+      "facts.f3t": "Пулы Orca", "facts.f3d": "Пулы eCNH/PYUSD и eCNH/USDC живут на Orca; адреса ниже.",
+      "facts.f4t": "Контракт", "facts.f4d": "Единственный публичный контракт на Solana mainnet (копия в подвале) :",
+      "risks.eyebrow": "Сначала прочитать", "risks.h": "Риски и ограничения",
+      "risks.sub": "Криптоактивы несут высокий риск. Страница — исследовательский справочник; ничто здесь не является инвестиционным советом или офертой.",
+      "risks.r1t": "Нет гарантии привязки", "risks.r1d": "1 eCNH ≈ 1 CNH — сообщественное зеркало. Токен не привязан, не выкупается, и цена может сильно отклоняться от юаня.",
+      "risks.r2t": "Риск ликвидности и DEX", "risks.r2d": "Ликвидность может быть тонкой или меняться; пулы AMM подвергают поставщиков непостоянным потерям. Всегда проверяйте текущую глубину.",
+      "risks.r3t": "Регулирование разное", "risks.r3d": "Правила цифровых валют различаются по юрисдикциям; участие должно уважать местный закон. Региональные страницы — информационные карты, не разрешения.",
+      "risks.r4t": "Нет обещания дохода", "risks.r4d": "Планирование мостов, управление DAO и строительство сообщества — взгляды на дорожную карту, а не обязательства по результатам или доходам.",
+      "footer.contract": "Контракт", "footer.copy": "Скопировать адрес", "footer.terms": "Термины: 华语 · 公益 · CNH",
+      "footer.disclaimer": "Глобальный инвестиционный взгляд плана eCNH 2026. Не инвестиционный совет; все описания — навигационные справки на основе опубликованных фактов и публичных данных Solana, без одобрения живого продукта и без гарантии ликвидности.",
+      "footer.source": "Источник: публичные обозреватели Solana, данные 2026-09 · страница токена OrbMarkets.",
+      "footer.i18n": "华语 / English / Français / Русский / Español / العربية",
+      "brand.l1": "eCNH — цифровой юань земной деревни; #WEB3",
+      "brand.l2": "eCNH = earth CNH = europe CNH = east CNH = ECNH = energy CNH",
+      "brand.global": "Earth &amp; Global Humanity Builds and Shares eCNH Together | 全球人类共建共享 eCNH",
+      "brand.community": "2026 eCNH Community · Вся информация носит справочный характер",
+      "brand.orb": "Смотреть на OrbMarkets",
+      "theme.cosmic": "Космос", "theme.olive": "Олива", "theme.beige": "Бежевый",
+      "toast.copied": "Адрес контракта скопирован",
+      "nav.light": "Топ-50",
+      "hero.stat.l": "легкоактивных брендов",
+      "light.eyebrow": "Глобальный топ-50",
+      "light.h": "Как 50 крупнейших мировых компаний с лёгкими активами сочетаются с eCNH",
+      "light.sub": "Справочная панорама: 50 ведущих брендов, IP и компаний с лёгкими активами в семи категориях, сопоставленных с шестью способами взаимодействия их глобального бизнеса с экосистемой цифрового юаня eCNH. Сценарии — исследовательские иллюстрации, не партнёрства.",
+      "light.modes": "Шесть моделей интеграции",
+      "light.cats": "Семь категорий · 50 справочных брендов",
+      "light.footnote": "Названия компаний — опубликованные факты (публичные рыночные источники). Все сценарии — исследовательские иллюстрации того, как цифровой CNH, кросс-чейн и региональные узлы eCNH могли бы подойти таким компаниям; ни один из них не является заявлением о реальном партнёрстве, листинге или одобрении и не обещает доход."
+    },
+    es: {
+      "nav.opp": "Oportunidades", "nav.regions": "Regiones", "nav.facts": "Hechos", "nav.risks": "Riesgos",
+      "hero.eyebrow": "Solana · Vista global de eCNH",
+      "hero.title": "eCNH en vista global — <span class=\"hl\">¿qué oportunidades</span> ve el mundo?",
+      "hero.sub": "Una referencia de investigación de seis direcciones globales de oportunidad detrás de eCNH, el CNH offshore digital de la aldea terrestre en Solana: pagos, liquidez, entre cadenas, nodos regionales, gobernanza DAO y asignación.",
+      "hero.mission": "eCNH lleva un vínculo civilizacional de 3.000 años hacia las estrellas. Esta página lee esa visión con una lente práctica: dónde podría el mundo interactuar, construir y participar — con los riesgos bien marcados.",
+      "hero.badge": "2026 · Vista de investigación", "hero.cta1": "Ver las 6 oportunidades", "hero.cta2": "Leer los riesgos primero",
+      "hero.stat.o": "tipos de oportunidad", "hero.stat.r": "vistas regionales", "hero.stat.b": "objetivos de puente", "hero.stat.c": "contrato",
+      "opp.eyebrow": "Seis direcciones", "opp.h": "Oportunidades globales alrededor de eCNH",
+      "opp.sub": "Cada dirección indica qué es la oportunidad, qué regiones cubre, cómo participar y el riesgo a leer primero. Es una referencia de navegación, no un consejo.",
+      "opp.footnote": "Las descripciones se basan en los hechos publicados de eCNH y datos públicos de Solana (instantánea 2026-09). Ninguna es promesa de retorno; verifica siempre el contrato y el estado on-chain actual.",
+      "opp.region": "Regiones", "opp.how": "Cómo participar", "opp.risk": "Riesgo a leer primero",
+      "regions.eyebrow": "Vista regional", "regions.h": "De seis nodos de ciudades al mundo",
+      "regions.sub": "Seis ciudades amigas globales corresponden a cuatro vistas regionales; cada región apunta a formas locales de seguir o participar, sujetas a la regulación local.",
+      "facts.eyebrow": "Hechos del ecosistema", "facts.h": "Los hechos detrás de cualquier oportunidad",
+      "facts.sub": "Validación primero. Toda evaluación debe partir de estos hechos publicados, no de afirmaciones.",
+      "facts.f1t": "Estándar Andrómeda", "facts.f1d": "Referencia espejo comunitaria: 1 eCNH ≈ 1 CNH (imagen digital del renminbi offshore). No anclado ni indexado.",
+      "facts.f2t": "Suministro", "facts.f2d": "100 billones de tokens públicos, plena circulación, sin autoridad de emisión tras el hito.",
+      "facts.f3t": "Pools de Orca", "facts.f3d": "Los pools eCNH/PYUSD y eCNH/USDC están activos en Orca; direcciones abajo.",
+      "facts.f4t": "Contrato", "facts.f4d": "El único contrato público en Solana mainnet (copia en el pie de página):",
+      "risks.eyebrow": "Leer primero", "risks.h": "Riesgos y limitaciones",
+      "risks.sub": "Los activos cripto conllevan alto riesgo. Esta página es una referencia de investigación; nada aquí es consejo de inversión ni solicitud.",
+      "risks.r1t": "Sin garantía de anclaje", "risks.r1d": "1 eCNH ≈ 1 CNH es una referencia espejo comunitaria. El token no está anclado ni es canjeable, y el precio puede desviarse ampliamente del CNH.",
+      "risks.r2t": "Riesgo de liquidez y DEX", "risks.r2d": "La liquidez puede ser reducida o variar; los pools AMM exponen a pérdida impermanente. Comprueba siempre la profundidad actual.",
+      "risks.r3t": "Regulación variable", "risks.r3d": "Las reglas de moneda digital difieren por jurisdicción; la participación debe respetar la ley local. Las páginas regionales son mapas de información, no permisos.",
+      "risks.r4t": "Sin promesa de retorno", "risks.r4d": "La planificación de puentes, la gobernanza DAO y la construcción comunitaria son vistas de hoja de ruta, no compromisos de resultados ni retornos.",
+      "footer.contract": "Contrato", "footer.copy": "Copiar dirección", "footer.terms": "Términos: 华语 · 公益 · CNH",
+      "footer.disclaimer": "Vista global de inversión del plan eCNH 2026. No es consejo de inversión; todas las descripciones son referencias de navegación basadas en hechos publicados y datos públicos de Solana, sin respaldar producto vivo ni garantizar liquidez.",
+      "footer.source": "Fuente: exploradores públicos de Solana, datos 2026-09 · página del token OrbMarkets.",
+      "footer.i18n": "华语 / English / Français / Русский / Español / العربية",
+      "brand.l1": "eCNH, el CNH digital de la aldea terrestre; #WEB3",
+      "brand.l2": "eCNH = earth CNH = europe CNH = east CNH = ECNH = energy CNH",
+      "brand.global": "Earth &amp; Global Humanity Builds and Shares eCNH Together | 全球人类共建共享 eCNH",
+      "brand.community": "2026 eCNH Community · Toda la información es solo de referencia",
+      "brand.orb": "Ver en OrbMarkets",
+      "theme.cosmic": "Cósmico", "theme.olive": "Oliva", "theme.beige": "Beige",
+      "toast.copied": "Dirección del contrato copiada",
+      "nav.light": "Top 50",
+      "hero.stat.l": "marcas asset-light",
+      "light.eyebrow": "Top 50 mundial asset-light",
+      "light.h": "Cómo las 50 grandes empresas mundiales de activos ligeros se combinan con eCNH",
+      "light.sub": "Panorama de referencia: 50 marcas, IP y empresas de activos ligeros en siete categorías, mapeadas a seis formas en que su negocio global podría interactuar con el ecosistema digital eCNH. Escenarios ilustrativos, no alianzas.",
+      "light.modes": "Seis modos de integración",
+      "light.cats": "Siete categorías · 50 marcas de referencia",
+      "light.footnote": "Los nombres de empresas son hechos publicados (referencias públicas de mercado). Todos los escenarios son ilustraciones de investigación sobre cómo el CNH digital, el cross-chain y los nodos regionales de eCNH podrían encajar con estas empresas; ninguno es una declaración real de asociación, listado o respaldo, ni promete rendimientos."
+    },
+    ar: {
+      "nav.opp": "الفرص", "nav.regions": "المناطق", "nav.facts": "الحقائق", "nav.risks": "المخاطر",
+      "hero.eyebrow": "Solana · رؤية عالمية لـ eCNH",
+      "hero.title": "eCNH في رؤية عالمية — <span class=\"hl\">ما الفرص</span> التي يراها العالم؟",
+      "hero.sub": "مرجع بحثي لستة اتجاهات فرص عالمية خلف eCNH، العملة الرقمية البحرية لقرية الأرض على Solana: المدفوعات والسيولة وعبر السلاسل والعقد الإقليمية وحوكمة DAO والتخصيص.",
+      "hero.mission": "يحمل eCNH رابطًا حضاريًا يمتد 3000 عام نحو النجوم. تقرأ هذه الصفحة الرؤية بعدسة عملية: أين يمكن للعالم التفاعل والبناء والمشاركة — مع تحديد المخاطر بوضوح.",
+      "hero.badge": "2026 · رؤية بحثية", "hero.cta1": "تصفح الفرص الست", "hero.cta2": "اقرأ المخاطر أولًا",
+      "hero.stat.o": "أنواع الفرص", "hero.stat.r": "رؤى إقليمية", "hero.stat.b": "أهداف الجسور", "hero.stat.c": "عقد",
+      "opp.eyebrow": "ستة اتجاهات", "opp.h": "فرص عالمية حول eCNH",
+      "opp.sub": "كل اتجاه يوضح: ما الفرصة، وما المناطق التي تغطيها، وكيفية المشاركة، وما الخطر الذي يجب قراءته أولًا. هذا مرجع تنقل وليس نصيحة.",
+      "opp.footnote": "الأوصاف مبنية على الحقائق المنشورة لـ eCNH والبيانات العامة لـ Solana (لقطة 2026-09). لا شيء منها وعد بعائد؛ تحقق دائمًا من العقد والحالة الحالية على السلسلة بنفسك.",
+      "opp.region": "المناطق", "opp.how": "كيفية المشاركة", "opp.risk": "الخطر اقرأه أولًا",
+      "regions.eyebrow": "رؤية إقليمية", "regions.h": "من العقد المدنية الست إلى العالم",
+      "regions.sub": "ست مدن عالمية صديقة تقابل أربع رؤى إقليمية؛ كل منطقة تشير إلى طرق محلية للمتابعة أو المشاركة، مع الالتزام باللوائح المحلية.",
+      "facts.eyebrow": "حقائق النظام البيئي", "facts.h": "الحقائق خلف أي فرصة",
+      "facts.sub": "التحقق أولًا. أي تقييم لفرصة ينطلق من هذه الحقائق المنشورة، لا من الادعاءات.",
+      "facts.f1t": "معيار أندروميدا", "facts.f1d": "مرجع مرآة مجتمعي: 1 eCNH ≈ 1 CNH (صورة رقمية لليوان البحري). ليس منتجًا مربوطًا ولا مؤشرًا.",
+      "facts.f2t": "الإمداد", "facts.f2d": "100 تريليون رمز عام، تداول كامل، ولا جهة إصدار بعد المرحلة.",
+      "facts.f3t": "مجمعا Orca", "facts.f3d": "مجمعا eCNH/PYUSD وeCNH/USDC نشطان على Orca؛ العنوانان أدناه.",
+      "facts.f4t": "العقد", "facts.f4d": "العقد العام الوحيد على شبكة Solana الرئيسية (نسخ في الأسفل):",
+      "risks.eyebrow": "اقرأ أولًا", "risks.h": "المخاطر والقيود",
+      "risks.sub": "تحمل الأصول الرقمية مخاطر عالية. هذه الصفحة مرجع بحثي؛ لا شيء فيها نصيحة استثمارية أو طلبًا للاكتتاب.",
+      "risks.r1t": "لا ضمان للربط", "risks.r1d": "1 eCNH ≈ 1 CNH مرجع مرآة مجتمعي. الرمز غير مربوط ولا يُسترد، وقد ينحرف سعره انحرافًا كبيرًا عن اليوان.",
+      "risks.r2t": "مخاطر السيولة وDEX", "risks.r2d": "قد تكون السيولة ضعيفة أو متغيرة؛ مجمعات AMM تعلّق المزودين بخسارة مؤقتة. تحقق دائمًا من العمق الحالي.",
+      "risks.r3t": "تنظيم مختلف", "risks.r3d": "تختلف قواعد العملات الرقمية حسب الولاية؛ على المشاركة احترام القانون المحلي. الصفحات الإقليمية خرائط معلومات وليست تصاريح.",
+      "risks.r4t": "لا وعد بعائد", "risks.r4d": "تخطيط الجسور وحوكمة DAO وبناء المجتمع رؤى لخارطة طريق، وليست التزامات بنتائج أو عوائد.",
+      "footer.contract": "العقد", "footer.copy": "نسخ العنوان", "footer.terms": "المصطلحات: 华语 · 公益 · CNH",
+      "footer.disclaimer": "رؤية استثمارية عالمية لخطة eCNH 2026. ليست نصيحة استثمارية؛ جميع الأوصاف مراجع تنقل مبنية على الحقائق المنشورة والبيانات العامة لـ Solana، دون تأييد منتج حي أو ضمان سيولة قابلة للتداول.",
+      "footer.source": "المصدر: مستكشفو سولانا العموميون، بيانات 2026-09 · صفحة رمز OrbMarkets.",
+      "footer.i18n": "华语 / English / Français / Русский / Español / العربية",
+      "brand.l1": "eCNH، العملة الرقمية الخاصة بقرية الأرض؛ #WEB3",
+      "brand.l2": "eCNH = earth CNH = europe CNH = east CNH = ECNH = energy CNH",
+      "brand.global": "Earth &amp; Global Humanity Builds and Shares eCNH Together | 全球人类共建共享 eCNH",
+      "brand.community": "2026 eCNH Community · جميع المعلومات للرجوع إليها فقط",
+      "brand.orb": "عرض على OrbMarkets",
+      "theme.cosmic": "كوني", "theme.olive": "زيتي", "theme.beige": "بيج",
+      "toast.copied": "تم نسخ عنوان العقد",
+      "nav.light": "أفضل 50",
+      "hero.stat.l": "علامة خفيفة الأصول",
+      "light.eyebrow": "أفضل 50 عالميًا خفيف الأصول",
+      "light.h": "كيف تتكامل أفضل 50 شركة عالمية خفيفة الأصول مع eCNH",
+      "light.sub": "بانوراما مرجعية: 50 علامة تجارية وشركة خفيفة الأصول في سبع فئات، مرتبطة بست طرق يمكن لأعمالها العالمية أن تتفاعل بها مع نظام eCNH الرقمي لليوان. السيناريوهات توضيحات بحثية وليست شراكات.",
+      "light.modes": "ستة أوضاع اندماج",
+      "light.cats": "سبع فئات · 50 علامة مرجعية",
+      "light.footnote": "أسماء الشركات حقائق منشورة (مراجع سوق عامة). جميع السيناريوهات توضيحات بحثية لكيفية تكيف اليوان الرقمي وعبر السلاسل والعقد الإقليمية لـ eCNH مع هذه الشركات؛ ولا شيء منها بيان شراكة أو إدراج أو تأييد حقيقي، ولا وعد بعائد."
+    }
+  };
+
+  var ICONS = [
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M5 4l4 4-4 4M19 16l-4 4 4 4"/><path d="M8 8h13M8 16h4"/></svg>',
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.8-7 9.5-4-1.7-7-5-7-9.5V6l7-3z"/><path d="M12 8v5"/><circle cx="12" cy="15.5" r="1.4"/></svg>',
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h6l2-4 3 8 2-4h7"/><circle cx="7.5" cy="12" r="1.6"/><circle cx="19.5" cy="12" r="0"/></svg>',
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/><path d="M3 12h18"/></svg>',
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v2H4V6l8-4z"/><path d="M5 8h14l-1 12H6L5 8z"/><path d="M10 12h4"/></svg>',
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M12 6l-3 3M12 6l3 3M12 18l-3-3M12 18l3-3"/></svg>'
+  ];
+
+  var OPP = {
+    en: [
+      { n: "Cross-border payment & offshore CNH digitization", d: "As a community mirror of offshore renminbi (1 eCNH ≈ 1 CNH) living on Solana, eCNH could serve as a digital channel for cross-border remittance and trade settlement scenarios among the earth village.", region: "Global trading corridors: Hong Kong, Singapore, Europe, Middle East", how: "Follow official applications and wallet access; observe payment pilot scenarios; always verify the public contract first.", risk: "Not a pegged product; no redemption promise; adoption is uncertain and early." },
+      { n: "DeFi liquidity provision", d: "Orca pools eCNH/PYUSD and eCNH/USDC are live, and five DEXs (HumidiFi, Meteora, Raydium, Orca, Jupiter) route liquidity around the Solana ecosystem.", region: "Global, on-chain", how: "Provide liquidity on Orca or route through Jupiter aggregation; check pool depth and TVL before acting.", risk: "Impermanent loss, thin liquidity, smart-contract and market volatility risk." },
+      { n: "Cross-chain bridge ecosystem", d: "After the 100-trillion circulation milestone, the roadmap plans exchange paths toward SOL, BTC, ETH, BNB, AVAX, DOGE and TRX, opening multi-chain ecosystems.", region: "Bitcoin, Ethereum and main-chain ecosystems worldwide", how: "Follow the bridge roadmap and DAO governance; verify announcements on official channels.", risk: "Cross-chain bridge security, delays, slippage; the roadmap is a plan, not a guarantee." },
+      { n: "Regional node building", d: "Six friendly cities — Ljubljana, Hong Kong, Zurich, Singapore, Abu Dhabi, Luxembourg City — can act as regional hubs for coordination, compliance and liquidity.", region: "Europe, Greater China, Middle East, Southeast Asia", how: "Join a city node group, contribute locally, follow regional events and moderation.", risk: "Local regulation differs; each region is an information map, not a permission." },
+      { n: "DAO governance participation", d: "The Interstellar Alliance DAO governs proposals such as listings, bridges and treasury; participants help shape community direction.", region: "Global", how: "Draft or vote on DAO proposals (via the DAO Drafter skill), join quarterly reviews.", risk: "Governance responsibility; proposal outcomes are decided by the community, not promised." },
+      { n: "Digital allocation reference", d: "As the offshore-renminbi digital image with 100 trillion full circulation, eCNH can serve as an observation ticker for offshore CNH exposure within a portfolio.", region: "Global", how: "Track the price anchor (1 eCNH ≈ 1 CNH), circulation meter and on-chain explorer data as reference only.", risk: "Price can deviate widely from CNH; reference is not a recommendation to buy or sell." }
+    ],
+    "zh-CN": [
+      { n: "跨境支付与离岸人民币数字化", d: "作为生活在 Solana 上的离岸人民币社区镜像（1 eCNH ≈ 1 CNH），eCNH 可为地球村的跨境汇款与贸易结算场景提供数字通道的早期探索。", region: "全球贸易走廊：香港、新加坡、欧洲、中东", how: "关注官方应用与钱包接入；观察支付试点场景；参与前先核验公开合约。", risk: "非挂钩产品；无赎回承诺；采用不确定且处于早期。" },
+      { n: "DeFi 流动性提供", d: "Orca 双池 eCNH/PYUSD 与 eCNH/USDC 已上线，五大 DEX（HumidiFi、Meteora、Raydium、Orca、Jupiter）围绕 Solana 生态路由流动性。", region: "全球，链上", how: "在 Orca 提供流动性，或经 Jupiter 聚合路由；行动前查看池深与 TVL。", risk: "无常损失、流动性稀薄、智能合约与市场波动风险。" },
+      { n: "跨链桥接生态", d: "100 万亿全流通里程碑后，路线图规划开通 SOL、BTC、ETH、BNB、AVAX、DOGE、TRX 兑换路径，打开多链生态。", region: "全球比特币、以太坊等主流链生态", how: "跟进桥接路线图与 DAO 治理；以官方渠道公告为准核验。", risk: "跨链桥安全、延迟与滑点；路线图是规划，不是保证。" },
+      { n: "区域节点共建", d: "六个友好城市——卢布尔雅那、香港、苏黎世、新加坡、阿布扎比、卢森堡市——可扮演协调、合规与流动性的区域枢纽。", region: "欧洲、大中华、中东、东南亚", how: "加入城市节点小组、本地化贡献、参与区域活动与传播。", risk: "各地监管不同；每个区域都是信息地图，不是许可。" },
+      { n: "DAO 治理参与", d: "星际联盟 DAO 治理上线、桥接、资金库等提案；参与者共同塑造社区方向。", region: "全球", how: "起草或投票 DAO 提案（可借助 DAO 起草技能），参与季度评审。", risk: "治理责任；提案结果由社区决定，不构成承诺。" },
+      { n: "数字配置参考", d: "作为 100 万亿全流通的离岸人民币数字镜像，eCNH 可在组合中充当离岸 CNH 敞口的观察标的。", region: "全球", how: "跟踪价格锚（1 eCNH ≈ 1 CNH）、流通计量与链上浏览器数据，仅作参考。", risk: "价格可能大幅偏离 CNH；参考不等于买入或卖出建议。" }
+    ],
+    fr: [
+      { n: "Paiement transfrontalier & numérisation du CNH offshore", d: "Miroir communautaire du renminbi offshore (1 eCNH ≈ 1 CNH) sur Solana, eCNH pourrait servir de canal numérique pour les envois de fonds et le règlement commercial dans le village terrestre.", region: "Corridors commerciaux mondiaux : Hong Kong, Singapour, Europe, Moyen-Orient", how: "Suivre les applications officielles et l'accès wallet ; observer les pilotes de paiement ; vérifier d'abord le contrat public.", risk: "Produit non ancré ; aucune promesse de remboursement ; adoption incertaine et précoce." },
+      { n: "Fourniture de liquidité DeFi", d: "Les pools Orca eCNH/PYUSD et eCNH/USDC sont en ligne, et cinq DEX (HumidiFi, Meteora, Raydium, Orca, Jupiter) acheminent la liquidité autour de Solana.", region: "Mondial, on-chain", how: "Fournir de la liquidité sur Orca ou router via l'agrégation Jupiter ; vérifier profondeur et TVL avant d'agir.", risk: "Perte impermanente, liquidité faible, volatilité des contrats et du marché." },
+      { n: "Écosystème de ponts inter-chaînes", d: "Après le jalon de 100 000 milliards, la feuille de route prévoit des chemins vers SOL, BTC, ETH, BNB, AVAX, DOGE et TRX, ouvrant des écosystèmes multi-chaînes.", region: "Écosystèmes Bitcoin, Ethereum et chaînes principales mondiaux", how: "Suivre la feuille de route des ponts et la gouvernance DAO ; vérifier les annonces officielles.", risk: "Sécurité des ponts, délais, glissement ; la feuille de route est un plan, pas une garantie." },
+      { n: "Construction de nœuds régionaux", d: "Six villes amies — Ljubljana, Hong Kong, Zurich, Singapour, Abou Dabi, Luxembourg — peuvent servir de hubs régionaux pour coordination, conformité et liquidité.", region: "Europe, Grande Chine, Moyen-Orient, Asie du Sud-Est", how: "Rejoindre un groupe de nœuds de ville, contribuer localement, suivre les événements régionaux.", risk: "La réglementation locale diffère ; chaque région est une carte d'information, pas un permis." },
+      { n: "Participation à la gouvernance DAO", d: "La DAO de l'Alliance Interstellaire gouverne les propositions de cotations, ponts et trésorerie ; les participants façonnent la direction communautaire.", region: "Mondial", how: "Rédiger ou voter des propositions DAO (via le skill DAO Drafter), participer aux revues trimestrielles.", risk: "Responsabilité de gouvernance ; les résultats sont décidés par la communauté, non promis." },
+      { n: "Référence d'allocation numérique", d: "Image numérique du renminbi offshore en pleine circulation de 100 000 milliards, eCNH peut servir de ticker d'observation pour l'exposition offshore au CNH.", region: "Mondial", how: "Suivre l'ancre de prix (1 eCNH ≈ 1 CNH), le compteur de circulation et les données d'explorateur à titre indicatif.", risk: "Le prix peut fortement s'écarter du CNH ; une référence n'est pas une recommandation d'achat ou de vente." }
+    ],
+    ru: [
+      { n: "Трансграничные платежи и цифровизация офшорного юаня", d: "Как сообщественное зеркало офшорного юаня (1 eCNH ≈ 1 CNH) на Solana, eCNH может стать цифровым каналом для трансграничных переводов и торговых расчётов земной деревни.", region: "Мировые торговые коридоры: Гонконг, Сингапур, Европа, Ближний Восток", how: "Следить за официальными приложениями и кошельками; наблюдать пилоты платежей; сначала проверить публичный контракт.", risk: "Не привязан; нет обещания погашения; принятие неопределённо и ранне." },
+      { n: "Предоставление ликвидности DeFi", d: "Пулы Orca eCNH/PYUSD и eCNH/USDC живы, а пять DEX (HumidiFi, Meteora, Raydium, Orca, Jupiter) маршрутизируют ликвидность вокруг Solana.", region: "Глобально, ончейн", how: "Предоставить ликвидность на Orca или маршрутизировать через агрегацию Jupiter; проверить глубину и TVL.", risk: "Непостоянные потери, тонкая ликвидность, волатильность контрактов и рынка." },
+      { n: "Экосистема кросс-чейн мостов", d: "После вехи 100 триллионов дорожная карта планирует пути к SOL, BTC, ETH, BNB, AVAX, DOGE и TRX, открывая мультичейн.", region: "Экосистемы Bitcoin, Ethereum и основных цепей мира", how: "Следить за дорожной картой мостов и DAO; проверять официальные объявления.", risk: "Безопасность мостов, задержки, проскальзывание; карта — план, не гарантия." },
+      { n: "Построение региональных узлов", d: "Шесть дружественных городов — Любляна, Гонконг, Цюрих, Сингапур, Абу-Даби, Люксембург — могут стать региональными хабами координации, соответствия и ликвидности.", region: "Европа, Большой Китай, Ближний Восток, Юго-Восточная Азия", how: "Присоединиться к городской группе, вносить локальный вклад, следить за региональными событиями.", risk: "Местное регулирование разное; регион — информационная карта, не разрешение." },
+      { n: "Участие в управлении DAO", d: "DAO Межзвёздного Альянса управляет предложениями листингов, мостов и казны; участники формируют направление сообщества.", region: "Глобально", how: "Готовить или голосовать по предложениям DAO (через навык DAO Drafter), участвовать в квартальных обзорах.", risk: "Ответственность управления; результаты решает сообщество, не обещание." },
+      { n: "Цифровой аллокационный ориентир", d: "Как цифровой образ офшорного юаня с полным обращением в 100 триллионов, eCNH может служить тикером наблюдения за офшорным экспонированием юаня.", region: "Глобально", how: "Отслеживать ценовой якорь (1 eCNH ≈ 1 CNH), счётчик обращения и данные обозревателей как справку.", risk: "Цена может сильно отклоняться от юаня; ориентир — не рекомендация покупать или продавать." }
+    ],
+    es: [
+      { n: "Pago transfronterizo y digitalización del CNH offshore", d: "Como espejo comunitario del renminbi offshore (1 eCNH ≈ 1 CNH) en Solana, eCNH podría servir como canal digital para remesas y liquidación comercial del pueblo terrestre.", region: "Corredores comerciales globales: Hong Kong, Singapur, Europa, Oriente Medio", how: "Seguir las aplicaciones oficiales y el acceso a wallets; observar pilotos de pago; verificar primero el contrato público.", risk: "Producto no anclado; sin promesa de canje; adopción incierta y temprana." },
+      { n: "Provisión de liquidez DeFi", d: "Los pools de Orca eCNH/PYUSD y eCNH/USDC están activos, y cinco DEX (HumidiFi, Meteora, Raydium, Orca, Jupiter) enrutan liquidez alrededor de Solana.", region: "Global, on-chain", how: "Proveer liquidez en Orca o enrutar vía agregación de Jupiter; comprobar profundidad y TVL antes de actuar.", risk: "Pérdida impermanente, liquidez reducida, volatilidad de contratos y del mercado." },
+      { n: "Ecosistema de puentes entre cadenas", d: "Tras el hito de 100 billones, la hoja de ruta planea rutas hacia SOL, BTC, ETH, BNB, AVAX, DOGE y TRX, abriendo ecosistemas multicadena.", region: "Ecosistemas de Bitcoin, Ethereum y cadenas principales globales", how: "Seguir la hoja de ruta de puentes y la gobernanza DAO; verificar anuncios oficiales.", risk: "Seguridad de puentes, retrasos, slippage; la hoja de ruta es un plan, no una garantía." },
+      { n: "Construcción de nodos regionales", d: "Seis ciudades amigas (Liubliana, Hong Kong, Zúrich, Singapur, Abu Dabi, Luxemburgo) pueden actuar como hubs regionales de coordinación, cumplimiento y liquidez.", region: "Europa, Gran China, Oriente Medio, Sudeste Asiático", how: "Unirse a un grupo de nodo de ciudad, contribuir localmente, seguir eventos regionales.", risk: "La regulación local difiere; cada región es un mapa de información, no un permiso." },
+      { n: "Participación en gobernanza DAO", d: "La DAO de la Alianza Interestelar gobierna propuestas de listados, puentes y tesorería; los participantes moldean la dirección comunitaria.", region: "Global", how: "Redactar o votar propuestas DAO (con el skill DAO Drafter), participar en revisiones trimestrales.", risk: "Responsabilidad de gobernanza; los resultados los decide la comunidad, no se prometen." },
+      { n: "Referencia de asignación digital", d: "Como imagen digital del renminbi offshore con plena circulación de 100 billones, eCNH puede servir de ticker de observación para la exposición offshore al CNH.", region: "Global", how: "Seguir el ancla de precio (1 eCNH ≈ 1 CNH), el medidor de circulación y los datos de explorador como referencia.", risk: "El precio puede desviarse ampliamente del CNH; la referencia no es una recomendación de compra o venta." }
+    ],
+    ar: [
+      { n: "المدفوعات عبر الحدود ورقمنة اليوان البحري", d: "بصفته مرآة مجتمعية لليوان البحري (1 eCNH ≈ 1 CNH) على Solana، يمكن أن يكون eCNH قناة رقمية لمدفوعات الحوالات والتحويلات التجارية لقرية الأرض.", region: "ممرات التجارة العالمية: هونغ كونغ وسنغافورة وأوروبا والشرق الأوسط", how: "تابع التطبيقات الرسمية ودعم المحافظ؛ راقب التجارب التجريبية للمدفوعات؛ تحقق من العقد العام أولًا.", risk: "منتج غير مربوط؛ لا وعد بالاسترداد؛ التبني غير مؤكد وفي مرحلة مبكرة." },
+      { n: "توفير السيولة في DeFi", d: "مجمعا Orca eCNH/PYUSD وeCNH/USDC نشطان، وخمس منصات DEX (HumidiFi وMeteora وRaydium وOrca وJupiter) توجّه السيولة حول Solana.", region: "عالمي، على السلسلة", how: "قدّم سيولة على Orca أو وجّه عبر تجميع Jupiter؛ تحقق من العمق والقيمة الإجمالية قبل التصرف.", risk: "خسارة مؤقتة، سيولة ضعيفة، تقلب العقود والسوق." },
+      { n: "نظام الجسور عبر السلاسل", d: "بعد مرحلة التداول الكامل البالغة 100 تريليون، تخطط خارطة الطريق مسارات نحو SOL وBTC وETH وBNB وAVAX وDOGE وTRX، فاتحة أنظمة متعددة السلاسل.", region: "أنظمة بيتكوين وإيثريوم والسلاسل الرئيسية عالميًا", how: "تابع خارطة الجسور وحوكمة DAO؛ تحقق من الإعلانات الرسمية.", risk: "أمان الجسور والتأخير والانزلاق؛ خارطة الطريق خطة وليست ضمانًا." },
+      { n: "بناء العقد الإقليمية", d: "ست مدن صديقة — ليوبليانا وهونغ كونغ وزيورخ وسنغافورة وأبوظبي ولوكسمبورغ — يمكن أن تكون مراكز إقليمية للتنسيق والامتثال والسيولة.", region: "أوروبا والصين الكبرى والشرق الأوسط وجنوب شرق آسيا", how: "انضم إلى مجموعة عقد مدنية، وساهم محليًا، وتابع الفعاليات الإقليمية.", risk: "اللوائح المحلية تختلف؛ كل منطقة خريطة معلومات وليست تصريحًا." },
+      { n: "المشاركة في حوكمة DAO", d: "يحكم DAO للتحالف النجمي مقترحات الإدراج والجسور والخزانة؛ ويشكّل المشاركون اتجاه المجتمع.", region: "عالمي", how: "صيغ أو صوّت على مقترحات DAO (عبر مهارة صياغة DAO)، وشارك في المراجعات الربعية.", risk: "مسؤولية الحوكمة؛ النتائج يقررها المجتمع وليست وعدًا." },
+      { n: "مرجع تخصيص رقمي", d: "بصفته صورة رقمية لليوان البحري بتداول كامل يبلغ 100 تريليون، يمكن أن يكون eCNH مؤشرًا لمراقبة التعرض البحري لليوان.", region: "عالمي", how: "تابع مرساة السعر (1 eCNH ≈ 1 CNH) وعداد التداول وبيانات المستكشف كمرجع فقط.", risk: "قد ينحرف السعر انحرافًا كبيرًا عن اليوان؛ المرجع ليس توصية بشراء أو بيع." }
+    ]
+  };
+
+  var REGIONS = {
+    en: [
+      { n: "Europe", role: "Coordination · compliance · EU finance", d: "Ljubljana as European coordination, Zurich for compliance and custody, Luxembourg City for EU finance-facing activity.", tags: ["Ljubljana", "Zurich", "Luxembourg City"] },
+      { n: "Greater China", role: "Grand-China hub & offshore CNH corridor", d: "Hong Kong as the Greater China hub, the natural corridor for offshore-renminbi related scenarios.", tags: ["Hong Kong"] },
+      { n: "Middle East", role: "Arab Gulf & MENA outreach", d: "Abu Dhabi as the Middle East center, connecting Arab Gulf and MENA regions through local-friendly participation.", tags: ["Abu Dhabi"] },
+      { n: "Southeast Asia", role: "Regional liquidity & trade gateway", d: "Singapore as the regional liquidity and trade gateway, bridging Asian markets with the Solana ecosystem.", tags: ["Singapore"] }
+    ],
+    "zh-CN": [
+      { n: "欧洲", role: "协调 · 合规 · 欧盟金融", d: "卢布尔雅那承担欧洲协调，苏黎世负责合规与托管，卢森堡市面向欧盟金融活动。", tags: ["卢布尔雅那", "苏黎世", "卢森堡市"] },
+      { n: "大中华", role: "大中华枢纽与离岸人民币走廊", d: "香港作为大中华枢纽，是离岸人民币相关场景的自然走廊。", tags: ["香港"] },
+      { n: "中东", role: "阿拉伯海湾与中东北非连接", d: "阿布扎比作为中东中心，以本地友好的参与方式连接阿拉伯海湾与中东北非。", tags: ["阿布扎比"] },
+      { n: "东南亚", role: "区域流动性与贸易门户", d: "新加坡作为区域流动性与贸易门户，把亚洲市场与 Solana 生态连接起来。", tags: ["新加坡"] }
+    ],
+    fr: [
+      { n: "Europe", role: "Coordination · conformité · finance UE", d: "Ljubljana pour la coordination européenne, Zurich pour conformité et garde, Luxembourg pour l'activité tournée vers la finance de l'UE.", tags: ["Ljubljana", "Zurich", "Luxembourg"] },
+      { n: "Grande Chine", role: "Hub Grande Chine & corridor CNH offshore", d: "Hong Kong comme hub de la Grande Chine, corridor naturel pour les scénarios liés au renminbi offshore.", tags: ["Hong Kong"] },
+      { n: "Moyen-Orient", role: "Golfe arabe & connexion MENA", d: "Abou Dabi comme centre du Moyen-Orient, reliant le Golfe arabe et la région MENA par une participation conviviale.", tags: ["Abou Dabi"] },
+      { n: "Asie du Sud-Est", role: "Liquidité régionale & porte commerciale", d: "Singapour comme porte régionale de liquidité et de commerce, reliant les marchés asiatiques à l'écosystème Solana.", tags: ["Singapour"] }
+    ],
+    ru: [
+      { n: "Европа", role: "Координация · соответствие · финансы ЕС", d: "Любляна — европейская координация, Цюрих — соответствие и хранение, Люксембург — активность в финансах ЕС.", tags: ["Любляна", "Цюрих", "Люксембург"] },
+      { n: "Большой Китай", role: "Хаб Большого Китая и коридор офшорного юаня", d: "Гонконг — хаб Большого Китая, естественный коридор для сценариев офшорного юаня.", tags: ["Гонконг"] },
+      { n: "Ближний Восток", role: "Аравийский залив и связь с MENA", d: "Абу-Даби — центр Ближнего Востока, соединяющий Аравийский залив и MENA дружелюбным участием.", tags: ["Абу-Даби"] },
+      { n: "Юго-Восточная Азия", role: "Региональная ликвидность и торговый шлюз", d: "Сингапур — региональный шлюз ликвидности и торговли, соединяющий азиатские рынки с Solana.", tags: ["Сингапур"] }
+    ],
+    es: [
+      { n: "Europa", role: "Coordinación · cumplimiento · finanzas UE", d: "Liubliana para coordinación europea, Zúrich para cumplimiento y custodia, Luxemburgo para actividad hacia las finanzas de la UE.", tags: ["Liubliana", "Zúrich", "Luxemburgo"] },
+      { n: "Gran China", role: "Hub de la Gran China y corredor CNH offshore", d: "Hong Kong como hub de la Gran China, el corredor natural para escenarios del renminbi offshore.", tags: ["Hong Kong"] },
+      { n: "Oriente Medio", role: "Golfo Árabe y conexión MENA", d: "Abu Dabi como centro de Oriente Medio, conectando el Golfo Árabe y MENA con participación amigable.", tags: ["Abu Dabi"] },
+      { n: "Sudeste Asiático", role: "Liquidez regional y puerta comercial", d: "Singapur como puerta regional de liquidez y comercio, conectando los mercados asiáticos con Solana.", tags: ["Singapur"] }
+    ],
+    ar: [
+      { n: "أوروبا", role: "تنسيق · امتثال · تمويل الاتحاد الأوروبي", d: "ليوبليانا للتنسيق الأوروبي، وزيورخ للامتثال والحفظ، ولوكسمبورغ للأنشطة الموجهة لتمويل الاتحاد الأوروبي.", tags: ["ليوبليانا", "زيورخ", "لوكسمبورغ"] },
+      { n: "الصين الكبرى", role: "مركز الصين الكبرى وممر اليوان البحري", d: "هونغ كونغ مركز للصين الكبرى، الممر الطبيعي لسيناريوهات اليوان البحري.", tags: ["هونغ كونغ"] },
+      { n: "الشرق الأوسط", role: "الخليج العربي والتواصل مع منطقة الشرق الأوسط وشمال أفريقيا", d: "أبوظبي مركز للشرق الأوسط، تربط الخليج العربي والمنطقة بمشاركة محلية وديّة.", tags: ["أبوظبي"] },
+      { n: "جنوب شرق آسيا", role: "سيولة إقليمية وبوابة تجارية", d: "سنغافورة بوابة إقليمية للسيولة والتجارة، تربط الأسواق الآسيوية بمنظومة Solana.", tags: ["سنغافورة"] }
+    ]
+  };
+
+  var LIGHT = {
+    en: {
+      modes: [
+        { n: "Cross-border settlement corridor", d: "Franchise royalties, licensing fees and supply payments could settle through the digital-CNH corridor on Solana." },
+        { n: "On-chain loyalty & membership", d: "Loyalty points and memberships become transferable on-chain assets across regional markets." },
+        { n: "Authenticated digital collectibles", d: "Authenticity certificates and limited digital collectibles link brand products to transparent records." },
+        { n: "Regional node retail", d: "Flagship stores and local agents operate as city nodes inside the six-city network." },
+        { n: "Carbon & ESG energy CNH", d: "Supply-chain carbon credits and ESG initiatives align with the energy-CNH dimension." },
+        { n: "Treasury allocation reference", d: "Corporate treasuries may track the digital-CNH mirror as an offshore allocation reference." }
+      ],
+      cats: [
+        { n: "Apparel & fashion", cos: "Nike, Adidas, Inditex (Zara), H&M, Lululemon, Kering, Prada, Burberry, Hermès", how: "Brand loyalty tokens, authenticity collectibles, flagship-store city nodes." },
+        { n: "Beverages & snacks", cos: "Coca-Cola, PepsiCo, Nestlé, Diageo, Heineken, AB InBev, Mondelez, Kraft Heinz", how: "Distribution settlement corridors, supply payments, regional promo tokens." },
+        { n: "Restaurant chains", cos: "McDonald's, Starbucks, Yum! Brands, Domino's, Restaurant Brands International", how: "Franchise royalty corridors, loyalty wallets, store-level node participation." },
+        { n: "Beauty & personal care", cos: "L'Oréal, Estée Lauder, Procter & Gamble, Unilever, Colgate-Palmolive, Kimberly-Clark, Henkel, Reckitt, Beiersdorf", how: "Authenticity certification, membership ecosystems, regional retail nodes." },
+        { n: "Tech IP & software", cos: "Apple, Microsoft, Qualcomm, NVIDIA, Adobe, Salesforce, Oracle, Intuit, Arm", how: "IP licensing corridors, subscription micropayments, developer DAO." },
+        { n: "Platforms & networks", cos: "Alphabet, Meta, Visa, Mastercard, Booking, Airbnb, Uber", how: "Payment-rail exploration, creator settlements, cross-border travel corridors." },
+        { n: "Media & entertainment", cos: "Netflix, Disney, Spotify", how: "Fan communities, subscription corridors, digital collectibles." }
+      ]
+    },
+    "zh-CN": {
+      modes: [
+        { n: "跨境结算走廊", d: "特许权使用费、许可费与供应链付款可经由 Solana 上的数字 CNH 走廊结算。" },
+        { n: "忠诚度与会员上链", d: "积分与会员体系成为可在各区域市场之间转移的链上资产。" },
+        { n: "认证数字收藏品", d: "正品凭证与限量数字收藏品把品牌产品与透明记录相连。" },
+        { n: "区域节点零售", d: "旗舰店与本地代理商以城市节点身份进入六大城市网络。" },
+        { n: "碳与 ESG 能源 CNH", d: "供应链碳信用与 ESG 行动对齐能源 CNH 维度。" },
+        { n: "资金库配置参考", d: "企业资金库可将数字 CNH 镜像作为离岸配置参考指标。" }
+      ],
+      cats: [
+        { n: "服装与时尚", cos: "Nike、Adidas、Inditex（Zara）、H&M、Lululemon、Kering、Prada、Burberry、Hermès", how: "品牌忠诚度代币、正品收藏品、旗舰店城市节点。" },
+        { n: "饮料与零食", cos: "Coca-Cola、PepsiCo、Nestlé、Diageo、Heineken、AB InBev、Mondelez、Kraft Heinz", how: "分销结算走廊、供应链付款、区域促销代币。" },
+        { n: "餐饮连锁", cos: "McDonald's、Starbucks、Yum! Brands、Domino's、Restaurant Brands International", how: "加盟费走廊、忠诚度钱包、门店级节点参与。" },
+        { n: "美妆与个护", cos: "L'Oréal、Estée Lauder、Procter & Gamble、Unilever、Colgate-Palmolive、Kimberly-Clark、Henkel、Reckitt、Beiersdorf", how: "正品认证、会员生态、区域零售节点。" },
+        { n: "科技 IP 与软件", cos: "Apple、Microsoft、Qualcomm、NVIDIA、Adobe、Salesforce、Oracle、Intuit、Arm", how: "IP 许可走廊、订阅微支付、开发者 DAO。" },
+        { n: "平台与网络", cos: "Alphabet、Meta、Visa、Mastercard、Booking、Airbnb、Uber", how: "支付轨道探索、创作者结算、跨境旅行结算走廊。" },
+        { n: "文娱与媒体", cos: "Netflix、Disney、Spotify", how: "粉丝社区、订阅走廊、数字收藏品。" }
+      ]
+    },
+    fr: {
+      modes: [
+        { n: "Couloir de règlement transfrontalier", d: "Redevances de franchise, licences et paiements fournisseurs pourraient se régler via le couloir CNH numérique sur Solana." },
+        { n: "Fidélité & adhésion on-chain", d: "Les points de fidélité et adhésions deviennent des actifs transférables entre marchés régionaux." },
+        { n: "Collectionnables numériques authentifiés", d: "Certificats d'authenticité et éditions limitées lient les produits à des registres transparents." },
+        { n: "Retail par nœuds régionaux", d: "Boutiques phares et agents locaux opèrent comme nœuds de ville au sein du réseau des six villes." },
+        { n: "Carbone & ESG énergie CNH", d: "Crédits carbone et initiatives ESG s'alignent sur la dimension énergie-CNH." },
+        { n: "Référence d'allocation de trésorerie", d: "Les trésoreries d'entreprise peuvent suivre le miroir CNH numérique comme référence d'allocation offshore." }
+      ],
+      cats: [
+        { n: "Mode & vêtements", cos: "Nike, Adidas, Inditex (Zara), H&M, Lululemon, Kering, Prada, Burberry, Hermès", how: "Jetons de fidélité, collectionnables d'authenticité, nœuds de boutique phare." },
+        { n: "Boissons & snacks", cos: "Coca-Cola, PepsiCo, Nestlé, Diageo, Heineken, AB InBev, Mondelez, Kraft Heinz", how: "Couloirs de règlement de distribution, paiements fournisseurs, jetons promo régionaux." },
+        { n: "Chaînes de restauration", cos: "McDonald's, Starbucks, Yum! Brands, Domino's, Restaurant Brands International", how: "Couloirs de redevances, portefeuilles de fidélité, participation des points de vente." },
+        { n: "Beauté & soins", cos: "L'Oréal, Estée Lauder, Procter & Gamble, Unilever, Colgate-Palmolive, Kimberly-Clark, Henkel, Reckitt, Beiersdorf", how: "Certification d'authenticité, écosystèmes membres, nœuds de vente régionaux." },
+        { n: "IP tech & logiciels", cos: "Apple, Microsoft, Qualcomm, NVIDIA, Adobe, Salesforce, Oracle, Intuit, Arm", how: "Couloirs de licences IP, micro-paiements d'abonnement, DAO développeurs." },
+        { n: "Plateformes & réseaux", cos: "Alphabet, Meta, Visa, Mastercard, Booking, Airbnb, Uber", how: "Exploration de rails de paiement, règlements créateurs, corridors de voyage." },
+        { n: "Médias & divertissement", cos: "Netflix, Disney, Spotify", how: "Communautés de fans, couloirs d'abonnement, collectionnables numériques." }
+      ]
+    },
+    ru: {
+      modes: [
+        { n: "Трансграничный расчётный коридор", d: "Роялти франшиз, лицензионные сборы и платежи поставщикам можно проводить через цифровой коридор юаня на Solana." },
+        { n: "Лояльность и членство on-chain", d: "Баллы лояльности и членства становятся передаваемыми активами между региональными рынками." },
+        { n: "Аутентифицированные цифровые коллекционные", d: "Сертификаты подлинности и лимитированные тиражи связывают продукты с прозрачными реестрами." },
+        { n: "Розница как региональные узлы", d: "Флагманские магазины и локальные агенты работают как городские узлы сети шести городов." },
+        { n: "Углерод и ESG энергия CNH", d: "Углеродные кредиты и ESG-инициативы выравниваются по измерению энергии CNH." },
+        { n: "Справочник аллокации казначейства", d: "Корпоративные казначейства могут отслеживать зеркало цифрового юаня как офшорный ориентир." }
+      ],
+      cats: [
+        { n: "Одежда и мода", cos: "Nike, Adidas, Inditex (Zara), H&M, Lululemon, Kering, Prada, Burberry, Hermès", how: "Токены лояльности, коллекционные подлинности, городские узлы магазинов." },
+        { n: "Напитки и снеки", cos: "Coca-Cola, PepsiCo, Nestlé, Diageo, Heineken, AB InBev, Mondelez, Kraft Heinz", how: "Расчётные коридоры дистрибуции, платежи поставщикам, региональные промо-токены." },
+        { n: "Сети ресторанов", cos: "McDonald's, Starbucks, Yum! Brands, Domino's, Restaurant Brands International", how: "Коридоры роялти, кошельки лояльности, узлы на уровне магазинов." },
+        { n: "Красота и уход", cos: "L'Oréal, Estée Lauder, Procter & Gamble, Unilever, Colgate-Palmolive, Kimberly-Clark, Henkel, Reckitt, Beiersdorf", how: "Сертификация подлинности, членские экосистемы, региональные розничные узлы." },
+        { n: "Технологичное IP и ПО", cos: "Apple, Microsoft, Qualcomm, NVIDIA, Adobe, Salesforce, Oracle, Intuit, Arm", how: "Лицензионные коридоры, микро-платежи подписок, DAO разработчиков." },
+        { n: "Платформы и сети", cos: "Alphabet, Meta, Visa, Mastercard, Booking, Airbnb, Uber", how: "Изучение платёжных рельсов, расчёты авторов-создателей, туристические коридоры." },
+        { n: "Медиа и развлечения", cos: "Netflix, Disney, Spotify", how: "Фан-сообщества, подписные коридоры, цифровые коллекционные." }
+      ]
+    },
+    es: {
+      modes: [
+        { n: "Corredor de liquidación transfronteriza", d: "Regalías de franquicia, licencias y pagos a proveedores podrían liquidarse por el corredor digital de CNH en Solana." },
+        { n: "Fidelidad y membresía on-chain", d: "Puntos de fidelidad y membresías se vuelven activos transferibles entre mercados regionales." },
+        { n: "Coleccionables digitales autenticados", d: "Certificados de autenticidad y ediciones limitadas vinculan productos a registros transparentes." },
+        { n: "Retail como nodos regionales", d: "Tiendas insignia y agentes locales operan como nodos de ciudad dentro de la red de seis ciudades." },
+        { n: "Carbono y ESG energía CNH", d: "Créditos de carbono y acciones ESG se alinean con la dimensión energía-CNH." },
+        { n: "Referencia de asignación de tesorería", d: "Las tesorerías corporativas pueden seguir el espejo digital de CNH como referencia offshore." }
+      ],
+      cats: [
+        { n: "Moda y vestuario", cos: "Nike, Adidas, Inditex (Zara), H&M, Lululemon, Kering, Prada, Burberry, Hermès", how: "Tokens de fidelidad, coleccionables de autenticidad, nodos de tienda insignia." },
+        { n: "Bebidas y snacks", cos: "Coca-Cola, PepsiCo, Nestlé, Diageo, Heineken, AB InBev, Mondelez, Kraft Heinz", how: "Corredores de liquidación de distribución, pagos a proveedores, tokens promocionales." },
+        { n: "Cadenas de restaurantes", cos: "McDonald's, Starbucks, Yum! Brands, Domino's, Restaurant Brands International", how: "Corredores de regalías, billeteras de fidelidad, nodos a nivel de tienda." },
+        { n: "Belleza y cuidado personal", cos: "L'Oréal, Estée Lauder, Procter & Gamble, Unilever, Colgate-Palmolive, Kimberly-Clark, Henkel, Reckitt, Beiersdorf", how: "Certificación de autenticidad, ecosistemas de membresía, nodos minoristas regionales." },
+        { n: "IP tecnológica y software", cos: "Apple, Microsoft, Qualcomm, NVIDIA, Adobe, Salesforce, Oracle, Intuit, Arm", how: "Corredores de licencias IP, micro-pagos de suscripción, DAO de desarrolladores." },
+        { n: "Plataformas y redes", cos: "Alphabet, Meta, Visa, Mastercard, Booking, Airbnb, Uber", how: "Exploración de raíles de pago, liquidaciones de creadores, corredores de viaje." },
+        { n: "Medios y entretenimiento", cos: "Netflix, Disney, Spotify", how: "Comunidades de fans, corredores de suscripción, coleccionables digitales." }
+      ]
+    },
+    ar: {
+      modes: [
+        { n: "ممر التسوية عبر الحدود", d: "يمكن تسوية رسوم الامتياز والتراخيص ومدفوعات الموردين عبر ممر اليوان الرقمي على Solana." },
+        { n: "الولاء والعضوية على السلسلة", d: "تصبح نقاط الولاء والعضويات أصولًا قابلة للتحويل بين الأسواق الإقليمية." },
+        { n: "مقتنيات رقمية موثقة", d: "شهادات الأصالة وإصدارات محدودة تربط المنتجات بسجلات شفافة." },
+        { n: "بيع التجزئة كعقد إقليمية", d: "تعمل المتاجر الرئيسية والوكلاء المحليون كعقد مدن داخل شبكة المدن الست." },
+        { n: "الكربون وESG لطاقة CNH", d: "تلتزم أرصدة الكربون ومبادرات ESG مع بُعد طاقة CNH." },
+        { n: "مرجع تخصيص الخزينة", d: "يمكن لخزائن الشركات تتبع مرآة اليوان الرقمية كمرجع تخصيص بحري." }
+      ],
+      cats: [
+        { n: "الأزياء والملابس", cos: "Nike, Adidas, Inditex (Zara), H&M, Lululemon, Kering, Prada, Burberry, Hermès", how: "رموز الولاء، مقتنيات الأصالة، عقد متاجر رئيسية." },
+        { n: "المشروبات والوجبات الخفيفة", cos: "Coca-Cola, PepsiCo, Nestlé, Diageo, Heineken, AB InBev, Mondelez, Kraft Heinz", how: "ممرات تسوية التوزيع، مدفوعات الموردين، رموز ترويج إقليمية." },
+        { n: "سلاسل المطاعم", cos: "McDonald's, Starbucks, Yum! Brands, Domino's, Restaurant Brands International", how: "ممرات الإتاوات، محافظ الولاء، مشاركة على مستوى المتجر." },
+        { n: "الجمال والعناية", cos: "L'Oréal, Estée Lauder, Procter & Gamble, Unilever, Colgate-Palmolive, Kimberly-Clark, Henkel, Reckitt, Beiersdorf", how: "شهادات الأصالة، أنظمة العضوية، عقد بيع تجزئة إقليمية." },
+        { n: "تقنية الملكية الفكرية والبرمجيات", cos: "Apple, Microsoft, Qualcomm, NVIDIA, Adobe, Salesforce, Oracle, Intuit, Arm", how: "ممرات تراخيص IP، مدفوعات اشتراك صغيرة، DAO للمطورين." },
+        { n: "المنصات والشبكات", cos: "Alphabet, Meta, Visa, Mastercard, Booking, Airbnb, Uber", how: "استكشاف مسارات الدفع، تسويات المبدعين، ممرات السفر العابر." },
+        { n: "الإعلام والترفيه", cos: "Netflix, Disney, Spotify", how: "مجتمعات المعجبين، ممرات الاشتراك، مقتنيات رقمية." }
+      ]
+    }
+  };
+
+  /* ---------- helpers ---------- */
+  function esc(s) {
+    return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+  var current = "en";
+  var toastTimer = null;
+  function showToast(msg) {
+    var t = document.getElementById("toast");
+    t.textContent = msg;
+    t.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { t.classList.remove("show"); }, 2400);
+  }
+  function copyText(val, dict) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(val).then(function () { showToast(dict["toast.copied"]); }, function () {
+        var ta = document.createElement("textarea"); ta.value = val; ta.style.position = "fixed"; ta.style.opacity = "0";
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand("copy"); showToast(dict["toast.copied"]); } catch (e) { /* no-op */ }
+        document.body.removeChild(ta);
+      });
+    }
+  }
+
+  /* ---------- render ---------- */
+  function renderOpp(lang) {
+    var dict = I18N[lang] || I18N.en;
+    var list = OPP[lang] || OPP.en;
+    var wrap = document.getElementById("oppGrid");
+    if (!wrap) return;
+    var html = "";
+    for (var i = 0; i < list.length; i++) {
+      var s = list[i];
+      html += '<article class="opp-card reveal">' +
+        '<div class="opp-top"><span class="opp-no">OPPORTUNITY #' + (i + 1) + '</span><span class="opp-icon" aria-hidden="true">' + ICONS[i % ICONS.length] + '</span></div>' +
+        '<h3>' + esc(s.n) + '</h3>' +
+        '<p class="opp-row"><b>' + esc(dict["opp.region"]) + ':</b> <span class="val">' + esc(s.region) + '</span></p>' +
+        '<p class="opp-row"><b>' + esc(dict["opp.how"]) + ':</b> <span class="val">' + esc(s.how) + '</span></p>' +
+        '<p class="opp-risk"><b>' + esc(dict["opp.risk"]) + ':</b> ' + esc(s.risk) + '</p>' +
+        '</article>';
+    }
+    wrap.innerHTML = html;
+    observeReveal();
+  }
+  function renderRegions(lang) {
+    var dict = I18N[lang] || I18N.en;
+    var list = REGIONS[lang] || REGIONS.en;
+    var wrap = document.getElementById("rgGrid");
+    if (!wrap) return;
+    var html = "";
+    for (var i = 0; i < list.length; i++) {
+      var r = list[i];
+      var tags = "";
+      for (var j = 0; j < r.tags.length; j++) tags += '<span class="rg-tag">' + esc(r.tags[j]) + '</span>';
+      html += '<article class="rg-card reveal"><h3>' + esc(r.n) + '</h3>' +
+        '<p class="rg-role">' + esc(r.role) + '</p><p>' + esc(r.d) + '</p>' +
+        '<div class="rg-tags">' + tags + '</div></article>';
+    }
+    wrap.innerHTML = html;
+    observeReveal();
+  }
+
+  function renderLight(lang) {
+    var dict = I18N[lang] || I18N.en;
+    var data = LIGHT[lang] || LIGHT.en;
+    var mWrap = document.getElementById("ltModes");
+    if (mWrap) {
+      var mh = "";
+      for (var m = 0; m < data.modes.length; m++) {
+        mh += '<div class="lt-mode reveal"><b>' + esc(data.modes[m].n) + '</b><p>' + esc(data.modes[m].d) + '</p></div>';
+      }
+      mWrap.innerHTML = mh;
+    }
+    var wrap = document.getElementById("ltGrid");
+    if (!wrap) return;
+    var html = "";
+    for (var i = 0; i < data.cats.length; i++) {
+      var c = data.cats[i];
+      var brands = String(c.cos).split(/[,，、]/).map(function (s) { return s.trim(); });
+      var cos = "";
+      for (var j = 0; j < brands.length; j++) cos += '<span class="lt-cos">' + esc(brands[j]) + '</span>';
+      html += '<article class="lt-card reveal"><div class="lt-count">' + brands.length + '</div>' +
+        '<h3>' + esc(c.n) + '</h3>' +
+        '<div class="lt-cos-wrap">' + cos + '</div>' +
+        '<p class="lt-how">' + esc(c.how) + '</p></article>';
+    }
+    wrap.innerHTML = html;
+    observeReveal();
+  }
+
+  /* ---------- reveal ---------- */
+  var io = null;
+  function observeReveal() {
+    if (!("IntersectionObserver" in window)) {
+      document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
+      return;
+    }
+    if (!io) io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal:not(.in)").forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---------- applyLang ---------- */
+  function applyLang(lang) {
+    current = lang;
+    var dict = I18N[lang] || I18N.en;
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      var k = el.getAttribute("data-i18n");
+      if (dict[k] !== undefined) el.innerHTML = dict[k];
+    });
+    document.querySelectorAll("[data-lang]").forEach(function (b) {
+      b.classList.toggle("on", b.getAttribute("data-lang") === lang);
+    });
+    renderOpp(lang);
+    renderRegions(lang);
+    renderLight(lang);
+    try { localStorage.setItem("ecnhin2026-lang", lang); } catch (e) {}
+  }
+
+  /* ---------- theme ---------- */
+  function applyTheme(name) {
+    document.documentElement.setAttribute("data-theme", name);
+    document.querySelectorAll("[data-theme-btn]").forEach(function (b) {
+      b.classList.toggle("on", b.getAttribute("data-theme-btn") === name);
+    });
+    try { localStorage.setItem("ecnhin2026-theme", name); } catch (e) {}
+  }
+
+  /* ---------- init ---------- */
+  function init() {
+    var savedLang = "en"; var savedTheme = "cosmic";
+    try { savedLang = localStorage.getItem("ecnhin2026-lang") || "en"; } catch (e) {}
+    try { savedTheme = localStorage.getItem("ecnhin2026-theme") || "cosmic"; } catch (e) {}
+    if (!I18N[savedLang]) savedLang = "en";
+    applyTheme(savedTheme);
+    applyLang(savedLang);
+
+    document.querySelectorAll("[data-theme-btn]").forEach(function (b) {
+      b.addEventListener("click", function () { applyTheme(b.getAttribute("data-theme-btn")); });
+    });
+    document.querySelectorAll("[data-lang]").forEach(function (b) {
+      b.addEventListener("click", function () { applyLang(b.getAttribute("data-lang")); });
+    });
+
+    var copyBtn = document.getElementById("copyBtn");
+    var addr = document.getElementById("contractAddr").textContent.trim();
+    copyBtn.addEventListener("click", function () {
+      copyText(addr, I18N[current] || I18N.en);
+    });
+
+    document.getElementById("yearNow").textContent = "2026";
+    observeReveal();
+
+    requestAnimationFrame(function () {
+      document.documentElement.setAttribute("data-design-suite-static-state", "ready");
+      document.documentElement.setAttribute("data-design-suite-static-errors", "0");
+      document.documentElement.setAttribute("data-design-suite-static-overflow",
+        document.documentElement.scrollWidth > document.documentElement.clientWidth ? "true" : "false");
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", init);
+})();
+</script>
+</body>
+</html>
