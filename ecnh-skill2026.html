@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="eCNH-Skill 2026 - the top-10 most used community skills selected from 100 eCNH skills: contract guard, pool lens, DEX router, explorer uni, price anchor, circulation meter, six-lingua, city node map, bridge planner, DAO drafter. Six languages, one public contract. earth CNH = europe CNH = east CNH = ECNH = energy CNH.">
+<title>eCNH-Skill 2026 · Top-10 Skills from 100 · Solana Digital CNH</title>
+<meta name="design-suite-artifact-kind" content="website">
+<meta name="design-suite-delivery-adapter" content="static-export">
+<meta name="design-suite-delivery-format" content="single-html">
+<meta name="design-suite-asset-policy" content="inline-base64">
+<meta name="design-suite-export-mode" content="single-file">
+<meta name="theme-color" content="#070f1f">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="eCNH-Skill">
+<meta property="og:title" content="eCNH-Skill 2026 · Top-10 Skills from 100 · Solana Digital CNH">
+<meta property="og:description" content="eCNH-Skill 2026 - the top-10 most used community skills selected from 100 eCNH skills, six languages, one public contract.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA2NCA2NCc+PHJlY3Qgd2lkdGg9JzY0JyBoZWlnaHQ9JzY0JyByeD0nMTQnIGZpbGw9JyMwNzBmMWYnLz48dGV4dCB4PSczMicgeT0nNDInIGZvbnQtZmFtaWx5PSdBcmlhbCcgZm9udC1zaXplPScyNicgZm9udC13ZWlnaHQ9J2JvbGQnIGZpbGw9JyM1OGE2ZmYnIHRleHQtYW5jaG9yPSdtaWRkbGUnPlNLUzwvdGV4dD48L3N2Zz4=">
+
+<style>
+:root{
+  --bg0:#070f1f; --bg1:#0b1f3a; --bg2:#10294f; --card:#0e2544; --card2:#123059;
+  --line:#1d3a66; --line2:#2a4c80; --text:#eaf3ff; --muted:#93a8c8;
+  --accent:#58a6ff; --accent2:#7ee0c0; --gold:#ffd479; --shadow:rgba(0,0,0,.45);
+  --radius:18px; --maxw:1180px;
+  --font-latin:'Segoe UI','Helvetica Neue',Arial,sans-serif;
+  --font-cjk:'PingFang SC','Microsoft YaHei','Noto Sans SC','Segoe UI',sans-serif;
+  --font-ar:'Segoe UI','Tahoma','Noto Kufi Arabic',Arial,sans-serif;
+}
+[data-theme="olive"]{
+  --bg0:#141a0f; --bg1:#22281c; --bg2:#2c3623; --card:#232b1b; --card2:#2b3620;
+  --line:#3a4a2c; --line2:#4b6038; --text:#f0f4e6; --muted:#a8b394;
+  --accent:#9aaa6f; --accent2:#d8c98a; --gold:#e3d9a0; --shadow:rgba(10,12,6,.5);
+}
+[data-theme="beige"]{
+  --bg0:#eae1cf; --bg1:#f3ecdf; --bg2:#faf6ec; --card:#f6efe0; --card2:#fbf6ea;
+  --line:#d9cdb4; --line2:#c3b393; --text:#26332f; --muted:#69756c;
+  --accent:#2c5f5a; --accent2:#a76f2f; --gold:#8a5a12; --shadow:rgba(90,75,45,.18);
+}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg0);color:var(--text);font-family:var(--font-latin);line-height:1.6;transition:background .35s,color .35s}
+[lang="zh-CN"] body,[lang="zh-CN"] .sec-head h2,[lang="zh-CN"] .hero h1{font-family:var(--font-cjk)}
+[lang="ar"] body,[lang="ar"] h1,[lang="ar"] h2,[lang="ar"] h3,[lang="ar"] p,[lang="ar"] a,[lang="ar"] button,[lang="ar"] input,[lang="ar"] textarea,[lang="ar"] select{font-family:var(--font-ar)}
+.container{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+a{color:var(--accent)}
+::selection{background:var(--accent);color:var(--bg0)}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg0) 82%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.hbar{display:flex;align-items:center;gap:16px;padding:12px 24px;max-width:var(--maxw);margin:0 auto;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:8px;font-weight:800;font-size:17px;color:var(--text);text-decoration:none;white-space:nowrap}
+.brand .dot{width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+.navlinks{display:flex;gap:4px;flex:1;justify-content:center;flex-wrap:wrap}
+.navlinks a{padding:7px 13px;border-radius:999px;color:var(--muted);font-size:14.5px;font-weight:600;text-decoration:none}
+.navlinks a:hover{color:var(--text);background:var(--bg2)}
+.seg{display:flex;gap:4px;align-items:center}
+.seg button{border:1px solid var(--line);background:var(--bg1);color:var(--muted);border-radius:999px;padding:5px 12px;font-size:13px;cursor:pointer}
+.seg button:hover{color:var(--text);border-color:var(--accent)}
+.seg button.on{background:var(--accent);border-color:var(--accent);color:var(--bg0);font-weight:700}
+.theme-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-inline-end:4px;vertical-align:1px}
+.theme-dot.cosmic{background:#58a6ff}.theme-dot.olive{background:#9aaa6f}.theme-dot.beige{background:#a76f2f}
+
+/* hero */
+.hero{padding:92px 0 70px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 380px at 78% 8%,color-mix(in srgb,var(--accent) 22%,transparent),transparent 70%),radial-gradient(520px 320px at 14% 90%,color-mix(in srgb,var(--accent2) 14%,transparent),transparent 70%);pointer-events:none}
+.hero .container{position:relative}
+.eyebrow{font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent2);font-weight:700}
+.hero h1{font-size:clamp(34px,5.2vw,58px);line-height:1.12;margin:18px 0 14px;letter-spacing:-.01em}
+.hero h1 .hl{color:var(--accent)}
+.hero .sub{font-size:18px;color:var(--muted);max-width:760px;margin:0 0 12px}
+.hero-mission{font-size:15.5px;color:var(--text);opacity:.92;max-width:780px;margin:0 0 20px}
+.badge{display:inline-block;border:1px solid var(--accent2);color:var(--accent2);border-radius:999px;padding:4px 14px;font-size:12.5px;font-weight:700;letter-spacing:.06em}
+.cta-row{display:flex;gap:12px;margin:26px 0 40px;flex-wrap:wrap}
+.btn{display:inline-block;border:1px solid var(--line);background:var(--bg1);color:var(--text);border-radius:999px;padding:12px 26px;font-size:15px;font-weight:700;text-decoration:none;transition:transform .15s,border-color .2s}
+.btn:hover{border-color:var(--accent);transform:translateY(-1px)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg0)}
+.stats{display:flex;gap:14px;flex-wrap:wrap}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 22px;min-width:120px}
+.stat b{display:block;font-size:26px;color:var(--accent)}
+.stat span{font-size:13px;color:var(--muted)}
+
+/* sections */
+section{padding:64px 0;border-top:1px solid var(--line)}
+.sec-head{max-width:820px;margin:0 auto 34px;text-align:center}
+.sec-head h2{font-size:clamp(26px,3.4vw,38px);margin:12px 0 8px;line-height:1.2}
+.sec-head .sub{font-size:15.5px;color:var(--muted);margin:0}
+.footnote{font-size:12.5px;color:var(--muted);text-align:center;margin:26px auto 0;max-width:820px;line-height:1.7}
+
+/* why cards */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+.card .num{font-size:13px;font-weight:800;color:var(--accent2);letter-spacing:.14em}
+.card h3{font-size:17px;margin:10px 0 8px}
+.card p{font-size:14px;color:var(--muted);margin:0;line-height:1.65}
+
+/* skills grid */
+.sk-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.sk-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:10px;position:relative;transition:transform .18s,border-color .2s}
+.sk-card:hover{transform:translateY(-3px);border-color:var(--accent)}
+.sk-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.sk-rank{font-size:12px;font-weight:800;color:var(--gold);letter-spacing:.1em;white-space:nowrap}
+.sk-icon{width:38px;height:38px;border-radius:12px;background:color-mix(in srgb,var(--accent) 16%,var(--bg2));display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0}
+.sk-icon svg{width:22px;height:22px}
+.sk-cat{font-size:11px;font-weight:700;color:var(--accent2);border:1px solid var(--line);border-radius:999px;padding:2px 10px;display:inline-block;align-self:flex-start}
+.sk-card h3{font-size:16px;margin:0;line-height:1.35}
+.sk-card p{font-size:13px;color:var(--muted);margin:0;line-height:1.6;flex:1}
+.sk-use{font-size:11.5px;color:var(--text);opacity:.85;border-top:1px dashed var(--line);padding-top:10px;margin-top:auto}
+
+/* categories */
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.cat-card{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.cat-card h3{font-size:14.5px;margin:0 0 6px}
+.cat-card p{font-size:12.5px;color:var(--muted);margin:0;line-height:1.6}
+
+/* funnel */
+.fn-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;position:relative}
+.fn-step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;position:relative}
+.fn-step .fn-no{font-size:12px;font-weight:800;color:var(--accent);letter-spacing:.16em}
+.fn-step .fn-num{display:block;font-size:30px;font-weight:800;color:var(--accent2);line-height:1;margin:8px 0 6px}
+.fn-step h3{font-size:16px;margin:0 0 8px}
+.fn-step p{font-size:13px;color:var(--muted);margin:0;line-height:1.6}
+.fn-arrow{position:absolute;top:50%;right:-14px;transform:translateY(-50%);color:var(--accent);font-size:18px;z-index:2;background:var(--bg0);border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center}
+
+/* join */
+.join-card{max-width:560px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+.join-card .fld{margin-bottom:14px}
+.join-card label{display:block;font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px}
+.join-card input,.join-card textarea,.join-card select{width:100%;box-sizing:border-box;background:var(--bg2);border:1px solid var(--line);color:var(--text);border-radius:12px;padding:11px 14px;font-size:14px;font-family:inherit}
+.join-card input:focus,.join-card textarea:focus,.join-card select:focus{outline:none;border-color:var(--accent)}
+.join-card textarea{min-height:90px;resize:vertical}
+.join-card .btn{width:100%;text-align:center;border:none;cursor:pointer}
+
+/* footer */
+footer{padding:54px 0 70px;border-top:1px solid var(--line);background:color-mix(in srgb,var(--bg1) 55%,transparent)}
+.ft-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:26px}
+.ft-box{margin:0 0 12px}
+.ft-t{font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent2);font-weight:700;margin:0 0 8px}
+.ft-code{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.ft-code code{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;word-break:break-all;color:var(--text);background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+.copybtn{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:6px 14px;font-size:12.5px;cursor:pointer}
+.copybtn:hover{border-color:var(--accent);color:var(--text)}
+.ft-box p{margin:0 0 10px}
+.terms{font-size:13px;color:var(--muted)}
+.terms a{color:var(--accent)}
+.footrow{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:26px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.ft-brand{margin-top:18px;text-align:center}
+.ft-brand-line{font-size:13.5px;color:var(--muted);margin:4px 0;line-height:1.7}
+.ft-brand-line b{color:var(--text)}
+.ft-brand .big{font-size:15.5px;color:var(--text);font-weight:700}
+.ft-ext{margin-top:20px;text-align:center;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.ft-ext-link{display:inline-block;font-size:12px;color:var(--accent2);border:1px solid var(--line);border-radius:999px;padding:6px 14px;text-decoration:none;transition:border-color .2s,color .2s}
+.ft-ext-link:hover{border-color:var(--accent);color:var(--accent)}
+
+/* toast */
+#toast{position:fixed;bottom:26px;inset-inline-start:50%;transform:translateX(-50%);background:var(--card2);color:var(--text);border:1px solid var(--accent);border-radius:999px;padding:10px 22px;font-size:14px;z-index:99;opacity:0;pointer-events:none;transition:opacity .25s}
+#toast.show{opacity:1}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* responsive */
+@media (max-width:1024px){
+  .sk-grid{grid-template-columns:repeat(3,1fr)}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .fn-grid{grid-template-columns:repeat(2,1fr)}
+  .fn-arrow{display:none}
+}
+@media (max-width:960px){
+  .why-grid{grid-template-columns:1fr 1fr}
+  .ft-grid{grid-template-columns:1fr}
+  .navlinks{order:3;width:100%;justify-content:flex-start;overflow-x:auto;padding-bottom:4px}
+}
+@media (max-width:640px){
+  .sk-grid{grid-template-columns:1fr 1fr}
+  .why-grid{grid-template-columns:1fr}
+  .cat-grid{grid-template-columns:1fr 1fr}
+  .fn-grid{grid-template-columns:1fr}
+  section{padding:46px 0}
+  .hero{padding:70px 0 54px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="hbar">
+    <a class="brand" href="#top"><span class="dot" aria-hidden="true"></span>eCNH-Skill</a>
+    <nav class="navlinks" aria-label="Primary">
+      <a href="#why" data-i18n="nav.why">Why</a>
+      <a href="#skills" data-i18n="nav.skills">Skills</a>
+      <a href="#categories" data-i18n="nav.categories">Categories</a>
+      <a href="#funnel" data-i18n="nav.funnel">From 100</a>
+      <a href="#join" data-i18n="nav.join">Request</a>
+    </nav>
+    <div class="seg" role="group" aria-label="Language">
+      <button type="button" data-lang="zh-CN">中文</button>
+      <button type="button" data-lang="en" class="on">EN</button>
+      <button type="button" data-lang="fr">FR</button>
+      <button type="button" data-lang="ru">RU</button>
+      <button type="button" data-lang="es">ES</button>
+      <button type="button" data-lang="ar">عربية</button>
+    </div>
+    <div class="seg" role="group" aria-label="Theme">
+      <button type="button" data-theme-btn="cosmic" class="on"><span class="theme-dot cosmic" aria-hidden="true"></span><span data-i18n="theme.cosmic">Cosmic</span></button>
+      <button type="button" data-theme-btn="olive"><span class="theme-dot olive" aria-hidden="true"></span><span data-i18n="theme.olive">Olive</span></button>
+      <button type="button" data-theme-btn="beige"><span class="theme-dot beige" aria-hidden="true"></span><span data-i18n="theme.beige">Beige</span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow" data-i18n="hero.eyebrow">Solana · eCNH Skill System</span>
+      <h1 data-i18n="hero.title">eCNH-Skill — from 100 skills, the <span class="hl">top 10</span> most used</h1>
+      <p class="sub" data-i18n="hero.sub">Ten community skills selected from one hundred, covering contract guard, pool lens, DEX routing, explorers, price anchor, six languages, city nodes, bridges and DAO governance.</p>
+      <p class="hero-mission" data-i18n="hero.mission">eCNH-Skill is the skill portal of the eCNH community: it turns the civilizational link spanning 3,000 years, toward the stars, into reusable on-chain abilities for the earth village.</p>
+      <div><span class="badge" data-i18n="hero.badge">2026 · 10 from 100</span></div>
+      <div class="cta-row">
+        <a class="btn primary" href="#skills" data-i18n="hero.cta1">See the 10 skills</a>
+        <a class="btn" href="#funnel" data-i18n="hero.cta2">See the selection logic</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>10</b><span id="statS" data-i18n="hero.stat.s">top skills</span></div>
+        <div class="stat"><b>100</b><span id="statT" data-i18n="hero.stat.t">total skills</span></div>
+        <div class="stat"><b>6</b><span id="statL" data-i18n="hero.stat.l">languages</span></div>
+        <div class="stat"><b>1</b><span id="statC" data-i18n="hero.stat.c">contract</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section id="why">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow" data-i18n="why.eyebrow">Why these ten</span>
+        <h2 data-i18n="why.h">Why a top-10 skill set?</h2>
+        <p class="sub" data-i18n="why.sub">One hundred community skills are not equal. The top ten carry the traffic, the newcomers and the governance.</p>
+      </div>
+      <div class="why-grid">
+        <article class="card reveal"><span class="num">01</span><h3 data-i18n="why.c1t">Daily necessity</h3><p data-i18n="why.c1d">Every member touches them in their first hour: contract check, pool view, language switch and explorer lookup.</p></article>
+        <article class="card reveal"><span class="num">02</span><h3 data-i18n="why.c2t">Community traffic</h3><p data-i18n="why.c2d">Usage frequency and on-chain data demand rank far above the rest of the hundred-skills catalogue.</p></article>
+        <article class="card reveal"><span class="num">03</span><h3 data-i18n="why.c3t">Governance weight</h3><p data-i18n="why.c3d">Bridge, circulation and DAO skills shape the roadmap that carries the 3,000-year vision forward.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="dexs" aria-labelledby="skills-h">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow" data-i18n="skills.eyebrow">Top 10</span>
+        <h2 id="skills-h" data-i18n="skills.h">The 10 most-used eCNH skills</h2>
+        <p class="sub" data-i18n="skills.sub">Selected from 100 community skills by usage frequency, newcomer necessity, on-chain data demand and governance votes.</p>
+      </div>
+      <div id="skillGrid" class="sk-grid"></div>
+      <p class="footnote reveal" data-i18n="skills.footnote">Skill descriptions are community navigation references built from Solana public data (2026-09 snapshot). They are tools, not investment advice.</p>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section id="categories" aria-labelledby="categories-h">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow" data-i18n="categories.eyebrow">8 clusters</span>
+        <h2 id="categories-h" data-i18n="categories.h">Where the 100 skills live</h2>
+        <p class="sub" data-i18n="categories.sub">The full hundred-skills catalogue groups into eight functional clusters; the top ten are picked from across them.</p>
+      </div>
+      <div id="catGrid" class="cat-grid"></div>
+    </div>
+  </section>
+
+  <!-- FUNNEL -->
+  <section id="funnel" aria-labelledby="funnel-h">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow" data-i18n="funnel.eyebrow">Selection logic</span>
+        <h2 id="funnel-h" data-i18n="funnel.h">From 100 skills to the top 10</h2>
+        <p class="sub" data-i18n="funnel.sub">A transparent four-step funnel, refreshed every quarter with the community.</p>
+      </div>
+      <div class="fn-grid">
+        <div class="fn-step reveal"><span class="fn-no" data-i18n="funnel.step">STEP</span><span class="fn-num">100</span><h3 data-i18n="funnel.s1t">Inventory</h3><p data-i18n="funnel.s1d">One hundred community skills are catalogued from member requests, docs and city-node feedback.</p></div>
+        <div class="fn-arrow" aria-hidden="true">&rarr;</div>
+        <div class="fn-step reveal"><span class="fn-no" data-i18n="funnel.step">STEP</span><span class="fn-num">8</span><h3 data-i18n="funnel.s2t">Clustering</h3><p data-i18n="funnel.s2d">Skills group into eight functional clusters to remove overlaps and duplicate effort.</p></div>
+        <div class="fn-arrow" aria-hidden="true">&rarr;</div>
+        <div class="fn-step reveal"><span class="fn-no" data-i18n="funnel.step">STEP</span><span class="fn-num">#</span><h3 data-i18n="funnel.s3t">Scoring</h3><p data-i18n="funnel.s3d">Weighted by usage frequency, newcomer necessity, on-chain data demand and governance votes.</p></div>
+        <div class="fn-arrow" aria-hidden="true">&rarr;</div>
+        <div class="fn-step reveal"><span class="fn-no" data-i18n="funnel.step">STEP</span><span class="fn-num">10</span><h3 data-i18n="funnel.s4t">Top 10</h3><p data-i18n="funnel.s4d">The highest-ranked skills ship on this page and are reviewed with the community each quarter.</p></div>
+      </div>
+      <p class="footnote reveal" data-i18n="funnel.footnote">The funnel is a community planning process for skills selection. Rankings depend on real usage and community votes, not on any promise.</p>
+    </div>
+  </section>
+
+  <!-- JOIN -->
+  <section id="join" aria-labelledby="join-h">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow" data-i18n="join.eyebrow">Request a skill</span>
+        <h2 id="join-h" data-i18n="join.h">Bring a skill into the top 10</h2>
+        <p class="sub" data-i18n="join.sub">Tell the community which skill you use most — the next quarter review starts from your voice.</p>
+      </div>
+      <form id="skillForm" class="join-card reveal" novalidate>
+        <div class="fld">
+          <label for="fName" data-i18n="join.name">Your name</label>
+          <input id="fName" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="fld">
+          <label for="fEmail" data-i18n="join.email">Email</label>
+          <input id="fEmail" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="fld">
+          <label for="fIdea" data-i18n="join.idea">Your most-used skill or a missing one</label>
+          <textarea id="fIdea" name="idea" required></textarea>
+        </div>
+        <button type="submit" class="btn primary" data-i18n="join.submit">Submit for the next review</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="ft-grid">
+      <div>
+        <div class="ft-box">
+          <p class="ft-t" data-i18n="footer.contract">Contract</p>
+          <div class="ft-code">
+            <code id="contractAddr" dir="ltr">7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5</code>
+            <button type="button" class="copybtn" id="copyBtn" data-i18n="footer.copy">Select address</button>
+          </div>
+        </div>
+        <p class="ft-box terms" data-i18n="footer.terms">Terms used: 华语 · 公益 · CNH</p>
+      </div>
+      <div>
+        <p class="ft-box" data-i18n="footer.disclaimer">Skill portal of the eCNH 2026 plan. Not investment advice; skill descriptions are navigation references based on Solana public data and usage patterns, and do not represent any live product or tradable liquidity.</p>
+        <p class="ft-box" data-i18n="footer.source">Snapshot source: Solana public explorers, 2026-09 data.</p>
+      </div>
+    </div>
+    <div class="footrow">
+      <span>eCNH-Skill · <span id="yearNow"></span></span>
+      <span data-i18n="footer.i18n">华语 / English / Français / Русский / Español / العربية</span>
+    </div>
+    <div class="ft-brand" role="note" aria-label="eCNH brand">
+      <p class="ft-brand-line big" data-i18n="brand.l1">eCNH, the earth village's own digital CNH; #WEB3</p>
+      <p class="ft-brand-line" data-i18n="brand.l2">eCNH = earth CNH = europe CNH = east CNH = ECNH = energy CNH</p>
+      <p class="ft-brand-line" data-i18n="brand.global">Earth &amp; Global Humanity Builds and Shares eCNH Together | 全球人类共建共享 eCNH</p>
+      <p class="ft-brand-line" data-i18n="brand.community">2026 eCNH Community · All information is for reference only</p>
+    </div>
+    <div class="ft-ext">
+      <a class="ft-ext-link" href="https://orbmarkets.io/token/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5" target="_blank" rel="noopener noreferrer" dir="ltr" data-i18n="brand.orb">View on OrbMarkets</a>
+      <a class="ft-ext-link" href="https://ucoingroup.github.io/eCNH/" target="_blank" rel="noopener noreferrer" dir="ltr">UCOIN eCNH</a>
+      <a class="ft-ext-link" href="https://ecnh.freedev.app/ecnh2025/" target="_blank" rel="noopener noreferrer" dir="ltr">eCNH 2025</a>
+    </div>
+  </div>
+</footer>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  "use strict";
+
+  var I18N = {
+    en: {
+      "nav.why": "Why", "nav.skills": "Skills", "nav.categories": "Categories", "nav.funnel": "From 100", "nav.join": "Request",
+      "hero.eyebrow": "Solana · eCNH Skill System",
+      "hero.title": "eCNH-Skill — from 100 skills, the <span class=\"hl\">top 10</span> most used",
+      "hero.sub": "Ten community skills selected from one hundred, covering contract guard, pool lens, DEX routing, explorers, price anchor, six languages, city nodes, bridges and DAO governance.",
+      "hero.mission": "eCNH-Skill is the skill portal of the eCNH community: it turns the civilizational link spanning 3,000 years, toward the stars, into reusable on-chain abilities for the earth village.",
+      "hero.badge": "2026 · 10 from 100",
+      "hero.cta1": "See the 10 skills", "hero.cta2": "See the selection logic",
+      "hero.stat.s": "top skills", "hero.stat.t": "total skills", "hero.stat.l": "languages", "hero.stat.c": "contract",
+      "why.eyebrow": "Why these ten", "why.h": "Why a top-10 skill set?",
+      "why.sub": "One hundred community skills are not equal. The top ten carry the traffic, the newcomers and the governance.",
+      "why.c1t": "Daily necessity", "why.c1d": "Every member touches them in their first hour: contract check, pool view, language switch and explorer lookup.",
+      "why.c2t": "Community traffic", "why.c2d": "Usage frequency and on-chain data demand rank far above the rest of the hundred-skills catalogue.",
+      "why.c3t": "Governance weight", "why.c3d": "Bridge, circulation and DAO skills shape the roadmap that carries the 3,000-year vision forward.",
+      "skills.eyebrow": "Top 10", "skills.h": "The 10 most-used eCNH skills",
+      "skills.sub": "Selected from 100 community skills by usage frequency, newcomer necessity, on-chain data demand and governance votes.",
+      "skills.footnote": "Skill descriptions are community navigation references built from Solana public data (2026-09 snapshot). They are tools, not investment advice.",
+      "categories.eyebrow": "8 clusters", "categories.h": "Where the 100 skills live",
+      "categories.sub": "The full hundred-skills catalogue groups into eight functional clusters; the top ten are picked from across them.",
+      "funnel.eyebrow": "Selection logic", "funnel.h": "From 100 skills to the top 10",
+      "funnel.sub": "A transparent four-step funnel, refreshed every quarter with the community.",
+      "funnel.step": "STEP",
+      "funnel.s1t": "Inventory", "funnel.s1d": "One hundred community skills are catalogued from member requests, docs and city-node feedback.",
+      "funnel.s2t": "Clustering", "funnel.s2d": "Skills group into eight functional clusters to remove overlaps and duplicate effort.",
+      "funnel.s3t": "Scoring", "funnel.s3d": "Weighted by usage frequency, newcomer necessity, on-chain data demand and governance votes.",
+      "funnel.s4t": "Top 10", "funnel.s4d": "The highest-ranked skills ship on this page and are reviewed with the community each quarter.",
+      "funnel.footnote": "The funnel is a community planning process for skills selection. Rankings depend on real usage and community votes, not on any promise.",
+      "join.eyebrow": "Request a skill", "join.h": "Bring a skill into the top 10",
+      "join.sub": "Tell the community which skill you use most — the next quarter review starts from your voice.",
+      "join.name": "Your name", "join.email": "Email", "join.idea": "Your most-used skill or a missing one", "join.submit": "Submit for the next review",
+      "footer.contract": "Contract", "footer.copy": "Select address",
+      "footer.terms": "Terms used: 华语 · 公益 · CNH",
+      "footer.disclaimer": "Skill portal of the eCNH 2026 plan. Not investment advice; skill descriptions are navigation references based on Solana public data and usage patterns, and do not represent any live product or tradable liquidity.",
+      "footer.source": "Snapshot source: Solana public explorers, 2026-09 data.",
+      "footer.i18n": "华语 / English / Français / Русский / Español / العربية",
+      "brand.l1": "eCNH, the earth village's own digital CNH; #WEB3",
+      "brand.l2": "eCNH = earth CNH = europe CNH = east CNH = ECNH = energy CNH",
+      "brand.global": "Earth &amp; Global Humanity Builds and Shares eCNH Together | 全球人类共建共享 eCNH",
+      "brand.community": "2026 eCNH Community · All information is for reference only",
+      "brand.orb": "View on OrbMarkets",
+      "theme.cosmic": "Cosmic", "theme.olive": "Olive", "theme.beige": "Beige",
+      "toast.copied": "Contract address copied", "toast.sent": "Submitted — the community team follows up", "toast.err": "Copy failed — please copy manually"
+    },
+    "zh-CN": {
+      "nav.why": "为什么", "nav.skills": "技能库", "nav.categories": "类别", "nav.funnel": "从100选", "nav.join": "申请技能",
+      "hero.eyebrow": "Solana · eCNH 技能体系",
+      "hero.title": "eCNH-Skill —— 从 100 个技能中精选 <span class=\"hl\">10 大</span>最常用",
+      "hero.sub": "从一百个社区技能中精选十大：合约核验、池面透镜、DEX 路由、浏览器、价格锚、六语通、城市节点、桥接与 DAO 治理。",
+      "hero.mission": "eCNH-Skill 是华夏币 eCNH 社区的技能门户：把跨越 3000 年、通向星辰的文明连接，沉淀为地球村可复用的链上能力。",
+      "hero.badge": "2026 · 10 from 100",
+      "hero.cta1": "查看 10 大技能", "hero.cta2": "查看筛选逻辑",
+      "hero.stat.s": "精选技能", "hero.stat.t": "技能总数", "hero.stat.l": "种语言", "hero.stat.c": "条合约",
+      "why.eyebrow": "为什么是这十个", "why.h": "为什么需要十大技能集？",
+      "why.sub": "一百个社区技能并不等价。十大承载着流量、新人引导与治理走向。",
+      "why.c1t": "日常必需", "why.c1d": "每位成员的第一个小时都会用到：合约核验、池面查看、语言切换与浏览器检索。",
+      "why.c2t": "社区流量", "why.c2d": "使用频率与链上数据需求，把十大推得远高于百项技能目录里的其余部分。",
+      "why.c3t": "治理权重", "why.c3d": "桥接、流通与 DAO 技能塑造着承载 3000 年愿景的路线图。",
+      "skills.eyebrow": "十大精选", "skills.h": "最常用的 10 个 eCNH 技能",
+      "skills.sub": "按使用频率、新人必需程度、链上数据需求与治理投票，从百项社区技能中精选。",
+      "skills.footnote": "技能说明是基于 Solana 公开数据（2026-09 快照）整理的社区导航参考。它们是工具，不是投资建议。",
+      "categories.eyebrow": "8 大聚类", "categories.h": "100 个技能分布在哪里",
+      "categories.sub": "百项技能目录归入八个功能聚类；十大精选取自各聚类。",
+      "funnel.eyebrow": "筛选逻辑", "funnel.h": "从 100 个技能到十大",
+      "funnel.sub": "透明的四步漏斗，每季度与社区一起刷新。",
+      "funnel.step": "步骤",
+      "funnel.s1t": "盘点", "funnel.s1d": "从成员需求、文档与城市节点反馈中盘点出一百个社区技能。",
+      "funnel.s2t": "归类", "funnel.s2d": "技能归入八个功能聚类，消除重复与重叠工作。",
+      "funnel.s3t": "评分", "funnel.s3d": "按使用频率、新人必需、链上数据需求与治理投票加权。",
+      "funnel.s4t": "精选十强", "funnel.s4d": "得分最高的技能上架本页，每季度与社区共同评审。",
+      "funnel.footnote": "漏斗是技能筛选的社区规划流程。排名取决于真实使用与社区投票，不构成任何承诺。",
+      "join.eyebrow": "申请技能", "join.h": "把某个技能带进十大",
+      "join.sub": "告诉我们你最常用的技能——下一季评审从你的声音开始。",
+      "join.name": "你的名字", "join.email": "邮箱", "join.idea": "你最常用的技能，或你觉得缺失的技能", "join.submit": "提交，进入下一季评审",
+      "footer.contract": "合约地址", "footer.copy": "复制地址",
+      "footer.terms": "用语：华语 · 公益 · CNH",
+      "footer.disclaimer": "eCNH 2026 计划技能门户，不构成投资建议；技能说明基于 Solana 公开数据与使用模式整理，仅作导航参考，不代表任何已上线产品或可交易流动性。",
+      "footer.source": "快照来源：Solana 公开浏览器，2026-09 数据。",
+      "footer.i18n": "华语 / English / Français / Русский / Español / العربية",
+      "brand.l1": "eCNH，地球村自己的数字 CNH；#WEB3",
+      "brand.l2": "eCNH = earth CNH = europe CNH = east CNH = ECNH = energy CNH",
+      "brand.global": "Earth &amp; Global Humanity Builds and Shares eCNH Together | 全球人类共建共享 eCNH",
+      "brand.community": "2026 eCNH Community · 所有信息仅供参考",
+      "brand.orb": "在 OrbMarkets 查看",
+      "theme.cosmic": "宇宙蓝", "theme.olive": "军绿", "theme.beige": "米黄",
+      "toast.copied": "合约地址已复制", "toast.sent": "已提交——社区团队会跟进", "toast.err": "复制失败——请手动复制"
+    },
+    fr: {
+      "nav.why": "Pourquoi", "nav.skills": "Compétences", "nav.categories": "Catégories", "nav.funnel": "De 100", "nav.join": "Demander",
+      "hero.eyebrow": "Solana · Système de compétences eCNH",
+      "hero.title": "eCNH-Skill — sur 100 compétences, le <span class=\"hl\">top 10</span> le plus utilisé",
+      "hero.sub": "Dix compétences communautaires choisies parmi cent : garde du contrat, loupe des pools, routage DEX, explorateurs, ancre de prix, six langues, nœuds de villes, ponts et gouvernance DAO.",
+      "hero.mission": "eCNH-Skill est le portail de compétences de la communauté eCNH : il transforme le lien civilisationnel de 3 000 ans, vers les étoiles, en capacités on-chain réutilisables pour le village terrestre.",
+      "hero.badge": "2026 · 10 sur 100",
+      "hero.cta1": "Voir les 10 compétences", "hero.cta2": "Voir la logique de sélection",
+      "hero.stat.s": "top compétences", "hero.stat.t": "total compétences", "hero.stat.l": "langues", "hero.stat.c": "contrat",
+      "why.eyebrow": "Pourquoi ces dix", "why.h": "Pourquoi un top 10 ?",
+      "why.sub": "Cent compétences communautaires ne se valent pas. Le top dix porte le trafic, les nouveaux et la gouvernance.",
+      "why.c1t": "Nécessité quotidienne", "why.c1d": "Chaque membre les touche dès la première heure : vérification du contrat, vue des pools, changement de langue et recherche d'explorateur.",
+      "why.c2t": "Trafic communautaire", "why.c2d": "La fréquence d'usage et la demande de données on-chain placent le top dix bien au-dessus du reste du catalogue.",
+      "why.c3t": "Poids de gouvernance", "why.c3d": "Les compétences ponts, circulation et DAO façonnent la feuille de route qui porte la vision des 3 000 ans.",
+      "skills.eyebrow": "Top 10", "skills.h": "Les 10 compétences eCNH les plus utilisées",
+      "skills.sub": "Sélectionnées parmi 100 compétences communautaires selon la fréquence d'usage, la nécessité pour les nouveaux, la demande de données on-chain et les votes de gouvernance.",
+      "skills.footnote": "Les descriptions sont des références de navigation communautaires bâties sur les données publiques de Solana (instantané 2026-09). Ce sont des outils, pas des conseils en investissement.",
+      "categories.eyebrow": "8 clusters", "categories.h": "Où vivent les 100 compétences",
+      "categories.sub": "Le catalogue de cent compétences se regroupe en huit clusters ; le top dix est choisi à travers eux.",
+      "funnel.eyebrow": "Logique de sélection", "funnel.h": "De 100 compétences au top 10",
+      "funnel.sub": "Un entonnoir transparent en quatre étapes, rafraîchi chaque trimestre avec la communauté.",
+      "funnel.step": "ÉTAPE",
+      "funnel.s1t": "Inventaire", "funnel.s1d": "Cent compétences communautaires sont cataloguées à partir des demandes, des docs et des retours des nœuds de villes.",
+      "funnel.s2t": "Regroupement", "funnel.s2d": "Les compétences se regroupent en huit clusters pour supprimer chevauchements et doublons.",
+      "funnel.s3t": "Score", "funnel.s3d": "Pondéré par fréquence d'usage, nécessité pour les nouveaux, demande de données on-chain et votes de gouvernance.",
+      "funnel.s4t": "Top 10", "funnel.s4d": "Les compétences les mieux notées sont publiées ici et relues avec la communauté chaque trimestre.",
+      "funnel.footnote": "L'entonnoir est un processus de planification communautaire. Les classements dépendent de l'usage réel et des votes, pas d'une promesse.",
+      "join.eyebrow": "Demander une compétence", "join.h": "Faites entrer une compétence dans le top 10",
+      "join.sub": "Dites à la communauté quelle compétence vous utilisez le plus — la prochaine revue part de votre voix.",
+      "join.name": "Votre nom", "join.email": "Email", "join.idea": "Votre compétence préférée ou une manquante", "join.submit": "Soumettre pour la prochaine revue",
+      "footer.contract": "Contrat", "footer.copy": "Sélectionner l'adresse",
+      "footer.terms": "Termes : 华语 · 公益 · CNH",
+      "footer.disclaimer": "Portail de compétences du plan eCNH 2026. Pas un conseil en investissement ; les descriptions sont des références de navigation basées sur les données publiques de Solana et les usages, sans représenter un produit vivant ni une liquidité négociable.",
+      "footer.source": "Source : explorateurs publics Solana, données 2026-09.",
+      "footer.i18n": "华语 / English / Français / Русский / Español / العربية",
+      "brand.l1": "eCNH, le CNH numérique du village terrestre ; #WEB3",
+      "brand.l2": "eCNH = earth CNH = europe CNH = east CNH = ECNH = energy CNH",
+      "brand.global": "Earth &amp; Global Humanity Builds and Shares eCNH Together | 全球人类共建共享 eCNH",
+      "brand.community": "2026 eCNH Community · Toutes les informations sont données à titre indicatif uniquement",
+      "brand.orb": "Voir sur OrbMarkets",
+      "theme.cosmic": "Cosmique", "theme.olive": "Olive", "theme.beige": "Beige",
+      "toast.copied": "Adresse du contrat copiée", "toast.sent": "Soumis — l'équipe communautaire vous suit", "toast.err": "Échec de copie — veuillez copier manuellement"
+    },
+    ru: {
+      "nav.why": "Почему", "nav.skills": "Навыки", "nav.categories": "Категории", "nav.funnel": "Из 100", "nav.join": "Заявка",
+      "hero.eyebrow": "Solana · Система навыков eCNH",
+      "hero.title": "eCNH-Skill — из 100 навыков <span class=\"hl\">10 самых</span> используемых",
+      "hero.sub": "Десять сообщественных навыков из ста: стража контракта, линза пулов, маршрутизация DEX, обозреватели, ценовой якорь, шесть языков, городские узлы, мосты и DAO.",
+      "hero.mission": "eCNH-Skill — портал навыков сообщества eCNH: он превращает цивилизационную связь на 3000 лет, к звёздам, в переиспользуемые ончейн-способности земной деревни.",
+      "hero.badge": "2026 · 10 из 100",
+      "hero.cta1": "Смотреть 10 навыков", "hero.cta2": "Логика отбора",
+      "hero.stat.s": "топ-навыков", "hero.stat.t": "всего навыков", "hero.stat.l": "языков", "hero.stat.c": "контракт",
+      "why.eyebrow": "Почему эти десять", "why.h": "Зачем топ-10 навыков?",
+      "why.sub": "Сто сообщественных навыков неравны. Десятка несёт трафик, новичков и управление.",
+      "why.c1t": "Ежедневная необходимость", "why.c1d": "Каждый участник касается их в первый час: проверка контракта, пулы, язык и поиск по обозревателям.",
+      "why.c2t": "Сообщественный трафик", "why.c2d": "Частота использования и спрос на ончейн-данные ставят десятку выше остального каталога.",
+      "why.c3t": "Вес управления", "why.c3d": "Навыки мостов, обращения и DAO формируют дорожную карту, несущую видение на 3000 лет.",
+      "skills.eyebrow": "Топ 10", "skills.h": "10 самых используемых навыков eCNH",
+      "skills.sub": "Выбраны из 100 сообщественных навыков по частоте использования, необходимости для новичков, спросу на ончейн-данные и голосам управления.",
+      "skills.footnote": "Описания — сообщественная навигационная справка на основе публичных данных Solana (снимок 2026-09). Это инструменты, а не инвестиционная рекомендация.",
+      "categories.eyebrow": "8 кластеров", "categories.h": "Где живут 100 навыков",
+      "categories.sub": "Каталог из ста навыков группируется в восемь функциональных кластеров; десятка выбирается из них.",
+      "funnel.eyebrow": "Логика отбора", "funnel.h": "От 100 навыков до топ-10",
+      "funnel.sub": "Прозрачная воронка из четырёх шагов, обновляемая каждый квартал с сообществом.",
+      "funnel.step": "ШАГ",
+      "funnel.s1t": "Инвентаризация", "funnel.s1d": "Сто сообщественных навыков каталогизируются из заявок, документации и обратной связи городских узлов.",
+      "funnel.s2t": "Кластеризация", "funnel.s2d": "Навыки группируются в восемь кластеров, убирая пересечения и дубли.",
+      "funnel.s3t": "Оценка", "funnel.s3d": "Взвешено по частоте использования, необходимости для новичков, спросу на данные и голосам управления.",
+      "funnel.s4t": "Топ-10", "funnel.s4d": "Лучшие навыки публикуются на этой странице и пересматриваются с сообществом каждый квартал.",
+      "funnel.footnote": "Воронка — сообщественный процесс планирования навыков. Рейтинги зависят от реального использования и голосов, а не от обещаний.",
+      "join.eyebrow": "Запросить навык", "join.h": "Приведите навык в топ-10",
+      "join.sub": "Расскажите сообществу, какой навык вы используете чаще всего — следующий обзор начнётся с вашего голоса.",
+      "join.name": "Ваше имя", "join.email": "Email", "join.idea": "Ваш любимый навык или недостающий", "join.submit": "Отправить на следующий обзор",
+      "footer.contract": "Контракт", "footer.copy": "Выбрать адрес",
+      "footer.terms": "Термины: 华语 · 公益 · CNH",
+      "footer.disclaimer": "Портал навыков плана eCNH 2026. Не инвестиционная рекомендация; описания — навигационная справка на основе публичных данных Solana и паттернов использования, без представления живого продукта или ликвидности.",
+      "footer.source": "Источник: публичные обозреватели Solana, данные 2026-09.",
+      "footer.i18n": "华语 / English / Français / Русский / Español / العربية",
+      "brand.l1": "eCNH — цифровой CNH земной деревни; #WEB3",
+      "brand.l2": "eCNH = earth CNH = europe CNH = east CNH = ECNH = energy CNH",
+      "brand.global": "Earth &amp; Global Humanity Builds and Shares eCNH Together | 全球人类共建共享 eCNH",
+      "brand.community": "2026 eCNH Community · Вся информация носит справочный характер",
+      "brand.orb": "Смотреть на OrbMarkets",
+      "theme.cosmic": "Космос", "theme.olive": "Олива", "theme.beige": "Бежевый",
+      "toast.copied": "Адрес контракта скопирован", "toast.sent": "Отправлено — команда сообщества свяжется", "toast.err": "Не удалось скопировать — скопируйте вручную"
+    },
+    es: {
+      "nav.why": "Por qué", "nav.skills": "Habilidades", "nav.categories": "Categorías", "nav.funnel": "De 100", "nav.join": "Solicitar",
+      "hero.eyebrow": "Solana · Sistema de habilidades eCNH",
+      "hero.title": "eCNH-Skill — de 100 habilidades, el <span class=\"hl\">top 10</span> más usado",
+      "hero.sub": "Diez habilidades comunitarias elegidas entre cien: guardián del contrato, lente de pools, enrutado DEX, exploradores, ancla de precio, seis idiomas, nodos de ciudades, puentes y gobernanza DAO.",
+      "hero.mission": "eCNH-Skill es el portal de habilidades de la comunidad eCNH: convierte el vínculo civilizacional de 3.000 años, hacia las estrellas, en capacidades on-chain reutilizables para la aldea terrestre.",
+      "hero.badge": "2026 · 10 de 100",
+      "hero.cta1": "Ver las 10 habilidades", "hero.cta2": "Ver la lógica de selección",
+      "hero.stat.s": "top habilidades", "hero.stat.t": "total habilidades", "hero.stat.l": "idiomas", "hero.stat.c": "contrato",
+      "why.eyebrow": "Por qué estos diez", "why.h": "¿Por qué un top 10?",
+      "why.sub": "Cien habilidades comunitarias no son iguales. El top diez lleva el tráfico, los nuevos y la gobernanza.",
+      "why.c1t": "Necesidad diaria", "why.c1d": "Cada miembro las toca en su primera hora: verificación del contrato, pools, cambio de idioma y búsqueda en exploradores.",
+      "why.c2t": "Tráfico comunitario", "why.c2d": "La frecuencia de uso y la demanda de datos on-chain sitúan al top diez muy por encima del resto del catálogo.",
+      "why.c3t": "Peso de gobernanza", "why.c3d": "Las habilidades de puentes, circulación y DAO moldean la hoja de ruta que lleva la visión de 3.000 años.",
+      "skills.eyebrow": "Top 10", "skills.h": "Las 10 habilidades eCNH más usadas",
+      "skills.sub": "Seleccionadas de 100 habilidades comunitarias por frecuencia de uso, necesidad para nuevos, demanda de datos on-chain y votos de gobernanza.",
+      "skills.footnote": "Las descripciones son referencias de navegación comunitarias basadas en datos públicos de Solana (instantánea 2026-09). Son herramientas, no consejos de inversión.",
+      "categories.eyebrow": "8 clústeres", "categories.h": "Dónde viven las 100 habilidades",
+      "categories.sub": "El catálogo de cien habilidades se agrupa en ocho clústeres funcionales; el top diez se elige entre ellos.",
+      "funnel.eyebrow": "Lógica de selección", "funnel.h": "De 100 habilidades al top 10",
+      "funnel.sub": "Un embudo transparente de cuatro pasos, renovado cada trimestre con la comunidad.",
+      "funnel.step": "PASO",
+      "funnel.s1t": "Inventario", "funnel.s1d": "Cien habilidades comunitarias se catalogan a partir de solicitudes, documentos y comentarios de los nodos de ciudades.",
+      "funnel.s2t": "Agrupación", "funnel.s2d": "Las habilidades se agrupan en ocho clústeres para eliminar solapamientos y duplicados.",
+      "funnel.s3t": "Puntuación", "funnel.s3d": "Ponderada por frecuencia de uso, necesidad para nuevos, demanda de datos on-chain y votos de gobernanza.",
+      "funnel.s4t": "Top 10", "funnel.s4d": "Las mejores habilidades se publican aquí y se revisan con la comunidad cada trimestre.",
+      "funnel.footnote": "El embudo es un proceso comunitario de planificación de habilidades. Los rankings dependen del uso real y los votos, no de promesas.",
+      "join.eyebrow": "Solicitar una habilidad", "join.h": "Lleva una habilidad al top 10",
+      "join.sub": "Cuéntale a la comunidad qué habilidad usas más — la próxima revisión empieza con tu voz.",
+      "join.name": "Tu nombre", "join.email": "Email", "join.idea": "Tu habilidad favorita o una que falta", "join.submit": "Enviar para la próxima revisión",
+      "footer.contract": "Contrato", "footer.copy": "Seleccionar dirección",
+      "footer.terms": "Términos: 华语 · 公益 · CNH",
+      "footer.disclaimer": "Portal de habilidades del plan eCNH 2026. No es consejo de inversión; las descripciones son referencias de navegación basadas en datos públicos de Solana y patrones de uso, sin representar producto vivo ni liquidez negociable.",
+      "footer.source": "Fuente: exploradores públicos de Solana, datos 2026-09.",
+      "footer.i18n": "华语 / English / Français / Русский / Español / العربية",
+      "brand.l1": "eCNH, el CNH digital de la aldea terrestre; #WEB3",
+      "brand.l2": "eCNH = earth CNH = europe CNH = east CNH = ECNH = energy CNH",
+      "brand.global": "Earth &amp; Global Humanity Builds and Shares eCNH Together | 全球人类共建共享 eCNH",
+      "brand.community": "2026 eCNH Community · Toda la información es solo de referencia",
+      "brand.orb": "Ver en OrbMarkets",
+      "theme.cosmic": "Cósmico", "theme.olive": "Oliva", "theme.beige": "Beige",
+      "toast.copied": "Dirección del contrato copiada", "toast.sent": "Enviado — el equipo comunitario te contacta", "toast.err": "Fallo al copiar — copia manualmente"
+    },
+    ar: {
+      "nav.why": "لماذا", "nav.skills": "المهارات", "nav.categories": "الفئات", "nav.funnel": "من 100", "nav.join": "طلب",
+      "hero.eyebrow": "سولانا · نظام مهارات eCNH",
+      "hero.title": "eCNH-Skill — من 100 مهارة، <span class=\"hl\">أكثر 10</span> استخدامًا",
+      "hero.sub": "عشر مهارات مجتمعية مختارة من مئة: حارس العقد، عدسة المجمعات، توجيه DEX، المستكشفون، مرساة السعر، ست لغات، العقد المدنية، الجسور وحوكمة DAO.",
+      "hero.mission": "eCNH-Skill هو بوابة مهارات مجتمع eCNH: يحوّل الرابط الحضاري الممتد 3000 عام نحو النجوم إلى قدرات قابلة لإعادة الاستخدام على السلسلة لقرية الأرض.",
+      "hero.badge": "2026 · 10 من 100",
+      "hero.cta1": "عرض المهارات العشر", "hero.cta2": "عرض منطق الاختيار",
+      "hero.stat.s": "مهارات مختارة", "hero.stat.t": "إجمالي المهارات", "hero.stat.l": "لغات", "hero.stat.c": "عقد",
+      "why.eyebrow": "لماذا هذه العشر", "why.h": "لماذا مجموعة أعلى عشر مهارات؟",
+      "why.sub": "مئة مهارة مجتمعية ليست متساوية. العشر الأعلى تحمل الحركة والوافدين والحوكمة.",
+      "why.c1t": "ضرورة يومية", "why.c1d": "يلمسها كل عضو في ساعته الأولى: فحص العقد، عرض المجمعات، تبديل اللغة والبحث في المستكشفات.",
+      "why.c2t": "حركة المجتمع", "why.c2d": "تواتر الاستخدام والطلب على بيانات السلسلة يضعان العشر الأعلى فوق بقية كتالوج المئة مهارة.",
+      "why.c3t": "وزن الحوكمة", "why.c3d": "مهارات الجسور والتداول وDAO تشكّل خارطة الطريق التي تحمل رؤية الـ 3000 عام.",
+      "skills.eyebrow": "أعلى 10", "skills.h": "أكثر 10 مهارات eCNH استخدامًا",
+      "skills.sub": "مختارة من 100 مهارة مجتمعية حسب تواتر الاستخدام وضرورة الوافدين والطلب على بيانات السلسلة وأصوات الحوكمة.",
+      "skills.footnote": "الأوصاف مراجع تنقل مجتمعية مبنية على البيانات العامة لـ Solana (لقطة 2026-09). إنها أدوات وليست نصيحة استثمارية.",
+      "categories.eyebrow": "8 مجموعات", "categories.h": "أين تعيش المئة مهارة",
+      "categories.sub": "كتالوج المئة مهارة يتجمّع في ثماني مجموعات وظيفية؛ الأعلى عشرة يُختار منها.",
+      "funnel.eyebrow": "منطق الاختيار", "funnel.h": "من 100 مهارة إلى الأعلى عشرة",
+      "funnel.sub": "مسار شفاف من أربع خطوات، يُحدَّث كل ربع سنة مع المجتمع.",
+      "funnel.step": "خطوة",
+      "funnel.s1t": "الجرد", "funnel.s1d": "تُفهرس مئة مهارة مجتمعية من طلبات الأعضاء والوثائق وملاحظات العقد المدنية.",
+      "funnel.s2t": "التجميع", "funnel.s2d": "تتجمّع المهارات في ثماني مجموعات وظيفية لإزالة التداخل والازدواج.",
+      "funnel.s3t": "التقييم", "funnel.s3d": "موزون بتواتر الاستخدام وضرورة الوافدين والطلب على بيانات السلسلة وأصوات الحوكمة.",
+      "funnel.s4t": "الأعلى 10", "funnel.s4d": "تُنشر المهارات الأعلى تقييمًا في هذه الصفحة وتُراجع مع المجتمع كل ربع سنة.",
+      "funnel.footnote": "المسار عملية تخطيط مجتمعية لاختيار المهارات. الترتيب يعتمد على الاستخدام الحقيقي وأصوات المجتمع، لا على وعود.",
+      "join.eyebrow": "طلب مهارة", "join.h": "أدخل مهارة إلى الأعلى عشرة",
+      "join.sub": "أخبر المجتمع أي مهارة تستخدمها أكثر — المراجعة القادمة تبدأ من صوتك.",
+      "join.name": "اسمك", "join.email": "البريد", "join.idea": "مهارتك الأكثر استخدامًا أو مهارة مفقودة", "join.submit": "أرسل للمراجعة القادمة",
+      "footer.contract": "العقد", "footer.copy": "تحديد العنوان",
+      "footer.terms": "المصطلحات: 华语 · 公益 · CNH",
+      "footer.disclaimer": "بوابة مهارات خطة eCNH 2026. ليست نصيحة استثمارية؛ الأوصاف مراجع تنقل مبنية على البيانات العامة لـ Solana وأنماط الاستخدام، دون تمثيل منتج حي أو سيولة قابلة للتداول.",
+      "footer.source": "المصدر: مستكشفو سولانا العموميون، بيانات 2026-09.",
+      "footer.i18n": "华语 / English / Français / Русский / Español / العربية",
+      "brand.l1": "eCNH، الرقمي الخاص بقرية الأرض؛ #WEB3",
+      "brand.l2": "eCNH = earth CNH = europe CNH = east CNH = ECNH = energy CNH",
+      "brand.global": "Earth &amp; Global Humanity Builds and Shares eCNH Together | 全球人类共建共享 eCNH",
+      "brand.community": "2026 eCNH Community · جميع المعلومات للرجوع إليها فقط",
+      "brand.orb": "عرض على OrbMarkets",
+      "theme.cosmic": "كوني", "theme.olive": "زيتي", "theme.beige": "بيج",
+      "toast.copied": "تم نسخ عنوان العقد", "toast.sent": "تم الإرسال — سيتواصل فريق المجتمع", "toast.err": "فشل النسخ — يرجى النسخ يدويًا"
+    }
+  };
+
+  var CATS = {
+    en: [
+      { n: "Security", d: "Contract guard and address-safety checks" },
+      { n: "Trading", d: "Pools, routing and execution helpers" },
+      { n: "Data & Charts", d: "Price anchor, circulation and explorer queries" },
+      { n: "i18n", d: "Six-language translation with Arabic RTL" },
+      { n: "Community", d: "City nodes and onboarding guides" },
+      { n: "Bridge", d: "Cross-chain readiness after full circulation" },
+      { n: "Governance", d: "DAO proposals and treasury drafts" },
+      { n: "Tooling", d: "Dev scripts and community utilities" }
+    ],
+    "zh-CN": [
+      { n: "安全", d: "合约卫士与地址安全校验" },
+      { n: "交易", d: "池面、路由与执行辅助" },
+      { n: "数据与图表", d: "价格锚、流通量与浏览器查询" },
+      { n: "多语言", d: "六语翻译，阿拉伯语 RTL" },
+      { n: "社区", d: "城市节点与上手引导" },
+      { n: "桥接", d: "全流通后的跨链准备" },
+      { n: "治理", d: "DAO 提案与资金库草案" },
+      { n: "工具", d: "开发脚本与社区工具" }
+    ],
+    fr: [
+      { n: "Sécurité", d: "Garde du contrat et vérifications d'adresses" },
+      { n: "Trading", d: "Pools, routage et aides à l'exécution" },
+      { n: "Données & graphiques", d: "Ancre de prix, circulation et requêtes d'explorateur" },
+      { n: "i18n", d: "Traduction en six langues avec RTL arabe" },
+      { n: "Communauté", d: "Nœuds de villes et guides d'accueil" },
+      { n: "Ponts", d: "Préparation inter-chaînes après circulation complète" },
+      { n: "Gouvernance", d: "Propositions DAO et ébauches de trésorerie" },
+      { n: "Outillage", d: "Scripts de développement et utilitaires communautaires" }
+    ],
+    ru: [
+      { n: "Безопасность", d: "Стража контракта и проверка адресов" },
+      { n: "Торговля", d: "Пулы, маршрутизация и помощь в исполнении" },
+      { n: "Данные и графики", d: "Ценовой якорь, обращение и запросы обозревателей" },
+      { n: "i18n", d: "Перевод на шесть языков с RTL арабского" },
+      { n: "Сообщество", d: "Городские узлы и руководства" },
+      { n: "Мосты", d: "Кросс-чейн после полного обращения" },
+      { n: "Управление", d: "Предложения DAO и черновики казны" },
+      { n: "Инструменты", d: "Скрипты разработки и утилиты сообщества" }
+    ],
+    es: [
+      { n: "Seguridad", d: "Guardián del contrato y comprobación de direcciones" },
+      { n: "Trading", d: "Pools, enrutado y ayuda a la ejecución" },
+      { n: "Datos y gráficos", d: "Ancla de precio, circulación y consultas de explorador" },
+      { n: "i18n", d: "Traducción a seis idiomas con RTL árabe" },
+      { n: "Comunidad", d: "Nodos de ciudades y guías de inicio" },
+      { n: "Puentes", d: "Preparación entre cadenas tras la circulación completa" },
+      { n: "Gobernanza", d: "Propuestas DAO y borradores de tesorería" },
+      { n: "Herramientas", d: "Scripts de desarrollo y utilidades comunitarias" }
+    ],
+    ar: [
+      { n: "الأمان", d: "حارس العقد وفحص سلامة العناوين" },
+      { n: "التداول", d: "المجمعات والتوجيه ومساعدات التنفيذ" },
+      { n: "البيانات والرسوم", d: "مرساة السعر والتداول واستعلامات المستكشف" },
+      { n: "التعدد اللغوي", d: "ترجمة بست لغات مع RTL للعربية" },
+      { n: "المجتمع", d: "العقد المدنية وأدلة الانطلاق" },
+      { n: "الجسور", d: "الجاهزية عبر السلاسل بعد التداول الكامل" },
+      { n: "الحوكمة", d: "مقترحات DAO ومسودات الخزانة" },
+      { n: "الأدوات", d: "سكربتات التطوير وأدوات المجتمع" }
+    ]
+  };
+
+  var ICONS = [
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 3v6c0 5-3.2 8.4-7 10-3.8-1.6-7-5-7-10V5l7-3z"/><path d="M9 12l2 2 4-4"/></svg>',
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.8-7 9.5-4-1.7-7-5-7-9.5V6l7-3z"/><path d="M8.5 12.5l2 2 5-5"/></svg>',
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><path d="M7.5 17.5L17 6.5M13.5 11l3-4.5M6 17l4-3.5"/></svg>',
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/><path d="M8 11h6M11 8v6"/></svg>',
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M12 6l-3 3M12 6l3 3M12 18l-3-3M12 18l3-3"/></svg>',
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18M3 21h18M4 7h16v10H4zM7 7v10M17 7v10M10 7v10M14 7v10"/></svg>',
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3z"/></svg>',
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.6-9.5-9A6 6 0 0112 6a6 6 0 019.5 6c-2.5 4.4-9.5 9-9.5 9z"/><circle cx="12" cy="10" r="2.4"/></svg>',
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 20l8-16M5 13l3 3-3 3M19 5l-3 3 3 3"/></svg>',
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v2H4V6l8-4z"/><path d="M5 8h14l-1 12H6L5 8z"/><path d="M10 12h4"/></svg>'
+  ];
+
+  var SKILLS = {
+    en: [
+      { cat: 0, n: "Contract Guard", d: "One-tap verification of the official eCNH contract on Solana; flags typosquat addresses so every workflow stays on the one public contract.", u: "Very high — every workflow" },
+      { cat: 1, n: "Pool Lens", d: "Reads the live Orca pools eCNH/PYUSD and eCNH/USDC: depth, price impact and pool health in plain language.", u: "Very high — trading & liquidity" },
+      { cat: 1, n: "DEX Router", d: "Routes through the 5 DEXs (HumidiFi, Meteora, Raydium, Orca, Jupiter) via aggregation for the best execution path.", u: "High — routing & execution" },
+      { cat: 3, n: "Explorer Uni", d: "One query across Solscan, Solana Explorer, Orb, SolanaFM and Solana Beach: balances, transfers, stake and decoded transactions.", u: "High — lookup & verification" },
+      { cat: 2, n: "Price Anchor", d: "Tracks the Andromeda standard 1 eCNH ≈ 1 CNH and reports deviation with clear charts and alerts.", u: "High — daily watch" },
+      { cat: 2, n: "Circulation Meter", d: "Tracks the 100-trillion full-circulation milestone and reports supply progress without pretending precision.", u: "Steady — roadmap watch" },
+      { cat: 3, n: "Six-Lingua", d: "Instant 6-language translation of docs and posts (EN, 中文, FR, RU, ES, العربية) with automatic RTL for Arabic.", u: "Very high — all regions" },
+      { cat: 4, n: "City Node Map", d: "Guides to the six city groups — Ljubljana, Hong Kong, Zurich, Singapore, Abu Dhabi, Luxembourg City — with local-language onboarding.", u: "Steady — onboarding" },
+      { cat: 5, n: "Bridge Planner", d: "Prepares cross-chain readiness for SOL, BTC, ETH, BNB, AVAX, DOGE, TRX after the 100-trillion circulation milestone.", u: "Steady — ecosystem prep" },
+      { cat: 6, n: "DAO Drafter", d: "Drafts Interstellar Alliance DAO proposals — listings, bridges, treasury — in six languages with a neutrality check.", u: "Steady — governance" }
+    ],
+    "zh-CN": [
+      { cat: 0, n: "合约卫士", d: "一键核验 Solana 上 eCNH 官方合约，识别仿冒地址，让每个操作都落在唯一的公开合约上。", u: "极高——所有操作" },
+      { cat: 1, n: "池面透镜", d: "实时读取 Orca 的 eCNH/PYUSD 与 eCNH/USDC 双池：深度、滑点与池健康度，用平实语言呈现。", u: "极高——交易与流动性" },
+      { cat: 1, n: "DEX 路由", d: "经聚合在 5 大 DEX（HumidiFi、Meteora、Raydium、Orca、Jupiter）间选择最佳执行路径。", u: "高——路由与执行" },
+      { cat: 3, n: "浏览器万用", d: "一次查询覆盖 Solscan、Solana Explorer、Orb、SolanaFM 与 Solana Beach：余额、转账、质押与解码交易。", u: "高——查询与核验" },
+      { cat: 2, n: "价格锚", d: "跟踪仙女座标准 1 eCNH ≈ 1 CNH，用清晰图表与提醒呈现偏离度。", u: "高——每日关注" },
+      { cat: 2, n: "流通计量", d: "跟踪 100 万亿全流通里程碑，如实呈现供应进展，不假装精确。", u: "稳定——路线图关注" },
+      { cat: 3, n: "六语通", d: "文档与帖子即时切换 6 种语言（EN、中文、FR、RU、ES、العربية），阿拉伯语自动 RTL。", u: "极高——覆盖所有地区" },
+      { cat: 4, n: "城市节点图", d: "六大城市小组导览——卢布尔雅那、香港、苏黎世、新加坡、阿布扎比、卢森堡市，本地语言逐步上手。", u: "稳定——新人引导" },
+      { cat: 5, n: "桥接规划", d: "为 100 万亿全流通后的跨链做准备：SOL、BTC、ETH、BNB、AVAX、DOGE、TRX。", u: "稳定——生态准备" },
+      { cat: 6, n: "DAO 起草", d: "起草星际联盟 DAO 提案——上线、桥接、资金库——支持六种语言并带中立性检查。", u: "稳定——治理" }
+    ],
+    fr: [
+      { cat: 0, n: "Garde du contrat", d: "Vérification en un clic du contrat officiel eCNH sur Solana ; signale les adresses usurpées pour que chaque flux reste sur l'unique contrat public.", u: "Très élevée — chaque flux" },
+      { cat: 1, n: "Loupe des pools", d: "Lit les pools Orca eCNH/PYUSD et eCNH/USDC en direct : profondeur, impact de prix et santé des pools en langage clair.", u: "Très élevée — trading & liquidité" },
+      { cat: 1, n: "Routeur DEX", d: "Route à travers les 5 DEX (HumidiFi, Meteora, Raydium, Orca, Jupiter) via agrégation pour la meilleure voie d'exécution.", u: "Élevée — routage & exécution" },
+      { cat: 3, n: "Explorateur Uni", d: "Une seule requête sur Solscan, Solana Explorer, Orb, SolanaFM et Solana Beach : soldes, transferts, staking et transactions décodées.", u: "Élevée — recherche & vérification" },
+      { cat: 2, n: "Ancre de prix", d: "Suit le standard Andromède 1 eCNH ≈ 1 CNH et rapporte l'écart avec graphiques et alertes clairs.", u: "Élevée — suivi quotidien" },
+      { cat: 2, n: "Compteur de circulation", d: "Suit le jalon de circulation complète de 100 000 milliards et rend compte du progrès sans fausse précision.", u: "Régulière — suivi de feuille de route" },
+      { cat: 3, n: "Six-Lingua", d: "Traduction instantanée en 6 langues (EN, 中文, FR, RU, ES, العربية) avec RTL automatique pour l'arabe.", u: "Très élevée — toutes les régions" },
+      { cat: 4, n: "Carte des nœuds de villes", d: "Guide des six groupes de villes — Ljubljana, Hong Kong, Zurich, Singapour, Abou Dabi, Luxembourg — avec onboarding en langue locale.", u: "Régulière — accueil" },
+      { cat: 5, n: "Planificateur de ponts", d: "Prépare la compatibilité inter-chaînes pour SOL, BTC, ETH, BNB, AVAX, DOGE, TRX après la circulation de 100 000 milliards.", u: "Régulière — préparation de l'écosystème" },
+      { cat: 6, n: "Rédacteur DAO", d: "Rédige des propositions DAO de l'Alliance Interstellaire — cotations, ponts, trésorerie — en six langues avec un contrôle de neutralité.", u: "Régulière — gouvernance" }
+    ],
+    ru: [
+      { cat: 0, n: "Страж контракта", d: "Проверка официального контракта eCNH на Solana в один клик; помечает поддельные адреса, чтобы каждый поток оставался на единственном публичном контракте.", u: "Очень высокая — каждый поток" },
+      { cat: 1, n: "Линза пулов", d: "Читает живые пулы Orca eCNH/PYUSD и eCNH/USDC: глубина, ценовое влияние и здоровье пула простым языком.", u: "Очень высокая — торговля и ликвидность" },
+      { cat: 1, n: "Маршрутизатор DEX", d: "Маршрутизирует через 5 DEX (HumidiFi, Meteora, Raydium, Orca, Jupiter) с агрегацией для наилучшего исполнения.", u: "Высокая — маршрутизация и исполнение" },
+      { cat: 3, n: "Уни-обозреватель", d: "Один запрос по Solscan, Solana Explorer, Orb, SolanaFM и Solana Beach: балансы, переводы, стейкинг и декодированные транзакции.", u: "Высокая — поиск и проверка" },
+      { cat: 2, n: "Ценовой якорь", d: "Отслеживает стандарт Андромеды 1 eCNH ≈ 1 CNH и показывает отклонение графиками и оповещениями.", u: "Высокая — ежедневное наблюдение" },
+      { cat: 2, n: "Счётчик обращения", d: "Следит за вехой полного обращения в 100 триллионов и показывает прогресс без ложной точности.", u: "Стабильная — наблюдение за картой" },
+      { cat: 3, n: "Шесть языков", d: "Мгновенный перевод документов на 6 языков (EN, 中文, FR, RU, ES, العربية) с автоматическим RTL для арабского.", u: "Очень высокая — все регионы" },
+      { cat: 4, n: "Карта городских узлов", d: "Путеводитель по шести городским группам — Любляна, Гонконг, Цюрих, Сингапур, Абу-Даби, Люксембург — с адаптацией на местном языке.", u: "Стабильная — адаптация" },
+      { cat: 5, n: "Планировщик мостов", d: "Готовит кросс-чейн для SOL, BTC, ETH, BNB, AVAX, DOGE, TRX после обращения в 100 триллионов.", u: "Стабильная — подготовка экосистемы" },
+      { cat: 6, n: "Черновикер DAO", d: "Готовит предложения DAO Межзвёздного Альянса — листинги, мосты, казну — на шести языках с проверкой нейтральности.", u: "Стабильная — управление" }
+    ],
+    es: [
+      { cat: 0, n: "Guardián del contrato", d: "Verificación en un clic del contrato oficial de eCNH en Solana; señala direcciones suplantadas para que cada flujo quede en el único contrato público.", u: "Muy alto — cada flujo" },
+      { cat: 1, n: "Lente de pools", d: "Lee en vivo los pools de Orca eCNH/PYUSD y eCNH/USDC: profundidad, impacto de precio y salud del pool en lenguaje claro.", u: "Muy alto — trading y liquidez" },
+      { cat: 1, n: "Enrutador DEX", d: "Enruta a través de los 5 DEX (HumidiFi, Meteora, Raydium, Orca, Jupiter) con agregación para la mejor ejecución.", u: "Alto — enrutado y ejecución" },
+      { cat: 3, n: "Explorador Uni", d: "Una consulta en Solscan, Solana Explorer, Orb, SolanaFM y Solana Beach: saldos, transferencias, staking y transacciones decodificadas.", u: "Alto — consulta y verificación" },
+      { cat: 2, n: "Ancla de precio", d: "Sigue el estándar Andrómeda 1 eCNH ≈ 1 CNH e informa la desviación con gráficos y alertas claros.", u: "Alto — seguimiento diario" },
+      { cat: 2, n: "Medidor de circulación", d: "Sigue el hito de circulación completa de 100 billones e informa el progreso del suministro sin falsa precisión.", u: "Estable — seguimiento de hoja de ruta" },
+      { cat: 3, n: "Seis Lenguas", d: "Traducción instantánea a 6 idiomas (EN, 中文, FR, RU, ES, العربية) con RTL automático para árabe.", u: "Muy alto — todas las regiones" },
+      { cat: 4, n: "Mapa de nodos de ciudad", d: "Guía de los seis grupos de ciudades — Liubliana, Hong Kong, Zúrich, Singapur, Abu Dabi, Luxemburgo — con incorporación en el idioma local.", u: "Estable — incorporación" },
+      { cat: 5, n: "Planificador de puentes", d: "Prepara la compatibilidad entre cadenas para SOL, BTC, ETH, BNB, AVAX, DOGE y TRX tras la circulación de 100 billones.", u: "Estable — preparación del ecosistema" },
+      { cat: 6, n: "Redactor DAO", d: "Redacta propuestas de la DAO de la Alianza Interestelar — listados, puentes, tesorería — en seis idiomas con control de neutralidad.", u: "Estable — gobernanza" }
+    ],
+    ar: [
+      { cat: 0, n: "حارس العقد", d: "تحقق بنقرة واحدة من العقد الرسمي لـ eCNH على Solana؛ ويحذّر من العناوين المقلدة ليبقى كل عمل على العقد العام الوحيد.", u: "عالٍ جدًا — كل عمل" },
+      { cat: 1, n: "عدسة المجمعات", d: "يقرأ مجمعي Orca المباشرين eCNH/PYUSD وeCNH/USDC: العمق وأثر السعر وصحة المجمع بلغة واضحة.", u: "عالٍ جدًا — التداول والسيولة" },
+      { cat: 1, n: "موجّه DEX", d: "يوجّه عبر 5 منصات DEX (HumidiFi وMeteora وRaydium وOrca وJupiter) بالتجميع لأفضل مسار تنفيذ.", u: "عالٍ — التوجيه والتنفيذ" },
+      { cat: 3, n: "مستكشف موحّد", d: "استعلام واحد عبر Solscan وSolana Explorer وOrb وSolanaFM وSolana Beach: الأرصدة والتحويلات والرهن والمعاملات المفككة.", u: "عالٍ — البحث والتحقق" },
+      { cat: 2, n: "مرساة السعر", d: "يتتبع معيار أندروميدا 1 eCNH ≈ 1 CNH ويعرض الانحراف برسوم وتنبيهات واضحة.", u: "عالٍ — متابعة يومية" },
+      { cat: 2, n: "عداد التداول", d: "يتتبع مرحلة التداول الكامل البالغة 100 تريليون ويعرض تقدم الإمداد دون دقة مزعومة.", u: "مستقر — متابعة خارطة الطريق" },
+      { cat: 3, n: "ست لغات", d: "ترجمة فورية للمستندات والمشاركات إلى 6 لغات (EN و中文 وFR وRU وES والعربية) مع RTL تلقائي للعربية.", u: "عالٍ جدًا — كل المناطق" },
+      { cat: 4, n: "خريطة العقد المدنية", d: "دليل مجموعات المدن الست — ليوبليانا وهونغ كونغ وزيورخ وسنغافورة وأبوظبي ولوكسمبورغ — مع تأهيل باللغة المحلية.", u: "مستقر — التأهيل" },
+      { cat: 5, n: "مخطط الجسور", d: "يحضّر الجاهزية عبر السلاسل لـ SOL وBTC وETH وBNB وAVAX وDOGE وTRX بعد التداول الكامل البالغ 100 تريليون.", u: "مستقر — تهيئة النظام البيئي" },
+      { cat: 6, n: "صياغة DAO", d: "يصوغ مقترحات DAO للتحالف النجمي — الإدراج والجسور والخزانة — بست لغات مع فحص الحياد.", u: "مستقر — الحوكمة" }
+    ]
+  };
+
+  /* ---------- helpers ---------- */
+  function esc(s) {
+    return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+  var current = "en";
+  var toastTimer = null;
+  function showToast(msg, isErr) {
+    var t = document.getElementById("toast");
+    t.textContent = msg;
+    t.style.borderColor = isErr ? "#e5534b" : "var(--accent)";
+    t.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { t.classList.remove("show"); }, 2400);
+  }
+  function copyText(val, dict) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(val).then(function () { showToast(dict["toast.copied"], false); }, function () {
+        var ta = document.createElement("textarea"); ta.value = val; ta.style.position = "fixed"; ta.style.opacity = "0";
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand("copy"); showToast(dict["toast.copied"], false); } catch (e) { showToast(dict["toast.err"], true); }
+        document.body.removeChild(ta);
+      });
+    } else { showToast(dict["toast.err"], true); }
+  }
+
+  /* ---------- render ---------- */
+  function renderSkills(lang) {
+    var dict = I18N[lang] || I18N.en;
+    var list = SKILLS[lang] || SKILLS.en;
+    var cats = CATS[lang] || CATS.en;
+    var wrap = document.getElementById("skillGrid");
+    if (!wrap) return;
+    var html = "";
+    for (var i = 0; i < list.length; i++) {
+      var s = list[i];
+      var catName = (cats[s.cat] || {}).n || "";
+      html += '<article class="sk-card reveal"><div class="sk-top"><span class="sk-rank">#' + (i + 1) + ' · ECNH-SKILL</span><span class="sk-icon" aria-hidden="true">' + ICONS[i % ICONS.length] + '</span></div>' +
+        '<span class="sk-cat">' + esc(catName) + '</span>' +
+        '<h3>' + esc(s.n) + '</h3><p>' + esc(s.d) + '</p>' +
+        '<span class="sk-use">' + esc(dict["footer.contract"]) + ' · ' + esc(s.u) + '</span></article>';
+    }
+    wrap.innerHTML = html;
+    observeReveal();
+  }
+  function renderCats(lang) {
+    var list = CATS[lang] || CATS.en;
+    var wrap = document.getElementById("catGrid");
+    if (!wrap) return;
+    var html = "";
+    for (var i = 0; i < list.length; i++) {
+      html += '<div class="cat-card reveal"><h3>' + esc(list[i].n) + '</h3><p>' + esc(list[i].d) + '</p></div>';
+    }
+    wrap.innerHTML = html;
+    observeReveal();
+  }
+
+  /* ---------- reveal ---------- */
+  var io = null;
+  function observeReveal() {
+    if (!("IntersectionObserver" in window)) {
+      document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
+      return;
+    }
+    if (!io) io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal:not(.in)").forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---------- applyLang ---------- */
+  function applyLang(lang) {
+    current = lang;
+    var dict = I18N[lang] || I18N.en;
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      var k = el.getAttribute("data-i18n");
+      if (dict[k] !== undefined) el.innerHTML = dict[k];
+    });
+    document.querySelectorAll("[data-lang]").forEach(function (b) {
+      b.classList.toggle("on", b.getAttribute("data-lang") === lang);
+    });
+    renderSkills(lang);
+    renderCats(lang);
+    try { localStorage.setItem("ecnhskill-lang", lang); } catch (e) {}
+  }
+
+  /* ---------- theme ---------- */
+  function applyTheme(name) {
+    document.documentElement.setAttribute("data-theme", name);
+    document.querySelectorAll("[data-theme-btn]").forEach(function (b) {
+      b.classList.toggle("on", b.getAttribute("data-theme-btn") === name);
+    });
+    try { localStorage.setItem("ecnhskill-theme", name); } catch (e) {}
+  }
+
+  /* ---------- init ---------- */
+  function init() {
+    var savedLang = "en"; var savedTheme = "cosmic";
+    try { savedLang = localStorage.getItem("ecnhskill-lang") || "en"; } catch (e) {}
+    try { savedTheme = localStorage.getItem("ecnhskill-theme") || "cosmic"; } catch (e) {}
+    if (!I18N[savedLang]) savedLang = "en";
+    applyTheme(savedTheme);
+    applyLang(savedLang);
+
+    document.querySelectorAll("[data-theme-btn]").forEach(function (b) {
+      b.addEventListener("click", function () { applyTheme(b.getAttribute("data-theme-btn")); });
+    });
+    document.querySelectorAll("[data-lang]").forEach(function (b) {
+      b.addEventListener("click", function () { applyLang(b.getAttribute("data-lang")); });
+    });
+
+    var copyBtn = document.getElementById("copyBtn");
+    var addr = document.getElementById("contractAddr").textContent.trim();
+    copyBtn.addEventListener("click", function () {
+      copyText(addr, I18N[current] || I18N.en);
+    });
+
+    var form = document.getElementById("skillForm");
+    form.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      showToast((I18N[current] || I18N.en)["toast.sent"], false);
+      form.reset();
+    });
+
+    document.getElementById("yearNow").textContent = "2026";
+    observeReveal();
+
+    requestAnimationFrame(function () {
+      document.documentElement.setAttribute("data-design-suite-static-state", "ready");
+      document.documentElement.setAttribute("data-design-suite-static-errors", "0");
+      document.documentElement.setAttribute("data-design-suite-static-overflow",
+        document.documentElement.scrollWidth > document.documentElement.clientWidth ? "true" : "false");
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", init);
+})();
+</script>
+</body>
+</html>
