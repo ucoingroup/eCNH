@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>eCNH 2026 · 华夏币 — Offshore Chinese Yuan on Solana</title>
+<meta name="description" content="eCNH 2026 · 华夏币 — Offshore Chinese Yuan (CNH) on Solana. 10 DEXs, 10 explorers, 6 languages, inter-civilization connection plan.">
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --surface: #ffffff;
+    --surface-2: #eef1f5;
+    --text: #1b1f27;
+    --muted: #5b6472;
+    --accent: #0d5cff;
+    --accent-2: #7a3cff;
+    --accent-soft: rgba(13, 92, 255, 0.08);
+    --border: rgba(27, 31, 39, 0.10);
+    --ok: #0a9d5c;
+    --warn: #c67700;
+    --shadow: 0 6px 24px rgba(20, 30, 55, 0.07);
+    --radius: 14px;
+    --mono: "SFMono-Regular", "Cascadia Mono", Consolas, "JetBrains Mono", monospace;
+  }
+  [data-theme="dark"] {
+    --bg: #0e1117;
+    --surface: #171c26;
+    --surface-2: #1f2533;
+    --text: #e8ecf4;
+    --muted: #98a2b3;
+    --accent: #5b8cff;
+    --accent-2: #a37bff;
+    --accent-soft: rgba(91, 140, 255, 0.14);
+    --border: rgba(232, 236, 244, 0.12);
+    --shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans Arabic", "Noto Sans SC", "Noto Sans KR", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .mono { font-family: var(--mono); }
+
+  /* ---------- layout ---------- */
+  .container { width: 100%; max-width: 1180px; margin-inline: auto; padding-inline: 20px; }
+  .section { padding-block: 56px; }
+  .section-head { margin-bottom: 28px; }
+  .kicker {
+    display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent); background: var(--accent-soft);
+    padding: 4px 12px; border-radius: 999px; margin-bottom: 12px;
+  }
+  .sec-title { font-size: clamp(24px, 3.4vw, 34px); line-height: 1.25; letter-spacing: -0.02em; }
+  .lead { color: var(--muted); margin-top: 8px; max-width: 720px; }
+
+  /* ---------- top bar ---------- */
+  .topbar { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .topbar-inner { display: flex; align-items: center; gap: 12px; height: 58px; }
+  .brand { font-weight: 800; font-size: 15px; letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+  .brand-mark {
+    width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; flex: none;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; font-size: 14px; font-weight: 800;
+  }
+  .brand small { color: var(--muted); font-weight: 600; }
+  .nav-desktop { display: flex; gap: 2px; margin-inline-start: 12px; flex-wrap: wrap; }
+  .nav-desktop a {
+    color: var(--muted); font-size: 13.5px; font-weight: 600; padding: 6px 11px; border-radius: 8px;
+    transition: background 0.15s, color 0.15s;
+  }
+  .nav-desktop a:hover { background: var(--accent-soft); color: var(--accent); text-decoration: none; }
+  .top-actions { margin-inline-start: auto; display: flex; align-items: center; gap: 8px; }
+  .theme-btn {
+    width: 36px; height: 36px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface);
+    color: var(--text); display: grid; place-items: center; cursor: pointer; font-size: 15px; flex: none;
+  }
+  .theme-btn:hover { border-color: var(--accent); }
+  .lang-wrap { display: flex; gap: 3px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 3px; }
+  [data-lang] {
+    border: 0; background: transparent; color: var(--muted); font-size: 12px; font-weight: 700;
+    padding: 4px 9px; border-radius: 7px; cursor: pointer; font-family: inherit; transition: all 0.15s;
+  }
+  [data-lang][aria-pressed="true"] { background: var(--accent); color: #fff; }
+  .menu-btn { display: none; width: 36px; height: 36px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); color: var(--text); cursor: pointer; font-size: 16px; }
+  .mobile-nav { display: none; border-top: 1px solid var(--border); background: var(--bg); padding: 8px 20px 14px; }
+  .mobile-nav a { display: block; padding: 10px 6px; color: var(--text); font-weight: 600; font-size: 14.5px; border-bottom: 1px solid var(--border); }
+  .mobile-nav a:last-child { border-bottom: 0; }
+  .mobile-nav.open { display: block; }
+  .mobile-langs { display: flex; flex-wrap: wrap; gap: 6px; padding-block: 10px; }
+
+  /* ---------- hero ---------- */
+  .hero { padding: 72px 0 46px; position: relative; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(60% 55% at 18% 8%, var(--accent-soft), transparent 70%),
+                radial-gradient(50% 45% at 88% 30%, rgba(122, 60, 255, 0.08), transparent 70%);
+  }
+  .hero-badge { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 700; color: var(--accent); background: var(--accent-soft); padding: 5px 13px; border-radius: 999px; }
+  .hero h1 { font-size: clamp(30px, 5vw, 52px); line-height: 1.12; letter-spacing: -0.03em; margin: 16px 0 12px; }
+  .hero .sub { color: var(--muted); font-size: clamp(14px, 2vw, 17px); max-width: 720px; }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 11px;
+    font-weight: 700; font-size: 14px; border: 1px solid transparent; cursor: pointer; transition: all 0.15s;
+  }
+  .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; }
+  .btn-primary:hover { opacity: 0.9; text-decoration: none; }
+  .btn-ghost { background: var(--surface); color: var(--text); border-color: var(--border); }
+  .btn-ghost:hover { border-color: var(--accent); text-decoration: none; }
+  .hero-shared { display: inline-block; margin-top: 18px; font-size: 13px; color: var(--muted); letter-spacing: 0.02em; }
+  .hero-shared strong { color: var(--accent); }
+
+  /* ---------- stats snapshot ---------- */
+  .stats-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+  .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); }
+  .stat-label { font-size: 12px; color: var(--muted); font-weight: 600; }
+  .stat-value { font-size: 17px; font-weight: 800; margin-top: 4px; letter-spacing: -0.01em; word-break: break-word; }
+  .stat-value.up { color: var(--ok); }
+  .stat-value.ca { font-size: 12.5px; font-family: var(--mono); word-break: break-all; }
+  .copy-wrap { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+  .copy-btn {
+    flex: 1; min-width: 0; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    border: 1px solid var(--border); background: var(--surface-2); color: var(--text);
+    border-radius: 8px; padding: 7px 10px; font-size: 12.5px; cursor: pointer; font-family: inherit;
+  }
+  .copy-btn:hover { border-color: var(--accent); }
+  .copy-btn.copy-ok { border-color: var(--ok); color: var(--ok); }
+  .snap-note { margin-top: 12px; font-size: 12.5px; color: var(--muted); overflow-wrap: anywhere; word-break: break-word; }
+
+  /* ---------- cards ---------- */
+  .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 18px 18px 16px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 8px;
+  }
+  .card-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .rank {
+    font-size: 11px; font-weight: 800; color: var(--accent); background: var(--accent-soft);
+    padding: 3px 9px; border-radius: 999px; letter-spacing: 0.04em;
+  }
+  .card h3 { font-size: 15.5px; letter-spacing: -0.01em; }
+  .tag {
+    font-size: 11.5px; font-weight: 700; color: var(--muted); background: var(--surface-2);
+    padding: 3px 9px; border-radius: 999px; align-self: flex-start; max-width: 100%;
+  }
+  .card p { font-size: 13.5px; color: var(--muted); flex: 1; }
+  .card-foot { display: flex; align-items: center; gap: 8px; justify-content: space-between; margin-top: 4px; }
+  .domain { font-size: 12px; font-family: var(--mono); color: var(--muted); }
+  .card-link {
+    display: inline-flex; align-items: center; gap: 5px; font-size: 13px; font-weight: 700;
+    color: var(--accent); white-space: nowrap;
+  }
+  .card-link svg { width: 13px; height: 13px; }
+  .card-link:hover { text-decoration: none; opacity: 0.85; }
+  .legacy { border-style: dashed; opacity: 0.92; }
+  .legacy .rank { background: rgba(198, 119, 0, 0.12); color: var(--warn); }
+
+  /* ---------- interstellar / civ ---------- */
+  .civ-intro { background: linear-gradient(160deg, var(--accent-soft), rgba(122, 60, 255, 0.06)); border: 1px solid var(--border); border-radius: 18px; padding: 28px; margin-bottom: 22px; }
+  .civ-intro h3 { font-size: 20px; margin-bottom: 8px; }
+  .civ-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+  .civ-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); }
+  .civ-card .ic { width: 38px; height: 38px; border-radius: 10px; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; margin-bottom: 12px; }
+  .civ-card .ic svg { width: 20px; height: 20px; }
+  .civ-card h4 { font-size: 16px; margin-bottom: 6px; }
+  .civ-card p, .civ-card li { font-size: 13.5px; color: var(--muted); }
+  .civ-card ul { padding-inline-start: 18px; margin-top: 6px; display: grid; gap: 4px; }
+  .chip-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .chip { font-size: 12px; font-weight: 700; background: var(--surface-2); border: 1px solid var(--border); color: var(--text); padding: 4px 10px; border-radius: 999px; font-family: var(--mono); }
+  .chip.accent { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
+
+  /* ---------- spec table ---------- */
+  .spec { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .spec-row { display: grid; grid-template-columns: minmax(140px, 220px) 1fr; border-bottom: 1px solid var(--border); }
+  .spec-row:last-child { border-bottom: 0; }
+  .spec-k { padding: 13px 16px; background: var(--surface-2); font-size: 13px; font-weight: 700; color: var(--muted); }
+  .spec-v { padding: 13px 16px; font-size: 13.5px; overflow-wrap: anywhere; }
+  .mean-list { display: flex; flex-wrap: wrap; gap: 6px; }
+  .mean-chip { font-size: 12px; font-weight: 700; font-family: var(--mono); background: var(--accent-soft); color: var(--accent); padding: 3px 10px; border-radius: 999px; }
+
+  /* ---------- activity ---------- */
+  .activity-panel { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 30px; text-align: center; }
+  .ap-ic { width: 52px; height: 52px; margin: 0 auto 14px; border-radius: 14px; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; }
+  .ap-ic svg { width: 26px; height: 26px; }
+  .activity-panel h3 { font-size: 18px; }
+  .activity-panel p { color: var(--muted); font-size: 14px; max-width: 640px; margin: 8px auto 0; }
+  .mini-stats { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 18px 0 6px; }
+  .mini-stat { border: 1px solid var(--border); border-radius: 12px; padding: 10px 18px; background: var(--surface-2); }
+  .ms-label { font-size: 11.5px; color: var(--muted); font-weight: 600; }
+  .ms-value { font-size: 16px; font-weight: 800; }
+
+  /* ---------- about ---------- */
+  .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+  .about-block { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); }
+  .about-block h3 { display: flex; align-items: center; gap: 10px; font-size: 16.5px; margin-bottom: 8px; }
+  .blk-ic { width: 32px; height: 32px; border-radius: 9px; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; flex: none; }
+  .blk-ic svg { width: 18px; height: 18px; }
+  .about-block p { font-size: 14px; color: var(--muted); }
+  .vision-line { margin-top: 12px; font-size: 14px; background: var(--accent-soft); color: var(--accent); border-radius: 10px; padding: 10px 14px; }
+  .vision-line strong { font-weight: 800; }
+  .pool-links { display: grid; gap: 8px; margin-top: 14px; }
+  .pool-link {
+    display: flex; align-items: center; gap: 10px; border: 1px solid var(--border); border-radius: 11px;
+    padding: 11px 14px; background: var(--surface-2); color: var(--text); font-weight: 700; font-size: 13.5px;
+  }
+  .pool-link:hover { border-color: var(--accent); text-decoration: none; }
+  .pl-ic { color: var(--accent); display: grid; place-items: center; }
+  .pl-ic svg { width: 16px; height: 16px; }
+  .pl-arrow { margin-inline-start: auto; color: var(--muted); }
+  .pl-arrow svg { width: 14px; height: 14px; }
+
+  .disclaimer { border: 1px solid var(--border); border-left: 4px solid var(--warn); background: var(--surface); border-radius: 12px; padding: 18px 20px; margin-top: 24px; }
+  .disclaimer h3 { font-size: 14.5px; margin-bottom: 6px; }
+  .disclaimer p { font-size: 13px; color: var(--muted); }
+
+  /* ---------- footer ---------- */
+  .footer { border-top: 1px solid var(--border); padding: 34px 0 40px; }
+  .footer-inner { display: grid; gap: 16px; }
+  .footer-note { font-size: 13px; color: var(--muted); max-width: 760px; overflow-wrap: anywhere; word-break: break-word; min-width: 0; }
+  .footer-links { display: flex; flex-wrap: wrap; gap: 14px; font-size: 13.5px; font-weight: 600; min-width: 0; }
+  .footer-links a { overflow-wrap: anywhere; word-break: break-all; min-width: 0; }
+  .footer-block { border-top: 1px solid var(--border); padding-top: 16px; display: grid; gap: 10px; min-width: 0; }
+  .ft-title { font-size: 13px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+  .link-line { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 13.5px; min-width: 0; }
+  .ll-tag { font-size: 11px; font-weight: 800; background: var(--accent-soft); color: var(--accent); padding: 3px 9px; border-radius: 999px; flex: none; }
+  .link-line a { font-family: var(--mono); font-size: 12.5px; word-break: break-all; overflow-wrap: anywhere; min-width: 0; }
+  .copyright { font-size: 12.5px; color: var(--muted); min-width: 0; }
+  .kw-block { margin-top: 2px; }
+  .kw-cloud { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .kw { font-size: 12px; font-weight: 600; color: var(--text); background: var(--surface); border: 1px solid var(--border); padding: 5px 12px; border-radius: 999px; white-space: nowrap; }
+  .kw-eq { font-size: 12.5px; font-weight: 800; color: var(--accent); background: var(--accent-soft); border: 1px solid var(--accent); padding: 5px 14px; border-radius: 999px; white-space: nowrap; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 1024px) {
+    .stats-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 860px) {
+    .nav-desktop { display: none; }
+    .menu-btn { display: grid; place-items: center; }
+    .lang-wrap { display: none; }
+    .section { padding-block: 42px; }
+    .hero { padding: 52px 0 34px; }
+  }
+  @media (max-width: 640px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .cards-grid { grid-template-columns: 1fr; }
+    .spec-row { grid-template-columns: 1fr; }
+    .spec-k { padding: 10px 14px; }
+    .spec-v { padding: 10px 14px; }
+  }
+  @media (max-width: 420px) {
+    .stats-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .stat-value { font-size: 15px; }
+    .topbar-inner { height: 54px; }
+    .brand small { display: none; }
+    .hero h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a class="brand" href="#top" style="color:var(--text);">
+      <span class="brand-mark">ec</span>
+      <span>eCNH <small data-i18n="brand.year">2026</small></span>
+    </a>
+    <nav class="nav-desktop" aria-label="Main">
+      <a href="#dex" data-i18n="nav.dex">DEXs</a>
+      <a href="#explorers" data-i18n="nav.explorers">Explorers</a>
+      <a href="#civ" data-i18n="nav.civ">Star-Civ</a>
+      <a href="#token" data-i18n="nav.token">Token</a>
+      <a href="#activity" data-i18n="nav.activity">Activity</a>
+      <a href="#about" data-i18n="nav.about">About</a>
+    </nav>
+    <div class="top-actions">
+      <div class="lang-wrap" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+<button type="button" data-lang="zh-CN" aria-pressed="false">华语</button>
+        <button type="button" data-lang="es" aria-pressed="false">ES</button>
+        <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+        <button type="button" data-lang="ar" aria-pressed="false">ع</button>
+        <button type="button" data-lang="ru" aria-pressed="false">RU</button>
+      </div>
+      <button class="theme-btn" type="button" aria-label="Toggle theme" title="Theme">◐</button>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-label="Menu">☰</button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+    <a href="#dex" data-i18n="nav.dex">DEXs</a>
+    <a href="#explorers" data-i18n="nav.explorers">Explorers</a>
+    <a href="#civ" data-i18n="nav.civ">Star-Civ</a>
+    <a href="#token" data-i18n="nav.token">Token</a>
+    <a href="#activity" data-i18n="nav.activity">Activity</a>
+    <a href="#about" data-i18n="nav.about">About</a>
+    <div class="mobile-langs">
+      <button type="button" data-lang="en" aria-pressed="true">English</button>
+      <button type="button" data-lang="zh-CN" aria-pressed="false">华语</button>
+      <button type="button" data-lang="es" aria-pressed="false">Español</button>
+      <button type="button" data-lang="fr" aria-pressed="false">Français</button>
+      <button type="button" data-lang="ar" aria-pressed="false">العربية</button>
+      <button type="button" data-lang="ru" aria-pressed="false">Русский</button>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="container">
+      <span class="hero-badge" data-i18n="hero.badge">eCNH 2026 · on Solana</span>
+      <h1 data-i18n="hero.title">The Offshore Chinese Yuan, on Solana</h1>
+      <p class="sub" data-i18n="hero.sub">eCNH = earth CNH = europe CNH = east CNH = ECNH = energy CNH. A community token bridging the offshore Chinese Yuan vision with the Solana ecosystem — and a 3000-year civilization link toward the stars.</p>
+      <span class="hero-shared" data-i18n="hero.shared">Earth &amp; Global Humanity Builds and Shares eCNH Together · 全球人类共建共享eCNH</span>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#dex"><span data-i18n="hero.ctaDex">Explore DEXs</span></a>
+        <a class="btn btn-primary" href="#explorers" style="background:linear-gradient(135deg,var(--accent-2),var(--accent));"><span data-i18n="hero.ctaExplorer">View Explorers</span></a>
+        <a class="btn btn-ghost" href="#civ"><span data-i18n="hero.ctaCiv">Star-Civ Plan</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= STATS ================= -->
+  <section class="section" id="stats" style="padding-top:0;">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker" data-i18n="stats.kicker">Live snapshot</span>
+        <h2 class="sec-title" data-i18n="stats.title">Price &amp; Market Snapshot</h2>
+        <p class="lead" data-i18n="stats.sub">Snapshot verified via OrbMarkets / Helius on 2025-09-23. Always re-verify live data on a block explorer before acting.</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label" data-i18n="stats.price">Price</div>
+          <div class="stat-value mono">$0.00001067</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label" data-i18n="stats.change">24h change</div>
+          <div class="stat-value up">+107.28%</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label" data-i18n="stats.liquidity">Liquidity</div>
+          <div class="stat-value">$109.84</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label" data-i18n="stats.holders">Holders</div>
+          <div class="stat-value">320</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label" data-i18n="stats.fdv">Market cap / FDV</div>
+          <div class="stat-value">≈$1.07B</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label" data-i18n="stats.volume">24h volume</div>
+          <div class="stat-value">$18.82</div>
+        </div>
+      </div>
+      <div class="stat-card" style="margin-top:12px;">
+        <div class="stat-label" data-i18n="stats.contract">Contract address (Solana)</div>
+        <div class="copy-wrap">
+          <span class="stat-value ca">7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5</span>
+        </div>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" data-copy="7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5"><span data-i18n="stats.copy">Copy contract</span></button>
+        </div>
+      </div>
+      <p class="snap-note" data-i18n="stats.note">Contract: 7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 · Chain: Solana (SPL) · Snapshot date shown for reference.</p>
+    </div>
+  </section>
+
+  <!-- ================= DEX ================= -->
+  <section class="section" id="dex">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker" data-i18n="dex.kicker">Navigation</span>
+        <h2 class="sec-title" data-i18n="dex.title">Top 10 DEXs for eCNH</h2>
+        <p class="lead" data-i18n="dex.sub">Curated from Solana ecosystem trading activity in 2025–2026. Listing on a DEX does not guarantee tradable liquidity.</p>
+      </div>
+      <div class="cards-grid">
+
+        <article class="card">
+          <div class="card-top"><span class="rank">#1</span></div>
+          <h3 data-i18n="dex.name1">Jupiter</h3>
+          <span class="tag" data-i18n="dex.role1">DEX aggregator</span>
+          <p data-i18n="dex.note1">Aggregates liquidity across all major Solana DEXs — the entry where eCNH is most likely to be routed for swaps.</p>
+          <div class="card-foot">
+            <a class="domain" href="https://jup.ag" target="_blank" rel="noopener noreferrer">jup.ag</a>
+            <a class="card-link" href="https://jup.ag" target="_blank" rel="noopener noreferrer"><span data-i18n="common.visit">Visit</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-top"><span class="rank">#2</span></div>
+          <h3 data-i18n="dex.name2">Raydium</h3>
+          <span class="tag" data-i18n="dex.role2">Classic AMM + CLMM</span>
+          <p data-i18n="dex.note2">Solana's largest DEX by TVL with deep liquidity across AMM and concentrated-liquidity pools.</p>
+          <div class="card-foot">
+            <a class="domain" href="https://raydium.io" target="_blank" rel="noopener noreferrer">raydium.io</a>
+            <a class="card-link" href="https://raydium.io" target="_blank" rel="noopener noreferrer"><span data-i18n="common.visit">Visit</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-top"><span class="rank">#3</span></div>
+          <h3 data-i18n="dex.name3">Orca</h3>
+          <span class="tag" data-i18n="dex.role3">User-friendly AMM</span>
+          <p data-i18n="dex.note3">eCNH pools (eCNH/PYUSD, eCNH/USDC) have been created on Orca — the DEX most directly related to eCNH.</p>
+          <div class="card-foot">
+            <a class="domain" href="https://www.orca.so" target="_blank" rel="noopener noreferrer">orca.so</a>
+            <a class="card-link" href="https://www.orca.so" target="_blank" rel="noopener noreferrer"><span data-i18n="common.visit">Visit</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-top"><span class="rank">#4</span></div>
+          <h3 data-i18n="dex.name4">Meteora</h3>
+          <span class="tag" data-i18n="dex.role4">Dynamic liquidity</span>
+          <p data-i18n="dex.note4">Dynamic liquidity (DLMM) suited for low-cap token launches and concentrated liquidity management.</p>
+          <div class="card-foot">
+            <a class="domain" href="https://www.meteora.ag" target="_blank" rel="noopener noreferrer">meteora.ag</a>
+            <a class="card-link" href="https://www.meteora.ag" target="_blank" rel="noopener noreferrer"><span data-i18n="common.visit">Visit</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-top"><span class="rank">#5</span></div>
+          <h3 data-i18n="dex.name5">HumidiFi</h3>
+          <span class="tag" data-i18n="dex.role5">Prop AMM / dark pool</span>
+          <p data-i18n="dex.note5">Handles a large share of Jupiter aggregator execution with no standalone frontend — routed via aggregators if liquidity returns.</p>
+          <div class="card-foot">
+            <a class="domain" href="https://jup.ag" target="_blank" rel="noopener noreferrer">via jup.ag</a>
+            <a class="card-link" href="https://jup.ag" target="_blank" rel="noopener noreferrer"><span data-i18n="common.visit">Visit</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-top"><span class="rank">#6</span></div>
+          <h3 data-i18n="dex.name6">PumpSwap</h3>
+          <span class="tag" data-i18n="dex.role6">Launch AMM</span>
+          <p data-i18n="dex.note6">pump.fun's built-in AMM for newly launched tokens — a high-activity hub for early liquidity.</p>
+          <div class="card-foot">
+            <a class="domain" href="https://pump.fun" target="_blank" rel="noopener noreferrer">pump.fun</a>
+            <a class="card-link" href="https://pump.fun" target="_blank" rel="noopener noreferrer"><span data-i18n="common.visit">Visit</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-top"><span class="rank">#7</span></div>
+          <h3 data-i18n="dex.name7">Phoenix</h3>
+          <span class="tag" data-i18n="dex.role7">On-chain order book</span>
+          <p data-i18n="dex.note7">Fully on-chain order book exchange with limit, market and stop orders and instant settlement.</p>
+          <div class="card-foot">
+            <a class="domain" href="https://phoenix.trade" target="_blank" rel="noopener noreferrer">phoenix.trade</a>
+            <a class="card-link" href="https://phoenix.trade" target="_blank" rel="noopener noreferrer"><span data-i18n="common.visit">Visit</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-top"><span class="rank">#8</span></div>
+          <h3 data-i18n="dex.name8">Lifinity</h3>
+          <span class="tag" data-i18n="dex.role8">Proactive market making</span>
+          <p data-i18n="dex.note8">Algorithmic active market-making AMM with dynamic fee adjustments.</p>
+          <div class="card-foot">
+            <a class="domain" href="https://lifinity.io" target="_blank" rel="noopener noreferrer">lifinity.io</a>
+            <a class="card-link" href="https://lifinity.io" target="_blank" rel="noopener noreferrer"><span data-i18n="common.visit">Visit</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-top"><span class="rank">#9</span></div>
+          <h3 data-i18n="dex.name9">OpenBook</h3>
+          <span class="tag" data-i18n="dex.role9">Open-source order book</span>
+          <p data-i18n="dex.note9">Community order-book DEX, the open-source successor of Serum.</p>
+          <div class="card-foot">
+            <a class="domain" href="https://openbook.xyz" target="_blank" rel="noopener noreferrer">openbook.xyz</a>
+            <a class="card-link" href="https://openbook.xyz" target="_blank" rel="noopener noreferrer"><span data-i18n="common.visit">Visit</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+
+        <article class="card legacy">
+          <div class="card-top"><span class="rank" data-i18n="dex.legacyTag">Legacy</span></div>
+          <h3 data-i18n="dex.name10">Tessera</h3>
+          <span class="tag" data-i18n="dex.role10">Fractional NFT / winded down</span>
+          <p data-i18n="dex.note10">Originally an NFT fractionalization protocol (ex-Fractional) that wound down in 2023. Retained as an ecosystem-history reference entry only.</p>
+          <div class="card-foot">
+            <a class="domain" href="https://tessera.co" target="_blank" rel="noopener noreferrer">tessera.co</a>
+            <a class="card-link" href="https://tessera.co" target="_blank" rel="noopener noreferrer"><span data-i18n="common.visit">Visit</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+
+      </div>
+      <div class="stat-card" style="margin-top:14px;">
+        <div class="stat-label" data-i18n="dex.poolsTitle">eCNH reference pools on Orca</div>
+        <div class="copy-wrap" style="flex-wrap:wrap;">
+          <a class="card-link" href="https://www.orca.so/pools/4RdJnPy3nb821SqZdJZmvD4aixCVsjzcbhiLL32iTuRS" target="_blank" rel="noopener noreferrer" style="font-family:var(--mono);font-size:12.5px;"><span>eCNH/PYUSD</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          <a class="card-link" href="https://www.orca.so/pools/BHf1yCvj6qh2E1y2JLrjesP7RRC8XjBN3FyHeq45LnBZ" target="_blank" rel="noopener noreferrer" style="font-family:var(--mono);font-size:12.5px;"><span>eCNH/USDC</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXPLORERS ================= -->
+  <section class="section" id="explorers" style="background:var(--surface-2);">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker" data-i18n="exp.kicker">Verification</span>
+        <h2 class="sec-title" data-i18n="exp.title">Top 10 Block Explorers</h2>
+        <p class="lead" data-i18n="exp.sub">Verify token info, holders, and on-chain state across Solana explorers. All token links open the eCNH contract directly.</p>
+      </div>
+      <div class="cards-grid">
+
+        <article class="card">
+          <div class="card-top"><span class="rank">#1</span></div>
+          <h3 data-i18n="exp.name1">Solscan</h3>
+          <span class="tag" data-i18n="exp.role1">Most used explorer</span>
+          <p data-i18n="exp.note1">Widely used Solana explorer with token info, wallet analysis, and transaction decoding.</p>
+          <div class="card-foot">
+            <a class="domain" href="https://solscan.io" target="_blank" rel="noopener noreferrer">solscan.io</a>
+            <a class="card-link" href="https://solscan.io/token/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5" target="_blank" rel="noopener noreferrer"><span data-i18n="common.open">Open</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-top"><span class="rank">#2</span></div>
+          <h3 data-i18n="exp.name2">Solana Explorer</h3>
+          <span class="tag" data-i18n="exp.role2">Official</span>
+          <p data-i18n="exp.note2">Officially maintained by the Solana Foundation; neutral and accurate data.</p>
+          <div class="card-foot">
+            <a class="domain" href="https://explorer.solana.com" target="_blank" rel="noopener noreferrer">explorer.solana.com</a>
+            <a class="card-link" href="https://explorer.solana.com/address/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5" target="_blank" rel="noopener noreferrer"><span data-i18n="common.open">Open</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-top"><span class="rank">#3</span></div>
+          <h3 data-i18n="exp.name3">Orb (Helius)</h3>
+          <span class="tag" data-i18n="exp.role3">AI deep-dive</span>
+          <p data-i18n="exp.note3">AI trade explanations, trade heatmaps, and history tracking for deep analysis.</p>
+          <div class="card-foot">
+            <a class="domain" href="https://orb.helius.dev" target="_blank" rel="noopener noreferrer">orb.helius.dev</a>
+            <a class="card-link" href="https://orb.helius.dev/address/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5" target="_blank" rel="noopener noreferrer"><span data-i18n="common.open">Open</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-top"><span class="rank">#4</span></div>
+          <h3 data-i18n="exp.name4">SolanaFM</h3>
+          <span class="tag" data-i18n="exp.role4">Tax &amp; analytics</span>
+          <p data-i18n="exp.note4">Supports CSV export — suitable for tax and analytics workflows.</p>
+          <div class="card-foot">
+            <a class="domain" href="https://solana.fm" target="_blank" rel="noopener noreferrer">solana.fm</a>
+            <a class="card-link" href="https://solana.fm/address/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5" target="_blank" rel="noopener noreferrer"><span data-i18n="common.open">Open</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-top"><span class="rank">#5</span></div>
+          <h3 data-i18n="exp.name5">Solana Beach</h3>
+          <span class="tag" data-i18n="exp.role5">Network health</span>
+          <p data-i18n="exp.note5">Focused on validators and network health — great for staking and cluster data.</p>
+          <div class="card-foot">
+            <a class="domain" href="https://solanabeach.io" target="_blank" rel="noopener noreferrer">solanabeach.io</a>
+            <a class="card-link" href="https://solanabeach.io/address/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5" target="_blank" rel="noopener noreferrer"><span data-i18n="common.open">Open</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-top"><span class="rank">#6</span></div>
+          <h3 data-i18n="exp.name6">X-Ray (Helius)</h3>
+          <span class="tag" data-i18n="exp.role6">Readable transactions</span>
+          <p data-i18n="exp.note6">Converts complex transactions into human-readable summaries.</p>
+          <div class="card-foot">
+            <a class="domain" href="https://xray.helius.xyz" target="_blank" rel="noopener noreferrer">xray.helius.xyz</a>
+            <a class="card-link" href="https://xray.helius.xyz/token/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5" target="_blank" rel="noopener noreferrer"><span data-i18n="common.open">Open</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-top"><span class="rank">#7</span></div>
+          <h3 data-i18n="exp.name7">Birdeye</h3>
+          <span class="tag" data-i18n="exp.role7">Token charts &amp; data</span>
+          <p data-i18n="exp.note7">Token charts, holders, market cap and live market data.</p>
+          <div class="card-foot">
+            <a class="domain" href="https://birdeye.so" target="_blank" rel="noopener noreferrer">birdeye.so</a>
+            <a class="card-link" href="https://birdeye.so/token/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5?chain=solana" target="_blank" rel="noopener noreferrer"><span data-i18n="common.open">Open</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-top"><span class="rank">#8</span></div>
+          <h3 data-i18n="exp.name8">Validators.app</h3>
+          <span class="tag" data-i18n="exp.role8">Validator monitoring</span>
+          <p data-i18n="exp.note8">Validator performance, stake and cluster health dashboards.</p>
+          <div class="card-foot">
+            <a class="domain" href="https://validators.app" target="_blank" rel="noopener noreferrer">validators.app</a>
+            <a class="card-link" href="https://validators.app" target="_blank" rel="noopener noreferrer"><span data-i18n="common.visit">Visit</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-top"><span class="rank">#9</span></div>
+          <h3 data-i18n="exp.name9">Dune</h3>
+          <span class="tag" data-i18n="exp.role9">Analytics dashboards</span>
+          <p data-i18n="exp.note9">Community SQL analytics dashboards for deep Solana on-chain exploration.</p>
+          <div class="card-foot">
+            <a class="domain" href="https://dune.com" target="_blank" rel="noopener noreferrer">dune.com</a>
+            <a class="card-link" href="https://dune.com/browse?chain=solana" target="_blank" rel="noopener noreferrer"><span data-i18n="common.open">Open</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-top"><span class="rank">#10</span></div>
+          <h3 data-i18n="exp.name10">Blockchair</h3>
+          <span class="tag" data-i18n="exp.role10">Multi-chain explorer</span>
+          <p data-i18n="exp.note10">Privacy-friendly multi-chain block explorer with Solana support.</p>
+          <div class="card-foot">
+            <a class="domain" href="https://blockchair.com" target="_blank" rel="noopener noreferrer">blockchair.com</a>
+            <a class="card-link" href="https://blockchair.com/solana" target="_blank" rel="noopener noreferrer"><span data-i18n="common.open">Open</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+
+      </div>
+      <p class="snap-note" data-i18n="exp.note">eCNH block explorer: solscan.io/token/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 · X-Ray and Orb are operated by Helius.</p>
+    </div>
+  </section>
+
+  <!-- ================= STAR-CIV ================= -->
+  <section class="section" id="civ">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker" data-i18n="civ.kicker">Vision 2026</span>
+        <h2 class="sec-title" data-i18n="civ.title">eCNH Inter-Stellar Civilization Connection</h2>
+        <p class="lead" data-i18n="civ.sub">Through eCNH as a medium, connect 3000 years of Chinese civilization heritage with a future 3000 years of interstellar civilization — a civilization community across space and time.</p>
+      </div>
+
+      <div class="civ-intro">
+        <h3 data-i18n="civ.ideaTitle">Universe eCNH · Interstellar Civilization Connection</h3>
+        <p data-i18n="civ.ideaBody">eCNH connects the 3000-year heritage of Chinese civilization with 3000 years of future interstellar civilization across space and time — forming a cross-era civilization community. It also serves as a universal game currency vision across the world's top 10 interstellar sci-fi exploration-and-war games, building a unified in-game economy.</p>
+        <div class="chip-list">
+          <span class="chip accent">1 eCNH ≈ 1 CNH</span>
+          <span class="chip">Andromeda M31</span>
+          <span class="chip">DAO</span>
+          <span class="chip">AI-driven</span>
+          <span class="chip">±1–3%</span>
+        </div>
+      </div>
+
+      <div class="civ-grid">
+
+        <div class="civ-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg></div>
+          <h4 data-i18n="civ.stabTitle">Future Stability Mechanism</h4>
+          <p data-i18n="civ.stabBody">Future target: 1 eCNH ≈ 1 CNH, with a permitted ±1–3% daily/monthly fluctuation band. Anchor stability through eaco and stablecoins (USDC, USDT, PYUSD, EURC). After all 100 trillion eCNH circulate, swap-and-bridge linkage with SOL, BTC, ETH, BNB, AVAX, DOGE and TRX can be opened to reinforce value stability.</p>
+        </div>
+
+        <div class="civ-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg></div>
+          <h4 data-i18n="civ.aiTitle">AI-Driven Evolution</h4>
+          <p data-i18n="civ.aiBody">Every day, use the real data from the world's top 10 open-source AI public free APIs to update eCNH's feature-development reference plans, ensuring the system evolves intelligently.</p>
+        </div>
+
+        <div class="civ-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M19.1 4.9l-2.8 2.8M7.7 16.3l-2.8 2.8"/></svg></div>
+          <h4 data-i18n="civ.autoTitle">Automatic Updates</h4>
+          <p data-i18n="civ.autoBody">eCNH data and development plans refresh every hour — for example at 01:01, 09:01 and 17:01 — keeping the ecosystem continuously synced.</p>
+        </div>
+
+        <div class="civ-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 13l3-3 3 3 5-5"/></svg></div>
+          <h4 data-i18n="civ.econTitle">Economic Stability</h4>
+          <p data-i18n="civ.econBody">Annual circulating-supply growth is capped at 0.03–3% of the total supply, guarding against inflation and deflation to keep the economic system stable.</p>
+        </div>
+
+        <div class="civ-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h4 data-i18n="civ.govTitle">Community Governance</h4>
+          <p data-i18n="civ.govBody">Explore an eCNH Interstellar Alliance governance group with DAO mechanics — community self-governance for democratic, transparent decision-making.</p>
+        </div>
+
+        <div class="civ-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+          <h4 data-i18n="civ.globalTitle">Global &amp; Interstellar Reach</h4>
+          <p data-i18n="civ.globalBody">Even amid interstellar exploration wars or upheavals like those in history, eCNH is designed to continue developing and circulating across Southeast Asia, the Middle East, Central Asia, Africa, the whole globe — and beyond into the interstellar economy.</p>
+        </div>
+
+      </div>
+
+      <div class="about-grid" style="margin-top:22px;">
+        <div class="about-block">
+          <h3><span class="blk-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg></span><span data-i18n="civ.andraTitle">The Andromeda Galaxy (M31)</span></h3>
+          <p data-i18n="civ.andraBody">The Andromeda Galaxy (M31) is our Milky Way's nearest giant neighbor and one of the most distant objects visible to the naked human eye. It is a landmark of astronomy and a key actor in the Milky Way's future — one of the most cited real galaxies in interstellar civilization settings.</p>
+        </div>
+        <div class="about-block">
+          <h3><span class="blk-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M4.8 6a9 9 0 0 0 0 12M19.2 6a9 9 0 0 1 0 12"/></svg></span><span data-i18n="civ.cnhTitle">Offshore Chinese Yuan (CNH)</span></h3>
+          <p data-i18n="civ.cnhBody">The CNH/USD rate is the offshore exchange ratio of the Chinese yuan, traded outside mainland China — typically through international financial hubs such as Hong Kong and Singapore. Onshore yuan (CNY) is the currency used inside mainland China.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TOKEN ================= -->
+  <section class="section" id="token" style="background:var(--surface-2);">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker" data-i18n="token.kicker">On-chain facts</span>
+        <h2 class="sec-title" data-i18n="token.title">Token Details</h2>
+        <p class="lead" data-i18n="token.sub">Snapshot verified via OrbMarkets / Helius on 2025-09-23. Verify live data on a block explorer before acting.</p>
+      </div>
+      <div class="spec">
+        <div class="spec-row">
+          <div class="spec-k" data-i18n="token.contract">Contract address</div>
+          <div class="spec-v mono">7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-k" data-i18n="token.name">Name</div>
+          <div class="spec-v">华夏币 eCNH (eCNH)</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-k" data-i18n="token.chain">Chain</div>
+          <div class="spec-v">Solana (SPL)</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-k" data-i18n="token.supply">Total supply</div>
+          <div class="spec-v mono">99,999,999,996,433.82</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-k" data-i18n="token.created">Created</div>
+          <div class="spec-v">2025-09-28</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-k" data-i18n="token.creator">Creator</div>
+          <div class="spec-v mono">smmSYJocfVgKauB4qzwewBFD6dhLFgz1xQSMED7g6pV</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-k" data-i18n="token.desc">On-chain description</div>
+          <div class="spec-v" style="direction:ltr;text-align:start;">eaco for earth CNH, Offshore Chinese Yuan/CNH, 离岸人民币</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-k" data-i18n="token.meaning">Name meanings</div>
+          <div class="spec-v"><span class="mean-list"><span class="mean-chip">earth CNH</span><span class="mean-chip">europe CNH</span><span class="mean-chip">east CNH</span><span class="mean-chip">ECNH</span><span class="mean-chip">energy CNH</span></span></div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-k" data-i18n="token.mcap">Market cap / FDV</div>
+          <div class="spec-v">≈ $1.07B</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-k" data-i18n="token.orb">OrbMarkets page</div>
+          <div class="spec-v"><a href="https://orbmarkets.io/token/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5" target="_blank" rel="noopener noreferrer">orbmarkets.io/token/…GKw5</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ACTIVITY ================= -->
+  <section class="section" id="activity">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker" data-i18n="act.kicker">Reality check</span>
+        <h2 class="sec-title" data-i18n="act.title">On-chain Activity</h2>
+        <p class="lead" data-i18n="act.sub">Honest snapshot of current market state — always verify with an explorer.</p>
+      </div>
+      <div class="activity-panel">
+        <div class="ap-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 13l3-3 3 3 5-5"/></svg>
+        </div>
+        <h3 data-i18n="act.emptyTitle">No active major trading market detected</h3>
+        <p data-i18n="act.emptySub">As of the latest snapshot, eCNH shows very low 24h volume ($18.82) with 320 holders. Use the explorers above to verify the latest on-chain state before any interaction.</p>
+        <div class="mini-stats">
+          <div class="mini-stat"><div class="ms-label" data-i18n="stats.volume">24h volume</div><div class="ms-value">$18.82</div></div>
+          <div class="mini-stat"><div class="ms-label" data-i18n="stats.holders">Holders</div><div class="ms-value">320</div></div>
+          <div class="mini-stat"><div class="ms-label" data-i18n="stats.fdv">FDV</div><div class="ms-value">≈$1.07B</div></div>
+        </div>
+        <a class="btn btn-ghost" style="margin-top:14px;" href="https://solscan.io/token/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <span data-i18n="act.cta">Open Solscan</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="section" id="about" style="background:var(--surface-2);">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker" data-i18n="about.kicker">Positioning</span>
+        <h2 class="sec-title" data-i18n="about.title">About 华夏币 eCNH</h2>
+        <p class="lead" data-i18n="about.sub">The offshore Chinese Yuan (CNH) story, brought to the Solana ecosystem as Earth CNH — built and shared by Earth &amp; Global Humanity together.</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-block">
+          <h3><span class="blk-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg></span><span data-i18n="about.missionTitle">Mission</span></h3>
+          <p data-i18n="about.missionBody">eCNH positions the offshore Chinese Yuan idea as a community token on Solana — part of the eaco family for Earth CNH. The project explores an inter-civilization connection plan: connecting the yuan's global use case with an open, borderless settlement layer.</p>
+          <div class="vision-line"><strong data-i18n="about.visionLabel">Community vision:</strong> <span data-i18n="about.visionValue">1 eCNH ≈ 1 CNH</span></div>
+        </div>
+        <div class="about-block">
+          <h3><span class="blk-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M4.8 6a9 9 0 0 0 0 12M19.2 6a9 9 0 0 1 0 12"/></svg></span><span data-i18n="about.poolsTitle">Reference liquidity pools</span></h3>
+          <p data-i18n="about.poolsBody">Pools created on Orca for direct liquidity checks. Pool state changes constantly — always confirm before interacting. The DEX &amp; explorer lists are navigation references from general market data and do not mean eCNH is listed or has tradable liquidity everywhere.</p>
+          <div class="pool-links">
+            <a class="pool-link" href="https://www.orca.so/pools/4RdJnPy3nb821SqZdJZmvD4aixCVsjzcbhiLL32iTuRS" target="_blank" rel="noopener noreferrer">
+              <span class="pl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+              <span>eCNH / PYUSD</span>
+              <span class="pl-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+            </a>
+            <a class="pool-link" href="https://www.orca.so/pools/BHf1yCvj6qh2E1y2JLrjesP7RRC8XjBN3FyHeq45LnBZ" target="_blank" rel="noopener noreferrer">
+              <span class="pl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+              <span>eCNH / USDC</span>
+              <span class="pl-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="disclaimer">
+        <h3 data-i18n="disc.title">Disclaimer</h3>
+        <p data-i18n="disc.body">The DEX and explorer listings above are navigation references compiled from general Solana ecosystem market data. They do not represent that eCNH is listed or has tradable liquidity on all platforms. The interstellar-civilization content is a community vision and reference plan, not an investment proposal. Cryptocurrency investment carries high risk; do not rely solely on this page when making decisions.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <p class="footer-note" data-i18n="footer.note">Data snapshot: 2025-09-23 (OrbMarkets / Helius). Chain: Solana. Token: 华夏币 eCNH. Prices, liquidity, and volume move quickly and are shown for reference only. eCNH CA: 7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5.</p>
+    <div class="footer-links">
+      <a href="https://orbmarkets.io/token/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5" target="_blank" rel="noopener noreferrer">OrbMarkets</a>
+      <a href="#dex" data-i18n="nav.dex">DEXs</a>
+      <a href="#explorers" data-i18n="nav.explorers">Explorers</a>
+      <a href="#civ" data-i18n="nav.civ">Star-Civ</a>
+      <a href="#token" data-i18n="nav.token">Token</a>
+      <a href="#activity" data-i18n="nav.activity">Activity</a>
+      <a href="#about" data-i18n="nav.about">About</a>
+    </div>
+    <div class="footer-block">
+      <p class="ft-title" data-i18n="footer.linksTitle">Related eCNH pages</p>
+      <div class="link-line">
+        <span class="ll-tag">UCOIN eCNH</span>
+        <a href="https://ucoingroup.github.io/eCNH/" target="_blank" rel="noopener noreferrer">https://ucoingroup.github.io/eCNH/</a>
+      </div>
+      <div class="link-line">
+        <span class="ll-tag">eCNH 2025</span>
+        <a href="https://ecnh.freedev.app/ecnh2025/" target="_blank" rel="noopener noreferrer">https://ecnh.freedev.app/ecnh2025/</a>
+      </div>
+    </div>
+    <p class="copyright">© 2026 eCNH Community · <span data-i18n="footer.rights">All information is provided for reference only.</span></p>
+    <div class="footer-block kw-block">
+      <p class="ft-title" data-i18n="kw.title">eCNH keyword universe</p>
+      <div class="kw-cloud">
+        <span class="kw">Stocks CNH</span>
+        <span class="kw">Stablecoins CNH</span>
+        <span class="kw">Majors CNH</span>
+        <span class="kw">DeFi CNH</span>
+        <span class="kw">Commodities CNH</span>
+        <span class="kw">Bonds CNH</span>
+        <span class="kw">FX CNH</span>
+        <span class="kw">Metals CNH</span>
+        <span class="kw">Energy CNH</span>
+        <span class="kw">Gaming CNH</span>
+        <span class="kw">AI CNH</span>
+        <span class="kw">Payments CNH</span>
+        <span class="kw">Trade CNH</span>
+        <span class="kw">Tokenized CNH</span>
+        <span class="kw">Reserve CNH</span>
+        <span class="kw">Crypto CNH</span>
+        <span class="kw">RWA CNH</span>
+        <span class="kw">Real Estate CNH</span>
+        <span class="kw">Treasuries CNH</span>
+        <span class="kw">Gold CNH</span>
+        <span class="kw">Silver CNH</span>
+        <span class="kw">Oil CNH</span>
+        <span class="kw">Carbon CNH</span>
+        <span class="kw">Private Credit CNH</span>
+        <span class="kw">Invoice CNH</span>
+        <span class="kw">Supply Chain CNH</span>
+        <span class="kw">Insurance CNH</span>
+        <span class="kw">MMF CNH</span>
+        <span class="kw">Repo CNH</span>
+        <span class="kw">Dividend CNH</span>
+        <span class="kw">Art CNH</span>
+        <span class="kw-eq">= eCNH</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  var I18N = {
+    "en": {
+      "brand.year": "2026",
+      "nav.overview": "Overview", "nav.dex": "DEXs", "nav.explorers": "Explorers", "nav.civ": "Star-Civ",
+      "nav.token": "Token", "nav.activity": "Activity", "nav.about": "About",
+      "hero.badge": "eCNH 2026 · on Solana",
+      "hero.title": "The Offshore Chinese Yuan, on Solana",
+      "hero.sub": "eCNH = earth CNH = europe CNH = east CNH = ECNH = energy CNH. A community token bridging the offshore Chinese Yuan vision with the Solana ecosystem — and a 3000-year civilization link toward the stars.",
+      "hero.shared": "Earth & Global Humanity Builds and Shares eCNH Together · 全球人类共建共享eCNH",
+      "hero.ctaDex": "Explore DEXs", "hero.ctaExplorer": "View Explorers", "hero.ctaCiv": "Star-Civ Plan",
+      "stats.kicker": "Live snapshot", "stats.title": "Price & Market Snapshot",
+      "stats.sub": "Snapshot verified via OrbMarkets / Helius on 2025-09-23. Always re-verify live data on a block explorer before acting.",
+      "stats.price": "Price", "stats.change": "24h change", "stats.liquidity": "Liquidity",
+      "stats.holders": "Holders", "stats.fdv": "Market cap / FDV", "stats.volume": "24h volume",
+      "stats.contract": "Contract address (Solana)", "stats.copy": "Copy contract",
+      "stats.note": "Contract: 7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 · Chain: Solana (SPL) · Snapshot date shown for reference.",
+      "dex.kicker": "Navigation", "dex.title": "Top 10 DEXs for eCNH",
+      "dex.sub": "Curated from Solana ecosystem trading activity in 2025–2026. Listing on a DEX does not guarantee tradable liquidity.",
+      "dex.name1": "Jupiter", "dex.role1": "DEX aggregator",
+      "dex.note1": "Aggregates liquidity across all major Solana DEXs — the entry where eCNH is most likely to be routed for swaps.",
+      "dex.name2": "Raydium", "dex.role2": "Classic AMM + CLMM",
+      "dex.note2": "Solana's largest DEX by TVL with deep liquidity across AMM and concentrated-liquidity pools.",
+      "dex.name3": "Orca", "dex.role3": "User-friendly AMM",
+      "dex.note3": "eCNH pools (eCNH/PYUSD, eCNH/USDC) have been created on Orca — the DEX most directly related to eCNH.",
+      "dex.name4": "Meteora", "dex.role4": "Dynamic liquidity",
+      "dex.note4": "Dynamic liquidity (DLMM) suited for low-cap token launches and concentrated liquidity management.",
+      "dex.name5": "HumidiFi", "dex.role5": "Prop AMM / dark pool",
+      "dex.note5": "Handles a large share of Jupiter aggregator execution with no standalone frontend — routed via aggregators if liquidity returns.",
+      "dex.name6": "PumpSwap", "dex.role6": "Launch AMM",
+      "dex.note6": "pump.fun's built-in AMM for newly launched tokens — a high-activity hub for early liquidity.",
+      "dex.name7": "Phoenix", "dex.role7": "On-chain order book",
+      "dex.note7": "Fully on-chain order book exchange with limit, market and stop orders and instant settlement.",
+      "dex.name8": "Lifinity", "dex.role8": "Proactive market making",
+      "dex.note8": "Algorithmic active market-making AMM with dynamic fee adjustments.",
+      "dex.name9": "OpenBook", "dex.role9": "Open-source order book",
+      "dex.note9": "Community order-book DEX, the open-source successor of Serum.",
+      "dex.name10": "Tessera", "dex.role10": "Fractional NFT / winded down", "dex.legacyTag": "Legacy",
+      "dex.note10": "Originally an NFT fractionalization protocol (ex-Fractional) that wound down in 2023. Retained as an ecosystem-history reference entry only.",
+      "dex.poolsTitle": "eCNH reference pools on Orca",
+      "exp.kicker": "Verification", "exp.title": "Top 10 Block Explorers",
+      "exp.sub": "Verify token info, holders, and on-chain state across Solana explorers. All token links open the eCNH contract directly.",
+      "exp.name1": "Solscan", "exp.role1": "Most used explorer",
+      "exp.note1": "Widely used Solana explorer with token info, wallet analysis, and transaction decoding.",
+      "exp.name2": "Solana Explorer", "exp.role2": "Official",
+      "exp.note2": "Officially maintained by the Solana Foundation; neutral and accurate data.",
+      "exp.name3": "Orb (Helius)", "exp.role3": "AI deep-dive",
+      "exp.note3": "AI trade explanations, trade heatmaps, and history tracking for deep analysis.",
+      "exp.name4": "SolanaFM", "exp.role4": "Tax & analytics",
+      "exp.note4": "Supports CSV export — suitable for tax and analytics workflows.",
+      "exp.name5": "Solana Beach", "exp.role5": "Network health",
+      "exp.note5": "Focused on validators and network health — great for staking and cluster data.",
+      "exp.name6": "X-Ray (Helius)", "exp.role6": "Readable transactions",
+      "exp.note6": "Converts complex transactions into human-readable summaries.",
+      "exp.name7": "Birdeye", "exp.role7": "Token charts & data",
+      "exp.note7": "Token charts, holders, market cap and live market data.",
+      "exp.name8": "Validators.app", "exp.role8": "Validator monitoring",
+      "exp.note8": "Validator performance, stake and cluster health dashboards.",
+      "exp.name9": "Dune", "exp.role9": "Analytics dashboards",
+      "exp.note9": "Community SQL analytics dashboards for deep Solana on-chain exploration.",
+      "exp.name10": "Blockchair", "exp.role10": "Multi-chain explorer",
+      "exp.note10": "Privacy-friendly multi-chain block explorer with Solana support.",
+      "exp.note": "eCNH block explorer: solscan.io/token/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 · X-Ray and Orb are operated by Helius.",
+      "civ.kicker": "Vision 2026", "civ.title": "eCNH Inter-Stellar Civilization Connection",
+      "civ.sub": "Through eCNH as a medium, connect 3000 years of Chinese civilization heritage with a future 3000 years of interstellar civilization — a civilization community across space and time.",
+      "civ.ideaTitle": "Universe eCNH · Interstellar Civilization Connection",
+      "civ.ideaBody": "eCNH connects the 3000-year heritage of Chinese civilization with 3000 years of future interstellar civilization across space and time — forming a cross-era civilization community. It also serves as a universal game currency vision across the world's top 10 interstellar sci-fi exploration-and-war games, building a unified in-game economy.",
+      "civ.stabTitle": "Future Stability Mechanism",
+      "civ.stabBody": "Future target: 1 eCNH ≈ 1 CNH, with a permitted ±1–3% daily/monthly fluctuation band. Anchor stability through eaco and stablecoins (USDC, USDT, PYUSD, EURC). After all 100 trillion eCNH circulate, swap-and-bridge linkage with SOL, BTC, ETH, BNB, AVAX, DOGE and TRX can be opened to reinforce value stability.",
+      "civ.aiTitle": "AI-Driven Evolution",
+      "civ.aiBody": "Every day, use the real data from the world's top 10 open-source AI public free APIs to update eCNH's feature-development reference plans, ensuring the system evolves intelligently.",
+      "civ.autoTitle": "Automatic Updates",
+      "civ.autoBody": "eCNH data and development plans refresh every hour — for example at 01:01, 09:01 and 17:01 — keeping the ecosystem continuously synced.",
+      "civ.econTitle": "Economic Stability",
+      "civ.econBody": "Annual circulating-supply growth is capped at 0.03–3% of the total supply, guarding against inflation and deflation to keep the economic system stable.",
+      "civ.govTitle": "Community Governance",
+      "civ.govBody": "Explore an eCNH Interstellar Alliance governance group with DAO mechanics — community self-governance for democratic, transparent decision-making.",
+      "civ.globalTitle": "Global & Interstellar Reach",
+      "civ.globalBody": "Even amid interstellar exploration wars or upheavals like those in history, eCNH is designed to continue developing and circulating across Southeast Asia, the Middle East, Central Asia, Africa, the whole globe — and beyond into the interstellar economy.",
+      "civ.andraTitle": "The Andromeda Galaxy (M31)",
+      "civ.andraBody": "The Andromeda Galaxy (M31) is our Milky Way's nearest giant neighbor and one of the most distant objects visible to the naked human eye. It is a landmark of astronomy and a key actor in the Milky Way's future — one of the most cited real galaxies in interstellar civilization settings.",
+      "civ.cnhTitle": "Offshore Chinese Yuan (CNH)",
+      "civ.cnhBody": "The CNH/USD rate is the offshore exchange ratio of the Chinese yuan, traded outside mainland China — typically through international financial hubs such as Hong Kong and Singapore. Onshore yuan (CNY) is the currency used inside mainland China.",
+      "token.kicker": "On-chain facts", "token.title": "Token Details",
+      "token.sub": "Snapshot verified via OrbMarkets / Helius on 2025-09-23. Verify live data on a block explorer before acting.",
+      "token.contract": "Contract address", "token.name": "Name", "token.chain": "Chain",
+      "token.supply": "Total supply", "token.created": "Created", "token.creator": "Creator",
+      "token.desc": "On-chain description", "token.meaning": "Name meanings", "token.mcap": "Market cap / FDV",
+      "token.orb": "OrbMarkets page",
+      "act.kicker": "Reality check", "act.title": "On-chain Activity",
+      "act.sub": "Honest snapshot of current market state — always verify with an explorer.",
+      "act.emptyTitle": "No active major trading market detected",
+      "act.emptySub": "As of the latest snapshot, eCNH shows very low 24h volume ($18.82) with 320 holders. Use the explorers above to verify the latest on-chain state before any interaction.",
+      "act.cta": "Open Solscan",
+      "about.kicker": "Positioning", "about.title": "About 华夏币 eCNH",
+      "about.sub": "The offshore Chinese Yuan (CNH) story, brought to the Solana ecosystem as Earth CNH — built and shared by Earth & Global Humanity together.",
+      "about.missionTitle": "Mission",
+      "about.missionBody": "eCNH positions the offshore Chinese Yuan idea as a community token on Solana — part of the eaco family for Earth CNH. The project explores an inter-civilization connection plan: connecting the yuan's global use case with an open, borderless settlement layer.",
+      "about.visionLabel": "Community vision:", "about.visionValue": "1 eCNH ≈ 1 CNH",
+      "about.poolsTitle": "Reference liquidity pools",
+      "about.poolsBody": "Pools created on Orca for direct liquidity checks. Pool state changes constantly — always confirm before interacting. The DEX & explorer lists are navigation references from general market data and do not mean eCNH is listed or has tradable liquidity everywhere.",
+      "disc.title": "Disclaimer",
+      "disc.body": "The DEX and explorer listings above are navigation references compiled from general Solana ecosystem market data. They do not represent that eCNH is listed or has tradable liquidity on all platforms. The interstellar-civilization content is a community vision and reference plan, not an investment proposal. Cryptocurrency investment carries high risk; do not rely solely on this page when making decisions.",
+      "common.visit": "Visit", "common.open": "Open",
+      "footer.note": "Data snapshot: 2025-09-23 (OrbMarkets / Helius). Chain: Solana. Token: 华夏币 eCNH. Prices, liquidity, and volume move quickly and are shown for reference only. eCNH CA: 7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5.",
+      "footer.linksTitle": "Related eCNH pages",
+      "footer.rights": "All information is provided for reference only.",
+      "kw.title": "eCNH keyword universe"
+    },
+    "zh-CN": {
+      "brand.year": "2026",
+      "nav.overview": "总览", "nav.dex": "DEX 导航", "nav.explorers": "浏览器", "nav.civ": "星际文明",
+      "nav.token": "代币详情", "nav.activity": "链上活动", "nav.about": "关于",
+      "hero.badge": "eCNH 2026 · Solana 链",
+      "hero.title": "华夏币 eCNH — 离岸人民币上链 Solana",
+      "hero.sub": "eCNH = earth CNH = europe CNH = east CNH = ECNH = energy CNH。以离岸人民币愿景连接 Solana 生态的社区代币——并承载跨越 3000 年、通向星辰的文明连接。",
+      "hero.shared": "全球人类共建共享 eCNH · Earth & Global Humanity Builds and Shares eCNH Together",
+      "hero.ctaDex": "浏览 DEX", "hero.ctaExplorer": "查看浏览器", "hero.ctaCiv": "星际文明方案",
+      "stats.kicker": "实时快照", "stats.title": "价格与市场快照",
+      "stats.sub": "数据快照经 OrbMarkets / Helius 于 2025-09-23 核实。操作前请通过区块浏览器核验实时数据。",
+      "stats.price": "价格", "stats.change": "24H 涨跌", "stats.liquidity": "流动性",
+      "stats.holders": "持有者", "stats.fdv": "市值 / FDV", "stats.volume": "24H 成交量",
+      "stats.contract": "合约地址（Solana）", "stats.copy": "复制合约",
+      "stats.note": "合约：7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 · 链：Solana（SPL）· 快照日期仅供参考。",
+      "dex.kicker": "导航参考", "dex.title": "eCNH 10 大 DEX",
+      "dex.sub": "基于 2025–2026 年 Solana 生态交易活跃度整理。上线 DEX 不代表具备可交易流动性。",
+      "dex.name1": "Jupiter", "dex.role1": "DEX 聚合器",
+      "dex.note1": "聚合 Solana 各大 DEX 的流动性，是 eCNH 最可能被实际路由成交的入口。",
+      "dex.name2": "Raydium", "dex.role2": "传统 AMM + CLMM",
+      "dex.note2": "Solana 上 TVL 最大的 DEX，覆盖 AMM 与集中流动性池，深度较深。",
+      "dex.name3": "Orca", "dex.role3": "用户友好型 AMM",
+      "dex.note3": "eCNH 池（eCNH/PYUSD、eCNH/USDC）已在 Orca 创建，是与 eCNH 关联最直接的 DEX。",
+      "dex.name4": "Meteora", "dex.role4": "动态流动性",
+      "dex.note4": "动态流动性（DLMM）适合低市值代币启动与集中流动性管理。",
+      "dex.name5": "HumidiFi", "dex.role5": "专有 AMM / 暗池",
+      "dex.note5": "承接 Jupiter 聚合器大量执行量且无独立前端，若流动性恢复可通过聚合器路由成交。",
+      "dex.name6": "PumpSwap", "dex.role6": "新币 AMM",
+      "dex.note6": "pump.fun 内置的新代币 AMM，早期流动性活跃枢纽。",
+      "dex.name7": "Phoenix", "dex.role7": "链上订单簿",
+      "dex.note7": "完全链上订单簿交易所，支持限价、市价与止损单，即时结算。",
+      "dex.name8": "Lifinity", "dex.role8": "主动做市",
+      "dex.note8": "算法驱动的主动做市 AMM，具备动态费用调整。",
+      "dex.name9": "OpenBook", "dex.role9": "开源订单簿",
+      "dex.note9": "社区订单簿 DEX，Serum 的开源继承者。",
+      "dex.name10": "Tessera", "dex.role10": "NFT 碎片化 / 已停运", "dex.legacyTag": "历史条目",
+      "dex.note10": "原为 NFT 碎片化协议（前 Fractional），已于 2023 年停止运营。仅作为生态历史参考保留。",
+      "dex.poolsTitle": "Orca 上的 eCNH 参考池",
+      "exp.kicker": "验证工具", "exp.title": "10 大区块链浏览器",
+      "exp.sub": "使用各类 Solana 浏览器核验代币信息、持有者与链上状态。所有代币链接直接打开 eCNH 合约。",
+      "exp.name1": "Solscan", "exp.role1": "最常用浏览器",
+      "exp.note1": "最广泛使用的 Solana 浏览器，支持代币信息、钱包分析与交易解码。",
+      "exp.name2": "Solana Explorer", "exp.role2": "官方维护",
+      "exp.note2": "Solana 基金会官方维护，数据中立准确。",
+      "exp.name3": "Orb（Helius）", "exp.role3": "AI 深度分析",
+      "exp.note3": "AI 交易解释、交易热图与历史追踪，适合深度分析。",
+      "exp.name4": "SolanaFM", "exp.role4": "税务与分析",
+      "exp.note4": "支持 CSV 导出，适合税务与数据分析场景。",
+      "exp.name5": "Solana Beach", "exp.role5": "网络健康",
+      "exp.note5": "专注验证者与网络健康度监控，适合查看质押与集群数据。",
+      "exp.name6": "X-Ray（Helius）", "exp.role6": "可读交易",
+      "exp.note6": "将复杂交易转换为人类可读的摘要。",
+      "exp.name7": "Birdeye", "exp.role7": "代币图表与数据",
+      "exp.note7": "代币图表、持有者、市值与实时行情数据。",
+      "exp.name8": "Validators.app", "exp.role8": "验证者监控",
+      "exp.note8": "验证者表现、质押与集群健康看板。",
+      "exp.name9": "Dune", "exp.role9": "分析看板",
+      "exp.note9": "社区 SQL 分析看板，适合深入的 Solana 链上探索。",
+      "exp.name10": "Blockchair", "exp.role10": "多链浏览器",
+      "exp.note10": "注重隐私的多链区块浏览器，支持 Solana。",
+      "exp.note": "eCNH 区块浏览器：solscan.io/token/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 · X-Ray 与 Orb 由 Helius 运营。",
+      "civ.kicker": "2026 愿景", "civ.title": "eCNH 星际文明连接方案",
+      "civ.sub": "通过 eCNH 作为媒介，连接华夏文明 3000 年的历史底蕴与未来 3000 年的星际文明，形成跨越时空的文明共同体。",
+      "civ.ideaTitle": "宇宙 eCNH · 星际文明连接",
+      "civ.ideaBody": "通过 eCNH，把华夏文明 3000 年的历史底蕴与未来 3000 年的星际文明连接在一起，形成跨越时空的文明共同体；同时作为全球 10 大星际科幻探索战争游戏的通用游戏币愿景，建立虚拟世界中统一的经济体系。",
+      "civ.stabTitle": "未来稳定机制",
+      "civ.stabBody": "未来目标：1 eCNH ≈ 1 CNH，每日/每月允许 ±1–3% 波动；通过与 eaco 及 USDC、USDT、PYUSD、EURC 等稳定币锚定联动。待 100 万亿 eCNH 全部流通后，可开通与 SOL、BTC、ETH、BNB、AVAX、DOGE、TRX 的兑换流通联动机制，确保价值稳定。",
+      "civ.aiTitle": "AI 驱动演进",
+      "civ.aiBody": "每天通过全球 10 大开源 AI 的公开免费 API 真实数据，更新 eCNH 的各项功能发展参考方案，确保系统智能演进。",
+      "civ.autoTitle": "自动更新机制",
+      "civ.autoBody": "eCNH 相关数据与发展方案每小时自动更新——例如在 1 点 01 分、9 点 01 分、17 点 01 分——保持生态持续同步。",
+      "civ.econTitle": "经济稳定性",
+      "civ.econBody": "每年 eCNH 新增流通量不超过总量的 0.03–3%，防止通胀通缩，维护经济系统的稳定运行。",
+      "civ.govTitle": "社区治理",
+      "civ.govBody": "探索建立 eCNH 星际联盟治理网友小组，通过 DAO 机制实现社区自治，确保系统的民主决策和透明运行。",
+      "civ.globalTitle": "全球化与星际化",
+      "civ.globalBody": "即使星球探索大战，或发生类似历史大变局，也不影响 eCNH 的永久发展，可在东南亚、中东中亚、非洲、全球乃至星际宇宙中持续流通。",
+      "civ.andraTitle": "仙女座星系（M31）",
+      "civ.andraBody": "仙女座星系（Andromeda Galaxy，编号 M31）是我们银河系最近的巨大邻居，也是人类肉眼可见的最遥远天体之一。它既是天文学研究的里程碑，也是未来银河系命运的关键角色，是星际文明设定中最常被引用的真实星系之一。",
+      "civ.cnhTitle": "离岸人民币（CNH）",
+      "civ.cnhBody": "离岸人民币（CNH）与美元的汇率指在中国大陆以外市场的人民币兑换比率，通常通过香港、新加坡等国际金融中心流通；在岸人民币（CNY）则指中国境内使用的人民币。",
+      "token.kicker": "链上事实", "token.title": "代币详情",
+      "token.sub": "数据快照经 OrbMarkets / Helius 于 2025-09-23 核实。操作前请通过区块浏览器核验实时数据。",
+      "token.contract": "合约地址", "token.name": "名称", "token.chain": "链",
+      "token.supply": "总供应量", "token.created": "创建时间", "token.creator": "创建者",
+      "token.desc": "链上描述", "token.meaning": "名称释义", "token.mcap": "市值 / FDV",
+      "token.orb": "OrbMarkets 页面",
+      "act.kicker": "现状核查", "act.title": "链上活动",
+      "act.sub": "如实呈现当前市场状态，请务必通过浏览器核验。",
+      "act.emptyTitle": "未检测到活跃的主要交易市场",
+      "act.emptySub": "截至最新快照，eCNH 24 小时成交量极低（$18.82），共有 320 名持有者。交互前请使用上方浏览器核验最新链上状态。",
+      "act.cta": "打开 Solscan",
+      "about.kicker": "定位", "about.title": "关于 华夏币 eCNH",
+      "about.sub": "把离岸人民币（CNH）的故事带到 Solana 生态，作为地球 CNH 的社区形态——由全球人类共同建设与共享。",
+      "about.missionTitle": "使命",
+      "about.missionBody": "eCNH 将离岸人民币构想以社区代币形式落地 Solana——属于面向地球 CNH 的 eaco 家族，并探索星际文明连接方案：把人民币的全球场景接入开放、无国界的结算层。",
+      "about.visionLabel": "社区愿景：", "about.visionValue": "1 eCNH ≈ 1 CNH",
+      "about.poolsTitle": "参考流动性池",
+      "about.poolsBody": "已在 Orca 创建的参考池，可直达查看流动性。池子状态随时变化，交互前务必自行确认；DEX 与浏览器清单为通用市场数据导航参考，不代表 eCNH 已在所有平台上线或具有流动性。",
+      "disc.title": "免责声明",
+      "disc.body": "以上 DEX 与浏览器清单是基于 Solana 生态整体市场数据整理的导航参考，不代表 eCNH 已在所有平台上线或具有可交易流动性；星际文明内容为社区愿景与参考方案，不构成投资建议。加密货币投资风险高，请勿仅依赖本页面信息做出决策。",
+      "common.visit": "前往", "common.open": "打开",
+      "footer.note": "数据快照：2025-09-23（OrbMarkets / Helius）。链：Solana。代币：华夏币 eCNH。价格、流动性与成交量变动迅速，仅供参考。eCNH 合约：7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5。",
+      "footer.linksTitle": "相关 eCNH 页面",
+      "footer.rights": "所有信息仅供参考。",
+      "kw.title": "eCNH 关键词宇宙"
+    },
+    "es": {
+      "brand.year": "2026",
+      "nav.overview": "Resumen", "nav.dex": "DEX", "nav.explorers": "Exploradores", "nav.civ": "Civ. estelar",
+      "nav.token": "Token", "nav.activity": "Actividad", "nav.about": "Acerca",
+      "hero.badge": "eCNH 2026 · en Solana",
+      "hero.title": "El yuan chino extraterritorial, en Solana",
+      "hero.sub": "eCNH = earth CNH = europe CNH = east CNH = ECNH = energy CNH. Un token comunitario que une la visión del yuan chino extraterritorial con el ecosistema Solana — y un vínculo de 3000 años de civilización hacia las estrellas.",
+      "hero.shared": "La humanidad de la Tierra construye y comparte eCNH · 全球人类共建共享eCNH",
+      "hero.ctaDex": "Explorar DEX", "hero.ctaExplorer": "Ver exploradores", "hero.ctaCiv": "Plan estelar",
+      "stats.kicker": "Datos en vivo", "stats.title": "Precio y mercado",
+      "stats.sub": "Instantánea verificada vía OrbMarkets / Helius el 2025-09-23. Verifica siempre los datos en vivo en un explorador antes de actuar.",
+      "stats.price": "Precio", "stats.change": "Cambio 24h", "stats.liquidity": "Liquidez",
+      "stats.holders": "Tenedores", "stats.fdv": "Cap. mercado / FDV", "stats.volume": "Volumen 24h",
+      "stats.contract": "Dirección del contrato (Solana)", "stats.copy": "Copiar contrato",
+      "stats.note": "Contrato: 7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 · Red: Solana (SPL) · Fecha de instantánea solo como referencia.",
+      "dex.kicker": "Navegación", "dex.title": "Top 10 DEX para eCNH",
+      "dex.sub": "Seleccionados según la actividad del ecosistema Solana en 2025–2026. Estar listado no garantiza liquidez negociable.",
+      "dex.name1": "Jupiter", "dex.role1": "Agregador de DEX",
+      "dex.note1": "Agrega liquidez de todos los DEX principales de Solana; la entrada más probable por donde se enrute eCNH.",
+      "dex.name2": "Raydium", "dex.role2": "AMM clásico + CLMM",
+      "dex.note2": "El DEX con mayor TVL de Solana, con liquidez profunda en AMM y pools de liquidez concentrada.",
+      "dex.name3": "Orca", "dex.role3": "AMM fácil de usar",
+      "dex.note3": "Los pools de eCNH (eCNH/PYUSD, eCNH/USDC) se crearon en Orca: el DEX más directamente relacionado con eCNH.",
+      "dex.name4": "Meteora", "dex.role4": "Liquidez dinámica",
+      "dex.note4": "Liquidez dinámica (DLMM) adecuada para lanzamientos de baja capitalización y gestión de liquidez concentrada.",
+      "dex.name5": "HumidiFi", "dex.role5": "AMM propio / dark pool",
+      "dex.note5": "Maneja gran parte de la ejecución del agregador Jupiter sin frontend propio; se enruta vía agregadores si la liquidez regresa.",
+      "dex.name6": "PumpSwap", "dex.role6": "AMM de lanzamientos",
+      "dex.note6": "AMM integrado de pump.fun para tokens recién lanzados; centro de alta actividad para liquidez temprana.",
+      "dex.name7": "Phoenix", "dex.role7": "Libro de órdenes en cadena",
+      "dex.note7": "Exchange de libro de órdenes totalmente en cadena con órdenes limit, market y stop, y liquidación instantánea.",
+      "dex.name8": "Lifinity", "dex.role8": "Market making proactivo",
+      "dex.note8": "AMM algorítmico de creación activa de mercado con ajuste dinámico de comisiones.",
+      "dex.name9": "OpenBook", "dex.role9": "Libro de órdenes abierto",
+      "dex.note9": "DEX de libro de órdenes comunitario, sucesor de código abierto de Serum.",
+      "dex.name10": "Tessera", "dex.role10": "NFT fraccionado / cerrado", "dex.legacyTag": "Histórico",
+      "dex.note10": "Originalmente un protocolo de fraccionamiento NFT (ex-Fractional) que cerró en 2023. Se conserva solo como referencia histórica del ecosistema.",
+      "dex.poolsTitle": "Pools de referencia de eCNH en Orca",
+      "exp.kicker": "Verificación", "exp.title": "Top 10 Exploradores de Bloques",
+      "exp.sub": "Verifica información del token, tenedores y estado on-chain. Todos los enlaces abren directamente el contrato de eCNH.",
+      "exp.name1": "Solscan", "exp.role1": "Explorador más usado",
+      "exp.note1": "Explorador de Solana muy usado con info de tokens, análisis de carteras y decodificación de transacciones.",
+      "exp.name2": "Solana Explorer", "exp.role2": "Oficial",
+      "exp.note2": "Mantenido oficialmente por la Solana Foundation; datos neutros y precisos.",
+      "exp.name3": "Orb (Helius)", "exp.role3": "Análisis IA",
+      "exp.note3": "Explicaciones de trading con IA, mapas de calor y seguimiento histórico.",
+      "exp.name4": "SolanaFM", "exp.role4": "Impuestos y análisis",
+      "exp.note4": "Compatible con exportación CSV: adecuado para impuestos y análisis.",
+      "exp.name5": "Solana Beach", "exp.role5": "Salud de la red",
+      "exp.note5": "Centrado en validadores y salud de la red: ideal para staking y datos de clúster.",
+      "exp.name6": "X-Ray (Helius)", "exp.role6": "Transacciones legibles",
+      "exp.note6": "Convierte transacciones complejas en resúmenes legibles.",
+      "exp.name7": "Birdeye", "exp.role7": "Gráficos y datos",
+      "exp.note7": "Gráficos de tokens, tenedores, capitalización y datos de mercado en vivo.",
+      "exp.name8": "Validators.app", "exp.role8": "Monitor de validadores",
+      "exp.note8": "Rendimiento de validadores, staking y salud del clúster.",
+      "exp.name9": "Dune", "exp.role9": "Paneles analíticos",
+      "exp.note9": "Paneles analíticos SQL de la comunidad para exploración on-chain profunda.",
+      "exp.name10": "Blockchair", "exp.role10": "Explorador multired",
+      "exp.note10": "Explorador multired amigable con la privacidad, con soporte para Solana.",
+      "exp.note": "Explorador de eCNH: solscan.io/token/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 · X-Ray y Orb son operados por Helius.",
+      "civ.kicker": "Visión 2026", "civ.title": "Conexión de civilización interestelar eCNH",
+      "civ.sub": "A través de eCNH como medio, conectar 3000 años de herencia de la civilización china con 3000 años futuros de civilización interestelar: una comunidad civilizatoria a través del espacio y el tiempo.",
+      "civ.ideaTitle": "Universo eCNH · Conexión interestelar",
+      "civ.ideaBody": "eCNH conecta 3000 años de herencia de la civilización china con 3000 años de civilización interestelar futura, formando una comunidad civilizatoria transgeneracional; también sirve como visión de moneda común en los 10 principales juegos de exploración y guerra de ciencia ficción, construyendo una economía unificada en el mundo virtual.",
+      "civ.stabTitle": "Mecanismo de estabilidad futura",
+      "civ.stabBody": "Objetivo futuro: 1 eCNH ≈ 1 CNH, con banda de fluctuación permitida del ±1–3% diario/mensual. Anclar la estabilidad mediante eaco y stablecoins (USDC, USDT, PYUSD, EURC). Cuando circulen los 100 billones de eCNH, se podrá abrir el enlace de intercambio con SOL, BTC, ETH, BNB, AVAX, DOGE y TRX.",
+      "civ.aiTitle": "Evolución impulsada por IA",
+      "civ.aiBody": "Cada día, usar los datos reales de las 10 principales IA de código abierto del mundo (APIs públicas gratuitas) para actualizar los planes de desarrollo de eCNH, asegurando una evolución inteligente.",
+      "civ.autoTitle": "Actualizaciones automáticas",
+      "civ.autoBody": "Los datos y planes de eCNH se renuevan cada hora — por ejemplo a las 01:01, 09:01 y 17:01 — manteniendo el ecosistema sincronizado.",
+      "civ.econTitle": "Estabilidad económica",
+      "civ.econBody": "El crecimiento anual de la oferta circulante queda limitado al 0,03–3% del total, protegiendo contra inflación y deflación.",
+      "civ.govTitle": "Gobernanza comunitaria",
+      "civ.govBody": "Explorar un grupo de gobernanza de la Alianza Interestelar eCNH con mecánica DAO: autogobierno comunitario con toma de decisiones democrática y transparente.",
+      "civ.globalTitle": "Alcance global e interestelar",
+      "civ.globalBody": "Incluso ante guerras de exploración estelar o convulsiones históricas, eCNH está diseñado para seguir desarrollándose y circulando en el Sudeste Asiático, Oriente Medio, Asia Central, África, todo el mundo — y más allá, en la economía interestelar.",
+      "civ.andraTitle": "La galaxia de Andrómeda (M31)",
+      "civ.andraBody": "La galaxia de Andrómeda (M31) es el vecino gigante más cercano a nuestra Vía Láctea y uno de los objetos más lejanos visibles a simple vista. Es un hito de la astronomía y un actor clave en el futuro de la Vía Láctea, una de las galaxias reales más citadas en escenarios de civilización interestelar.",
+      "civ.cnhTitle": "Yuan chino extraterritorial (CNH)",
+      "civ.cnhBody": "El tipo de cambio CNH/USD es la relación del yuan chino fuera de China continental, normalmente a través de centros financieros internacionales como Hong Kong y Singapur. El yuan onshore (CNY) es la moneda usada dentro de China continental.",
+      "token.kicker": "Hechos on-chain", "token.title": "Detalles del Token",
+      "token.sub": "Instantánea verificada vía OrbMarkets / Helius el 2025-09-23. Verifica los datos en vivo antes de actuar.",
+      "token.contract": "Dirección del contrato", "token.name": "Nombre", "token.chain": "Red",
+      "token.supply": "Suministro total", "token.created": "Creado", "token.creator": "Creador",
+      "token.desc": "Descripción on-chain", "token.meaning": "Significados del nombre", "token.mcap": "Cap. mercado / FDV",
+      "token.orb": "Página de OrbMarkets",
+      "act.kicker": "Verificación real", "act.title": "Actividad on-chain",
+      "act.sub": "Instantánea honesta del estado actual del mercado; verifica siempre con un explorador.",
+      "act.emptyTitle": "No se detectó un mercado principal activo",
+      "act.emptySub": "Según la última instantánea, eCNH muestra un volumen de 24h muy bajo ($18.82) con 320 tenedores. Usa los exploradores de arriba para verificar el estado antes de interactuar.",
+      "act.cta": "Abrir Solscan",
+      "about.kicker": "Posicionamiento", "about.title": "Acerca de 华夏币 eCNH",
+      "about.sub": "La historia del yuan chino extraterritorial (CNH), llevada al ecosistema Solana como Earth CNH — construida y compartida por la humanidad global.",
+      "about.missionTitle": "Misión",
+      "about.missionBody": "eCNH presenta la idea del yuan chino extraterritorial como token comunitario en Solana, parte de la familia eaco para el Earth CNH, y explora un plan de conexión intercivilizacional: unir el uso global del yuan con una capa de liquidación abierta y sin fronteras.",
+      "about.visionLabel": "Visión comunitaria:", "about.visionValue": "1 eCNH ≈ 1 CNH",
+      "about.poolsTitle": "Pools de liquidez de referencia",
+      "about.poolsBody": "Pools creados en Orca para revisar liquidez directamente. El estado cambia constantemente: confirma siempre antes de operar. Las listas de DEX y exploradores son referencias de datos generales; no implican listado o liquidez en todas las plataformas.",
+      "disc.title": "Descargo de responsabilidad",
+      "disc.body": "Las listas de DEX y exploradores anteriores son referencias de navegación basadas en datos generales del ecosistema Solana; no implican que eCNH esté listado o tenga liquidez negociable en todas las plataformas. El contenido de civilización interestelar es una visión comunitaria, no una propuesta de inversión. Invertir en criptomonedas conlleva alto riesgo; no tomes decisiones basándote únicamente en esta página.",
+      "common.visit": "Visitar", "common.open": "Abrir",
+      "footer.note": "Instantánea de datos: 2025-09-23 (OrbMarkets / Helius). Red: Solana. Token: 华夏币 eCNH. Precio, liquidez y volumen cambian con rapidez y se muestran solo como referencia. CA de eCNH: 7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5.",
+      "footer.linksTitle": "Páginas relacionadas de eCNH",
+      "footer.rights": "Toda la información se ofrece solo como referencia.",
+      "kw.title": "Universo de palabras clave eCNH"
+    },
+    "fr": {
+      "brand.year": "2026",
+      "nav.overview": "Vue d'ensemble", "nav.dex": "DEX", "nav.explorers": "Explorateurs", "nav.civ": "Civ. stellaire",
+      "nav.token": "Token", "nav.activity": "Activité", "nav.about": "À propos",
+      "hero.badge": "eCNH 2026 · sur Solana",
+      "hero.title": "Le yuan chinois offshore, sur Solana",
+      "hero.sub": "eCNH = earth CNH = europe CNH = east CNH = ECNH = energy CNH. Un token communautaire reliant la vision du yuan chinois offshore à l'écosystème Solana — et un lien de 3000 ans de civilisation vers les étoiles.",
+      "hero.shared": "L'humanité de la Terre construit et partage eCNH · 全球人类共建共享eCNH",
+      "hero.ctaDex": "Explorer les DEX", "hero.ctaExplorer": "Voir les explorateurs", "hero.ctaCiv": "Plan stellaire",
+      "stats.kicker": "Aperçu en direct", "stats.title": "Prix et marché",
+      "stats.sub": "Instantané vérifié via OrbMarkets / Helius le 2025-09-23. Vérifiez toujours les données en direct sur un explorateur avant d'agir.",
+      "stats.price": "Prix", "stats.change": "Variation 24h", "stats.liquidity": "Liquidité",
+      "stats.holders": "Détenteurs", "stats.fdv": "Capitalisation / FDV", "stats.volume": "Volume 24h",
+      "stats.contract": "Adresse du contrat (Solana)", "stats.copy": "Copier le contrat",
+      "stats.note": "Contrat : 7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 · Réseau : Solana (SPL) · Date d'instantané fournie à titre indicatif.",
+      "dex.kicker": "Navigation", "dex.title": "Top 10 des DEX pour eCNH",
+      "dex.sub": "Sélection basée sur l'activité de l'écosystème Solana en 2025–2026. Être listé ne garantit pas une liquidité négociable.",
+      "dex.name1": "Jupiter", "dex.role1": "Agrégateur de DEX",
+      "dex.note1": "Agrège la liquidité de tous les grands DEX de Solana : l'entrée par laquelle eCNH sera probablement routé.",
+      "dex.name2": "Raydium", "dex.role2": "AMM classique + CLMM",
+      "dex.note2": "Le DEX de Solana avec le plus fort TVL et une liquidité profonde en AMM et pools de liquidité concentrée.",
+      "dex.name3": "Orca", "dex.role3": "AMM convivial",
+      "dex.note3": "Les pools eCNH (eCNH/PYUSD, eCNH/USDC) ont été créés sur Orca — le DEX le plus directement lié à eCNH.",
+      "dex.name4": "Meteora", "dex.role4": "Liquidité dynamique",
+      "dex.note4": "Liquidité dynamique (DLMM) adaptée aux lancements de faible capitalisation et à la gestion de liquidité concentrée.",
+      "dex.name5": "HumidiFi", "dex.role5": "AMM propriétaire / dark pool",
+      "dex.note5": "Gère une grande part de l'exécution de l'agrégateur Jupiter sans frontend propre — routé via les agrégateurs si la liquidité revient.",
+      "dex.name6": "PumpSwap", "dex.role6": "AMM de lancement",
+      "dex.note6": "AMM intégré de pump.fun pour les nouveaux tokens ; centre très actif pour la liquidité précoce.",
+      "dex.name7": "Phoenix", "dex.role7": "Carnet d'ordres on-chain",
+      "dex.note7": "Exchange à carnet d'ordres entièrement on-chain avec ordres limit, market et stop, règlement instantané.",
+      "dex.name8": "Lifinity", "dex.role8": "Market making proactif",
+      "dex.note8": "AMM algorithmique de tenue de marché active avec ajustement dynamique des frais.",
+      "dex.name9": "OpenBook", "dex.role9": "Carnet d'ordres ouvert",
+      "dex.note9": "DEX communautaire à carnet d'ordres, successeur open source de Serum.",
+      "dex.name10": "Tessera", "dex.role10": "NFT fractionné / fermé", "dex.legacyTag": "Historique",
+      "dex.note10": "À l'origine un protocole de fractionnement NFT (ex-Fractional), fermé en 2023. Conservé uniquement comme référence historique de l'écosystème.",
+      "dex.poolsTitle": "Pools de référence eCNH sur Orca",
+      "exp.kicker": "Vérification", "exp.title": "Top 10 des Explorateurs de Blocs",
+      "exp.sub": "Vérifiez les infos du token, les détenteurs et l'état on-chain. Tous les liens ouvrent directement le contrat eCNH.",
+      "exp.name1": "Solscan", "exp.role1": "Explorateur le plus utilisé",
+      "exp.note1": "Explorateur Solana très utilisé : infos de token, analyse de portefeuilles et décodage de transactions.",
+      "exp.name2": "Solana Explorer", "exp.role2": "Officiel",
+      "exp.note2": "Maintenu officiellement par la Solana Foundation ; données neutres et précises.",
+      "exp.name3": "Orb (Helius)", "exp.role3": "Analyse IA",
+      "exp.note3": "Explications de trading par IA, cartes de chaleur et suivi historique pour une analyse approfondie.",
+      "exp.name4": "SolanaFM", "exp.role4": "Impôts et analyse",
+      "exp.note4": "Prend en charge l'export CSV — adapté aux flux d'impôts et d'analyse.",
+      "exp.name5": "Solana Beach", "exp.role5": "Santé du réseau",
+      "exp.note5": "Axé sur les validateurs et la santé du réseau — idéal pour le staking et les données de cluster.",
+      "exp.name6": "X-Ray (Helius)", "exp.role6": "Transactions lisibles",
+      "exp.note6": "Convertit les transactions complexes en résumés lisibles.",
+      "exp.name7": "Birdeye", "exp.role7": "Graphiques et données",
+      "exp.note7": "Graphiques de tokens, détenteurs, capitalisation et données de marché en direct.",
+      "exp.name8": "Validators.app", "exp.role8": "Surveillance des validateurs",
+      "exp.note8": "Performance des validateurs, staking et santé du cluster.",
+      "exp.name9": "Dune", "exp.role9": "Tableaux d'analyse",
+      "exp.note9": "Tableaux d'analyse SQL communautaires pour une exploration on-chain approfondie.",
+      "exp.name10": "Blockchair", "exp.role10": "Explorateur multichaîne",
+      "exp.note10": "Explorateur multichaîne respectueux de la vie privée, avec support Solana.",
+      "exp.note": "Explorateur eCNH : solscan.io/token/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 · X-Ray et Orb sont opérés par Helius.",
+      "civ.kicker": "Vision 2026", "civ.title": "Connexion de civilisation interstellaire eCNH",
+      "civ.sub": "À travers eCNH comme médium, relier 3000 ans d'héritage de la civilisation chinoise à 3000 ans futurs de civilisation interstellaire — une communauté civilisationnelle à travers l'espace et le temps.",
+      "civ.ideaTitle": "Univers eCNH · Connexion interstellaire",
+      "civ.ideaBody": "eCNH relie l'héritage de 3000 ans de la civilisation chinoise à 3000 ans de civilisation interstellaire future, formant une communauté civilisationnelle transgénérationnelle ; il sert aussi de vision de monnaie universelle dans les 10 grands jeux d'exploration et de guerre de science-fiction, construisant une économie unifiée dans le monde virtuel.",
+      "civ.stabTitle": "Mécanisme de stabilité futur",
+      "civ.stabBody": "Objectif futur : 1 eCNH ≈ 1 CNH, avec une bande de fluctuation autorisée de ±1–3 % par jour/mois. Ancrer la stabilité via eaco et les stablecoins (USDC, USDT, PYUSD, EURC). Une fois les 100 000 milliards d'eCNH en circulation, un lien d'échange avec SOL, BTC, ETH, BNB, AVAX, DOGE et TRX pourra être ouvert.",
+      "civ.aiTitle": "Évolution pilotée par l'IA",
+      "civ.aiBody": "Chaque jour, utiliser les données réelles des 10 grandes IA open source (APIs publiques gratuites) pour actualiser les plans de développement d'eCNH, assurant une évolution intelligente.",
+      "civ.autoTitle": "Mises à jour automatiques",
+      "civ.autoBody": "Les données et plans d'eCNH se renouvellent chaque heure — par exemple à 01:01, 09:01 et 17:01 — pour garder l'écosystème synchronisé.",
+      "civ.econTitle": "Stabilité économique",
+      "civ.econBody": "La croissance annuelle de l'offre en circulation est plafonnée à 0,03–3 % du total, protégeant contre l'inflation et la déflation.",
+      "civ.govTitle": "Gouvernance communautaire",
+      "civ.govBody": "Explorer un groupe de gouvernance de l'Alliance interstellaire eCNH avec mécanique DAO — autogouvernance communautaire pour des décisions démocratiques et transparentes.",
+      "civ.globalTitle": "Portée mondiale et interstellaire",
+      "civ.globalBody": "Même face à des guerres d'exploration stellaire ou à des bouleversements historiques, eCNH est conçu pour continuer à se développer et à circuler en Asie du Sud-Est, au Moyen-Orient, en Asie centrale, en Afrique, dans le monde entier — et au-delà, dans l'économie interstellaire.",
+      "civ.andraTitle": "La galaxie d'Andromède (M31)",
+      "civ.andraBody": "La galaxie d'Andromède (M31) est le plus proche voisin géant de notre Voie lactée et l'un des objets les plus lointains visibles à l'œil nu. C'est un jalon de l'astronomie et un acteur clé de l'avenir de la Voie lactée — l'une des galaxies réelles les plus citées dans les scénarios de civilisation interstellaire.",
+      "civ.cnhTitle": "Yuan chinois offshore (CNH)",
+      "civ.cnhBody": "Le taux CNH/USD est le taux de change offshore du yuan chinois, hors de la Chine continentale — généralement via des centres financiers internationaux comme Hong Kong et Singapour. Le yuan onshore (CNY) est la monnaie utilisée en Chine continentale.",
+      "token.kicker": "Faits on-chain", "token.title": "Détails du Token",
+      "token.sub": "Instantané vérifié via OrbMarkets / Helius le 2025-09-23. Vérifiez les données en direct avant d'agir.",
+      "token.contract": "Adresse du contrat", "token.name": "Nom", "token.chain": "Réseau",
+      "token.supply": "Offre totale", "token.created": "Créé", "token.creator": "Créateur",
+      "token.desc": "Description on-chain", "token.meaning": "Significations du nom", "token.mcap": "Capitalisation / FDV",
+      "token.orb": "Page OrbMarkets",
+      "act.kicker": "Vérification réelle", "act.title": "Activité on-chain",
+      "act.sub": "Aperçu honnête de l'état actuel du marché — vérifiez toujours avec un explorateur.",
+      "act.emptyTitle": "Aucun marché principal actif détecté",
+      "act.emptySub": "Selon le dernier instantané, eCNH montre un volume 24h très faible ($18.82) avec 320 détenteurs. Utilisez les explorateurs ci-dessus pour vérifier l'état avant toute interaction.",
+      "act.cta": "Ouvrir Solscan",
+      "about.kicker": "Positionnement", "about.title": "À propos de 华夏币 eCNH",
+      "about.sub": "L'histoire du yuan chinois offshore (CNH), portée sur l'écosystème Solana comme Earth CNH — construite et partagée par toute l'humanité.",
+      "about.missionTitle": "Mission",
+      "about.missionBody": "eCNH présente l'idée du yuan chinois offshore comme token communautaire sur Solana — membre de la famille eaco pour le Earth CNH, et explore un plan de connexion intercivilisationnel : relier l'usage global du yuan à une couche de règlement ouverte et sans frontières.",
+      "about.visionLabel": "Vision communautaire :", "about.visionValue": "1 eCNH ≈ 1 CNH",
+      "about.poolsTitle": "Pools de liquidité de référence",
+      "about.poolsBody": "Pools créés sur Orca pour vérifier la liquidité directement. L'état change constamment — confirmez toujours avant d'interagir. Les listes de DEX et d'explorateurs sont des références de données générales ; elles n'impliquent ni listage ni liquidité partout.",
+      "disc.title": "Avertissement",
+      "disc.body": "Les listes de DEX et d'explorateurs ci-dessus sont des références de navigation basées sur des données générales de l'écosystème Solana ; elles ne signifient pas qu'eCNH est listé ou dispose d'une liquidité négociable sur toutes les plateformes. Le contenu de civilisation interstellaire est une vision communautaire, pas une proposition d'investissement. L'investissement en cryptomonnaies comporte un risque élevé ; ne vous fiez pas uniquement à cette page pour décider.",
+      "common.visit": "Visiter", "common.open": "Ouvrir",
+      "footer.note": "Instantané des données : 2025-09-23 (OrbMarkets / Helius). Réseau : Solana. Token : 华夏币 eCNH. Prix, liquidité et volume évoluent rapidement et sont fournis à titre indicatif. CA eCNH : 7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5.",
+      "footer.linksTitle": "Pages eCNH associées",
+      "footer.rights": "Toutes les informations sont fournies à titre de référence uniquement.",
+      "kw.title": "Univers des mots-clés eCNH"
+    },
+    "ar": {
+      "brand.year": "2026",
+      "nav.overview": "نظرة عامة", "nav.dex": "منصات DEX", "nav.explorers": "المتصفحات", "nav.civ": "الحضارة النجمية",
+      "nav.token": "التوكن", "nav.activity": "النشاط", "nav.about": "حول",
+      "hero.badge": "eCNH 2026 · على سولانا",
+      "hero.title": "اليوان الصيني الخارجي، على سولانا",
+      "hero.sub": "eCNH = earth CNH = europe CNH = east CNH = ECNH = energy CNH. توكن مجتمعي يربط رؤية اليوان الصيني الخارجي بنظام سولانا البيئي — ورابط حضارة يمتد 3000 عام نحو النجوم.",
+      "hero.shared": "إنسانية الأرض تبني وتشارك eCNH معًا · 全球人类共建共享eCNH",
+      "hero.ctaDex": "استكشاف DEX", "hero.ctaExplorer": "عرض المتصفحات", "hero.ctaCiv": "خطة الحضارة النجمية",
+      "stats.kicker": "بيانات مباشرة", "stats.title": "السعر والسوق",
+      "stats.sub": "لقطة تم التحقق منها عبر OrbMarkets / Helius بتاريخ 2025-09-23. تحقق دائمًا من البيانات المباشرة في المتصفح قبل أي إجراء.",
+      "stats.price": "السعر", "stats.change": "التغير 24س", "stats.liquidity": "السيولة",
+      "stats.holders": "الحائزون", "stats.fdv": "القيمة السوقية / FDV", "stats.volume": "الحجم 24س",
+      "stats.contract": "عنوان العقد (سولانا)", "stats.copy": "نسخ العقد",
+      "stats.note": "العقد: 7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 · الشبكة: سولانا (SPL) · تاريخ اللقطة للتوضيح فقط.",
+      "dex.kicker": "تنقّل", "dex.title": "أفضل 10 منصات DEX لـ eCNH",
+      "dex.sub": "مجمعة بناءً على نشاط تداول نظام سولانا في 2025–2026. الإدراج في المنصة لا يضمن سيولة قابلة للتداول.",
+      "dex.name1": "Jupiter", "dex.role1": "مجمّع DEX",
+      "dex.note1": "يجمع السيولة من جميع منصات DEX الرئيسية في سولانا؛ هو المدخل الأرجح الذي يُوجَّه عبره eCNH.",
+      "dex.name2": "Raydium", "dex.role2": "AMM كلاسيكي + CLMM",
+      "dex.note2": "أكبر DEX في سولانا من حيث القيمة المحجوزة، بعمق كبير في AMM ومجمعات السيولة المركزة.",
+      "dex.name3": "Orca", "dex.role3": "AMM سهل الاستخدام",
+      "dex.note3": "تم إنشاء مجمعات eCNH (eCNH/PYUSD, eCNH/USDC) على Orca — وهي الأكثر ارتباطًا بـ eCNH مباشرة.",
+      "dex.name4": "Meteora", "dex.role4": "سيولة ديناميكية",
+      "dex.note4": "سيولة ديناميكية (DLMM) مناسبة لإطلاق التوكنات منخفضة القيمة وإدارة السيولة المركزة.",
+      "dex.name5": "HumidiFi", "dex.role5": "AMM خاص / سوق داكن",
+      "dex.note5": "تتعامل مع جزء كبير من تنفيذ مجمّع Jupiter دون واجهة مستقلة — تُوجَّه عبر المجمّعات إذا عادت السيولة.",
+      "dex.name6": "PumpSwap", "dex.role6": "AMM للإطلاق",
+      "dex.note6": "AMM مدمج في pump.fun للتوكنات الجديدة؛ مركز نشط للسيولة المبكرة.",
+      "dex.name7": "Phoenix", "dex.role7": "دفتر أوامر على السلسلة",
+      "dex.note7": "بورصة دفاتر أوامر كاملة على السلسلة مع أوامر حدية وسوقية ووقف، وتسوية فورية.",
+      "dex.name8": "Lifinity", "dex.role8": "صناعة سوق استباقية",
+      "dex.note8": "AMM خوارزمي لصناعة السوق النشطة مع تعديل ديناميكي للرسوم.",
+      "dex.name9": "OpenBook", "dex.role9": "دفتر أوامر مفتوح",
+      "dex.note9": "DEX مجتمعي بدفتر أوامر، الخليفة مفتوح المصدر لـ Serum.",
+      "dex.name10": "Tessera", "dex.role10": "NFT مجزأ / متوقف", "dex.legacyTag": "مرجع تاريخي",
+      "dex.note10": "في الأصل بروتوكول تجزئة NFT (سابقًا Fractional) توقف في 2023. أُدرج كمرجع تاريخي للنظام البيئي فقط.",
+      "dex.poolsTitle": "مجمعات eCNH المرجعية على Orca",
+      "exp.kicker": "التحقق", "exp.title": "أفضل 10 متصفحات للبلوكشين",
+      "exp.sub": "تحقق من معلومات التوكن والحائزين والحالة على السلسلة. كل الروابط تفتح عقد eCNH مباشرة.",
+      "exp.name1": "Solscan", "exp.role1": "المتصفح الأكثر استخدامًا",
+      "exp.note1": "متصفح سولانا الأوسع استخدامًا مع معلومات التوكن وتحليل المحافظ وفك تشفير المعاملات.",
+      "exp.name2": "Solana Explorer", "exp.role2": "رسمي",
+      "exp.note2": "تتم صيانته رسميًا من مؤسسة سولانا؛ بيانات محايدة ودقيقة.",
+      "exp.name3": "Orb (Helius)", "exp.role3": "تحليل بالذكاء الاصطناعي",
+      "exp.note3": "شروحات تداول بالذكاء الاصطناعي وخرائط حرارية وتتبع تاريخي للتحليل العميق.",
+      "exp.name4": "SolanaFM", "exp.role4": "الضرائب والتحليل",
+      "exp.note4": "يدعم تصدير CSV — مناسب لمهام الضرائب والتحليل.",
+      "exp.name5": "Solana Beach", "exp.role5": "صحة الشبكة",
+      "exp.note5": "يركز على المدققين وصحة الشبكة — ممتاز للتخزين وبيانات الكتلة.",
+      "exp.name6": "X-Ray (Helius)", "exp.role6": "معاملات مقروءة",
+      "exp.note6": "يحول المعاملات المعقدة إلى ملخصات مقروءة.",
+      "exp.name7": "Birdeye", "exp.role7": "رسوم وبيانات التوكن",
+      "exp.note7": "رسوم التوكنات والحائزين والقيمة السوقية وبيانات السوق المباشرة.",
+      "exp.name8": "Validators.app", "exp.role8": "مراقبة المدققين",
+      "exp.note8": "أداء المدققين والتخزين وصحة الكتلة.",
+      "exp.name9": "Dune", "exp.role9": "لوحات تحليلية",
+      "exp.note9": "لوحات تحليل SQL مجتمعية لاستكشاف معمق على السلسلة.",
+      "exp.name10": "Blockchair", "exp.role10": "متصفح متعدد السلاسل",
+      "exp.note10": "متصفح متعدد السلاسل يحترم الخصوصية مع دعم سولانا.",
+      "exp.note": "متصفح eCNH: solscan.io/token/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 · X-Ray وOrb تديرهما Helius.",
+      "civ.kicker": "رؤية 2026", "civ.title": "اتصال الحضارة النجمية eCNH",
+      "civ.sub": "عبر eCNH كوسيط، ربط 3000 عام من تراث الحضارة الصينية مع 3000 عام مستقبلية من الحضارة النجمية — مجتمع حضاري يعبر الزمان والمكان.",
+      "civ.ideaTitle": "الكون eCNH · الاتصال النجمي",
+      "civ.ideaBody": "يربط eCNH تراث الحضارة الصينية لـ 3000 عام مع 3000 عام من الحضارة النجمية المستقبلية، مكونًا مجتمعًا حضاريًا عابرًا للأجيال؛ كما يمثل رؤية عملة موحدة في أفضل 10 ألعاب استكشاف وحرب خيال علمي، لبناء اقتصاد موحد في العالم الافتراضي.",
+      "civ.stabTitle": "آلية الاستقرار المستقبلية",
+      "civ.stabBody": "الهدف المستقبلي: 1 eCNH ≈ 1 CNH مع نطاق تقلب مسموح ±1–3% يوميًا/شهريًا. تثبيت الاستقرار عبر eaco والعملات المستقرة (USDC, USDT, PYUSD, EURC). بعد تداول 100 تريليون من eCNH، يمكن فتح آلية ربط التحويل مع SOL وBTC وETH وBNB وAVAX وDOGE وTRX.",
+      "civ.aiTitle": "تطور مدفوع بالذكاء الاصطناعي",
+      "civ.aiBody": "كل يوم، استخدام بيانات 10 نماذج ذكاء اصطناعي مفتوحة المصدر عالمية (واجهات مجانية عامة) لتحديث خطط تطوير eCNH، ضمانًا لتطور ذكي للنظام.",
+      "civ.autoTitle": "تحديثات تلقائية",
+      "civ.autoBody": "تتجدد بيانات وخطط eCNH كل ساعة — مثلًا في 01:01 و09:01 و17:01 — للحفاظ على تزامن النظام البيئي.",
+      "civ.econTitle": "الاستقرار الاقتصادي",
+      "civ.econBody": "نمو العرض المتداول السنوي محدد بـ 0.03–3% من الإجمالي، حماية من التضخم والانكماش.",
+      "civ.govTitle": "الحوكمة المجتمعية",
+      "civ.govBody": "استكشاف مجموعة حوكمة تحالف eCNH النجمي بآلية DAO — حكم ذاتي مجتمعي بقرارات ديمقراطية وشفافة.",
+      "civ.globalTitle": "الانتشار العالمي والنجمي",
+      "civ.globalBody": "حتى أمام حروب استكشاف النجوم أو الاضطرابات التاريخية، صُمم eCNH ليواصل التطور والتداول في جنوب شرق آسيا والشرق الأوسط وآسيا الوسطى وأفريقيا والعالم كله — وما بعده، في الاقتصاد النجمي.",
+      "civ.andraTitle": "مجرة أندروميدا (M31)",
+      "civ.andraBody": "مجرة أندروميدا (M31) هي أقرب جار عملاق لدرب التبانة وأحد أبعد الأجرام التي تراها العين المجردة. إنها علامة فارقة في علم الفلك وشخصية رئيسية في مستقبل درب التبانة — من أكثر المجرات الحقيقية استشهادًا في إعدادات الحضارة النجمية.",
+      "civ.cnhTitle": "اليوان الصيني الخارجي (CNH)",
+      "civ.cnhBody": "سعر صرف CNH/USD هو نسبة اليوان الصيني خارج البر الرئيسي، عادة عبر مراكز مالية دولية مثل هونغ كونغ وسنغافورة. اليوان المحلي (CNY) هو العملة المستخدمة داخل البر الرئيسي.",
+      "token.kicker": "حقائق على السلسلة", "token.title": "تفاصيل التوكن",
+      "token.sub": "لقطة تم التحقق منها عبر OrbMarkets / Helius بتاريخ 2025-09-23. تحقق من البيانات المباشرة قبل أي إجراء.",
+      "token.contract": "عنوان العقد", "token.name": "الاسم", "token.chain": "الشبكة",
+      "token.supply": "العرض الإجمالي", "token.created": "تاريخ الإنشاء", "token.creator": "المنشئ",
+      "token.desc": "الوصف على السلسلة", "token.meaning": "معاني الاسم", "token.mcap": "القيمة السوقية / FDV",
+      "token.orb": "صفحة OrbMarkets",
+      "act.kicker": "التحقق الفعلي", "act.title": "النشاط على السلسلة",
+      "act.sub": "لقطة صادقة للحالة السوقية الحالية — تحقق دائمًا عبر متصفح.",
+      "act.emptyTitle": "لا يوجد سوق رئيسي نشط",
+      "act.emptySub": "وفقًا لأحدث لقطة، يُظهر eCNH حجمًا منخفضًا جدًا خلال 24 ساعة (18.82 دولارًا) مع 320 حائزًا. استخدم المتصفحات أعلاه للتحقق قبل أي تفاعل.",
+      "act.cta": "فتح Solscan",
+      "about.kicker": "التموضع", "about.title": "حول 华夏币 eCNH",
+      "about.sub": "قصة اليوان الصيني الخارجي (CNH)، منقولة إلى نظام سولانا البيئي كـ Earth CNH — يبنيها ويشاركها إنسانية الأرض معًا.",
+      "about.missionTitle": "الرسالة",
+      "about.missionBody": "يقدّم eCNH فكرة اليوان الصيني الخارجي كتوكن مجتمعي على سولانا — جزء من عائلة eaco لـ Earth CNH، ويستكشف خطة تواصل بين الحضارات: ربط الاستخدام العالمي لليوان بطبقة تسوية مفتوحة بلا حدود.",
+      "about.visionLabel": "رؤية المجتمع:", "about.visionValue": "1 eCNH ≈ 1 CNH",
+      "about.poolsTitle": "مجمعات سيولة مرجعية",
+      "about.poolsBody": "مجمعات أُنشئت على Orca لفحص السيولة مباشرة. الحالة تتغير باستمرار — تحقق دائمًا قبل التعامل. قوائم DEX والمتصفحات مراجع بيانات عامة لا تعني إدراجًا أو سيولة في كل المنصات.",
+      "disc.title": "إخلاء مسؤولية",
+      "disc.body": "قوائم DEX والمتصفحات أعلاه مراجع إرشادية مبنية على بيانات عامة لنظام سولانا البيئي، ولا تعني أن eCNH مدرج أو يملك سيولة قابلة للتداول على جميع المنصات. محتوى الحضارة النجمية رؤية مجتمعية وليس اقتراحًا استثماريًا. الاستثمار في العملات الرقمية ينطوي على مخاطر عالية؛ لا تعتمد على هذه الصفحة وحدها عند اتخاذ القرارات.",
+      "common.visit": "زيارة", "common.open": "فتح",
+      "footer.note": "لقطة البيانات: 2025-09-23 (OrbMarkets / Helius). الشبكة: سولانا. التوكن: 华夏币 eCNH. الأسعار والسيولة والحجم تتغير بسرعة وتُعرض للتوضيح فقط. عنوان eCNH: 7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5.",
+      "footer.linksTitle": "صفحات eCNH ذات الصلة",
+      "footer.rights": "جميع المعلومات لأغراض مرجعية فقط.",
+      "kw.title": "عالم كلمات مفتاحية eCNH"
+    },
+    "ru": {
+      "brand.year": "2026",
+      "nav.overview": "Обзор", "nav.dex": "DEX", "nav.explorers": "Обозреватели", "nav.civ": "Звёздная цив.",
+      "nav.token": "Токен", "nav.activity": "Активность", "nav.about": "О проекте",
+      "hero.badge": "eCNH 2026 · на Solana",
+      "hero.title": "Офшорный китайский юань — на Solana",
+      "hero.sub": "eCNH = earth CNH = europe CNH = east CNH = ECNH = energy CNH. Сообщество-токен, объединяющий видение офшорного китайского юаня с экосистемой Solana — и связь цивилизации на 3000 лет к звёздам.",
+      "hero.shared": "Человечество Земли строит и делится eCNH · 全球人类共建共享eCNH",
+      "hero.ctaDex": "Изучить DEX", "hero.ctaExplorer": "Смотреть обозреватели", "hero.ctaCiv": "План звёздной цив.",
+      "stats.kicker": "Живой снимок", "stats.title": "Цена и рынок",
+      "stats.sub": "Снимок проверен через OrbMarkets / Helius 2025-09-23. Проверяйте данные в обозревателе перед действиями.",
+      "stats.price": "Цена", "stats.change": "Изменение 24ч", "stats.liquidity": "Ликвидность",
+      "stats.holders": "Держатели", "stats.fdv": "Капитализация / FDV", "stats.volume": "Объём 24ч",
+      "stats.contract": "Адрес контракта (Solana)", "stats.copy": "Копировать контракт",
+      "stats.note": "Контракт: 7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 · Сеть: Solana (SPL) · Дата снимка приведена для справки.",
+      "dex.kicker": "Навигация", "dex.title": "Топ-10 DEX для eCNH",
+      "dex.sub": "Подборка по активности экосистемы Solana в 2025–2026 годах. Листинг на DEX не гарантирует ликвидность.",
+      "dex.name1": "Jupiter", "dex.role1": "Агрегатор DEX",
+      "dex.note1": "Агрегирует ликвидность всех крупных DEX Solana; наиболее вероятная точка маршрутизации eCNH.",
+      "dex.name2": "Raydium", "dex.role2": "Классический AMM + CLMM",
+      "dex.note2": "Крупнейший DEX Solana по TVL с глубокой ликвидностью в AMM и пулах концентрированной ликвидности.",
+      "dex.name3": "Orca", "dex.role3": "Дружелюбный AMM",
+      "dex.note3": "Пулы eCNH (eCNH/PYUSD, eCNH/USDC) созданы на Orca — самый прямой из связанных с eCNH DEX.",
+      "dex.name4": "Meteora", "dex.role4": "Динамическая ликвидность",
+      "dex.note4": "Динамическая ликвидность (DLMM) подходит для запусков низкокапитализированных токенов и управления концентрированной ликвидностью.",
+      "dex.name5": "HumidiFi", "dex.role5": "Собственный AMM / тёмный пул",
+      "dex.note5": "Обрабатывает большую долю исполнения агрегатора Jupiter без отдельного фронтенда — маршрутизируется через агрегаторы, если ликвидность вернётся.",
+      "dex.name6": "PumpSwap", "dex.role6": "AMM запусков",
+      "dex.note6": "Встроенный AMM pump.fun для новых токенов; активный центр ранней ликвидности.",
+      "dex.name7": "Phoenix", "dex.role7": "Стакан заявок на цепи",
+      "dex.note7": "Полностью ончейн-биржа стакана заявок с лимитными, рыночными и стоп-ордерами и мгновенным расчётом.",
+      "dex.name8": "Lifinity", "dex.role8": "Проактивный маркет-мейкинг",
+      "dex.note8": "Алгоритмический AMM активного маркет-мейкинга с динамической корректировкой комиссий.",
+      "dex.name9": "OpenBook", "dex.role9": "Открытый стакан заявок",
+      "dex.note9": "Сообщественный DEX стакана заявок, наследник Serum с открытым исходным кодом.",
+      "dex.name10": "Tessera", "dex.role10": "Дробные NFT / закрыт", "dex.legacyTag": "Историческое",
+      "dex.note10": "Изначально протокол дробления NFT (бывш. Fractional), закрыт в 2023 году. Сохранён только как историческая справка экосистемы.",
+      "dex.poolsTitle": "Справочные пулы eCNH на Orca",
+      "exp.kicker": "Проверка", "exp.title": "Топ-10 блокчейн-обозревателей",
+      "exp.sub": "Проверяйте информацию о токене, держателях и состояние сети. Все ссылки открывают контракт eCNH напрямую.",
+      "exp.name1": "Solscan", "exp.role1": "Самый популярный",
+      "exp.note1": "Широко используемый обозреватель Solana: информация о токенах, анализ кошельков и декодирование транзакций.",
+      "exp.name2": "Solana Explorer", "exp.role2": "Официальный",
+      "exp.note2": "Официально поддерживается Solana Foundation; нейтральные и точные данные.",
+      "exp.name3": "Orb (Helius)", "exp.role3": "ИИ-анализ",
+      "exp.note3": "ИИ-объяснения сделок, тепловые карты и история для глубокого анализа.",
+      "exp.name4": "SolanaFM", "exp.role4": "Налоги и аналитика",
+      "exp.note4": "Поддерживает экспорт CSV — подходит для налогов и аналитики.",
+      "exp.name5": "Solana Beach", "exp.role5": "Здоровье сети",
+      "exp.note5": "Фокус на валидаторах и здоровье сети — отлично для стейкинга и данных кластера.",
+      "exp.name6": "X-Ray (Helius)", "exp.role6": "Читаемые транзакции",
+      "exp.note6": "Превращает сложные транзакции в читаемые сводки.",
+      "exp.name7": "Birdeye", "exp.role7": "Графики и данные",
+      "exp.note7": "Графики токенов, держатели, капитализация и живые рыночные данные.",
+      "exp.name8": "Validators.app", "exp.role8": "Мониторинг валидаторов",
+      "exp.note8": "Производительность валидаторов, стейкинг и здоровье кластера.",
+      "exp.name9": "Dune", "exp.role9": "Аналитические дашборды",
+      "exp.note9": "SQL-дашборды сообщества для глубокого исследования Solana.",
+      "exp.name10": "Blockchair", "exp.role10": "Мультичейн-обозреватель",
+      "exp.note10": "Приватный мультичейн-обозреватель с поддержкой Solana.",
+      "exp.note": "Обозреватель eCNH: solscan.io/token/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 · X-Ray и Orb управляются Helius.",
+      "civ.kicker": "Видение 2026", "civ.title": "Связь межзвёздной цивилизации eCNH",
+      "civ.sub": "Через eCNH как посредника соединить 3000 лет наследия китайской цивилизации с будущими 3000 годами межзвёздной цивилизации — сообщество цивилизаций через пространство и время.",
+      "civ.ideaTitle": "Вселенная eCNH · Межзвёздная связь",
+      "civ.ideaBody": "eCNH соединяет 3000-летнее наследие китайской цивилизации с 3000 годами будущей межзвёздной цивилизации, образуя трансгенерационное сообщество; также служит видением единой игровой валюты в 10 крупнейших играх-эксплорерах и войнах научной фантастики, создавая единую экономику виртуального мира.",
+      "civ.stabTitle": "Механизм стабильности будущего",
+      "civ.stabBody": "Будущая цель: 1 eCNH ≈ 1 CNH с допустимым диапазоном колебаний ±1–3% в день/месяц. Якорение стабильности через eaco и стейблкоины (USDC, USDT, PYUSD, EURC). Когда будут в обращении все 100 триллионов eCNH, можно открыть связку обмена с SOL, BTC, ETH, BNB, AVAX, DOGE и TRX.",
+      "civ.aiTitle": "Эволюция на основе ИИ",
+      "civ.aiBody": "Ежедневно использовать реальные данные 10 ведущих открытых ИИ мира (бесплатные публичные API) для обновления планов развития eCNH, обеспечивая интеллектуальную эволюцию системы.",
+      "civ.autoTitle": "Автообновления",
+      "civ.autoBody": "Данные и планы eCNH обновляются каждый час — например в 01:01, 09:01 и 17:01 — поддерживая экосистему в синхронизации.",
+      "civ.econTitle": "Экономическая стабильность",
+      "civ.econBody": "Годовой прирост оборотного предложения ограничен 0,03–3% от общего объёма — защита от инфляции и дефляции.",
+      "civ.govTitle": "Общественное управление",
+      "civ.govBody": "Исследование группы управления Межзвёздного альянса eCNH с механикой DAO — самоуправление сообщества для демократических и прозрачных решений.",
+      "civ.globalTitle": "Глобальный и межзвёздный охват",
+      "civ.globalBody": "Даже в условиях войн за исследование звёзд или исторических катаклизмов eCNH создан, чтобы продолжать развиваться и обращаться в Юго-Восточной Азии, на Ближнем Востоке, в Центральной Азии, Африке, во всём мире — и дальше, в межзвёздной экономике.",
+      "civ.andraTitle": "Галактика Андромеды (M31)",
+      "civ.andraBody": "Галактика Андромеды (M31) — ближайший гигантский сосед нашего Млечного Пути и один из самых далёких объектов, видимых невооружённым глазом. Это веха астрономии и ключевой участник будущего Млечного Пути — одна из самых цитируемых реальных галактик в сеттингах межзвёздных цивилизаций.",
+      "civ.cnhTitle": "Офшорный китайский юань (CNH)",
+      "civ.cnhBody": "Курс CNH/USD — это офшорный обменный курс юаня за пределами материкового Китая, обычно через международные финансовые центры, такие как Гонконг и Сингапур. Оншорный юань (CNY) используется внутри материкового Китая.",
+      "token.kicker": "Факты сети", "token.title": "Детали токена",
+      "token.sub": "Снимок проверен через OrbMarkets / Helius 2025-09-23. Проверяйте данные в обозревателе перед действиями.",
+      "token.contract": "Адрес контракта", "token.name": "Название", "token.chain": "Сеть",
+      "token.supply": "Общая эмиссия", "token.created": "Создан", "token.creator": "Создатель",
+      "token.desc": "Описание в сети", "token.meaning": "Значения названия", "token.mcap": "Капитализация / FDV",
+      "token.orb": "Страница OrbMarkets",
+      "act.kicker": "Проверка фактов", "act.title": "Активность в сети",
+      "act.sub": "Честный снимок текущего состояния рынка — всегда проверяйте через обозреватель.",
+      "act.emptyTitle": "Активного основного рынка не обнаружено",
+      "act.emptySub": "По последнему снимку eCNH показывает очень низкий объём за 24 часа ($18.82) и 320 держателей. Используйте обозреватели выше для проверки состояния перед любым взаимодействием.",
+      "act.cta": "Открыть Solscan",
+      "about.kicker": "Позиционирование", "about.title": "О 华夏币 eCNH",
+      "about.sub": "История офшорного китайского юаня (CNH), воплощённая в экосистеме Solana как Earth CNH — строится и разделяется всем человечеством.",
+      "about.missionTitle": "Миссия",
+      "about.missionBody": "eCNH представляет идею офшорного китайского юаня как сообщество-токен на Solana — часть семейства eaco для Earth CNH, и исследует план межцивилизационной связи: соединить глобальный сценарий использования юаня с открытым слоем расчётов без границ.",
+      "about.visionLabel": "Видение сообщества:", "about.visionValue": "1 eCNH ≈ 1 CNH",
+      "about.poolsTitle": "Справочные пулы ликвидности",
+      "about.poolsBody": "Пулы созданы на Orca для прямой проверки ликвидности. Состояние постоянно меняется — проверяйте перед взаимодействием. Списки DEX и обозревателей — общие справочные данные; они не означают листинг или ликвидность везде.",
+      "disc.title": "Отказ от ответственности",
+      "disc.body": "Списки DEX и обозревателей выше — навигационные ссылки на основе общих данных экосистемы Solana; они не означают, что eCNH размещён или имеет торгуемую ликвидность на всех платформах. Контент межзвёздной цивилизации — видение сообщества, а не инвестиционное предложение. Инвестиции в криптовалюты сопряжены с высоким риском; не принимайте решений, основываясь только на этой странице.",
+      "common.visit": "Перейти", "common.open": "Открыть",
+      "footer.note": "Снимок данных: 2025-09-23 (OrbMarkets / Helius). Сеть: Solana. Токен: 华夏币 eCNH. Цена, ликвидность и объём быстро меняются и приведены только для справки. Адрес eCNH: 7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5.",
+      "footer.linksTitle": "Связанные страницы eCNH",
+      "footer.rights": "Вся информация предоставлена только для справки.",
+      "kw.title": "Вселенная ключевых слов eCNH"
+    }
+  };
+
+  function pick(dict, key) {
+    return Object.prototype.hasOwnProperty.call(dict, key) ? dict[key] : "";
+  }
+
+  var LANG_KEY = "ecnh2026_lang";
+  var THEME_KEY = "ecnh2026_theme";
+  var STORE_OK = false;
+  try { localStorage.setItem("__t", "1"); localStorage.removeItem("__t"); STORE_OK = true; } catch (e) { STORE_OK = false; }
+
+  var currentLang = "en";
+  try { if (STORE_OK) { var saved = localStorage.getItem(LANG_KEY); if (saved && I18N[saved]) currentLang = saved; } } catch (e) {}
+
+  function setLang(lang, persist) {
+    currentLang = lang;
+    var dict = I18N[lang];
+    document.documentElement.lang = lang;
+    document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
+    var nodes = document.querySelectorAll("[data-i18n]");
+    for (var i = 0; i < nodes.length; i++) {
+      var key = nodes[i].getAttribute("data-i18n");
+      nodes[i].textContent = pick(dict, key);
+    }
+    var titleMap = {
+      "en": "eCNH 2026 · 华夏币 — Offshore Chinese Yuan on Solana",
+      "zh-CN": "eCNH 2026 · 华夏币 — 离岸人民币 · Solana",
+      "es": "eCNH 2026 · 华夏币 — Yuan chino extraterritorial en Solana",
+      "fr": "eCNH 2026 · 华夏币 — Yuan chinois offshore sur Solana",
+      "ar": "eCNH 2026 · 华夏币 — اليوان الصيني الخارجي على سولانا",
+      "ru": "eCNH 2026 · 华夏币 — Офшорный китайский юань на Solana"
+    };
+    document.title = titleMap[lang] || titleMap["en"];
+    var btns = document.querySelectorAll("[data-lang]");
+    for (var j = 0; j < btns.length; j++) {
+      btns[j].setAttribute("aria-pressed", btns[j].getAttribute("data-lang") === lang ? "true" : "false");
+    }
+    if (persist && STORE_OK) {
+      try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
+    }
+  }
+  setLang(currentLang, false);
+
+  /* ---- theme (default follows system, manual toggle overrides) ---- */
+  var systemDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  var themeBtn = document.querySelector(".theme-btn");
+  function applyTheme(theme) {
+    if (theme === "dark") document.documentElement.setAttribute("data-theme", "dark");
+    else if (theme === "light") document.documentElement.setAttribute("data-theme", "light");
+    else document.documentElement.removeAttribute("data-theme");
+  }
+  var currentTheme = null;
+  try { if (STORE_OK) currentTheme = localStorage.getItem(THEME_KEY); } catch (e) {}
+  applyTheme(currentTheme);
+  if (themeBtn) {
+    themeBtn.addEventListener("click", function () {
+      var isDarkNow = document.documentElement.getAttribute("data-theme") === "dark" ||
+        (!document.documentElement.hasAttribute("data-theme") && (systemDark || window.matchMedia("(prefers-color-scheme: dark)").matches));
+      var next = isDarkNow ? "light" : "dark";
+      applyTheme(next);
+      try { if (STORE_OK) localStorage.setItem(THEME_KEY, next); } catch (e) {}
+    });
+  }
+
+  /* ---- copy contract ---- */
+  var copyBtns = document.querySelectorAll("[data-copy]");
+  function doCopy(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text).then(function () { return true; }, function () { return legacyCopy(text); });
+    }
+    return Promise.resolve(legacyCopy(text));
+  }
+  function legacyCopy(text) {
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    ta.setSelectionRange(0, text.length);
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    document.body.removeChild(ta);
+    return ok;
+  }
+  for (var c = 0; c < copyBtns.length; c++) {
+    copyBtns[c].addEventListener("click", function () {
+      var btn = this;
+      var text = btn.getAttribute("data-copy") || "";
+      doCopy(text).then(function (ok) {
+        btn.classList.add("copy-ok");
+        var label = btn.querySelector("span");
+        var original = label ? label.textContent : "";
+        var done = (I18N[currentLang]["stats.copy"] || "");
+        if (ok && done && label) label.textContent = done + " ✓";
+        window.setTimeout(function () {
+          btn.classList.remove("copy-ok");
+          if (label) label.textContent = original;
+        }, 1600);
+      });
+    });
+  }
+
+  /* ---- mobile menu ---- */
+  var menuBtn = document.querySelector(".menu-btn");
+  var mobileNav = document.getElementById("mobileNav");
+  if (menuBtn && mobileNav) {
+    menuBtn.addEventListener("click", function () {
+      var open = mobileNav.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    mobileNav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        mobileNav.classList.remove("open");
+        if (menuBtn) menuBtn.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+
+  /* ---- language buttons (desktop + mobile) ---- */
+  var langBtns = document.querySelectorAll("[data-lang]");
+  for (var l = 0; l < langBtns.length; l++) {
+    langBtns[l].addEventListener("click", function () {
+      setLang(this.getAttribute("data-lang"), true);
+    });
+  }
+})();
+</script>
+</body>
+</html>
