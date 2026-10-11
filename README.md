@@ -80,6 +80,8 @@ distributed eCNH DAO game POOL 2026
 
 https://app.meteora.ag/dammv2/Ac2bwg4ByZr2FePpuKKdjGLpfRMenFsjgt17St9PfBKC
 
+https://orbmarkets.io/token/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5
+
 离岸人民币汇率通常会受到市场供求关系、国际经济形势、央行政策等多种因素的影响，因此与岸内人民币的汇率可能有所不同。
 
 Core Concept of eCNH Interstellar Civilization Connection SolutionInterstellar Civilization Connection via eCNHUsing eCNH as a medium, connect 3,000 years of Chinese civilization’s historical heritage with 3,000 years of future interstellar civilization, forming a timeless community of civilizations across space and time.Game IntegrationAs the universal in-game currency for one of the top 10 global interstellar sci-fi exploration and war games, eCNH establishes a unified economic system in virtual worlds.Stability MechanismAndromeda Standard: 1 eCNH ≈ 1 eCNH ≈ 1 CNH, with daily/monthly fluctuations allowed within ±1-3%.
