@@ -76,6 +76,9 @@ eCNH CA:
 
 <img width="510" height="765" alt="f8b6564d2d68a4d1a3cb1714f9c4dd23" src="https://github.com/user-attachments/assets/423a0570-6b8e-4625-8596-de2a82c73f87" />
 
+distributed eCNH DAO game POOL 2026
+
+https://app.meteora.ag/dammv2/Ac2bwg4ByZr2FePpuKKdjGLpfRMenFsjgt17St9PfBKC
 
 离岸人民币汇率通常会受到市场供求关系、国际经济形势、央行政策等多种因素的影响，因此与岸内人民币的汇率可能有所不同。
 
