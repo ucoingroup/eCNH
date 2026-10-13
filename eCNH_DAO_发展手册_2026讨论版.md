@@ -562,3 +562,11 @@ DYOR（自己做研究）、自担风险、无追索对象。
 2. 文档共八章 + 附录，已将此前所有讨论内容（定位分析、分阶段路线、DAO 架构、货币分层、合规路径、100 问、术语表、免责声明）完整合并。
 3. 附录的版本记录表预留给后续治理提案更新，每次修订请填写提案编号以保持可追溯。
 
+earthCNH = europeCNH = eastCNH ...
+
+CA: 
+
+7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5
+
+
+
