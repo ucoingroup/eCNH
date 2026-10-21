@@ -86,6 +86,20 @@ eCNH / WBTC:
 
 https://www.orca.so/pools/8y1GD4aVZjJbqc2PL8BZfh1k6shJzJ4h9Ky2qXD5SEE2
 
+eCNH-BNB:
+
+https://orbmarkets.io/address/9ABB49kmPwjKdbzepwDKyQXwG6TuAmxdzduaAVqs9C48
+
+SOL-eCNH:
+
+https://orbmarkets.io/address/EzNXT9LEDRX33t1S7wEbKqvPJUAFJXNgXBzH2QF17aXF
+
+eCNH-EURC:
+
+https://orbmarkets.io/address/6atEtNWMfLUPuzMoDMCGfmvhKjTvQYEPSnGWqXreH3sT
+
+
+
 
 
 离岸人民币汇率通常会受到市场供求关系、国际经济形势、央行政策等多种因素的影响，因此与岸内人民币的汇率可能有所不同。
