@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="zh" data-theme="apple">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>eCNH DAO 2027 · 地球村分布式离岸人民币社区</title>
+<meta name="description" content="eCNH DAO 2027：面向地球村的分布式离岸人民币实验社区，Web3 + AI + RWA，多语言、多主题。">
+<style>
+:root{--radius:18px;--maxw:1080px}
+html[data-theme="apple"]{
+  --bg:#f2f7f2;--bg2:#e8f3ea;--card:#ffffff;--ink:#1c2b22;--muted:#5c6f63;
+  --accent:#0fa958;--accent2:#34c759;--accentSoft:rgba(15,169,88,.10);
+  --line:#dbe9df;--shadow:0 6px 24px rgba(20,80,50,.08);--head:rgba(255,255,255,.85);
+}
+html[data-theme="cosmic"]{
+  --bg:#070b16;--bg2:#0b1120;--card:#0f1526;--ink:#e8eeff;--muted:#93a0c4;
+  --accent:#5b8cff;--accent2:#9f7bff;--accentSoft:rgba(91,140,255,.14);
+  --line:#232c4a;--shadow:0 6px 28px rgba(0,0,0,.45);--head:rgba(10,14,26,.85);
+}
+html[data-theme="classic"]{
+  --bg:#f6f0e4;--bg2:#efe6d2;--card:#fffaf0;--ink:#3a2f22;--muted:#7a6a52;
+  --accent:#9a7b4f;--accent2:#7c5c34;--accentSoft:rgba(154,123,79,.12);
+  --line:#e4d8bf;--shadow:0 6px 22px rgba(90,70,40,.10);--head:rgba(255,250,240,.88);
+}
+html[data-theme="classic"] body{font-family:"Noto Serif SC","Songti SC",Georgia,"Times New Roman",serif}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei","Segoe UI",Roboto,sans-serif;line-height:1.7;transition:background .3s,color .3s}
+a{color:var(--accent);text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:50;background:var(--head);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.hbar{display:flex;align-items:center;gap:14px;padding:12px 0;flex-wrap:wrap}
+.logo{font-weight:800;font-size:1.15rem;letter-spacing:.5px}
+.logo .dot{color:var(--accent)}
+nav{display:flex;gap:4px;flex-wrap:wrap;margin-inline-start:auto}
+nav a{padding:6px 10px;border-radius:10px;color:var(--muted);font-size:.88rem}
+nav a:hover{background:var(--accentSoft);color:var(--accent)}
+.ctrls{display:flex;gap:8px;align-items:center}
+select,button.ctl{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:6px 10px;font-size:.85rem;cursor:pointer}
+.themeBtns{display:flex;gap:6px}
+.themeBtns button{width:26px;height:26px;border-radius:50%;border:2px solid var(--line);cursor:pointer;padding:0}
+.themeBtns button[data-t="apple"]{background:linear-gradient(135deg,#34c759,#0fa958)}
+.themeBtns button[data-t="cosmic"]{background:linear-gradient(135deg,#5b8cff,#141b3a)}
+.themeBtns button[data-t="classic"]{background:linear-gradient(135deg,#e8d9b5,#9a7b4f)}
+.themeBtns button.on{border-color:var(--accent);box-shadow:0 0 0 3px var(--accentSoft)}
+section{padding:64px 0;border-bottom:1px solid var(--line)}
+h2{font-size:1.7rem;margin-bottom:8px}
+h2 .n{color:var(--accent);font-size:1rem;margin-inline-end:8px}
+.lead{color:var(--muted);max-width:760px;margin-bottom:26px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+/* hero */
+#hero{padding:90px 0 70px;text-align:center;position:relative;overflow:hidden}
+html[data-theme="cosmic"] #hero{background:
+ radial-gradient(600px 300px at 20% 0%,rgba(91,140,255,.18),transparent),
+ radial-gradient(500px 260px at 85% 20%,rgba(159,123,255,.15),transparent)}
+.badge{display:inline-block;background:var(--accentSoft);color:var(--accent);border:1px solid var(--line);padding:6px 16px;border-radius:999px;font-size:.85rem;margin-bottom:18px}
+#hero h1{font-size:clamp(2.1rem,5vw,3.4rem);letter-spacing:1px}
+#hero h1 .g{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+#hero .sub{color:var(--muted);font-size:1.05rem;max-width:640px;margin:14px auto 26px}
+.caBox{display:inline-flex;align-items:center;gap:10px;background:var(--card);border:1px dashed var(--accent);border-radius:14px;padding:10px 16px;font-family:ui-monospace,Consolas,monospace;font-size:.82rem;max-width:92%;overflow:hidden}
+.caBox button{background:var(--accent);color:#fff;border:none;border-radius:9px;padding:6px 12px;cursor:pointer;font-size:.8rem;white-space:nowrap}
+.heroLinks{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.heroLinks a{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:9px 16px;font-size:.88rem;color:var(--ink);transition:.2s}
+.heroLinks a:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 22px;min-width:130px}
+.stat b{display:block;font-size:1.25rem;color:var(--accent)}
+.stat span{font-size:.78rem;color:var(--muted)}
+/* identity */
+.idCard{display:flex;gap:14px;align-items:flex-start}
+.idCard .em{font-size:1.6rem}
+.idCard b{display:block;margin-bottom:4px;color:var(--accent)}
+.idCard p{color:var(--muted);font-size:.9rem}
+/* path */
+.step{display:flex;gap:14px}
+.step .num{flex:0 0 34px;height:34px;border-radius:10px;background:var(--accentSoft);color:var(--accent);font-weight:700;display:flex;align-items:center;justify-content:center}
+.step h3{font-size:1rem;margin-bottom:4px}
+.step p{color:var(--muted);font-size:.9rem}
+/* jurisdictions */
+.jGroup h3{font-size:1rem;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--bg2);border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:.85rem}
+.note{font-size:.8rem;color:var(--muted);background:var(--accentSoft);border-inline-start:3px solid var(--accent);padding:10px 14px;border-radius:10px;margin-top:18px}
+/* vision */
+.vision p{color:var(--muted);margin-bottom:12px}
+.quote{border-inline-start:4px solid var(--accent);padding:8px 18px;margin:16px 0;font-size:1.08rem;font-weight:600}
+.quote small{display:block;color:var(--muted);font-weight:400;margin-top:4px}
+.values{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.values span{background:var(--accentSoft);color:var(--accent);border-radius:10px;padding:6px 14px;font-size:.9rem}
+/* charity */
+.alloc .row{margin-bottom:14px}
+.alloc .top{display:flex;justify-content:space-between;font-size:.9rem;margin-bottom:5px}
+.alloc .top b{color:var(--accent)}
+.alloc .bar{height:10px;background:var(--bg2);border-radius:999px;overflow:hidden}
+.alloc .fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:999px;transition:width .8s}
+.alloc p.desc{color:var(--muted);font-size:.82rem;margin-top:4px}
+/* roadmap */
+.tl{position:relative;padding-inline-start:26px}
+.tl::before{content:"";position:absolute;inset-inline-start:8px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl .node{position:relative;margin-bottom:22px}
+.tl .node::before{content:"";position:absolute;inset-inline-start:-24px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accentSoft)}
+.tl b{color:var(--accent)}
+.tl p{color:var(--muted);font-size:.9rem}
+/* QA */
+.qaTools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.qaTools input,.qaTools select{flex:1;min-width:200px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;color:var(--ink);font-size:.9rem}
+.qaItem{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+.qaItem summary{cursor:pointer;padding:14px 18px;font-weight:600;font-size:.93rem;list-style:none;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.qaItem summary::-webkit-details-marker{display:none}
+.qaItem summary::after{content:"+";color:var(--accent);font-size:1.2rem;flex:none}
+.qaItem[open] summary::after{content:"−"}
+.qaItem .ans{padding:0 18px 16px;color:var(--muted);font-size:.9rem}
+.qaCount{font-size:.8rem;color:var(--muted);margin-bottom:12px}
+/* blessings */
+#bless{background:linear-gradient(180deg,var(--bg),var(--bg2));text-align:center;padding:76px 0 96px}
+html[data-theme="cosmic"] #bless{background:
+ radial-gradient(500px 260px at 50% 0%,rgba(91,140,255,.14),transparent),
+ linear-gradient(180deg,var(--bg),var(--bg2))}
+#bless h2{letter-spacing:2px}
+.orn{display:flex;align-items:center;justify-content:center;gap:14px;color:var(--accent);margin:8px 0 30px;font-size:1rem}
+.orn::before,.orn::after{content:"";height:1px;width:min(150px,26vw);background:linear-gradient(90deg,transparent,var(--accent))}
+.orn::after{transform:scaleX(-1)}
+.blessGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.wish{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 16px 18px;opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease,border-color .25s,box-shadow .25s}
+.wish.in{opacity:1;transform:none}
+.wish:hover{border-color:var(--accent);box-shadow:var(--shadow)}
+.wish .em{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;background:var(--accentSoft);font-size:1.35rem;margin-bottom:10px}
+.wish p{font-size:.92rem;color:var(--ink);line-height:1.75}
+/* footer */
+footer{padding:44px 0 60px;color:var(--muted);font-size:.82rem}
+footer .disc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin-bottom:18px}
+footer a{margin-inline-end:16px}
+#top{position:fixed;inset-inline-end:18px;bottom:18px;width:42px;height:42px;border-radius:50%;background:var(--accent);color:#fff;border:none;cursor:pointer;font-size:1.1rem;box-shadow:var(--shadow);display:none}
+@media(max-width:720px){nav{width:100%;order:3}}
+</style>
+</head>
+<body>
+<header><div class="wrap hbar">
+  <div class="logo">eCNH<span class="dot">·</span>DAO<span class="dot">·</span>2027</div>
+  <nav id="nav"></nav>
+  <div class="ctrls">
+    <div class="themeBtns">
+      <button data-t="apple" title="Apple Green"></button>
+      <button data-t="cosmic" title="Cosmic Blue"></button>
+      <button data-t="classic" title="Classical Beige"></button>
+    </div>
+    <select id="langSel"></select>
+  </div>
+</div></header>
+
+<section id="hero"><div class="wrap">
+  <div class="badge" id="hBadge"></div>
+  <h1 id="hTitle"></h1>
+  <p class="sub" id="hSub"></p>
+  <div class="caBox"><span>CA: 7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5</span><button id="copyBtn"></button></div>
+  <div class="heroLinks" id="hLinks"></div>
+  <div class="stats" id="hStats"></div>
+</div></section>
+
+<section id="about"><div class="wrap">
+  <h2 id="abTitle"></h2><p class="lead" id="abText"></p>
+  <div class="grid g2" id="abItems"></div>
+  <div class="note" id="abNote" style="margin-top:20px"></div>
+</div></section>
+
+<section id="path"><div class="wrap">
+  <h2 id="pTitle"></h2><p class="lead" id="pIntro"></p>
+  <div class="grid g2" id="pItems"></div>
+</div></section>
+
+<section id="jur"><div class="wrap">
+  <h2 id="jTitle"></h2><p class="lead" id="jIntro"></p>
+  <div class="grid g2" id="jGroups"></div>
+  <div class="note" id="jNote"></div>
+</div></section>
+
+<section id="vision"><div class="wrap">
+  <h2 id="vTitle"></h2>
+  <div class="card vision" id="vBody"></div>
+</div></section>
+
+<section id="charity"><div class="wrap">
+  <h2 id="cTitle"></h2><p class="lead" id="cIntro"></p>
+  <div class="card alloc" id="cAlloc"></div>
+  <div class="note" id="cNote" style="margin-top:18px"></div>
+</div></section>
+
+<section id="roadmap"><div class="wrap">
+  <h2 id="rTitle"></h2>
+  <div class="tl card" id="rItems" style="margin-top:10px"></div>
+</div></section>
+
+<section id="qa"><div class="wrap">
+  <h2 id="qTitle"></h2><p class="lead" id="qLead"></p>
+  <div class="qaTools"><input id="qSearch" type="search"><select id="qCat"></select></div>
+  <div class="qaCount" id="qCount"></div>
+  <div id="qList"></div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="disc" id="fDisc"></div>
+  <div id="fLinks"></div>
+  <div id="fRights" style="margin-top:10px"></div>
+</div></footer>
+
+<section id="bless"><div class="wrap">
+  <h2 id="bTitle"></h2>
+  <div class="orn">❁ ❁ ❁</div>
+  <div class="blessGrid" id="bGrid"></div>
+  <div class="orn" style="margin-top:34px">🙏 🪷 🙏</div>
+</div></section>
+
+<button id="top" onclick="scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+const CA="7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5";
+const LINKS={
+  orb:"https://orbmarkets.io/token/"+CA,
+  meteora:"https://app.meteora.ag/dammv2/Ac2bwg4ByZr2FePpuKKdjGLpfRMenFsjgt17St9PfBKC",
+  orca:"https://www.orca.so/pools/8y1GD4aVZjJbqc2PL8BZfh1k6shJzJ4h9Ky2",
+  solscan:"https://solscan.io/token/"+CA
+};
+const L10N={};
+
+/* ================= 简体中文 ================= */
+L10N.zh={
+name:"简体中文",dir:"ltr",
+nav:[["about","关于 eCNH"],["path","发展路径"],["jur","友好辖区"],["vision","愿景"],["charity","公益 DAO"],["roadmap","路线图"],["qa","100 问答"],["bless","祈愿文"]],
+hero:{badge:"分布式 eCNH DAO POOL 2026 → 2027",title:"eCNH <span class='g'>DAO 2027</span>",
+ sub:"面向地球村的分布式离岸人民币实验社区 · Web3 + AI + RWA。为天地立心，为生民立命，为往圣继绝学，为万世开太平。",
+ ca:"复制合约地址",copied:"已复制 ✓",
+ links:[["📈 行情 · Orb Markets",LINKS.orb],["🌊 DAO POOL · Meteora dAMM v2",LINKS.meteora],["🪙 WBTC/eCNH · Orca",LINKS.orca],["🔍 合约 · Solscan",LINKS.solscan]],
+ stats:[["Solana","所在公链"],["3,313+","持有人（增长中）"],["CNH 1:1","锚定愿景（未实现）"],["6 语言 · 3 主题","地球村设计"]]},
+about:{title:"关于 eCNH：一体四面的社区代币",text:"eCNH 是仙女座及星际文明长期的分布式社区实验代币，部署在 Solana 上。它的未来目标不只是稳定币——与离岸人民币（CNH）1:1 锚定只是愿景中的一步，目前锚定、储备与赎回机制尚未实现，任何参与都应基于这一事实。eCNH 不只是代币，更是一个以透明、公益与自治为核心的社区实验。",
+ items:[["🌍","earth CNH · 地球村","天下华人为公。面向全球社区，服务跨境支付、小额汇款与真实结算场景。"],
+ ["🇪🇺","europe CNH · 欧洲","探索连接欧元区与离岸人民币的桥梁角色，服务中欧贸易与合规社区。"],
+ ["🏮","east CNH · 东方","根植东方的商业文化与自治传统，以华语社区为根基向外辐射。"],
+ ["⚡","energy CNH · 能源","为 AI 经济储备结算能量：机器与代理之间的高频小额支付实验场。"]],
+ note:"⚠️ 重要提示：eCNH 是仙女座及星际文明长期的分布式社区实验代币，未来目标不只是稳定币；其价格随市场波动，离岸人民币 1:1 锚定仅为长期愿景，请勿据此做出财务决策。"},
+path:{title:"发展路径：八个支柱",
+ intro:"信任先于增长。先理清资产定位与透明度，再谈流动性与社区，最后走向分布式治理——这是 eCNH DAO 的次序。",
+ items:[["1","资产定位与透明度","公开是否具备真实锚定（目标：与离岸人民币 1:1 的储备、发行方与赎回机制）；公开合约权限（无增发、无冻结）、持仓分布与多签地址。没有透明，就没有信任基础。"],
+ ["2","修复流动性与价格","清理或校准价格偏离的池子，集中做深一两个主交易对（如 eCNH-USDC），并提供可观深度；用流动性激励吸引做市，但明白单靠补贴的流动性难以持久。"],
+ ["3","降低持仓集中度","通过空投、任务与贡献奖励，把代币分散给真实活跃用户而非少数大户。当前持有人约 3,313，先把真实活跃地址做上去。"],
+ ["4","DAO 治理结构","成立多签金库并公开资金用途；用链上治理做提案与投票；初期采用“委员会 + 社区投票”混合模式，逐步下放；设计清晰的投票权、提案门槛与预算额度。"],
+ ["5","真实使用场景","跨境支付、小额汇款、离岸人民币相关贸易结算、稳定币兑换；与 DeFi 协议整合（借贷抵押、做市），让持有者有使用理由，而非只持有。"],
+ ["6","社区与运营","面向东南亚、港澳及海外华人与人民币相关群体，建立中英双语社区；设立大使/贡献者计划；定期公开链上数据（持有人、成交量、流动性）以建立可信度。"],
+ ["7","合规与风险","人民币相关资产涉及各地外汇与稳定币监管，发行、赎回与推广环节需当地法律意见；避免夸大宣传，尤其在信任评级较低、流动性尚浅的阶段。"],
+ ["8","周期性完善","每 2-3 年全面修订一次发展方案，跟随技术、社区与监管的演进滚动更新。"]]},
+jur:{title:"地球村 Web3 友好辖区 30 选",
+ intro:"只在 Web3 合规的国家与城市开展 eCNH Web3 + AI + RWA 业务。以下名单综合公开的监管友好度评价，供社区讨论参考。",
+ groups:[["🌍 亚太地区",["新加坡","中国香港","日本·东京","韩国·首尔","马来西亚·吉隆坡/纳闽","哈萨克斯坦·阿斯塔纳"]],
+ ["🕌 中东地区",["阿联酋·迪拜","阿联酋·阿布扎比"]],
+ ["🏛️ 欧洲",["瑞士·楚格","列支敦士登","卢森堡","荷兰·阿姆斯特丹","德国·法兰克福","法国·巴黎","葡萄牙·里斯本","爱沙尼亚·塔林","立陶宛·维尔纽斯","马耳他","英国·伦敦"]],
+ ["🌎 美洲",["美国·怀俄明州","美国·迈阿密","加拿大·多伦多","萨尔瓦多"]],
+ ["🏝️ 离岸金融中心",["开曼群岛","英属维尔京群岛","百慕大","塞舌尔","毛里求斯"]],
+ ["🦘 大洋洲",["澳大利亚·悉尼","新西兰·奥克兰"]]],
+ note:"注：监管环境持续变化，名单仅供参考。实际开展业务前，必须就发行、赎回与推广环节取得当地专业法律意见。"},
+vision:{title:"愿景：意识、AI 与星际文明的结算层",
+ paras:["哲学家大胆推测：意识或许并非人类专属——宇宙中可能存在人类无法想象的心灵。保持这种谦逊与好奇，是本社区仰望星空的姿态。",
+ "当地球进入 AI 经济时代，机器与 AI 代理之间将产生天量的高频小额支付需求，需要低费用、高吞吐的结算底座——这正是 eCNH 选择 Solana、探索离岸人民币结算载体的原因。",
+ "Web3 提供链上确权，AI 提供智能执行，RWA 把现实资产代币化。三者叠加，可能开启人类历史上规模最大的协作与财富创造实验；若人类终将走向星际，一个开放、中立、分布式的结算层，或许会成为文明级的公共品。",
+ "eCNH 社区愿意以“为公”的初心参与这场实验：财富取之于社区，亦当回馈于社区。"],
+ quotes:[["为天地立心，为生民立命，为往圣继绝学，为万世开太平。","—— 北宋 · 张载（横渠四句）"],["先天下之忧而忧，后天下之乐而乐。","—— 北宋 · 范仲淹《岳阳楼记》"]],
+ values:["自立","勤俭","读书","友善"]},
+charity:{title:"公益 DAO：利润分配方案",
+ intro:"如果 eCNH 实现盈利，社区发愿将利润按以下比例长期分配（写入 DAO 章程与多签规则，动用资金必须按比例执行）：",
+ alloc:[["20-30%","eCNH 长期技术完善升级",30,"合约审计、基础设施、开发者激励与长期安全维护。"],
+ ["10-20%","海外 Web3 分布式小组运营",20,"覆盖各海外小组的服务器、活动、内容与本地化成本，按里程碑拨付。"],
+ ["10-20%","悄悄的公益",20,"分发给全球月收入低于 1000 元的华人网友，支持其生活、医疗、教育与养老。行善不扬名，只公示总数与流向，保护受助者尊严。"],
+ ["5-10%","eCNH 长期流动池建设",10,"持续向 eCNH-USDC 主交易对补充深度，降低波动与滑点。"],
+ ["其余","备用金 · 新技术开发 · 基础草根民生技术设施",15,"天下华人为公：剩余利润作为储备金，投向新技术与民生基础设施。"]],
+ note:"公益发放记录上链、定期公示汇总（不公开个人隐私）；申请者自述收入并签署声明，公益组与运营组双重复核，多签拨付，社区可质询。方案每 2-3 年完善一次。"},
+roadmap:{title:"路线图：2026 → 2027 → 未来",
+ items:[["2026 · DAO POOL 启动","上线 Meteora dAMM v2 分布式资金池与 Orca WBTC/eCNH 池；公开合约权限与多签金库；启动大使与任务计划。"],
+ ["2027 · DAO 治理成型","eCNH DAO 2027 正式运作：链上提案与投票（Realms 类框架）、“委员会 + 社区投票”混合模式、公益发放流程跑通。"],
+ ["2028 · 多语言与场景扩展","六大语言社区落地；探索 eCNH-USDC 深度建设、跨境小额结算试点与 DeFi 整合。"],
+ ["每 2-3 年 · 方案修订","全面复审资产锚定、治理、公益与合规方案，按社区共识滚动升级，向 AI 经济与更远的愿景演进。"]]},
+qa:{title:"eCNH 常见 100 问答",lead:"覆盖基础知识、DAO 治理、流动性、公益分配、合规风险与愿景哲学。可搜索、可按分类筛选。",
+ search:"搜索问题或答案…",cats:["全部","基础与代币","DAO 与治理","流动性与市场","公益与分配","合规与风险","愿景与哲学"],
+ count:"共 {n} 条",empty:"没有匹配的问答，换个关键词试试。",
+ items:[
+["eCNH 是什么？","eCNH 是仙女座及星际文明长期的分布式社区实验代币，部署在 Solana 上，目标是成为面向地球村社区的离岸人民币实验性结算载体。"],
+["eCNH 的合约地址（CA）是什么？","7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5，一切信息以官方公告为准。"],
+["eCNH 运行在哪条链上？","Solana——速度快、费用低，适合高频小额结算场景。"],
+["eCNH 的多重含义是什么？","earth / europe / east / energy CNH：地球、欧洲、东方、能源，四位一体。"],
+["如何购买 eCNH？","在 Solana 钱包中通过 Jupiter 或 Orca 等去中心化交易所用 USDC 兑换。"],
+["需要准备什么钱包？","Phantom、Solflare 等支持 Solana 的钱包，务必备份助记词。"],
+["Solana 是什么？","一个高性能公链，出块快、手续费极低，是 eCNH 的结算底座。"],
+["交易手续费高吗？","链上费用通常远低于 0.01 SOL，主要成本来自滑点与价差。"],
+["官方信息在哪里查看？","以官网与官方公告为准，行情可参考 Orb Markets 代币页面。"],
+["Meteora 的 DAO POOL 是什么？","Ac2bwg4ByZr2FePpuKKdjGLpfRMenFsjgt17St9PfBKC，eCNH 分布式 DAO 资金池（dAMM v2）。"],
+["Orca 池是什么？","WBTC/eCNH 池，为长期持有者提供跨资产流动性。"],
+["eCNH 与离岸人民币 CNH 的关系？","愿景是与离岸人民币 1:1 锚定；目前该锚定尚未实现，一切以可验证储备为准。"],
+["eCNH 现在是稳定币吗？","不是。eCNH 是分布式社区实验代币，未来目标不只是稳定币；目前价格随市场波动，请勿当作稳定币使用。"],
+["如何验证合约真实性？","在 Solana Explorer 核对 CA、权限与铸造记录，并对照官方多渠道公告。"],
+["什么是 CA？","Contract Address（合约地址），链上代币的唯一身份证，认准 CA 是防假币的关键。"],
+["如何防范假币与钓鱼链接？","只认官方 CA 与域名，警惕私聊“客服”，不签来历不明的签名请求。"],
+["代币如何分发？","通过社区空投、任务奖励与流动性激励分发，避免集中于少数大户。"],
+["在哪里查看持有人数？","Solscan 或 Orb Markets 可查看持有人分布与活跃地址。"],
+["eCNH 的长期目标？","成为 AI 经济与全球华人的小额结算工具，并逐步实现 DAO 化治理。"],
+["社区在哪里？","Telegram、X（Twitter）等平台的 eCNH DAO 官方账号，谨防假冒。"],
+["什么是 eCNH DAO 2027？","面向 2027 年成型的分布式社区自治组织，负责治理、金库与公益。"],
+["如何加入 DAO？","持有代币并完成社区任务登记，参与提案讨论与投票即可视为成员。"],
+["DAO 如何做决策？","链上提案 + 社区投票，初期采用“委员会 + 社区投票”混合模式。"],
+["什么是多签金库？","资金由多个独立签名者共同管理，任何单方都无法挪用。"],
+["提案需要什么门槛？","设置最低持币或社区声誉门槛，防止垃圾提案淹没议程。"],
+["投票权如何计算？","初期按持币量加权并设置上限，后续引入贡献度加权机制。"],
+["什么是分布式 DAO 小组？","按地区或职能（技术、公益、运营）自发组成的小型自治团队。"],
+["海外小组如何成立？","由 3-5 名活跃成员发起，公开目标与预算，经社区投票认可。"],
+["小组运营资金从哪来？","来自 DAO 金库年度预算，占利润的 10-20%，按里程碑拨付。"],
+["什么是链上治理？","提案、投票、拨款全部记录在区块链上，公开可查、不可篡改。"],
+["Realms 是什么？","Solana 生态常用的 DAO 治理框架，可用于提案与投票管理。"],
+["“委员会 + 社区投票”如何运作？","委员会负责日常执行，重大事项必须社区投票通过。"],
+["资金用途如何公开？","每笔拨款上链，定期发布链上财报与金库对账。"],
+["DAO 金库地址公开吗？","公开。任何人可随时在链上查证余额与流水。"],
+["如何提交提案？","在治理平台按模板填写目标、预算与里程碑，进入讨论与投票期。"],
+["治理代币就是 eCNH 吗？","初期以 eCNH 计票，成熟后可分离出专门的治理凭证。"],
+["如何防止大户垄断投票？","设置单地址投票权重上限，并引入长期锁仓与贡献加权。"],
+["各小组的职责是什么？","技术组负责升级，公益组负责发放，运营组负责社区与内容。"],
+["贡献者如何获得奖励？","按任务完成情况从社区奖励池获得代币或声誉积分。"],
+["DAO 多久复盘一次？","每季度复盘预算与进展，每 2-3 年全面修订发展方案。"],
+["为什么流动性如此重要？","没有深度，价格易被操纵，真实用户也无法顺畅进出。"],
+["如何参与做市获得激励？","向指定池子提供双边流动性，按份额与时长获得代币奖励。"],
+["单边还是双边 LP 好？","双边 LP 更稳，避免单边持仓带来的价格扭曲。"],
+["什么是 dAMM v2？","Meteora 的动态自动做市模型，可在价格区间内更高效地分配流动性。"],
+["价格偏离严重的池子怎么办？","暂停激励并公告迁移，引导流动性集中到主池。"],
+["为什么集中到 eCNH-USDC？","交易对越集中，深度越厚，滑点越小，价格发现越真实。"],
+["WBTC/eCNH 池的作用？","引入比特币资产作对手盘，服务长期持有者的跨资产配置需求。"],
+["什么是无常损失？","提供流动性时，因价格变动导致持仓价值低于单纯持币的机会成本。"],
+["在哪里查看行情？","Orb Markets、DEX Screener 及钱包内置行情均可查看。"],
+["何时上线中心化交易所？","待深度与合规条件成熟后，由 DAO 投票决定上所优先级。"],
+["如何减少砸盘风险？","分批解锁、锁仓激励与贡献者线性释放，降低短期抛压。"],
+["持仓集中度多高算健康？","前十大地址占比逐步下降、持有人数持续增长为佳。"],
+["空投如何帮助分散持仓？","把代币直接发放给大量真实活跃地址，稀释大户占比。"],
+["如何参与任务赚取代币？","关注官方任务平台，完成内容、翻译与推广任务。"],
+["上所需要什么流程？","尽调、合规审查、公告与流动性准备，全程由社区监督。"],
+["eCNH 的利润如何分配？","技术 20-30%、小组运营 10-20%、公益 10-20%、流动池 5-10%，其余为备用金。"],
+["技术升级经费怎么用？","用于合约审计、基础设施、开发者激励与长期安全维护。"],
+["小组运营经费怎么用？","覆盖海外小组的服务器、活动、内容与本地化成本。"],
+["公益资金帮助谁？","全球月收入低于 1000 元的华人网友，用于生活、医疗、教育与养老。"],
+["如何申请公益帮助？","通过公益小组的公开渠道提交材料，经审核后匿名发放。"],
+["公益透明如何保证？","发放记录上链、定期公示汇总（不公开个人隐私）。"],
+["“悄悄的公益”是什么意思？","行善不扬名，只公示总数与流向，保护受助者尊严。"],
+["流动池建设经费怎么用？","持续向 eCNH-USDC 主池补充深度，降低波动与滑点。"],
+["剩余利润做什么？","备用金、新技术研发与草根民生技术设施。"],
+["方案多久完善一次？","每 2-3 年全面修订一次，并按社区反馈滚动更新。"],
+["“为天地立心”与项目的关系？","以公益与公共品回馈社区，是 eCNH 的价值观底座。"],
+["自立、勤俭、读书、友善如何体现？","鼓励成员自食其力、节俭互助、终身学习、善待他人。"],
+["“先天下之忧而忧”出自哪里？","北宋范仲淹《岳阳楼记》，是本 DAO 公益理念的古典注脚。"],
+["公益分配是强制的吗？","写入 DAO 章程与多签规则，动用资金必须按比例执行。"],
+["如何防止公益资金被滥用？","多签拨付、双组复核、链上公示与社区质询机制。"],
+["月收入如何认定？","由申请者自述并签署声明，抽查核实，宁可信其需。"],
+["公益以什么形式发放？","以稳定币或小额代币直接发放至受助者钱包。"],
+["医疗教育养老如何覆盖？","按申请事由定向发放，鼓励用于学费、药费与基本生活。"],
+["2027 代表什么？","目标在 2027 年让 DAO 治理、公益发放与多小组网络成型。"],
+["“2026 DAO POOL”是什么？","2026 年启动的首个分布式资金池，即 Meteora 上的 dAMM v2 池。"],
+["eCNH 合规吗？","各地法规不同，参与前请咨询当地法律意见，DAO 仅在合规地区开展业务。"],
+["哪些国家与城市可以参与？","优先 Web3 友好地区，名单见本站“友好辖区”版块。"],
+["人民币相关资产的监管风险？","外汇与稳定币监管严格，发行、赎回与推广需专业法律意见。"],
+["为什么只选 Web3 合规地区？","降低法律风险，保护参与者与 DAO 的长期安全。"],
+["投资风险有哪些？","流动性浅、价格波动大、锚定尚未实现，可能损失全部本金。"],
+["会增发吗？","目标是公开合约权限、取消增发与冻结权限，接受社区监督。"],
+["如何避免夸大宣传？","只陈述可验证事实，不承诺收益，明确标注实验性质。"],
+["需要 KYC/AML 吗？","去中心化交易无需 KYC，但公益发放与法币环节将按要求执行。"],
+["税务如何处理？","各地税务规则不同，请咨询当地专业人士。"],
+["有免责声明吗？","有，见页面底部：本站内容不构成任何投资建议。"],
+["若储备无法验证怎么办？","在实现 1:1 储备与赎回机制前，明确声明“未锚定”状态，不误导用户。"],
+["社区自治的法律边界？","DAO 不承诺法人地位与偿付责任，重大事项依当地法律执行。"],
+["遇到诈骗怎么办？","立即停止操作、保留证据并向社区举报，必要时报警。"],
+["“AI 经济的结算底座”是什么意思？","AI 代理之间的高频小额支付需要低费高效的结算层，Solana 提供该能力。"],
+["eCNH 如何与 AI 经济结合？","探索让 AI 代理用 eCNH 完成数据、内容与服务的小额结算。"],
+["RWA 是什么？","Real World Assets（现实世界资产代币化），是 eCNH 长期探索方向。"],
+["宇宙意识哲学指什么？","哲学家推测意识或非人类专属，宇宙可能存在人类无法想象的心灵。"],
+["意识是人类专属的吗？","未知。保持谦逊与好奇，正是本社区仰望星空的态度。"],
+["星际文明与 eCNH 有什么关系？","愿景层面：若人类走向星际，开放中立的结算层或成文明的公共品。"],
+["“天量财富”指什么？","指 Web3+AI+RWA 融合所开启的长期增量空间，而非短期炒作收益。"],
+["“地球村”是什么概念？","全球社区像村落一样互联互助，eCNH 面向的是这个共同体。"],
+["Web3、AI、RWA 如何融合？","链上确权（Web3）+ 智能执行（AI）+ 现实资产（RWA）三层叠加。"],
+["未来三年的规划？","2026 建池、2027 治理成型、2028 扩展多语言社区与真实结算场景。"],
+["如何贡献代码或内容？","通过 GitHub 仓库与社区任务平台提交 PR 或翻译内容。"],
+["如何联系社区？","通过官网公示的 Telegram、X 等官方渠道，警惕假冒管理员。"]
+]},
+bless:{title:"🙏 祈愿文 · 愿所有众生",
+ wishes:[
+"愿所有众生平安出行，身体健康",
+"愿所有众生吃饱穿暖衣食无忧",
+"愿所有众生今生乃至生生世世不邪淫，不妄语，保持正念善念",
+"愿所有众生心想事成",
+"愿所有众生无病无灾无难",
+"愿所有众生负债累累清零，实现财务上自由",
+"愿所有众生自由自在，能够去自己想去的地方",
+"愿所有众生爱情顺利婚姻美满",
+"愿所有众生福慧双修福慧增长",
+"愿所有众生离苦得乐清闲自在",
+"愿所有众生有花不完的钱，每天有1000元零花钱财源广进",
+"愿所有众生万事如意平安顺遂",
+"愿所有孩子健康快乐成长",
+"愿所有老人子孝孙贤，平安喜乐",
+"愿所有父母健康长寿快乐",
+"愿所有众生远离恶道亲近善知识"
+]},
+footer:{disc:"⚠️ 免责声明：eCNH 是仙女座及星际文明长期的分布式社区实验代币，未来目标不只是稳定币，也未与离岸人民币实现锚定。本网站内容仅供信息参考与社区教育，不构成任何投资、法律或税务建议。加密资产波动剧烈，可能损失全部本金；参与前请了解当地法律并咨询专业人士。人民币相关业务涉及外汇监管，DAO 仅在合规辖区开展业务。",
+ links:[["Orb Markets 行情",LINKS.orb],["Meteora DAO POOL",LINKS.meteora],["Orca WBTC/eCNH",LINKS.orca],["Solscan 合约",LINKS.solscan]],
+ rights:"eCNH DAO 2027 · 地球村分布式社区 · 为天地立心，为生民立命 · 自立 · 勤俭 · 读书 · 友善"}
+};
+/* ================= English ================= */
+L10N.en={
+name:"English",dir:"ltr",
+nav:[["about","About eCNH"],["path","Roadmap Path"],["jur","Friendly Jurisdictions"],["vision","Vision"],["charity","Charity DAO"],["roadmap","Timeline"],["qa","100 Q&A"],["bless","Blessings"]],
+hero:{badge:"Distributed eCNH DAO POOL 2026 → 2027",title:"eCNH <span class='g'>DAO 2027</span>",
+ sub:"A distributed offshore-CNY experiment community for the Global Village · Web3 + AI + RWA. To ordain conscience for Heaven and Earth, to secure life and fortune for the people, to continue lost teachings of past sages, to open peace for all generations.",
+ ca:"Copy CA",copied:"Copied ✓",
+ links:[["📈 Price · Orb Markets",LINKS.orb],["🌊 DAO POOL · Meteora dAMM v2",LINKS.meteora],["🪙 WBTC/eCNH · Orca",LINKS.orca],["🔍 Contract · Solscan",LINKS.solscan]],
+ stats:[["Solana","Blockchain"],["3,313+","Holders (growing)"],["CNH 1:1","Peg vision (not yet)"],["6 Languages · 3 Themes","Global Village design"]]},
+about:{title:"About eCNH: One Token, Four Identities",text:"eCNH is the long-term distributed community experimental token of Andromeda and interstellar civilizations, deployed on Solana. Its future goal is more than a stablecoin — a 1:1 peg with offshore Renminbi (CNH) is just one step of that vision, and the peg, reserves and redemption mechanism do not yet exist, so any participation should be based on this fact. eCNH is not just a token; it is a community experiment built on transparency, public good and self-governance.",
+ items:[["🌍","earth CNH · Earth Village","The world belongs to all. Serving global communities: cross-border payments, remittances and real settlement scenarios."],
+ ["🇪🇺","europe CNH · Europe","Exploring a bridge between the Eurozone and offshore CNH, serving EU-China trade and compliant communities."],
+ ["🏮","east CNH · East","Rooted in Eastern commerce culture and self-governance traditions, radiating outward from Chinese-speaking communities."],
+ ["⚡","energy CNH · Energy","Reserving settlement energy for the AI economy: a sandbox for high-frequency micro-payments between machines and agents."]],
+ note:"⚠️ Important: eCNH is the long-term distributed community experimental token of Andromeda and interstellar civilizations — its future goal is more than a stablecoin; its price fluctuates with the market. The 1:1 offshore-CNH peg is a long-term vision only — do not make financial decisions based on it."},
+path:{title:"Development Path: Eight Pillars",
+ intro:"Trust before growth. First clarify asset positioning and transparency, then liquidity and community, and finally distributed governance — that is the order of eCNH DAO.",
+ items:[["1","Asset positioning & transparency","Disclose whether a real peg exists (goal: CNH 1:1 reserves, issuer and redemption mechanism); disclose contract authorities (no mint, no freeze), holder distribution and multisig addresses. Without transparency there is no basis for trust."],
+ ["2","Fix liquidity & pricing","Clean up or recalibrate price-deviated pools; concentrate depth into one or two main pairs (e.g. eCNH-USDC) with meaningful depth; use liquidity incentives to attract market makers, knowing subsidy-only liquidity rarely lasts."],
+ ["3","Reduce holder concentration","Distribute tokens to real active users — not a few whales — via airdrops, quests and contribution rewards. With ~3,313 holders, first grow genuinely active addresses."],
+ ["4","DAO governance structure","Set up a multisig treasury with public fund usage; run proposals and votes on-chain; adopt a hybrid “committee + community vote” model at first, delegating gradually; define voting power, proposal thresholds and budget quotas."],
+ ["5","Real use cases","Cross-border payments, micro-remittances, offshore-CNH trade settlement, stablecoin exchange; integrate with DeFi (lending collateral, market making) so holders have reasons to use, not just hold."],
+ ["6","Community & operations","Build bilingual (CN/EN) communities for Southeast Asia, Hong Kong & Macao (China) and overseas Chinese communities; run ambassador/contributor programs; publish on-chain data (holders, volume, liquidity) regularly to build credibility."],
+ ["7","Compliance & risk","RMB-related assets involve FX and stablecoin regulation across jurisdictions — seek local legal opinions on issuance, redemption and promotion; avoid exaggerated claims, especially while trust is low and liquidity thin."],
+ ["8","Periodic refinement","Fully revise the development plan every 2-3 years, rolling with technology, community and regulatory evolution."]]},
+jur:{title:"30 Web3-Friendly Jurisdictions of the Global Village",
+ intro:"eCNH Web3 + AI + RWA business is conducted only in Web3-compliant countries and cities. The list below aggregates public assessments of regulatory friendliness, for community discussion.",
+ groups:[["🌏 Asia-Pacific",["Singapore","Hong Kong, China","Tokyo, Japan","Seoul, South Korea","Kuala Lumpur/Labuan, Malaysia","Astana, Kazakhstan"]],
+ ["🕌 Middle East",["Dubai, UAE","Abu Dhabi, UAE"]],
+ ["🏛️ Europe",["Zug, Switzerland","Liechtenstein","Luxembourg","Amsterdam, Netherlands","Frankfurt, Germany","Paris, France","Lisbon, Portugal","Tallinn, Estonia","Vilnius, Lithuania","Malta","London, UK"]],
+ ["🌎 Americas",["Wyoming, USA","Miami, USA","Toronto, Canada","El Salvador"]],
+ ["🏝️ Offshore centers",["Cayman Islands","British Virgin Islands","Bermuda","Seychelles","Mauritius"]],
+ ["🦘 Oceania",["Sydney, Australia","Auckland, New Zealand"]]],
+ note:"Note: regulatory environments keep changing; this list is for reference only. Before doing business, always obtain local professional legal opinions on issuance, redemption and promotion."},
+vision:{title:"Vision: Consciousness, AI and the Settlement Layer of Interstellar Civilization",
+ paras:["Philosophers have boldly speculated that consciousness may not be exclusive to humans — the universe may hold minds beyond human imagination. Keeping that humility and curiosity is how this community looks up at the stars.",
+ "As Earth enters the AI economy, machine-to-machine and agent-to-agent micro-payments will demand a low-fee, high-throughput settlement base — exactly why eCNH chose Solana and explores an offshore-CNH settlement vehicle.",
+ "Web3 provides on-chain property rights, AI provides intelligent execution, RWA tokenizes real assets. Stacked together, they may open the largest collaboration and wealth-creation experiment in human history; if humanity ever goes interstellar, an open, neutral, distributed settlement layer could become a civilization-level public good.",
+ "The eCNH community joins this experiment with a public-spirited heart: wealth taken from the community must flow back to it."],
+ quotes:[["To ordain conscience for Heaven and Earth, to secure life and fortune for the people, to continue lost teachings of past sages, to open peace for all generations.","— Zhang Zai, Northern Song (The Four Sentences of Hengqu)"],["Be the first to worry about the world's troubles, and the last to enjoy its pleasures.","— Fan Zhongyan, Northern Song, “Memorial to Yueyang Tower”"]],
+ values:["Self-reliance","Frugality","Reading","Kindness"]},
+charity:{title:"Charity DAO: Profit Allocation Plan",
+ intro:"If eCNH becomes profitable, the community pledges to allocate profits long-term as follows (written into the DAO charter and multisig rules; any fund usage must follow these ratios):",
+ alloc:[["20-30%","Long-term eCNH technology upgrades",30,"Contract audits, infrastructure, developer incentives and long-term security maintenance."],
+ ["10-20%","Overseas Web3 distributed group operations",20,"Covers servers, events, content and localization for overseas groups, disbursed by milestones."],
+ ["10-20%","Quiet charity",20,"Distributed to Chinese-language netizens worldwide earning under CNY 1,000/month, supporting living, healthcare, education and elder care. Good deeds without fanfare — only totals and flows are published, protecting recipients' dignity."],
+ ["5-10%","Long-term eCNH liquidity building",10,"Continuously deepening the eCNH-USDC main pair to reduce volatility and slippage."],
+ ["The rest","Reserve fund · new tech · grassroots livelihood infrastructure",15,"The world belongs to all: remaining profits go to reserves, new technologies and livelihood infrastructure."]],
+ note:"Charity disbursements are recorded on-chain with periodic aggregate disclosure (no personal privacy exposed); applicants self-declare income with a signed statement, cross-reviewed by the charity and operations groups, paid via multisig, open to community scrutiny. The plan is refined every 2-3 years."},
+roadmap:{title:"Timeline: 2026 → 2027 → Beyond",
+ items:[["2026 · DAO POOL launch","Launch the Meteora dAMM v2 distributed pool and the Orca WBTC/eCNH pool; disclose contract authorities and multisig treasury; start ambassador and quest programs."],
+ ["2027 · DAO governance takes shape","eCNH DAO 2027 becomes operational: on-chain proposals and voting (Realms-style framework), hybrid “committee + community vote” model, charity disbursement pipeline running."],
+ ["2028 · Multilingual & use-case expansion","Six-language communities live; deepen eCNH-USDC liquidity, pilot cross-border micro-settlement and DeFi integration."],
+ ["Every 2-3 years · Plan revision","Fully review peg, governance, charity and compliance plans, upgrading by community consensus toward the AI economy and the longer vision."]]},
+qa:{title:"eCNH: 100 Frequently Asked Questions",lead:"Basics, DAO governance, liquidity, charity allocation, compliance risks and vision philosophy. Searchable and filterable.",
+ search:"Search questions or answers…",cats:["All","Basics & Token","DAO & Governance","Liquidity & Market","Charity & Allocation","Compliance & Risk","Vision & Philosophy"],
+ count:"{n} entries",empty:"No matching Q&A — try another keyword.",
+ items:[
+["What is eCNH?","eCNH is the long-term distributed community experimental token of Andromeda and interstellar civilizations on Solana, aiming to become an experimental offshore-CNY settlement vehicle for the Global Village."],
+["What is eCNH's contract address (CA)?","7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 — always rely on official announcements."],
+["Which chain does eCNH run on?","Solana — fast and cheap, suited to high-frequency micro-settlement."],
+["What do the multiple meanings of eCNH stand for?","earth / europe / east / energy CNH — Earth, Europe, East and Energy, four in one."],
+["How do I buy eCNH?","Swap USDC for eCNH via DEXs like Jupiter or Orca inside a Solana wallet."],
+["What wallet do I need?","A Solana wallet such as Phantom or Solflare; always back up your seed phrase."],
+["What is Solana?","A high-performance blockchain with fast blocks and negligible fees — eCNH's settlement base."],
+["Are transaction fees high?","On-chain fees are usually far below 0.01 SOL; main costs come from slippage and spread."],
+["Where can I find official information?","Rely on the official site and announcements; market data on the Orb Markets token page."],
+["What is the Meteora DAO POOL?","Ac2bwg4ByZr2FePpuKKdjGLpfRMenFsjgt17St9PfBKC — the eCNH distributed DAO pool (dAMM v2)."],
+["What is the Orca pool?","A WBTC/eCNH pool providing cross-asset liquidity for long-term holders."],
+["How does eCNH relate to offshore CNH?","The vision is a 1:1 peg with offshore Renminbi; that peg does not exist yet — everything depends on verifiable reserves."],
+["Is eCNH a stablecoin now?","No. eCNH is a distributed community experimental token whose future goal is more than a stablecoin; its price currently fluctuates — do not treat it as a stablecoin."],
+["How do I verify the contract?","Check CA, authorities and mint records on Solana Explorer, and cross-check official announcements."],
+["What is a CA?","Contract Address — the token's unique on-chain identity; trusting the CA is key to avoiding fakes."],
+["How do I avoid fake tokens and phishing?","Trust only the official CA and domains; beware of DM “support”; never sign unknown requests."],
+["How are tokens distributed?","Via community airdrops, quest rewards and liquidity incentives, avoiding whale concentration."],
+["Where can I see holder counts?","Solscan or Orb Markets show holder distribution and active addresses."],
+["What is eCNH's long-term goal?","To become a micro-settlement tool for the AI economy and global Chinese communities, with DAO governance."],
+["Where is the community?","Official eCNH DAO accounts on Telegram, X (Twitter) and more — beware impersonators."],
+["What is eCNH DAO 2027?","A distributed community organization maturing by 2027, in charge of governance, treasury and charity."],
+["How do I join the DAO?","Hold tokens, register for community quests, and join proposal discussions and votes."],
+["How does the DAO make decisions?","On-chain proposals + community votes; a hybrid “committee + community vote” model at first."],
+["What is a multisig treasury?","Funds managed by multiple independent signers — no single party can move them."],
+["What is the proposal threshold?","A minimum holding or community-reputation requirement to prevent spam proposals."],
+["How is voting power computed?","Initially holding-weighted with caps; contribution weighting will be added later."],
+["What are distributed DAO groups?","Small self-organized teams by region or function (tech, charity, operations)."],
+["How is an overseas group founded?","Initiated by 3-5 active members with public goals and budget, ratified by community vote."],
+["Where does group funding come from?","From the DAO treasury's annual budget — 10-20% of profits, disbursed by milestones."],
+["What is on-chain governance?","Proposals, votes and disbursements all recorded on-chain — public and immutable."],
+["What is Realms?","A popular Solana DAO governance framework usable for proposals and voting."],
+["How does “committee + community vote” work?","The committee handles daily execution; major matters require community approval."],
+["How is fund usage disclosed?","Every disbursement is on-chain, with regular on-chain financial reports and treasury reconciliation."],
+["Is the DAO treasury address public?","Yes. Anyone can verify balances and flows on-chain at any time."],
+["How do I submit a proposal?","Fill the template (goals, budget, milestones) on the governance platform, then discussion and voting."],
+["Is the governance token eCNH itself?","Initially votes are counted in eCNH; a dedicated governance credential may be separated later."],
+["How to prevent whale dominance in voting?","Cap per-address voting weight; add long-term locking and contribution weighting."],
+["What does each group do?","Tech upgrades, charity disbursement, and community & content operations."],
+["How are contributors rewarded?","Tokens or reputation points from the community reward pool, by task completion."],
+["How often does the DAO review itself?","Quarterly budget and progress reviews; full plan revision every 2-3 years."],
+["Why is liquidity so important?","Without depth, prices are easily manipulated and real users can't get in or out smoothly."],
+["How do I earn market-making incentives?","Provide two-sided liquidity to designated pools; earn token rewards by share and duration."],
+["One-sided or two-sided LP?","Two-sided LP is healthier, avoiding price distortion from one-sided positions."],
+["What is dAMM v2?","Meteora's dynamic AMM model allocating liquidity efficiently within price ranges."],
+["What about heavily price-deviated pools?","Pause incentives, announce migration, and guide liquidity to the main pool."],
+["Why concentrate on eCNH-USDC?","Fewer pairs mean deeper books, less slippage and truer price discovery."],
+["What is the WBTC/eCNH pool for?","It adds Bitcoin as a counter-asset, serving long-term holders' cross-asset allocation."],
+["What is impermanent loss?","The opportunity cost of LP positions falling below simply holding, due to price moves."],
+["Where can I check the market?","Orb Markets, DEX Screener and wallet-integrated charts."],
+["When will centralized exchanges list eCNH?","After depth and compliance mature; the DAO votes on listing priorities."],
+["How to reduce dump risk?","Batched unlocks, locked incentives and contributor vesting to lower short-term sell pressure."],
+["What holder concentration is healthy?","Top-10 address share gradually falling while holder count keeps rising."],
+["How do airdrops decentralize holdings?","Sending tokens directly to many real active addresses dilutes whale share."],
+["How do I earn tokens from quests?","Complete content, translation and promotion tasks on official quest platforms."],
+["What's the listing process?","Due diligence, compliance review, announcements and liquidity prep — all community-supervised."],
+["How are profits allocated?","Tech 20-30%, group operations 10-20%, charity 10-20%, liquidity 5-10%, the rest as reserves."],
+["How is the tech budget used?","Contract audits, infrastructure, developer incentives and long-term security."],
+["How is the group-operations budget used?","Servers, events, content and localization for overseas groups."],
+["Who does charity funding help?","Chinese-language netizens worldwide earning under CNY 1,000/month — living, healthcare, education, elder care."],
+["How do I apply for charity aid?","Submit materials via the charity group's public channels; disbursement is anonymous after review."],
+["How is charity transparency ensured?","Disbursements on-chain; periodic aggregate disclosure without personal privacy."],
+["What does “quiet charity” mean?","Doing good without fanfare — publishing only totals and flows, protecting recipients' dignity."],
+["How is the liquidity budget used?","Continuously deepening the eCNH-USDC main pool to reduce volatility and slippage."],
+["What happens to remaining profits?","Reserve funds, new-technology R&D and grassroots livelihood infrastructure."],
+["How often is the plan refined?","A full revision every 2-3 years, plus rolling updates from community feedback."],
+["How does “ordaining conscience for Heaven and Earth” relate to the project?","Giving back through public goods and charity is eCNH's value foundation."],
+["How are self-reliance, frugality, reading and kindness embodied?","Encouraging members to support themselves, live simply, learn for life and treat others kindly."],
+["Where does “first to worry” come from?","Fan Zhongyan's “Memorial to Yueyang Tower” (Northern Song) — a classical footnote to our charity ethos."],
+["Is charity allocation mandatory?","Yes — written into the DAO charter and multisig rules; fund usage must follow the ratios."],
+["How is charity abuse prevented?","Multisig payouts, dual-group review, on-chain disclosure and community questioning."],
+["How is monthly income verified?","Self-declaration with a signed statement, spot-checked; better to trust the need."],
+["In what form is charity paid?","Stablecoins or small token amounts sent directly to recipients' wallets."],
+["How are healthcare, education and elder care covered?","Directed disbursement by stated purpose — tuition, medicine and basic living."],
+["What does 2027 stand for?","The target year for DAO governance, charity disbursement and the multi-group network to take shape."],
+["What is the “2026 DAO POOL”?","The first distributed pool, launched in 2026 — the Meteora dAMM v2 pool."],
+["Is eCNH compliant?","Rules differ by jurisdiction — consult local legal opinions; the DAO operates only in compliant regions."],
+["Which countries and cities can participate?","Web3-friendly regions first — see the “Friendly Jurisdictions” section."],
+["What are the regulatory risks of RMB-related assets?","FX and stablecoin rules are strict; issuance, redemption and promotion need professional legal advice."],
+["Why operate only in Web3-compliant regions?","To lower legal risk and protect participants and the DAO's long-term safety."],
+["What are the investment risks?","Thin liquidity, high volatility, no peg yet — total loss of principal is possible."],
+["Will there be extra issuance?","The goal is public contract authorities with no mint and no freeze, under community oversight."],
+["How is hype avoided?","State only verifiable facts, promise no returns, and clearly mark the experimental nature."],
+["Is KYC/AML needed?","DEX trading needs no KYC; charity payouts and fiat touchpoints will follow requirements."],
+["How are taxes handled?","Tax rules vary by jurisdiction — consult local professionals."],
+["Is there a disclaimer?","Yes — see the page footer: nothing here is investment advice."],
+["What if reserves can't be verified?","Until 1:1 reserves and redemption exist, the “unpegged” status is stated clearly, never misleading."],
+["What are the legal boundaries of community self-governance?","The DAO promises no legal-person status or liability; major matters follow local law."],
+["What should I do about scams?","Stop immediately, keep evidence, report to the community and the police if needed."],
+["What does “settlement base of the AI economy” mean?","High-frequency agent-to-agent micro-payments need a low-fee, high-throughput settlement layer — Solana provides it."],
+["How does eCNH combine with the AI economy?","Exploring AI agents settling data, content and services in eCNH micro-payments."],
+["What is RWA?","Real World Assets — tokenizing real assets on-chain; a long-term eCNH exploration direction."],
+["What is the cosmic-consciousness philosophy?","Philosophers speculate consciousness may not be human-exclusive — the universe may hold unimaginable minds."],
+["Is consciousness exclusive to humans?","Unknown. Humility and curiosity are how this community looks at the stars."],
+["How does interstellar civilization relate to eCNH?","At the vision level: if humanity goes interstellar, an open neutral settlement layer could become a civilization's public good."],
+["What does “immense wealth” mean?","The long-term growth space opened by Web3+AI+RWA fusion — not short-term speculation."],
+["What is the “Global Village”?","A world community interconnected like a village — the very community eCNH serves."],
+["How do Web3, AI and RWA fuse?","On-chain property rights (Web3) + intelligent execution (AI) + real assets (RWA), stacked in three layers."],
+["What's the three-year plan?","Pool in 2026, governance in 2027, multilingual communities and real settlement in 2028."],
+["How can I contribute code or content?","Submit PRs to the GitHub repos or translations via community quest platforms."],
+["How do I contact the community?","Via official Telegram, X and other channels listed on the site — beware impostors."]]},
+bless:{title:"🙏 Blessings · For All Beings",
+ wishes:[
+"May all beings travel in peace and enjoy good health",
+"May all beings be warmly fed and clothed, free from want",
+"May all beings, in this life and in all lives to come, refrain from sexual misconduct and false speech, and keep mindful, kind thoughts",
+"May all beings see their wishes come true",
+"May all beings be free from illness, disaster and hardship",
+"May all beings have their debts cleared to zero and attain financial freedom",
+"May all beings be free and at ease, able to go wherever they wish",
+"May all beings find smooth love and happy marriages",
+"May all beings cultivate both blessings and wisdom, and see them grow",
+"May all beings leave suffering behind and live at leisure and ease",
+"May all beings have money they can never spend, with 1,000 yuan of pocket money daily and wealth flowing in",
+"May everything go as wished for all beings, in peace and smoothness",
+"May all children grow up healthy and happy",
+"May all elders have filial children and grandchildren, in peace and joy",
+"May all parents live long, healthy and happy",
+"May all beings stay far from evil paths and draw near to good teachers"
+]},
+footer:{disc:"⚠️ Disclaimer: eCNH is the long-term distributed community experimental token of Andromeda and interstellar civilizations — its future goal is more than a stablecoin, and it is not pegged to offshore CNH. This website is for information and community education only; it is not investment, legal or tax advice. Crypto assets are highly volatile and you may lose your entire principal. Know your local law and consult professionals before participating. RMB-related business involves FX regulation; the DAO operates only in compliant jurisdictions.",
+ links:[["Orb Markets price",LINKS.orb],["Meteora DAO POOL",LINKS.meteora],["Orca WBTC/eCNH",LINKS.orca],["Solscan contract",LINKS.solscan]],
+ rights:"eCNH DAO 2027 · Global Village Distributed Community · Self-reliance · Frugality · Reading · Kindness"}
+};
+/* ================= Español ================= */
+L10N.es={
+name:"Español",dir:"ltr",
+nav:[["about","Sobre eCNH"],["path","Camino"],["jur","Jurisdicciones"],["vision","Visión"],["charity","DAO Solidario"],["roadmap","Cronograma"],["qa","100 P&R"],["bless","Deseos"]],
+hero:{badge:"DAO POOL distribuido de eCNH 2026 → 2027",title:"eCNH <span class='g'>DAO 2027</span>",
+ sub:"Comunidad experimental del yuan offshore para la Aldea Global · Web3 + IA + RWA. Poner corazón al Cielo y la Tierra, dar vida al pueblo, continuar la sabiduría de los sabios y abrir la paz para todas las generaciones.",
+ ca:"Copiar CA",copied:"¡Copiado ✓",
+ links:[["📈 Precio · Orb Markets",LINKS.orb],["🌊 DAO POOL · Meteora dAMM v2",LINKS.meteora],["🪙 WBTC/eCNH · Orca",LINKS.orca],["🔍 Contrato · Solscan",LINKS.solscan]],
+ stats:[["Solana","Blockchain"],["3.313+","Titulares (creciendo)"],["CNH 1:1","Visión de paridad (aún no)"],["6 idiomas · 3 temas","Diseño de la Aldea Global"]]},
+about:{title:"Sobre eCNH: un token, cuatro identidades",text:"eCNH es el token experimental comunitario distribuido a largo plazo de Andrómeda y las civilizaciones interestelares, desplegado en Solana. Su objetivo de futuro va más allá de una stablecoin: la paridad 1:1 con el yuan offshore (CNH) es solo un paso de esa visión, y esa paridad, las reservas y el mecanismo de canje aún no existen. eCNH no es solo un token: es un experimento comunitario basado en transparencia, bien común y autogobierno.",
+ items:[["🌍","earth CNH · Aldea Global","El mundo es de todos. Pagos transfronterizos, remesas y liquidaciones reales para comunidades globales."],
+ ["🇪🇺","europe CNH · Europa","Explora un puente entre la eurozona y el CNH offshore, al servicio del comercio UE-China."],
+ ["🏮","east CNH · Oriente","Con raíces en la cultura comercial oriental y la tradición de autogobierno, irradiando desde las comunidades chinas."],
+ ["⚡","energy CNH · Energía","Reserva energía de liquidación para la economía de la IA: micropagos de alta frecuencia entre agentes."]],
+ note:"⚠️ Importante: eCNH es el token experimental comunitario distribuido a largo plazo de Andrómeda y las civilizaciones interestelares; su objetivo de futuro va más allá de una stablecoin y su precio fluctúa. La paridad 1:1 con el CNH es solo una visión a largo plazo; no tomes decisiones financieras basándote en ella."},
+path:{title:"Camino de desarrollo: ocho pilares",
+ intro:"La confianza antes del crecimiento. Primero transparencia y posicionamiento del activo, luego liquidez y comunidad, y al fin gobernanza distribuida: ese es el orden del DAO de eCNH.",
+ items:[["1","Posicionamiento y transparencia del activo","Divulgar si existe un respaldo real (meta: reservas CNH 1:1, emisor y mecanismo de canje); publicar permisos del contrato (sin emisión ni congelación), distribución de titulares y direcciones multi-firma."],
+ ["2","Reparar liquidez y precios","Depurar pools desviados; concentrar profundidad en uno o dos pares principales (p. ej. eCNH-USDC); usar incentivos, sabiendo que la liquidez subsidiada rara vez dura."],
+ ["3","Reducir la concentración","Repartir tokens entre usuarios reales — no ballenas — vía airdrops, misiones y recompensas. Con ~3.313 titulares, crecer en direcciones activas primero."],
+ ["4","Gobernanza del DAO","Tesorería multi-firma con uso de fondos público; propuestas y votos on-chain; modelo híbrido «comité + voto comunitario» al inicio, delegando poco a poco."],
+ ["5","Casos de uso reales","Pagos transfronterizos, remesas, liquidación comercial en CNH offshore, intercambio de stablecoins; integración DeFi (colateral, market making)."],
+ ["6","Comunidad y operaciones","Comunidades bilingües (CN/EN) para el Sudeste Asiático, Hong Kong y Macao (China) y la diáspora; programa de embajadores; datos on-chain publicados con regularidad."],
+ ["7","Cumplimiento y riesgo","Los activos vinculados al RMB implican regulación cambiaria y de stablecoins: opiniones legales locales; sin exageraciones, especialmente con la confianza baja."],
+ ["8","Mejora periódica","Revisión completa del plan cada 2-3 años, siguiendo la evolución técnica, comunitaria y regulatoria."]]},
+jur:{title:"30 jurisdicciones Web3-friendly de la Aldea Global",
+ intro:"El negocio eCNH Web3 + IA + RWA se realiza solo en países y ciudades con cumplimiento Web3. Lista agregada de evaluaciones públicas, para discusión comunitaria.",
+ groups:[["🌏 Asia-Pacífico",["Singapur","Hong Kong, China","Tokio, Japón","Seúl, Corea","Kuala Lumpur/Labuan, Malasia","Astaná, Kazajistán"]],
+ ["🕌 Medio Oriente",["Dubái, EAU","Abu Dabi, EAU"]],
+ ["🏛️ Europa",["Zug, Suiza","Liechtenstein","Luxemburgo","Ámsterdam, Países Bajos","Fráncfort, Alemania","París, Francia","Lisboa, Portugal","Tallin, Estonia","Vilna, Lituania","Malta","Londres, R. U."]],
+ ["🌎 Américas",["Wyoming, EE. UU.","Miami, EE. UU.","Toronto, Canadá","El Salvador"]],
+ ["🏝️ Centros offshore",["Islas Caimán","Islas Vírgenes Británicas","Bermudas","Seychelles","Mauricio"]],
+ ["🦘 Oceanía",["Sídney, Australia","Auckland, Nueva Zelanda"]]],
+ note:"Nota: la regulación cambia constantemente; lista solo de referencia. Obtén siempre opinión legal local sobre emisión, canje y promoción."},
+vision:{title:"Visión: conciencia, IA y la capa de liquidación de la civilización interestelar",
+ paras:["Filósofos han especulado que la conciencia quizá no sea exclusiva del ser humano: el universo podría albergar mentes impensables. Esa humildad y curiosidad es cómo esta comunidad mira las estrellas.",
+ "Al entrar la Tierra en la economía de la IA, los micropagos entre máquinas y agentes exigirán una base de liquidación barata y de alto rendimiento: por eso eCNH eligió Solana y explora un vehículo en CNH offshore.",
+ "Web3 aporta derechos de propiedad on-chain, la IA ejecución inteligente y RWA la tokenización de activos reales. Juntos pueden abrir el mayor experimento de colaboración y riqueza de la historia; si la humanidad llega a lo interestelar, una capa de liquidación abierta y neutral podría ser un bien público civilizatorio.",
+ "La comunidad de eCNH participa con espíritu público: la riqueza tomada de la comunidad debe volver a ella."],
+ quotes:[["Poner corazón al Cielo y la Tierra, dar vida al pueblo, continuar la sabiduría de los sabios y abrir la paz para todas las generaciones.","— Zhang Zai, Song del Norte (Las cuatro frases de Hengqu)"],["Ser el primero en preocuparse por los males del mundo y el último en disfrutar sus placeres.","— Fan Zhongyan, «Memorial de la Torre Yueyang»"]],
+ values:["Autonomía","Austeridad","Lectura","Amabilidad"]},
+charity:{title:"DAO Solidario: plan de reparto de beneficios",
+ intro:"Si eCNH genera beneficios, la comunidad se compromete a repartirlos así a largo plazo (escrito en el estatuto y las reglas multi-firma):",
+ alloc:[["20-30%","Mejora tecnológica a largo plazo",30,"Auditorías, infraestructura, incentivos a desarrolladores y seguridad."],
+ ["10-20%","Operación de grupos Web3 distribuidos",20,"Servidores, eventos, contenido y localización de los grupos, por hitos."],
+ ["10-20%","Caridad silenciosa",20,"Para internautas de habla china con ingresos < 1.000 CNY/mes: vida, salud, educación y vejez. Sin alarde: solo se publican totales y flujos, protegiendo la dignidad."],
+ ["5-10%","Liquidez a largo plazo",10,"Profundizar continuamente el par eCNH-USDC para reducir volatilidad."],
+ ["Resto","Reservas · nueva tecnología · infraestructura básica",15,"El mundo es de todos: el resto va a reservas, nueva tecnología e infraestructura para el pueblo."]],
+ note:"Desembolsos on-chain, divulgación agregada periódica (sin privacidad personal); declaración firmada del solicitante, doble revisión, pago multi-firma y escrutinio comunitario. Plan revisado cada 2-3 años."},
+roadmap:{title:"Cronograma: 2026 → 2027 → más allá",
+ items:[["2026 · Lanzamiento del DAO POOL","Pool distribuido Meteora dAMM v2 y pool Orca WBTC/eCNH; permisos y tesorería multi-firma públicos; embajadores y misiones."],
+ ["2027 · Gobernanza del DAO","eCNH DAO 2027 operativo: propuestas y votos on-chain (tipo Realms), modelo híbrido «comité + voto», circuito de caridad funcionando."],
+ ["2028 · Multilingüe y casos de uso","Comunidades en seis idiomas; profundizar eCNH-USDC; pilotos de microlíquidos transfronterizos e integración DeFi."],
+ ["Cada 2-3 años · Revisión","Revisión completa de paridad, gobernanza, caridad y cumplimiento, por consenso comunitario."]]},
+qa:{title:"eCNH: 100 preguntas frecuentes",lead:"Fundamentos, gobernanza, liquidez, caridad, cumplimiento y visión. Con búsqueda y filtros.",
+ search:"Buscar pregunta o respuesta…",cats:["Todo","Lo básico","DAO y gobernanza","Liquidez y mercado","Caridad y reparto","Cumplimiento y riesgo","Visión y filosofía"],
+ count:"{n} entradas",empty:"Sin resultados — prueba otra palabra clave.",
+ items:[
+["¿Qué es eCNH?","eCNH es el token experimental comunitario distribuido a largo plazo de Andrómeda y las civilizaciones interestelares en Solana, que aspira a ser un vehículo de liquidación en yuan offshore para la Aldea Global."],
+["¿Cuál es el CA de eCNH?","7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 — confía siempre en los anuncios oficiales."],
+["¿En qué cadena opera eCNH?","Solana: rápida y barata, ideal para microlíquidos de alta frecuencia."],
+["¿Qué significan las siglas eCNH?","earth / europe / east / energy CNH: Tierra, Europa, Oriente y Energía, cuatro en uno."],
+["¿Cómo compro eCNH?","Cambia USDC por eCNH en DEX como Jupiter u Orca desde una wallet Solana."],["¿Qué wallet necesito?","Phantom o Solflare; haz siempre copia de la frase semilla."],
+["¿Qué es Solana?","Una blockchain de alto rendimiento con comisiones mínimas: la base de liquidación de eCNH."],
+["¿Son altas las comisiones?","En cadena suelen ser muy inferiores a 0,01 SOL; el coste real es el deslizamiento."],
+["¿Dónde veo información oficial?","En el sitio oficial y anuncios; el precio en la página de Orb Markets."],
+["¿Qué es el DAO POOL de Meteora?","Ac2bwg4ByZr2FePpuKKdjGLpfRMenFsjgt17St9PfBKC — el pool distribuido del DAO (dAMM v2)."],
+["¿Qué es el pool de Orca?","Un pool WBTC/eCNH que da liquidez cruzada a tenedores de largo plazo."],
+["¿Qué relación hay entre eCNH y el CNH offshore?","La visión es una paridad 1:1; aún no existe y todo depende de reservas verificables."],
+["¿Es eCNH una stablecoin?","No. eCNH es un token experimental comunitario distribuido cuyo objetivo de futuro va más allá de una stablecoin; su precio fluctúa; no lo trates como stablecoin."],
+["¿Cómo verifico el contrato?","Comprueba CA, permisos y emisión en Solana Explorer y contrasta los anuncios oficiales."],
+["¿Qué es un CA?","Contract Address: la identidad única del token; fiarte del CA evita falsificaciones."],
+["¿Cómo evito falsos tokens y phishing?","Solo CA y dominios oficiales; desconfía de «soporte» por DM; no firmes solicitudes desconocidas."],
+["¿Cómo se distribuyen los tokens?","Airdrops, misiones e incentivos de liquidez, evitando la concentración en ballenas."],
+["¿Dónde veo los titulares?","Solscan u Orb Markets muestran la distribución de titulares."],
+["¿Cuál es la meta a largo plazo?","Ser herramienta de microlíquidos para la economía de IA y la diáspora china, con gobernanza DAO."],
+["¿Dónde está la comunidad?","Cuentas oficiales en Telegram y X; cuidado con impostores."],
+["¿Qué es eCNH DAO 2027?","Una organización comunitaria distribuida que madura en 2027: gobernanza, tesorería y caridad."],
+["¿Cómo me uno al DAO?","Ten tokens, regístrate en misiones y participa en propuestas y votos."],
+["¿Cómo decide el DAO?","Propuestas on-chain + voto comunitario; al inicio, modelo híbrido «comité + voto»."],
+["¿Qué es la tesorería multi-firma?","Fondos gestionados por varios firmantes independientes; nadie los mueve solo."],
+["¿Qué umbral hay para proponer?","Un mínimo de tokens o reputación para evitar spam."],
+["¿Cómo se calcula el voto?","Ponderado por tenencia con topes; luego se añadirá peso por contribución."],
+["¿Qué son los grupos DAO distribuidos?","Pequeños equipos autorganizados por región o función (técnica, caridad, operaciones)."],
+["¿Cómo se funda un grupo en el extranjero?","Lo inician 3-5 miembros activos con metas y presupuesto públicos, ratificado por voto."],
+["¿De dónde sale el dinero de los grupos?","Del presupuesto anual del DAO: 10-20% de los beneficios, por hitos."],
+["¿Qué es la gobernanza on-chain?","Propuestas, votos y pagos grabados en cadena: públicos e inmutables."],
+["¿Qué es Realms?","Un marco de gobernanza DAO popular en Solana."],
+["¿Cómo funciona «comité + voto comunitario»?","El comité ejecuta a diario; lo importante lo aprueba la comunidad."],
+["¿Cómo se publica el uso de fondos?","Cada pago on-chain, con informes y conciliaciones periódicas."],
+["¿La dirección de la tesorería es pública?","Sí; cualquiera puede verificar saldos y movimientos."],
+["¿Cómo envío una propuesta?","Plantilla con metas, presupuesto e hitos en la plataforma de gobernanza."],
+["¿El token de gobernanza es eCNH?","Al principio sí; luego podría separarse una credencial específica."],
+["¿Cómo evitar que las ballenas dominen?","Tope de peso por dirección, bloqueos largos y peso por contribución."],
+["¿Qué hace cada grupo?","Técnica: mejoras; caridad: pagos; operaciones: comunidad y contenido."],
+["¿Cómo se recompensa a los colaboradores?","Tokens o reputación del fondo de recompensas según tareas."],
+["¿Cada cuánto se revisa el DAO?","Trimestral el presupuesto; el plan completo cada 2-3 años."],
+["¿Por qué importa la liquidez?","Sin profundidad, el precio se manipula y los usuarios no entran ni salen bien."],
+["¿Cómo gano incentivos de market making?","Da liquidez bilateral en pools designados; cobra según cuota y tiempo."],
+["¿LP unilateral o bilateral?","Bilateral: evita distorsiones de precio."],
+["¿Qué es dAMM v2?","El AMM dinámico de Meteora que asigna liquidez por rangos de precio."],
+["¿Y los pools con precio desviado?","Pausar incentivos, anunciar migración y concentrar en el pool principal."],
+["¿Por qué concentrarse en eCNH-USDC?","Menos pares = más profundidad, menos deslizamiento, mejor descubrimiento de precio."],
+["¿Para qué sirve el pool WBTC/eCNH?","Añade Bitcoin como contrapartida para tenedores de largo plazo."],
+["¿Qué es la pérdida impermanente?","El coste de oportunidad de aportar liquidez frente a solo mantener."],
+["¿Dónde veo el mercado?","Orb Markets, DEX Screener o el gráfico de tu wallet."],
+["¿Cuándo habrá CEX?","Cuando la profundidad y el cumplimiento maduren; el DAO vota prioridades."],
+["¿Cómo reducir el riesgo de dump?","Desbloqueos escalonados, incentivos bloqueados y vesting."],
+["¿Qué concentración es sana?","Que el top-10 baje mientras sube el número de titulares."],
+["¿Cómo ayudan los airdrops?","Repartir a muchas direcciones activas diluye a las ballenas."],
+["¿Cómo gano tokens con misiones?","Tareas de contenido, traducción y difusión en plataformas oficiales."],
+["¿Qué exige listarse en exchanges?","Debida diligencia, revisión legal, anuncios y liquidez: todo supervisado."],
+["¿Cómo se reparten los beneficios?","Técnica 20-30%, grupos 10-20%, caridad 10-20%, liquidez 5-10%, resto reservas."],
+["¿En qué va el presupuesto técnico?","Auditorías, infraestructura, incentivos y seguridad a largo plazo."],
+["¿Y el presupuesto de los grupos?","Servidores, eventos, contenido y localización en el extranjero."],
+["¿A quién ayuda la caridad?","Internautas de habla china con < 1.000 CNY/mes: vida, salud, educación y vejez."],
+["¿Cómo solicito ayuda?","Materiales por los canales públicos del grupo solidario; pago anónimo tras revisión."],
+["¿Cómo se garantiza la transparencia?","Pagos on-chain y divulgación agregada sin datos personales."],
+["¿Qué significa «caridad silenciosa»?","Hacer el bien sin alarde: solo totales y flujos, protegiendo la dignidad."],
+["¿En qué va el presupuesto de liquidez?","Profundizar el par principal eCNH-USDC sin parar."],
+["¿Qué pasa con el resto?","Reservas, I+D y infraestructura básica para el pueblo."],
+["¿Cada cuánto se mejora el plan?","Revisión total cada 2-3 años y ajustes continuos."],
+["¿Qué relación hay con «poner corazón al Cielo y la Tierra»?","Devolver bienes públicos a la comunidad es la base de valores de eCNH."],
+["¿Cómo se viven autonomía, austeridad, lectura y amabilidad?","Valerse por sí mismo, vivir sobrio, aprender siempre y tratar bien."],
+["¿De dónde viene «el primero en preocuparse»?","Del «Memorial de la Torre Yueyang» de Fan Zhongyan: nota clásica de nuestra ética."],
+["¿El reparto solidario es obligatorio?","Sí: está en el estatuto y las reglas multi-firma."],
+["¿Cómo se evita el abuso?","Multi-firma, doble revisión, publicidad on-chain y escrutinio comunitario."],
+["¿Cómo se comprueban los ingresos?","Declaración firmada y comprobaciones por muestreo."],
+["¿En qué forma se paga la ayuda?","Stablecoins o tokens pequeños a la wallet del beneficiario."],
+["¿Cómo se cubren salud, educación y vejez?","Pagos dirigidos según el motivo: matrícula, medicación, vida básica."],
+["¿Qué significa 2027?","El año objetivo para que gobernanza, caridad y red de grupos estén listas."],
+["¿Qué es el «DAO POOL 2026»?","El primer pool distribuido, en Meteora dAMM v2."],
+["¿Es legal eCNH?","Cada país tiene sus reglas: consulta abogados locales; el DAO opera solo donde es conforme."],
+["¿Qué países y ciudades pueden participar?","Regiones Web3-friendly: ver sección «Jurisdicciones»."],
+["¿Qué riesgos regulatorios hay con activos ligados al RMB?","Cambiarios y de stablecoins: emisión, canje y promoción requieren asesoría legal."],
+["¿Por qué solo regiones conformes?","Para bajar el riesgo legal y proteger a los participantes y al DAO."],
+["¿Qué riesgos de inversión hay?","Poca liquidez, alta volatilidad, sin paridad: puedes perder todo el capital."],
+["¿Habrá más emisión?","La meta: permisos públicos, sin emitir ni congelar, bajo supervisión comunitaria."],
+["¿Cómo evitar la exageración?","Solo hechos verificables, sin promesas de rentabilidad, marcando lo experimental."],
+["¿Se necesita KYC/AML?","En DEX no; los pagos solidarios y pasos fiat seguirán los requisitos."],
+["¿Y los impuestos?","Varían por país: consulta a profesionales locales."],
+["¿Hay aviso legal?","Sí, al pie de la página: nada aquí es asesoramiento de inversión."],
+["¿Y si no se pueden verificar reservas?","Se declara claramente «sin paridad» hasta que haya reservas y canje 1:1."],
+["¿Qué límites legales tiene la autogobernanza?","El DAO no promete personalidad jurídica ni responsabilidad; lo mayor, según ley local."],
+["¿Qué hago ante una estafa?","Detente, guarda pruebas, denuncia a la comunidad y a la policía."],
+["¿Qué significa «base de liquidación de la economía de IA»?","Los micropagos entre agentes exigen una capa barata y rápida: Solana la ofrece."],
+["¿Cómo se une eCNH a la economía de IA?","Explorando que los agentes paguen datos y servicios con micro-pagos en eCNH."],
+["¿Qué es RWA?","Activos del mundo real tokenizados: una dirección de exploración a largo plazo."],
+["¿Qué es la filosofía de la conciencia cósmica?","La conciencia quizá no sea exclusiva humana; el universo podría albergar mentes impensables."],
+["¿La conciencia es exclusiva del ser humano?","Se desconoce. Humildad y curiosidad: así miramos las estrellas."],
+["¿Qué relación hay con civilizaciones interestelares?","Si la humanidad va a las estrellas, una capa de liquidación abierta podría ser un bien común."],
+["¿Qué significa «riqueza inmensa»?","El espacio de crecimiento a largo plazo de Web3+IA+RWA, no la especulación corta."],
+["¿Qué es la «Aldea Global»?","Una comunidad mundial conectada como una aldea: a ella sirve eCNH."],
+["¿Cómo se fusionan Web3, IA y RWA?","Propiedad on-chain + ejecución inteligente + activos reales, en tres capas."],
+["¿Cuál es el plan a tres años?","Pool en 2026, gobernanza en 2027, comunidades multilingües y liquidación real en 2028."],
+["¿Cómo contribuyo con código o contenido?","PRs en GitHub o traducciones por las plataformas de misiones."],
+["¿Cómo contacto a la comunidad?","Por los canales oficiales del sitio; cuidado con impostores."]]},
+bless:{title:"🙏 Deseos · Para todos los seres",
+ wishes:[
+"Que todos los seres viajen en paz y gocen de buena salud",
+"Que todos los seres estén bien alimentados y abrigados, sin carencias",
+"Que todos los seres, en esta vida y en las venideras, eviten la mala conducta y la mentira, y mantengan pensamientos rectos y bondadosos",
+"Que todos los seres vean cumplidos sus deseos",
+"Que todos los seres estén libres de enfermedad, desastre y adversidad",
+"Que todos los seres vean sus deudas saldadas y alcancen la libertad financiera",
+"Que todos los seres sean libres y estén en paz, pudiendo ir donde deseen",
+"Que todos los seres tengan amor fluido y matrimonios felices",
+"Que todos los seres cultiven bendiciones y sabiduría, y vean crecer ambas",
+"Que todos los seres dejen atrás el sufrimiento y vivan con serenidad y soltura",
+"Que todos los seres tengan dinero que no se acaba, con 1.000 yuanes de paga diaria y riqueza abundante",
+"Que todo se cumpla para todos los seres, en paz y sin tropiezos",
+"Que todos los niños crezcan sanos y felices",
+"Que todos los ancianos tengan hijos y nietos virtuosos, en paz y alegría",
+"Que todos los padres vivan largos años, sanos y felices",
+"Que todos los seres se alejen de los malos caminos y se acerquen a los buenos maestros"
+]},
+footer:{disc:"⚠️ Aviso: eCNH es el token experimental comunitario distribuido a largo plazo de Andrómeda y las civilizaciones interestelares; su objetivo va más allá de una stablecoin y no está parado al CNH offshore. Este sitio es informativo y educativo; no es asesoramiento financiero, legal ni fiscal. Las cripto son muy volátiles: puedes perder todo el capital. Conoce tu ley local y consulta profesionales. Los negocios ligados al RMB implican regulación cambiaria; el DAO opera solo en jurisdicciones conformes.",
+ links:[["Precio en Orb Markets",LINKS.orb],["DAO POOL en Meteora",LINKS.meteora],["WBTC/eCNH en Orca",LINKS.orca],["Contrato en Solscan",LINKS.solscan]],
+ rights:"eCNH DAO 2027 · Comunidad Distribuida de la Aldea Global · Autonomía · Austeridad · Lectura · Amabilidad"}
+};
+/* ================= Français ================= */
+L10N.fr={
+name:"Français",dir:"ltr",
+nav:[["about","À propos"],["path","Trajectoire"],["jur","Juridictions"],["vision","Vision"],["charity","DAO Solidaire"],["roadmap","Feuille de route"],["qa","100 Q&R"],["bless","Vœux"]],
+hero:{badge:"DAO POOL distribué eCNH 2026 → 2027",title:"eCNH <span class='g'>DAO 2027</span>",
+ sub:"Communauté expérimentale du yuan offshore pour le Village Mondial · Web3 + IA + RWA. Placer le cœur au Ciel et à la Terre, donner vie au peuple, perpétuer la sagesse des sages et ouvrir la paix pour toutes les générations.",
+ ca:"Copier le CA",copied:"Copié ✓",
+ links:[["📈 Cours · Orb Markets",LINKS.orb],["🌊 DAO POOL · Meteora dAMM v2",LINKS.meteora],["🪙 WBTC/eCNH · Orca",LINKS.orca],["🔍 Contrat · Solscan",LINKS.solscan]],
+ stats:[["Solana","Blockchain"],["3 313+","Détenteurs (en hausse)"],["CNH 1:1","Vision de parité (pas encore)"],["6 langues · 3 thèmes","Design du Village Mondial"]]},
+about:{title:"À propos d'eCNH : un token, quatre identités",text:"eCNH est le token communautaire expérimental distribué à long terme d'Andromède et des civilisations interstellaires, déployé sur Solana. Son objectif futur dépasse le stablecoin : la parité 1:1 avec le yuan offshore (CNH) n'est qu'une étape de cette vision, et cette parité, les réserves et le mécanisme de rachat n'existent pas encore. eCNH n'est pas qu'un token : c'est une expérience communautaire fondée sur la transparence, le bien commun et l'autogouvernance.",
+ items:[["🌍","earth CNH · Village Mondial","Le monde appartient à tous. Paiements transfrontaliers, transferts et règlements réels pour les communautés du monde."],
+ ["🇪🇺","europe CNH · Europe","Explorer un pont entre la zone euro et le CNH offshore, au service du commerce UE-Chine."],
+ ["🏮","east CNH · Orient","Enraciné dans la culture commerciale orientale et la tradition d'autogouvernance, rayonnant depuis les communautés sinophones."],
+ ["⚡","energy CNH · Énergie","Réserver l'énergie de règlement pour l'économie de l'IA : micropaiements haute fréquence entre agents."]],
+ note:"⚠️ Important : eCNH est le token communautaire expérimental distribué à long terme d'Andromède et des civilisations interstellaires ; son objectif futur dépasse le stablecoin et son prix fluctue. La parité 1:1 avec le CNH n'est qu'une vision — ne prenez pas de décisions financières sur cette base."},
+path:{title:"Trajectoire : huit piliers",
+ intro:"La confiance avant la croissance. D'abord la transparence et le positionnement de l'actif, ensuite la liquidité et la communauté, enfin la gouvernance distribuée — tel est l'ordre du DAO eCNH.",
+ items:[["1","Positionnement et transparence de l'actif","Révéler si un ancrage réel existe (objectif : réserves CNH 1:1, émetteur, mécanisme de rachat) ; publier les autorités du contrat (pas d'émission, pas de gel), la distribution des détenteurs et les adresses multisig."],
+ ["2","Réparer liquidité et prix","Nettoyer les pools déviés ; concentrer la profondeur sur un ou deux pairs principaux (ex. eCNH-USDC) ; utiliser des incitations, en sachant que la liquidité subventionnée dure rarement."],
+ ["3","Réduire la concentration","Distribuer les tokens à de vrais utilisateurs actifs — pas à quelques baleines — via airdrops, quêtes et récompenses. Avec ~3 313 détenteurs, développer d'abord les adresses actives."],
+ ["4","Gouvernance du DAO","Trésorerie multisig à usage public ; propositions et votes on-chain ; modèle hybride « comité + vote communautaire » au début, délégué progressivement."],
+ ["5","Cas d'usage réels","Paiements transfrontaliers, micro-transferts, règlement commercial CNH offshore, échange de stablecoins ; intégration DeFi (collatéral, market making)."],
+ ["6","Communauté et opérations","Communautés bilingues (CN/EN) pour l'Asie du Sud-Est, Hong Kong et Macao (Chine) et la diaspora ; programme d'ambassadeurs ; données on-chain publiées régulièrement."],
+ ["7","Conformité et risques","Les actifs liés au RMB impliquent la régulation des changes et des stablecoins : avis juridiques locaux ; pas d'exagération, surtout quand la confiance est faible."],
+ ["8","Amélioration périodique","Révision complète du plan tous les 2-3 ans, au rythme de la technologie, de la communauté et de la régulation."]]},
+jur:{title:"30 juridictions Web3-friendly du Village Mondial",
+ intro:"L'activité eCNH Web3 + IA + RWA se mène uniquement dans des pays et villes conformes Web3. Liste agrégée d'évaluations publiques, pour discussion communautaire.",
+ groups:[["🌏 Asie-Pacifique",["Singapour","Hong Kong, Chine","Tokyo, Japon","Séoul, Corée","Kuala Lumpur/Labuan, Malaisie","Astana, Kazakhstan"]],
+ ["🕌 Moyen-Orient",["Dubaï, Émirats","Abou Dabi, Émirats"]],
+ ["🏛️ Europe",["Zoug, Suisse","Liechtenstein","Luxembourg","Amsterdam, Pays-Bas","Francfort, Allemagne","Paris, France","Lisbonne, Portugal","Tallinn, Estonie","Vilnius, Lituanie","Malte","Londres, R.-U."]],
+ ["🌎 Amériques",["Wyoming, États-Unis","Miami, États-Unis","Toronto, Canada","Salvador"]],
+ ["🏝️ Centres offshore",["Îles Caïmans","Îles Vierges britanniques","Bermudes","Seychelles","Maurice"]],
+ ["🦘 Océanie",["Sydney, Australie","Auckland, Nouvelle-Zélande"]]],
+ note:"Note : la régulation évolue sans cesse ; liste indicative uniquement. Obtenez toujours un avis juridique local sur l'émission, le rachat et la promotion."},
+vision:{title:"Vision : conscience, IA et la couche de règlement de la civilisation interstellaire",
+ paras:["Des philosophes ont spéculé que la conscience ne serait peut-être pas l'apanage de l'humain : l'univers pourrait abriter des esprits inimaginables. Cette humilité et cette curiosité, voilà comment cette communauté regarde les étoiles.",
+ "Quand la Terre entrera dans l'économie de l'IA, les micropaiements entre machines et agents exigeront une base de règlement bon marché et à haut débit — c'est pourquoi eCNH a choisi Solana et explore un véhicule en CNH offshore.",
+ "Web3 apporte les droits de propriété on-chain, l'IA l'exécution intelligente, RWA la tokenisation des actifs réels. Ensemble, ils pourraient ouvrir la plus grande expérience de collaboration et de création de richesse de l'histoire ; si l'humanité devient interstellaire, une couche de règlement ouverte et neutre pourrait devenir un bien public civilisationnel.",
+ "La communauté eCNH participe avec un esprit de bien commun : la richesse prise à la communauté doit y retourner."],
+ quotes:[["Placer le cœur au Ciel et à la Terre, donner vie au peuple, perpétuer la sagesse des sages et ouvrir la paix pour toutes les générations.","— Zhang Zai, Song du Nord (Les quatre phrases de Hengqu)"],["Être le premier à s'inquiéter des maux du monde et le dernier à en jouir.","— Fan Zhongyan, « Mémoire de la tour Yueyang »"]],
+ values:["Autonomie","Frugalité","Lecture","Bienveillance"]},
+charity:{title:"DAO Solidaire : plan de répartition des profits",
+ intro:"Si eCNH devient rentable, la communauté s'engage à répartir les profits ainsi, à long terme (écrit dans la charte et les règles multisig) :",
+ alloc:[["20-30%","Amélioration technologique à long terme",30,"Audits, infrastructure, incitations aux développeurs et sécurité."],
+ ["10-20%","Opérations des groupes Web3 distribués",20,"Serveurs, événements, contenus et localisation des groupes, par jalons."],
+ ["10-20%","Charité discrète",20,"Pour les internautes sinophones gagnant moins de 1 000 CNY/mois : vie, santé, éducation et vieillesse. Sans esbroufe : seuls les totaux et flux sont publiés, préservant la dignité."],
+ ["5-10%","Liquidité à long terme",10,"Approfondir en continu la paire eCNH-USDC pour réduire la volatilité."],
+ ["Le reste","Réserve · nouvelles technologies · infrastructures de base",15,"Le monde est à tous : le reste va aux réserves, aux nouvelles technologies et aux infrastructures populaires."]],
+ note:"Versements on-chain, publication agrégée périodique (sans vie privée personnelle) ; déclaration signée du demandant, double vérification, paiement multisig, contrôle communautaire. Plan révisé tous les 2-3 ans."},
+roadmap:{title:"Feuille de route : 2026 → 2027 → au-delà",
+ items:[["2026 · Lancement du DAO POOL","Pool distribué Meteora dAMM v2 et pool Orca WBTC/eCNH ; autorités et trésorerie multisig publiques ; ambassadeurs et quêtes."],
+ ["2027 · Gouvernance du DAO","eCNH DAO 2027 opérationnel : propositions et votes on-chain (type Realms), modèle hybride « comité + vote », circuit de charité en marche."],
+ ["2028 · Multilingue et cas d'usage","Communautés en six langues ; approfondir eCNH-USDC ; pilotes de micro-règlements transfrontaliers et intégration DeFi."],
+ ["Tous les 2-3 ans · Révision","Révision complète de la parité, de la gouvernance, de la charité et de la conformité, par consensus communautaire."]]},
+qa:{title:"eCNH : 100 questions fréquentes",lead:"Bases, gouvernance, liquidité, charité, conformité et vision. Recherche et filtres disponibles.",
+ search:"Rechercher une question ou réponse…",cats:["Tout","Bases & Token","DAO & Gouvernance","Liquidité & Marché","Charité & Répartition","Conformité & Risques","Vision & Philosophie"],
+ count:"{n} entrées",empty:"Aucun résultat — essayez un autre mot-clé.",
+ items:[
+["Qu'est-ce qu'eCNH ?","eCNH est le token communautaire expérimental distribué à long terme d'Andromède et des civilisations interstellaires sur Solana, visant à devenir un véhicule de règlement en yuan offshore pour le Village Mondial."],
+["Quel est le CA (adresse du contrat) d'eCNH ?","7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 — fiez-vous toujours aux annonces officielles."],
+["Sur quelle chaîne eCNH fonctionne-t-il ?","Solana — rapide et bon marché, idéale pour les micro-règlements haute fréquence."],
+["Que signifient les lettres d'eCNH ?","earth / europe / east / energy CNH : Terre, Europe, Orient et Énergie, quatre-en-un."],
+["Comment acheter eCNH ?","Échanger des USDC contre eCNH via des DEX comme Jupiter ou Orca depuis un wallet Solana."],
+["Quel wallet faut-il ?","Un wallet Solana comme Phantom ou Solflare ; sauvegardez toujours la phrase de récupération."],
+["Qu'est-ce que Solana ?","Une blockchain haute performance à frais quasi nuls — la base de règlement d'eCNH."],
+["Les frais sont-ils élevés ?","Ils sont généralement très inférieurs à 0,01 SOL ; le vrai coût vient du slippage."],
+["Où trouver les informations officielles ?","Sur le site officiel et les annonces ; le cours sur la page Orb Markets."],
+["Qu'est-ce que le DAO POOL de Meteora ?","Ac2bwg4ByZr2FePpuKKdjGLpfRMenFsjgt17St9PfBKC — le pool distribué du DAO (dAMM v2)."],
+["Qu'est-ce que le pool Orca ?","Un pool WBTC/eCNH offrant une liquidité multi-actifs aux détenteurs de long terme."],
+["Quel lien entre eCNH et le CNH offshore ?","La vision est une parité 1:1 ; elle n'existe pas encore — tout dépend de réserves vérifiables."],
+["eCNH est-il un stablecoin ?","Non. eCNH est un token expérimental distribué dont l'objectif futur dépasse le stablecoin ; son prix fluctue — ne le traitez pas comme un stablecoin."],
+["Comment vérifier le contrat ?","Vérifiez CA, autorités et émissions sur Solana Explorer, et recoupez les annonces officielles."],
+["Qu'est-ce qu'un CA ?","Contract Address : l'identité unique du token ; s'y fier évite les contrefaçons."],
+["Comment éviter faux tokens et phishing ?","CA et domaines officiels uniquement ; méfiez-vous du « support » en DM ; ne signez rien d'inconnu."],
+["Comment les tokens sont-ils distribués ?","Airdrops, quêtes et incitations de liquidité, sans concentration chez quelques baleines."],
+["Où voir le nombre de détenteurs ?","Solscan ou Orb Markets affichent la distribution des détenteurs."],
+["Quel est l'objectif à long terme d'eCNH ?","Devenir un outil de micro-règlement pour l'économie de l'IA et la diaspora chinoise, avec gouvernance DAO."],
+["Où est la communauté ?","Comptes officiels sur Telegram, X, etc. — attention aux imposteurs."],
+["Qu'est-ce qu'eCNH DAO 2027 ?","Une organisation communautaire distribuée arrivée à maturité en 2027 : gouvernance, trésorerie et charité."],
+["Comment rejoindre le DAO ?","Détenir des tokens, s'inscrire aux quêtes et participer aux propositions et votes."],
+["Comment le DAO décide-t-il ?","Propositions on-chain + votes communautaires ; modèle hybride « comité + vote » au début."],
+["Qu'est-ce qu'une trésorerie multisig ?","Des fonds gérés par plusieurs signataires indépendants — personne ne peut les déplacer seul."],
+["Quel seuil pour proposer ?","Un minimum de tokens ou de réputation pour éviter le spam."],
+["Comment le pouvoir de vote est-il calculé ?","Pondéré par la détention avec plafonds ; pondération par contribution ensuite."],
+["Que sont les groupes DAO distribués ?","De petites équipes auto-organisées par région ou fonction (technique, charité, opérations)."],
+["Comment fonder un groupe à l'étranger ?","Initié par 3-5 membres actifs avec objectifs et budget publics, ratifié par vote."],
+["D'où vient le financement des groupes ?","Du budget annuel du DAO : 10-20 % des profits, versés par jalons."],
+["Qu'est-ce que la gouvernance on-chain ?","Propositions, votes et versements enregistrés en chaîne : publics et immuables."],
+["Qu'est-ce que Realms ?","Un cadre de gouvernance DAO populaire sur Solana."],
+["Comment fonctionne « comité + vote communautaire » ?","Le comité exécute au quotidien ; l'essentiel est approuvé par la communauté."],
+["Comment l'usage des fonds est-il publié ?","Chaque versement on-chain, avec rapports et rapprochements périodiques."],
+["L'adresse de la trésorerie est-elle publique ?","Oui ; chacun peut vérifier soldes et flux à tout moment."],
+["Comment soumettre une proposition ?","Modèle (objectifs, budget, jalons) sur la plateforme de gouvernance, puis discussion et vote."],
+["Le token de gouvernance est-il eCNH ?","Au début, oui ; une crédence dédiée pourrait être séparée plus tard."],
+["Comment empêcher les baleines de dominer le vote ?","Plafond de poids par adresse, blocages longs et poids par contribution."],
+["Que fait chaque groupe ?","Technique : améliorations ; charité : versements ; opérations : communauté et contenus."],
+["Comment les contributeurs sont-ils récompensés ?","Tokens ou points de réputation du fonds communautaire, selon les tâches."],
+["À quelle fréquence le DAO se réexamine-t-il ?","Budget et avancement chaque trimestre ; plan complet tous les 2-3 ans."],
+["Pourquoi la liquidité est-elle si importante ?","Sans profondeur, le prix se manipule et les utilisateurs n'entrent ni ne sortent bien."],
+["Comment gagner des incitations de market making ?","Fournir de la liquidité bilatérale aux pools désignés ; récompenses selon quote-part et durée."],
+["LP unilatéral ou bilatéral ?","Bilatéral : cela évite les distorsions de prix."],
+["Qu'est-ce que dAMM v2 ?","L'AMM dynamique de Meteora qui alloue la liquidité par plages de prix."],
+["Que faire des pools au prix dévié ?","Suspendre les incitations, annoncer la migration, concentrer sur le pool principal."],
+["Pourquoi se concentrer sur eCNH-USDC ?","Moins de paires = plus de profondeur, moins de slippage, meilleure découverte du prix."],
+["À quoi sert le pool WBTC/eCNH ?","Ajouter Bitcoin comme actif de contrepartie pour les détenteurs de long terme."],
+["Qu'est-ce que la perte impermanente ?","Le coût d'opportunité de la liquidité par rapport à la simple détention."],
+["Où suivre le marché ?","Orb Markets, DEX Screener ou le graphique de votre wallet."],
+["Quand un exchange centralisé ?","Quand profondeur et conformité seront mûres ; le DAO votera les priorités."],
+["Comment réduire le risque de dump ?","Déblocages échelonnés, incitations bloquées et vesting des contributeurs."],
+["Quelle concentration est saine ?","Que la part du top-10 baisse tandis que le nombre de détenteurs monte."],
+["Comment les airdrops déconcentrent-ils ?","Distribuer à beaucoup d'adresses actives dilue les baleines."],
+["Comment gagner des tokens via les quêtes ?","Tâches de contenu, traduction et promotion sur les plateformes officielles."],
+["Quel est le processus de listing ?","Due diligence, revue de conformité, annonces et préparation de liquidité — tout supervisé."],
+["Comment les profits sont-ils répartis ?","Technique 20-30 %, groupes 10-20 %, charité 10-20 %, liquidité 5-10 %, reste en réserves."],
+["À quoi sert le budget technique ?","Audits, infrastructure, incitations et sécurité à long terme."],
+["Et le budget des groupes ?","Serveurs, événements, contenus et localisation à l'étranger."],
+["À qui la charité est-elle destinée ?","Aux internautes sinophones gagnant moins de 1 000 CNY/mois : vie, santé, éducation, vieillesse."],
+["Comment demander l'aide ?","Envoyer les pièces via les canaux publics du groupe solidaire ; versement anonyme après revue."],
+["Comment la transparence est-elle assurée ?","Versements on-chain et publication agrégée sans données personnelles."],
+["Que signifie « charité discrète » ?","Faire le bien sans esbroufe : seuls totaux et flux sont publiés, dignité préservée."],
+["À quoi sert le budget de liquidité ?","Approfondir sans relâche la paire principale eCNH-USDC."],
+["Que devient le reste ?","Réserves, R&D et infrastructures populaires de base."],
+["À quelle fréquence le plan est-il affiné ?","Révision complète tous les 2-3 ans, ajustements continus."],
+["Quel lien avec « placer le cœur au Ciel et à la Terre » ?","Rendre des biens publics à la communauté est le socle de valeurs d'eCNH."],
+["Comment vivre autonomie, frugalité, lecture et bienveillance ?","Se suffire à soi-même, vivre sobrement, apprendre toujours, bien traiter autrui."],
+["D'où vient « le premier à s'inquiéter » ?","Du « Mémoire de la tour Yueyang » de Fan Zhongyan : note classique de notre éthique."],
+["La répartition caritative est-elle obligatoire ?","Oui : inscrite dans la charte et les règles multisig."],
+["Comment prévenir les abus ?","Multisig, double vérification, publication on-chain et contrôle communautaire."],
+["Comment vérifier les revenus ?","Déclaration signée et contrôles par échantillonnage."],
+["Sous quelle forme l'aide est-elle versée ?","Stablecoins ou petits montants de tokens directement au wallet du bénéficiaire."],
+["Comment sont couverts santé, éducation et vieillesse ?","Versements ciblés selon le motif : frais de scolarité, médicaments, vie de base."],
+["Que signifie 2027 ?","L'année cible où gouvernance, charité et réseau de groupes seront en place."],
+["Qu'est-ce que le « DAO POOL 2026 » ?","Le premier pool distribué, sur Meteora dAMM v2."],
+["eCNH est-il conforme ?","Chaque pays a ses règles : consultez des juristes locaux ; le DAO n'opère que dans les zones conformes."],
+["Quels pays et villes peuvent participer ?","Les régions Web3-friendly : voir la section « Juridictions »."],
+["Quels risques réglementaires pour les actifs liés au RMB ?","Changes et stablecoins : émission, rachat et promotion exigent un avis juridique."],
+["Pourquoi seulement des zones conformes ?","Pour réduire le risque juridique et protéger les participants et le DAO."],
+["Quels sont les risques d'investissement ?","Liquidité faible, forte volatilité, pas de parité : perte totale possible."],
+["Y aura-t-il des émissions supplémentaires ?","L'objectif : autorités publiques, sans émission ni gel, sous supervision communautaire."],
+["Comment éviter l'exagération ?","Seuls des faits vérifiables, aucune promesse de rendement, caractère expérimental affiché."],
+["Faut-il un KYC/AML ?","Pas en DEX ; les versements caritatifs et le fiat suivront les exigences."],
+["Et les impôts ?","Ils varient selon les pays : consultez des professionnels locaux."],
+["Y a-t-il un avertissement ?","Oui, en pied de page : rien ici n'est un conseil en investissement."],
+["Et si les réserves ne sont pas vérifiables ?","Le statut « non ancré » est déclaré clairement jusqu'à des réserves et un rachat 1:1."],
+["Quelles sont les limites légales de l'autogouvernance ?","Le DAO ne promet ni personnalité juridique ni responsabilité ; l'essentiel suit la loi locale."],
+["Que faire face à une arnaque ?","Arrêtez tout, gardez les preuves, signalez à la communauté et à la police."],
+["Que signifie « base de règlement de l'économie de l'IA » ?","Les micropaiements entre agents exigent une couche bon marché et rapide : Solana l'offre."],
+["Comment eCNH s'associe-t-il à l'économie de l'IA ?","En explorant le règlement de données et services par micropaiements eCNH entre agents."],
+["Qu'est-ce que la RWA ?","La tokenisation d'actifs réels : une direction d'exploration à long terme d'eCNH."],
+["Qu'est-ce que la philosophie de la conscience cosmique ?","La conscience ne serait peut-être pas exclusivement humaine ; l'univers pourrait abriter des esprits inimaginables."],
+["La conscience est-elle exclusivement humaine ?","On ne sait pas. Humilité et curiosité : ainsi regardons-nous les étoiles."],
+["Quel lien avec les civilisations interstellaires ?","Si l'humanité va vers les étoiles, une couche de règlement ouverte pourrait devenir un bien commun."],
+["Que signifie « richesse immense » ?","L'espace de croissance long terme ouvert par la fusion Web3+IA+RWA, pas la spéculation courte."],
+["Qu'est-ce que le « Village Mondial » ?","Une communauté mondiale reliée comme un village : celle que sert eCNH."],
+["Comment Web3, IA et RWA fusionnent-ils ?","Propriété on-chain + exécution intelligente + actifs réels, en trois couches."],
+["Quel est le plan à trois ans ?","Pool en 2026, gouvernance en 2027, communautés multilingues et règlement réel en 2028."],
+["Comment contribuer en code ou en contenu ?","PR sur GitHub ou traductions via les plateformes de quêtes."],
+["Comment contacter la communauté ?","Via les canaux officiels listés sur le site ; attention aux imposteurs."]]},
+bless:{title:"🙏 Vœux · Pour tous les êtres",
+ wishes:[
+"Que tous les êtres voyagent en paix et jouissent d'une bonne santé",
+"Que tous les êtres soient nourris et vêtus, à l'abri du besoin",
+"Que tous les êtres, en cette vie comme en toutes les vies, s'abstiennent de mauvaise conduite et de mensonge, et gardent des pensées justes et bienveillantes",
+"Que tous les souhaits des êtres s'accomplissent",
+"Que tous les êtres soient préservés de la maladie, du malheur et de l'épreuve",
+"Que toutes les dettes des êtres s'effacent et qu'ils atteignent la liberté financière",
+"Que tous les êtres soient libres et sereins, pouvant aller où ils souhaitent",
+"Que tous les êtres connaissent l'amour et un mariage heureux",
+"Que tous les êtres cultivent mérites et sagesse, et les voient grandir",
+"Que tous les êtres se libèrent de la souffrance et vivent dans la quiétude",
+"Que tous les êtres aient de l'argent à ne plus finir, avec 1 000 yuans d'argent de poche chaque jour et une richesse qui afflue",
+"Que tout se réalise pour tous les êtres, dans la paix et la douceur",
+"Que tous les enfants grandissent en santé et dans la joie",
+"Que tous les aînés aient des enfants et petits-enfants vertueux, dans la paix et la joie",
+"Que tous les parents vivent longtemps, en santé et dans le bonheur",
+"Que tous les êtres s'éloignent des mauvais chemins et s'approchent des bons maîtres"
+]},
+footer:{disc:"⚠️ Avertissement : eCNH est le token communautaire expérimental distribué à long terme d'Andromède et des civilisations interstellaires — son objectif futur dépasse le stablecoin et il n'est pas adossé au CNH offshore. Ce site est informatif et éducatif ; il ne constitue ni conseil financier, juridique ou fiscal. Les cryptos sont très volatiles : perte totale possible. Connaissez votre droit local et consultez des professionnels. Les activités liées au RMB relèvent de la régulation des changes ; le DAO n'opère que dans des juridictions conformes.",
+ links:[["Cours Orb Markets",LINKS.orb],["DAO POOL Meteora",LINKS.meteora],["WBTC/eCNH Orca",LINKS.orca],["Contrat Solscan",LINKS.solscan]],
+ rights:"eCNH DAO 2027 · Communauté Distribuée du Village Mondial · Autonomie · Frugalité · Lecture · Bienveillance"}
+};
+/* ================= Русский ================= */
+L10N.ru={
+name:"Русский",dir:"ltr",
+nav:[["about","О eCNH"],["path","Путь развития"],["jur","Юрисдикции"],["vision","Видение"],["charity","Благотворительный DAO"],["roadmap","План"],["qa","100 Q&A"],["bless","Пожелания"]],
+hero:{badge:"Распределённый eCNH DAO POOL 2026 → 2027",title:"eCNH <span class='g'>DAO 2027</span>",
+ sub:"Экспериментальное сообщество офшорного юаня для Глобальной деревни · Web3 + AI + RWA. Установить сердце Небу и Земле, обеспечить жизнь народу, продолжить учение мудрецов и открыть мир для всех поколений.",
+ ca:"Копировать CA",copied:"Скопировано ✓",
+ links:[["📈 Курс · Orb Markets",LINKS.orb],["🌊 DAO POOL · Meteora dAMM v2",LINKS.meteora],["🪙 WBTC/eCNH · Orca",LINKS.orca],["🔍 Контракт · Solscan",LINKS.solscan]],
+ stats:[["Solana","Блокчейн"],["3 313+","Держателей (растёт)"],["CNH 1:1","Видение паритета (пока нет)"],["6 языков · 3 темы","Дизайн Глобальной деревни"]]},
+about:{title:"О eCNH: один токен — четыре личности",text:"eCNH — долгосрочный распределённый экспериментальный общественный токен Андромеды и межзвёздных цивилизаций, работающий в сети Solana. Его цель в будущем — больше, чем стейблкоин: паритет 1:1 с офшорным юанем (CNH) — лишь шаг этого видения, но этот паритет, резервы и механизм выкупа пока не существуют. eCNH — не просто токен: это общественный эксперимент, основанный на прозрачности, общем благе и самоуправлении.",
+ items:[["🌍","earth CNH · Земля","Мир принадлежит всем. Трансграничные платежи, переводы и реальные расчёты для мировых сообществ."],
+ ["🇪🇺","europe CNH · Европа","Мост между еврозоной и офшорным CNH — для торговли ЕС—Китай."],
+ ["🏮","east CNH · Восток","Корни в восточной деловой культуре и традиции самоуправления, опора на китайскоязычные сообщества."],
+ ["⚡","energy CNH · Энергия","Расчётная энергия для экономики ИИ: высокочастотные микроплатежи между агентами."]],
+ note:"⚠️ Важно: eCNH — долгосрочный распределённый экспериментальный токен Андромеды и межзвёздных цивилизаций; его цель в будущем — больше, чем стейблкоин; цена колеблется. Паритет 1:1 с CNH — лишь видение; не принимайте финансовых решений на его основе."},
+path:{title:"Путь развития: восемь опор",
+ intro:"Сначала доверие, потом рост. Сначала прозрачность актива, затем ликвидность и сообщество, в конце — распределённое управление: таков порядок DAO eCNH.",
+ items:[["1","Позиционирование и прозрачность актива","Раскрыть, существует ли реальный анкер (цель: резервы CNH 1:1, эмитент, механизм выкупа); раскрыть права контракта (без эмиссии и заморозки), распределение держателей и мультисиг-адреса."],
+ ["2","Восстановить ликвидность и цену","Очистить пулы с отклонением цены; сосредоточить глубину на одном-двух основных парах (например, eCNH-USDC); использовать стимулы, помня, что субсидированная ликвидность редко живёт долго."],
+ ["3","Снизить концентрацию","Раздавать токены реальным активным пользователям, а не китам: аирдропы, задания и награды. При ~3 313 держателях сначала растить активные адреса."],
+ ["4","Структура управления DAO","Мультисиг-казна с публичным использованием средств; ончейн-предложения и голосование; сначала гибрид «комитет + голос сообщества», с постепенной передачей полномочий."],
+ ["5","Реальные сценарии","Трансграничные платежи, микропереводы, торговые расчёты в офшорном CNH, обмен стейблкоинов; интеграция с DeFi (залог, маркетмейкинг)."],
+ ["6","Сообщество и операции","Двуязычные (CN/EN) сообщества для Юго-Восточной Азии, Гонконга, Макао (Китай) и диаспоры; программа послов; регулярная публикация ончейн-данных."],
+ ["7","Комплаенс и риски","Активы, связанные с RMB, подпадают под валютное и стейблкоин-регулирование: нужны местные юридические заключения; без преувеличений."],
+ ["8","Периодическое обновление","Полный пересмотр плана каждые 2-3 года вслед за технологиями, сообществом и регуляторикой."]]},
+jur:{title:"30 Web3-дружественных юрисдикций Глобальной деревни",
+ intro:"Бизнес eCNH Web3 + AI + RWA ведётся только в комплаенс-странах и городах. Список обобщает публичные оценки, для обсуждения сообществом.",
+ groups:[["🌏 Азиатско-Тихоокеанский регион",["Сингапур","Гонконг, Китай","Токио, Япония","Сеул, Корея","Куала-Лумпур/Лабуан, Малайзия","Астана, Казахстан"]],
+ ["🕌 Ближний Восток",["Дубай, ОАЭ","Абу-Даби, ОАЭ"]],
+ ["🏛️ Европа",["Цуг, Швейцария","Лихтенштейн","Люксембург","Амстердам, Нидерланды","Франкфурт, Германия","Париж, Франция","Лиссабон, Португалия","Таллин, Эстония","Вильнюс, Литва","Мальта","Лондон, Великобритания"]],
+ ["🌎 Америки",["Вайоминг, США","Майами, США","Торонто, Канада","Сальвадор"]],
+ ["🏝️ Офшорные центры",["Каймановы острова","Британские Виргинские острова","Бермуды","Сейшелы","Маврикий"]],
+ ["🦘 Океания",["Сидней, Австралия","Окленд, Новая Зеландия"]]],
+ note:"Примечание: регулирование постоянно меняется; список только для справки. Всегда получайте местное юридическое заключение по эмиссии, выкупу и продвижению."},
+vision:{title:"Видение: сознание, ИИ и расчётный слой межзвёздной цивилизации",
+ paras:["Философы смело предполагают: сознание, возможно, не только человеческое — во Вселенной могут быть немыслимые для нас умы. Эта скромность и любопытство — то, как наше сообщество смотрит на звёзды.",
+ "Когда Земля войдёт в экономику ИИ, микроплатежи между машинами и агентами потребуют дешёвой и высокопроизводительной расчётной базы — потому eCNH выбрал Solana и исследует инструмент на офшорном CNH.",
+ "Web3 даёт права собственности ончейн, ИИ — интеллектуальное исполнение, RWA — токенизацию реальных активов. Вместе они могут открыть крупнейший в истории эксперимент сотрудничества и создания богатства; если человечество пойдёт к звёздам, открытый нейтральный расчётный слой может стать общественным благом цивилизации.",
+ "Сообщество eCNH участвует в эксперименте с открытым сердцем: богатство, взятое у сообщества, должно вернуться ему."],
+ quotes:[["Установить сердце Небу и Земле, обеспечить жизнь народу, продолжить учение мудрецов и открыть мир для всех поколений.","— Чжан Цзай, династия Сун (Четыре изречения Хэнцю)"],["Первым тревожиться о бедах мира и последним наслаждаться его радостями.","— Фань Чжунъянь, «Записки о Юэянской башне»"]],
+ values:["Самостоятельность","Бережливость","Чтение","Доброта"]},
+charity:{title:"Благотворительный DAO: план распределения прибыли",
+ intro:"Если eCNH станет прибыльным, сообщество обязуется распределять прибыль так (закреплено в уставе и правилах мультисиг):",
+ alloc:[["20-30%","Долгосрочное технологическое развитие",30,"Аудиты, инфраструктура, стимулы разработчиков и безопасность."],
+ ["10-20%","Работа распределённых групп Web3",20,"Серверы, мероприятия, контент и локализация групп, по этапам."],
+ ["10-20%","Тихая благотворительность",20,"Для китайскоязычных пользователей с доходом менее 1000 CNY/мес: жизнь, медицина, образование, старость. Без огласки: публикуются лишь суммы и направления, достоинство получателей защищено."],
+ ["5-10%","Долгосрочная ликвидность",10,"Постоянное углубление пары eCNH-USDC для снижения волатильности."],
+ ["Остаток","Резерв · новые технологии · базовая инфраструктура",15,"Мир принадлежит всем: остаток — в резервы, новые технологии и инфраструктуру для людей."]],
+ note:"Выплаты ончейн, периодическая сводная публикация (без личных данных); подписанная декларация заявителя, двойная проверка, мультисиг-выплата, общественный контроль. План обновляется каждые 2-3 года."},
+roadmap:{title:"План: 2026 → 2027 → далее",
+ items:[["2026 · Запуск DAO POOL","Распределённый пул Meteora dAMM v2 и пул Orca WBTC/eCNH; публичные права контракта и мультисиг-казна; послы и задания."],
+ ["2027 · Управление DAO","eCNH DAO 2027 работает: ончейн-предложения и голосование (тип Realms), гибрид «комитет + голос», отлаженный благотворительный процесс."],
+ ["2028 · Многоязычие и сценарии","Сообщества на шести языках; углубление eCNH-USDC; пилоты трансграничных микрорасчётов и интеграция DeFi."],
+ ["Каждые 2-3 года · Пересмотр","Полный пересмотр анкера, управления, благотворительности и комплаенса по консенсусу сообщества."]]},
+qa:{title:"eCNH: 100 частых вопросов",lead:"Основы, управление DAO, ликвидность, благотворительность, комплаенс и видение. Поиск и фильтры доступны.",
+ search:"Искать вопрос или ответ…",cats:["Все","Основы и токен","DAO и управление","Ликвидность и рынок","Благотворительность","Комплаенс и риски","Видение и философия"],
+ count:"{n} записей",empty:"Ничего не найдено — попробуйте другое слово.",
+ items:[
+["Что такое eCNH?","eCNH — долгосрочный распределённый экспериментальный токен Андромеды и межзвёздных цивилизаций на Solana, стремящийся стать расчётным инструментом в офшорном юане для Глобальной деревни."],
+["Какой CA (адрес контракта) у eCNH?","7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 — полагайтесь только на официальные объявления."],
+["На какой сети работает eCNH?","Solana — быстро и дёшево, подходит для высокочастотных микрорасчётов."],
+["Что означают буквы eCNH?","earth / europe / east / energy CNH: Земля, Европа, Восток и Энергия — четыре в одном."],
+["Как купить eCNH?","Обменять USDC на eCNH через DEX вроде Jupiter или Orca в кошельке Solana."],
+["Какой нужен кошелёк?","Solana-кошелёк вроде Phantom или Solflare; обязательно сохраните seed-фразу."],
+["Что такое Solana?","Высокопроизводительный блокчейн с минимальными комиссиями — расчётная база eCNH."],
+["Высоки ли комиссии?","Ончейн-комиссии обычно значительно ниже 0,01 SOL; главные издержки — проскальзывание."],
+["Где официальная информация?","На официальном сайте и в объявлениях; курс — на странице Orb Markets."],
+["Что такое DAO POOL на Meteora?","Ac2bwg4ByZr2FePpuKKdjGLpfRMenFsjgt17St9PfBKC — распределённый пул DAO (dAMM v2)."],
+["Что такое пул Orca?","Пул WBTC/eCNH — межактивная ликвидность для долгосрочных держателей."],
+["Как eCNH связан с офшорным CNH?","Видение — паритет 1:1; его пока нет, всё зависит от проверяемых резервов."],
+["eCNH — это стейблкоин?","Нет. eCNH — распределённый экспериментальный токен, цель которого больше, чем стейблкоин; цена колеблется — не считайте его стейблкоином."],
+["Как проверить контракт?","Сверьте CA, права и эмиссии в Solana Explorer и официальные объявления."],
+["Что такое CA?","Contract Address — уникальный идентификатор токена; доверие CA защищает от подделок."],
+["Как избежать фейков и фишинга?","Только официальный CA и домены; остерегайтесь «поддержки» в личке; не подписывайте неизвестное."],
+["Как распределяются токены?","Аирдропы, задания и стимулы ликвидности — без концентрации у китов."],
+["Где посмотреть держателей?","Solscan или Orb Markets показывают распределение держателей."],
+["Какова долгосрочная цель eCNH?","Стать инструментом микрорасчётов для экономики ИИ и китайской диаспоры с DAO-управлением."],
+["Где сообщество?","Официальные аккаунты в Telegram, X — остерегайтесь самозванцев."],
+["Что такое eCNH DAO 2027?","Распределённая организация сообщества, созревающая к 2027 году: управление, казна, благотворительность."],
+["Как вступить в DAO?","Держать токены, регистрироваться в заданиях, участвовать в предложениях и голосованиях."],
+["Как DAO принимает решения?","Ончейн-предложения + голоса сообщества; сначала гибрид «комитет + голос»."],
+["Что такое мультисиг-казна?","Средства управляются несколькими независимыми подписантами — в одиночку их не вывести."],
+["Какой порог для предложений?","Минимум токенов или репутации, чтобы отсечь спам."],
+["Как считается вес голоса?","По объёму держания с потолком; позже добавится вес по вкладу."],
+["Что такое распределённые группы DAO?","Небольшие самоорганизованные команды по регионам или функциям (техника, благотворительность, операции)."],
+["Как создать группу за рубежом?","Инициатива 3-5 активных участников с открытыми целями и бюджетом, утверждается голосованием."],
+["Откуда финансирование групп?","Из годового бюджета DAO — 10-20% прибыли, по этапам."],
+["Что такое ончейн-управление?","Предложения, голоса и выплаты записаны в блокчейн — публично и неизменно."],
+["Что такое Realms?","Популярный на Solana фреймворк управления DAO."],
+["Как работает «комитет + голос сообщества»?","Комитет ведёт текущую работу; важное одобряет сообщество."],
+["Как раскрывается использование средств?","Каждая выплата ончейн, с регулярными отчётами и сверками казны."],
+["Адрес казны публичен?","Да; любой может проверить балансы и движения."],
+["Как подать предложение?","Шаблон (цели, бюджет, этапы) на платформе управления, затем обсуждение и голосование."],
+["Токен управления — это eCNH?","Сначала да; позже может появиться отдельный управляющий credential."],
+["Как не дать китам доминировать в голосовании?","Потолок веса на адрес, долгие локи и вес по вкладу."],
+["Чем занимаются группы?","Техника — обновления; благотворительность — выплаты; операции — сообщество и контент."],
+["Как вознаграждаются участники?","Токены или очки репутации из фонда сообщества по выполненным заданиям."],
+["Как часто DAO подводит итоги?","Бюджет и прогресс — ежеквартально; полный пересмотр плана — каждые 2-3 года."],
+["Почему ликвидность так важна?","Без глубины цену легко манипулировать, а пользователям трудно входить и выходить."],
+["Как получать стимулы маркетмейкинга?","Двусторонняя ликвидность в назначенных пулах; награды по доле и времени."],
+["Односторонний или двусторонний LP?","Двусторонний — избегает искажения цены."],
+["Что такое dAMM v2?","Динамический AMM Meteora, распределяющий ликвидность по ценовым диапазонам."],
+["Что делать с пулами с отклонённой ценой?","Остановить стимулы, объявить миграцию, сосредоточить ликвидность в основном пуле."],
+["Почему фокус на eCNH-USDC?","Меньше пар = больше глубины, меньше проскальзывания, честнее цена."],
+["Зачем пул WBTC/eCNH?","Добавляет Bitcoin как контр-актив для долгосрочных держателей."],
+["Что такое непостоянные потери?","Упущенная выгода позиции LP по сравнению с простым держанием."],
+["Где смотреть рынок?","Orb Markets, DEX Screener или графики в кошельке."],
+["Когда листинг на CEX?","Когда зреют глубина и комплаенс; приоритеты решает голосование DAO."],
+["Как снизить риск обвала?","Поэтапные разблокировки, локи стимулов и вестинг."],
+["Какая концентрация здорова?","Доля топ-10 адресов падает, число держателей растёт."],
+["Как аирдропы децентрализуют?","Раздача многим активным адресам размывает долю китов."],
+["Как зарабатывать на заданиях?","Задания на контент, перевод и продвижение на официальных платформах."],
+["Каков процесс листинга?","Due diligence, комплаенс-проверка, анонсы и подготовка ликвидности — под надзором сообщества."],
+["Как распределяется прибыль?","Технологии 20-30%, группы 10-20%, благотворительность 10-20%, ликвидность 5-10%, остальное — резерв."],
+["На что идёт технический бюджет?","Аудиты, инфраструктура, стимулы и безопасность."],
+["На что идёт бюджет групп?","Серверы, мероприятия, контент и локализация за рубежом."],
+["Кому помогает благотворительность?","Китайскоязычным пользователям с доходом < 1000 CNY/мес: жизнь, медицина, образование, старость."],
+["Как запросить помощь?","Документы через публичные каналы благотворительной группы; анонимная выплата после проверки."],
+["Как обеспечивается прозрачность?","Выплаты ончейн и сводная публикация без личных данных."],
+["Что значит «тихая благотворительность»?","Делать добро без огласки: публикуются лишь суммы и направления — достоинство защищено."],
+["На что идёт бюджет ликвидности?","Постоянное углубление основной пары eCNH-USDC."],
+["Что с остатком прибыли?","Резерв, НИОКР и базовая инфраструктура для людей."],
+["Как часто обновляется план?","Полный пересмотр каждые 2-3 года плюс постоянные корректировки."],
+["Причём здесь «установить сердце Небу и Земле»?","Возвращение общественных благ сообществу — основа ценностей eCNH."],
+["Как проявляются самостоятельность, бережливость, чтение и доброта?","Опора на себя, скромная жизнь, учение всю жизнь, доброта к людям."],
+["Откуда «первым тревожиться о бедах мира»?","Из «Записок о Юэянской башне» Фань Чжунъяня — классическая основа нашей этики."],
+["Распределение на благотворительность обязательно?","Да — закреплено в уставе и правилах мультисиг."],
+["Как предотвратить злоупотребления?","Мультисиг, двойная проверка, ончейн-публикация, общественный контроль."],
+["Как проверяются доходы?","Подписанная декларация заявителя и выборочные проверки."],
+["В какой форме выплачивается помощь?","Стейблкоины или мелкие суммы токенов прямо в кошелёк получателя."],
+["Как покрываются медицина, образование и старость?","Адресные выплаты по заявленной цели: учёба, лекарства, базовая жизнь."],
+["Что означает 2027?","Целевой год, когда управление, благотворительность и сеть групп будут готовы."],
+["Что такое «DAO POOL 2026»?","Первый распределённый пул — Meteora dAMM v2, запущенный в 2026 году."],
+["eCNH комплаентен?","Правила везде разные: консультируйтесь с местными юристами; DAO работает только в комплаенс-регионах."],
+["Какие страны и города могут участвовать?","Web3-дружественные регионы — см. раздел «Юрисдикции»."],
+["Какие регуляторные риски у активов, связанных с RMB?","Валютное и стейблкоин-регулирование: эмиссия, выкуп и продвижение требуют юристов."],
+["Почему только комплаенс-регионы?","Чтобы снизить юридический риск и защитить участников и DAO."],
+["Каковы инвестиционные риски?","Низкая ликвидность, высокая волатильность, паритета нет — возможна полная потеря."],
+["Будет ли допэмиссия?","Цель: публичные права контракта без эмиссии и заморозки, под надзором сообщества."],
+["Как избегать преувеличений?","Только проверяемые факты, без обещаний доходности, с пометкой «эксперимент»."],
+["Нужен ли KYC/AML?","В DEX — нет; выплаты благотворительности и фиатные шаги — по требованиям."],
+["Как быть с налогами?","Правила различаются — обращайтесь к местным специалистам."],
+["Есть ли дисклеймер?","Да, внизу страницы: ничего здесь не является инвестиционной рекомендацией."],
+["Что если резервы не проверить?","До появления резервов и выкупа 1:1 открыто заявляется статус «без анкера»."],
+["Каковы правовые границы самоуправления?","DAO не обещает статус юрлица и ответственность; важное — по местному праву."],
+["Что делать при мошенничестве?","Немедленно остановиться, сохранить доказательства, сообщить сообществу и в полицию."],
+["Что значит «расчётная база экономики ИИ»?","Микроплатежи между агентами требуют дешёвого и быстрого слоя — его даёт Solana."],
+["Как eCNH связан с экономикой ИИ?","Исследуем оплату данных и сервисов микроплатежами eCNH между агентами."],
+["Что такое RWA?","Токенизация реальных активов — долгосрочное направление исследований eCNH."],
+["Что такое философия космического сознания?","Сознание, возможно, не только человеческое; Вселенная может хранить немыслимые умы."],
+["Сознание — только человеческое?","Неизвестно. Скромность и любопытство — так мы смотрим на звёзды."],
+["Причём здесь межзвёздная цивилизация?","Если человечество пойдёт к звёздам, открытый нейтральный расчётный слой станет общим благом."],
+["Что значит «огромное богатство»?","Долгосрочное пространство роста от слияния Web3+AI+RWA, а не краткосрочные спекуляции."],
+["Что такое «Глобальная деревня»?","Мировое сообщество, связанное как деревня — ему и служит eCNH."],
+["Как сливаются Web3, AI и RWA?","Ончейн-права + интеллектуальное исполнение + реальные активы, три слоя."],
+["Каков план на три года?","Пул в 2026, управление в 2027, многоязычные сообщества и реальные расчёты в 2028."],
+["Как внести код или контент?","PR в GitHub или переводы через платформы заданий."],
+["Как связаться с сообществом?","Через официальные каналы на сайте; остерегайтесь самозванцев."]]},
+bless:{title:"🙏 Пожелания · Всем существам",
+ wishes:[
+"Пусть все существа странствуют в мире и здравствуют",
+"Пусть все существа сыты и одеты, без нужды",
+"Пусть все существа, в этой жизни и во всех будущих, избегают дурных деяний и лжи и хранят праведные, добрые мысли",
+"Пусть все желания существ сбываются",
+"Пусть все существа будут избавлены от болезней, бед и напастей",
+"Пусть долги всех существ обнулятся и они обретут финансовую свободу",
+"Пусть все существа будут свободны и безмятежны и смогут идти куда пожелают",
+"Пусть у всех существ будет любовь и счастливый брак",
+"Пусть все существа развивают заслуги и мудрость, и пусть они приумножаются",
+"Пусть все существа оставят страдания и живут в покое и свободе",
+"Пусть у всех существ будут неиссякаемые деньги — по 1000 юаней карманных каждый день — и пусть богатство прибывает",
+"Пусть у всех существ всё складывается благополучно и гладко",
+"Пусть все дети растут здоровыми и счастливыми",
+"Пусть все пожилые имеют почтительных детей и внуков, в мире и радости",
+"Пусть все родители живут долго, здоровые и счастливые",
+"Пусть все существа удаляются от дурных путей и приближаются к добрым наставникам"
+]},
+footer:{disc:"⚠️ Отказ от ответственности: eCNH — долгосрочный распределённый экспериментальный токен Андромеды и межзвёздных цивилизаций; его цель в будущем — больше, чем стейблкоин, и он не привязан к офшорному CNH. Сайт носит информационный и образовательный характер; это не финансовая, юридическая или налоговая консультация. Криптоактивы крайне волатильны — возможна полная потеря средств. Изучите местное право и проконсультируйтесь со специалистами. Бизнес, связанный с RMB, подчинён валютному регулированию; DAO работает только в комплаенс-юрисдикциях.",
+ links:[["Курс Orb Markets",LINKS.orb],["DAO POOL Meteora",LINKS.meteora],["WBTC/eCNH Orca",LINKS.orca],["Контракт Solscan",LINKS.solscan]],
+ rights:"eCNH DAO 2027 · Распределённое сообщество Глобальной деревни · Самостоятельность · Бережливость · Чтение · Доброта"}
+};
+/* ================= العربية ================= */
+L10N.ar={
+name:"العربية",dir:"rtl",
+nav:[["about","عن eCNH"],["path","مسار التطوير"],["jur","الولايات الصديقة"],["vision","الرؤية"],["charity","DAO الخيري"],["roadmap","الخطة"],["qa","100 سؤال"],["bless","أدعية الخير"]],
+hero:{badge:"DAO POOL الموزع eCNH 2026 → 2027",title:"eCNH <span class='g'>DAO 2027</span>",
+ sub:"مجتمع تجريبي للعملة الرنمينبي الخارجية لأجل القرية العالمية · Web3 + AI + RWA. نضع قلبًا للسماء والأرض، ونمنح الحياة للناس، ونواصل حكمة الحكماء، ونفتح السلام للأجيال كلها.",
+ ca:"نسخ العقد",copied:"تم النسخ ✓",
+ links:[["📈 السعر · Orb Markets",LINKS.orb],["🌊 DAO POOL · Meteora dAMM v2",LINKS.meteora],["🪙 WBTC/eCNH · Orca",LINKS.orca],["🔍 العقد · Solscan",LINKS.solscan]],
+ stats:[["Solana","الشبكة"],["3,313+","حائزون (يتزايدون)"],["CNH 1:1","رؤية الربط (لم تتحقق)"],["6 لغات · 3 ثيمات","تصميم القرية العالمية"]]},
+about:{title:"عن eCNH: توكن واحد بأربع هويات",text:"eCNH هو التوكن التجريبي المجتمعي الموزع طويل المدى لأندروميدا والحضارات النجمية، على شبكة Solana. هدفه المستقبلي يتجاوز العملة المستقرة: الربط 1:1 بالرنمينبي الخارجية (CNH) خطوة واحدة من تلك الرؤية، لكن هذا الربط والاحتياطيات وآلية الاسترداد لم تتحقق بعد. eCNH ليس مجرد توكن؛ إنه تجربة مجتمعية قائمة على الشفافية والمنفعة العامة والحكم الذاتي.",
+ items:[["🌍","earth CNH · القرية العالمية","العالم للجميع. مدفوعات عابرة للحدود، حوالات، وتسويات حقيقية للمجتمعات العالمية."],
+ ["🇪🇺","europe CNH · أوروبا","جسر بين منطقة اليورو والـ CNH الخارجية لخدمة التجارة بين الاتحاد الأوروبي والصين."],
+ ["🏮","east CNH · الشرق","متجذر في ثقافة التجارة الشرقية وتقاليد الحكم الذاتي، ممتد من المجتمعات الصينية الناطقة."],
+ ["⚡","energy CNH · الطاقة","تخزين طاقة التسوية لاقتصاد الذكاء الاصطناعي: مدفوعات دقيقة عالية التردد بين الوكلاء."]],
+ note:"⚠️ مهم: eCNH هو التوكن التجريبي المجتمعي الموزع طويل المدى لأندروميدا والحضارات النجمية؛ هدفه المستقبلي يتجاوز العملة المستقرة وسعره متقلب. الربط 1:1 مع CNH رؤية طويلة المدى فقط — لا تتخذ قرارات مالية بناءً عليه."},
+path:{title:"مسار التطوير: ثمانية أعمدة",
+ intro:"الثقة قبل النمو. أولًا وضوح مكانة الأصل وشفافيته، ثم السيولة والمجتمع، وأخيرًا الحكم الموزع — هذا ترتيب DAO eCNH.",
+ items:[["1","مكانة الأصل وشفافيته","الإفصاح عما إذا كان هناك ربط حقيقي (الهدف: احتياطيات CNH 1:1 ومُصدر وآلية استرداد)؛ الإفصاح عن صلاحيات العقد (بدون إصدار أو تجميد) وتوزيع الحائزين وعناوين التوقيع المتعدد."],
+ ["2","إصلاح السيولة والسعر","تنظيف المجمعات المنحرفة؛ تركيز العمق على زوج أو زوجين رئيسيين (مثل eCNH-USDC)؛ استخدام الحوافز مع إدراك أن السيولة المدعومة نادرًا ما تدوم."],
+ ["3","تقليل التمركز","توزيع التوكنات على مستخدمين حقيقيين نشطين لا على الحيتان: إسقاطات جوية ومهام ومكافآت. مع ~3,313 حائزًا، نوّع العناوين النشطة أولًا."],
+ ["4","هيكل حوكمة DAO","خزانة بتوقيع متعدد واستخدام علني للأموال؛ مقترحات وتصويت على السلسلة؛ نموذج هجين «لجنة + تصويت مجتمعي» في البداية مع تفويض تدريجي."],
+ ["5","حالات استخدام حقيقية","مدفوعات عابرة للحدود، حوالات صغيرة، تسوية تجارية بالـ CNH الخارجية، تبادل العملات المستقرة؛ تكامل DeFi (ضمانات، صنع سوق)."],
+ ["6","المجتمع والتشغيل","مجتمعات ثنائية اللغة لجنوب شرق آسيا وهونغ كونغ وماكاو (الصين) والجاليات؛ برنامج سفراء؛ نشر بيانات السلسلة بانتظام."],
+ ["7","الامتثال والمخاطر","الأصول المرتبطة بالرنمينبي تخضع لتنظيم الصرف والعملات المستقرة: آراء قانونية محلية ضرورية؛ بلا مبالغات خاصة مع ضعف الثقة."],
+ ["8","تحسين دوري","مراجعة شاملة للخطة كل 2-3 سنوات مع تطور التقنية والمجتمع والتنظيم."]]},
+jur:{title:"30 ولاية Web3-صديقة في القرية العالمية",
+ intro:"يُمارَس عمل eCNH Web3 + AI + RWA فقط في دول ومدن ملتزمة بقوانين Web3. القائمة تجميع لتقييمات عامة لمناقشة المجتمع.",
+ groups:[["🌏 آسيا والمحيط الهادئ",["سنغافورة","هونغ كونغ، الصين","طوكيو، اليابان","سول، كوريا","كوالالمبور/لابوان، ماليزيا","أستانا، كازاخستان"]],
+ ["🕌 الشرق الأوسط",["دبي، الإمارات","أبوظبي، الإمارات"]],
+ ["🏛️ أوروبا",["زوغ، سويسرا","ليختنشتاين","لوكسمبورغ","أمستردام، هولندا","فرانكفورت، ألمانيا","باريس، فرنسا","لشبونة، البرتغال","تالين، إستونيا","فيلنيوس، ليتوانيا","مالطا","لندن، بريطانيا"]],
+ ["🌎 الأمريكتان",["وايومنغ، أمريكا","ميامي، أمريكا","تورونتو، كندا","السلفادور"]],
+ ["🏝️ المراكز الخارجية",["جزر كايمان","جزر العذراء البريطانية","برمودا","سيشل","موريشيوس"]],
+ ["🦘 أوقيانوسيا",["سيدني، أستراليا","أوكلاند، نيوزيلندا"]]],
+ note:"ملاحظة: التنظيم يتغير باستمرار؛ القائمة للاسترشاد فقط. احصل دائمًا على رأي قانوني محلي بشأن الإصدار والاسترداد والترويج."},
+vision:{title:"الرؤية: الوعي والذكاء الاصطناعي وطبقة تسوية الحضارة النجمية",
+ paras:["تخيّر الفلاسفة بجرأة أن الوعي قد لا يكون حصريًا للبشر — فقد يحوي الكون عقولًا لا تخطر على بالنا. هذه التواضع والفضول هما كيفية نظر هذا المجتمع إلى النجوم.",
+ "عندما تدخل الأرض اقتصاد الذكاء الاصطناعي، ستتطلب المدفوعات الدقيقة بين الآلات والوكلاء قاعدة تسوية رخيصة عالية الإنتاجية — لهذا اختار eCNH شبكة Solana ويستكشف أداةً على CNH الخارجية.",
+ "Web3 يوفر حقوق الملكية على السلسلة، والذكاء الاصطناعي التنفيذ الذكي، وRWA ترميز الأصول الحقيقية. معًا قد يفتحون أكبر تجربة تعاون وخلق ثروة في التاريخ؛ وإذا غادرت البشرية إلى النجوم، فقد تصبح طبقة التسوية المفتوحة المحايدة منفعة عامة للحضارة.",
+ "يشارك مجتمع eCNH في هذه التجربة بقلب من أجل العامة: الثروة المأخوذة من المجتمع يجب أن تعود إليه."],
+ quotes:[["نضع قلبًا للسماء والأرض، ونمنح الحياة للناس، ونواصل حكمة الحكماء، ونفتح السلام للأجيال كلها.","— تشانغ تساي، أسرة سونغ (الجمل الأربع)"],["أن نكون أول من يقلق على هموم العالم وآخر من يستمتع بفرحه.","— فان تشونغ يان، «ذكرى برج يويانغ»"]],
+ values:["الاكتفاء الذاتي","الاقتصاد","القراءة","اللطف"]},
+charity:{title:"DAO الخيري: خطة توزيع الأرباح",
+ intro:"إذا حقق eCNH أرباحًا، يتعهد المجتمع بتوزيعها هكذا على المدى الطويل (مثبت في النظام الأساسي وقواعد التوقيع المتعدد):",
+ alloc:[["20-30%","التطوير التقني طويل المدى",30,"تدقيق العقود، البنية التحتية، حوافز المطورين والأمان."],
+ ["10-20%","تشغيل مجموعات Web3 الموزعة",20,"خوادم، فعاليات، محتوى وتوطين للمجموعات، على مراحل."],
+ ["10-20%","خير صامت",20,"للناطقين بالصينية الذين دخلهم أقل من 1000 يوان شهريًا: معيشة، صحة، تعليم، شيخوخة. خير بلا ضجيج: تُنشر الإجماليات والمسارات فقط حفاظًا على الكرامة."],
+ ["5-10%","بناء السيولة طويل المدى",10,"تعميق زوج eCNH-USDC الرئيسي باستمرار لتقليل التقلب."],
+ ["الباقي","احتياطي · تقنيات جديدة · بنية تحتية شعبية",15,"العالم للجميع: الباقي للاحتياطي والتقنيات الجديدة والبنية التحتية للمعيشة."]],
+ note:"المدفوعات على السلسلة مع نشر إجمالي دوري (دون بيانات شخصية)؛ إقرار موقع من مقدم الطلب، مراجعة مزدوجة، دفع بتوقيع متعدد، ورقابة مجتمعية. تُحدَّث الخطة كل 2-3 سنوات."},
+roadmap:{title:"الخطة: 2026 → 2027 → ما بعدها",
+ items:[["2026 · إطلاق DAO POOL","تشغيل مجمع Meteora dAMM v2 الموزع ومجمع Orca WBTC/eCNH؛ إفصاح الصلاحيات والخزانة متعددة التوقيع؛ سفراء ومهام."],
+ ["2027 · اكتمال حوكمة DAO","عمل eCNH DAO 2027: مقترحات وتصويت على السلسلة (بنمط Realms)، النموذج الهجين، ومسار الصرف الخيري جاهز."],
+ ["2028 · تعدد اللغات والاستخدامات","مجتمعات بست لغات؛ تعميق eCNH-USDC؛ تجارب تسوية صغيرة عابرة للحدود وتكامل DeFi."],
+ ["كل 2-3 سنوات · مراجعة","مراجعة شاملة للربط والحوكمة والخير والامتثال بصدق المجتمع."]]},
+qa:{title:"eCNH: 100 سؤال شائع",lead:"الأساسيات والحوكمة والسيولة والخير والامتثال والرؤية. مع بحث وفلترة.",
+ search:"ابحث في الأسئلة أو الأجوبة…",cats:["الكل","الأساسيات والتوكن","DAO والحوكمة","السيولة والسوق","الخير والتوزيع","الامتثال والمخاطر","الرؤية والفلسفة"],
+ count:"{n} سؤالًا",empty:"لا نتائج — جرّب كلمة أخرى.",
+ items:[
+["ما هو eCNH؟","eCNH هو التوكن التجريبي المجتمعي الموزع طويل المدى لأندروميدا والحضارات النجمية على Solana، ويطمح لأن يكون أداة تسوية بالرنمينبي الخارجية لأجل القرية العالمية."],
+["ما عنوان عقد eCNH (CA)؟","7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 — اعتمد على الإعلانات الرسمية دائمًا."],
+["على أي شبكة يعمل eCNH؟","Solana — سريعة ورخيصة، مناسبة للتسويات الدقيقة عالية التردد."],
+["ما معنى كلمة eCNH؟","earth / europe / east / energy CNH: الأرض وأوروبا والشرق والطاقة — أربع في واحدة."],
+["كيف أشتري eCNH؟","استبدل USDC بـ eCNH عبر منصات لامركزية مثل Jupiter أو Orca من محفظة Solana."],
+["ما المحفظة المطلوبة؟","محفظة Solana مثل Phantom أو Solflare؛ احتفظ دائمًا بالعبارة السرية بأمان."],
+["ما هي Solana؟","بلوكتشين عالي الأداء برسوم ضئيلة — قاعدة التسوية لـ eCNH."],
+["هل الرسوم مرتفعة؟","رسوم السلسلة أقل بكثير من 0.01 SOL عادة؛ التكلفة الحقيقية هي الانزلاق السعري."],
+["أين المعلومات الرسمية؟","على الموقع الرسمي والإعلانات؛ السعر في صفحة Orb Markets."],
+["ما هو DAO POOL على Meteora؟","Ac2bwg4ByZr2FePpuKKdjGLpfRMenFsjgt17St9PfBKC — المجمّع الموزع للـ DAO (dAMM v2)."],
+["ما هو مجمّع Orca؟","مجمّع WBTC/eCNH يوفر سيولة متعددة الأصول للحائزين طويلي المدى."],
+["ما علاقة eCNH بالـ CNH الخارجية؟","الرؤية ربط 1:1؛ لم يتحقق بعد — كل شيء يتوقف على احتياطيات قابلة للتحقق."],
+["هل eCNH عملة مستقرة الآن؟","لا. eCNH توكن تجريبي موزع هدفه المستقبلي يتجاوز العملة المستقرة؛ سعره متقلب — لا تعامله كعملة مستقرة."],
+["كيف أتحقق من العقد؟","قارن CA والصلاحيات والإصدارات في Solana Explorer مع الإعلانات الرسمية."],
+["ما هو CA؟","عنوان العقد — الهوية الفريدة للتوكن؛ الاعتماد عليه يحميك من المقلّدين."],
+["كيف أتجنب التوكنات المزيفة والتصيد؟","اعتمد CA والنطاقات الرسمية فقط؛ احذر «الدعم» في الخاص؛ لا توقّع طلبات مجهولة."],
+["كيف توزع التوكنات؟","إسقاطات جوية ومهام وحوافز سيولة — دون تمركز عند الحيتان."],
+["أين أرى عدد الحائزين؟","Solscan أو Orb Markets يعرضان توزيع الحائزين."],
+["ما هدف eCNH طويل المدى؟","أن يصبح أداة تسوية دقيقة لاقتصاد الذكاء الاصطناعي والجاليات الصينية بحوكمة DAO."],
+["أين المجتمع؟","حسابات رسمية على Telegram وX — احذر المنتحلين."],
+["ما هو eCNH DAO 2027؟","منظمة مجتمعية موزعة تنضج في 2027: الحوكمة والخزينة والخير."],
+["كيف أنضم إلى DAO؟","املك توكنات وسجّل في المهام وشارك في المقترحات والتصويت."],
+["كيف يتخذ DAO قراراته؟","مقترحات على السلسلة + تصويت مجتمعي؛ نموذج هجين «لجنة + تصويت» أولًا."],
+["ما الخزينة متعددة التوقيع؟","أموال تديرها عدة جهات مستقلة — لا يستطيع أحد تحريكها وحده."],
+["ما حد تقديم المقترحات؟","حد أدنى من التوكنات أو السمعة لمنع الإزعاج."],
+["كيف يُحسب وزن التصويت؟","بالحيازة مع سقف؛ ثم يضاف وزن للمساهمة."],
+["ما هي مجموعات DAO الموزعة؟","فرق صغيرة ذاتية التنظيم حسب المنطقة أو الوظيفة (تقنية، خير، تشغيل)."],
+["كيف تُنشأ مجموعة في الخارج؟","بمبادرة 3-5 أعضاء نشطين بأهداف وميزانية معلنة وإقرار بالتصويت."],
+["من أين تمويل المجموعات؟","من الميزانية السنوية للـ DAO — 10-20% من الأرباح على مراحل."],
+["ما الحوكمة على السلسلة؟","مقترحات وأصوات ومدفوعات مسجلة في البلوكتشين — علنية وغير قابلة للتغيير."],
+["ما هو Realms؟","إطار حوكمة DAO شائع على Solana."],
+["كيف يعمل «لجنة + تصويت مجتمعي»؟","اللجنة تنفذ اليومي؛ والمهم يوافق عليه المجتمع."],
+["كيف يُعلن استخدام الأموال؟","كل دفعة على السلسلة مع تقارير وتسويات دورية."],
+["هل عنوان الخزينة معلن؟","نعم؛ يمكن لأي شخص التحقق من الأرصدة والحركات."],
+["كيف أقدم مقترحًا؟","نموذج بأهداف وميزانية ومراحل على منصة الحوكمة ثم نقاش وتصويت."],
+["هل توكن الحوكمة هو eCNH؟","في البداية نعم؛ لاحقًا قد يُفصل توكن حوكمة مخصص."],
+["كيف نمنع هيمنة الحيتان على التصويت؟","سقف للوزن لكل عنوان، وقفل طويل، ووزن للمساهمة."],
+["ماذا تفعل كل مجموعة؟","التقنية: التطوير؛ الخير: الصرف؛ التشغيل: المجتمع والمحتوى."],
+["كيف يُكافأ المساهمون؟","توكنات أو نقاط سمعة من صندوق المجتمع حسب المهام."],
+["كم مرة يراجع DAO نفسه؟","الميزانية والتقدم ربع سنويًا؛ الخطة كاملة كل 2-3 سنوات."],
+["لماذا السيولة مهمة جدًا؟","بدون عمق يُلاعب بالسعر ولا يستطيع المستخدمون الدخول أو الخروج بيسر."],
+["كيف أكسب حوافز صنع السوق؟","وفر سيولة ثنائية في المجمعات المعينة؛ المكافأة بحسب الحصة والمدة."],
+["سيولة بأرض واحد أم اثنين؟","الثنائية أفضل — تتجنب تشويه السعر."],
+["ما هو dAMM v2؟","نموذج صنع سوق ديناميكي من Meteora يوزع السيولة بنطاقات سعرية."],
+["ماذا عن المجمعات ذات السعر المنحرف؟","أوقف الحوافز وأعلن الترحيل وركّز السيولة في المجمع الرئيسي."],
+["لماذا التركيز على eCNH-USDC؟","أزواج أقل = عمق أكبر وانزلاق أقل واكتشاف سعر أصدق."],
+["ما وظيفة مجمّع WBTC/eCNH؟","يضيف البيتكشن كأصل مقابل لحائزي المدى الطويل."],
+["ما الخسارة المؤقتة؟","تكلفة الفرصة البديلة للسيولة مقارنة بمجرد الاحتفاظ."],
+["أين أتابع السوق؟","Orb Markets وDEX Screener والرسوم البيانية في المحفظة."],
+["متى الاكتتاب في منصة مركزية؟","عند نضج العمق والامتثال؛ الأولويات بتصويت DAO."],
+["كيف نقلل خطر الانهيار؟","إلغاء قفل تدريجي وحوافز مقفلة وجدول استحقاق."],
+["أي تمركز يُعد صحيًا؟","حصة أكبر 10 عناوين تتراجع وعدد الحائزين يتزايد."],
+["كيف تُوزّع الإسقاطات الجوية الحيازات؟","التوزيع على عناوين نشطة كثيرة يخفف حصة الحيتان."],
+["كيف أكسب توكنات من المهام؟","مهام محتوى وترجمة وترويج على المنصات الرسمية."],
+["ما عملية الإدراج في المنصات؟","فحص نافٍ ومراجعة امتثال وإعلانات وتجهيز سيولة — تحت إشراف المجتمع."],
+["كيف توزع الأرباح؟","تقنية 20-30%، مجموعات 10-20%، خير 10-20%، سيولة 5-10%، والباقي احتياطي."],
+["على ماذا يُصرف الميزانيت التقني؟","تدقيق العقود والبنية التحتية والحوافز والأمان."],
+["وعلى ماذا ميزانية المجموعات؟","خوادم وفعاليات ومحتوى وتوطين في الخارج."],
+["لمن الخير؟","للناطقين بالصينية الذين دخلهم أقل من 1000 يوان شهريًا: معيشة وصحة وتعليم وشيخوخة."],
+["كيف أطلب المساعدة؟","قدّم المستندات عبر قنوات المجموعة الخيرية العلنية؛ صرف مجهول بعد المراجعة."],
+["كيف تضمن شفافية الخير؟","مدفوعات على السلسلة ونشر إجمالي دوري دون خصوصية شخصية."],
+["ما معنى «الخير الصامت»؟","إحسان بلا ضجيج: تُنشر الإجماليات والمسارات فقط حفاظًا على الكرامة."],
+["على ماذا يُصرف ميزانية السيولة؟","تعميق الزوج الرئيسي eCNH-USDC بلا توقف."],
+["ماذا يفعل بالباقي؟","احتياطي وبحث وتطوير وبنية تحتية أساسية للمعيشة."],
+["كم مرة تُحدَّث الخطة؟","مراجعة شاملة كل 2-3 سنوات مع تعديلات مستمرة."],
+["ما علاقة «نضع قلبًا للسماء والأرض» بالمشروع؟","ردّ المنافع العامة للمجتمع هو أساس قيم eCNH."],
+["كيف تتجسد الاكتفاء والاقتصاد والقراءة واللطف؟","أن تعتمد على نفسك وتعيش ببساطة وتتعلم دائمًا وتعامل الناس بلطف."],
+["من أين «أول من يقلق على هموم العالم»؟","من «ذكرى برج يويانغ» لفان تشونغ يان — أساس كلاسيكي لأخلاقنا."],
+["هل توزيع الخير إلزامي؟","نعم — مثبت في النظام الأساسي وقواعد التوقيع المتعدد."],
+["كيف نمنع إساءة استخدام أموال الخير؟","توقيع متعدد ومراجعة مزدوجة ونشر على السلسلة ورقابة مجتمعية."],
+["كيف يُتحقق من الدخل؟","إقرار موقّع من مقدم الطلب مع فحوص عشوائية."],
+["بأي شكل تُصرف المساعدة؟","عملات مستقرة أو مبالغ توكن صغيرة إلى محفظة المستفيد مباشرة."],
+["كيف تغطى الصحة والتعليم والشيخوخة؟","مدفوعات موجّهة حسب السبب: رسوم دراسية ودواء ومعيشة أساسية."],
+["ماذا تعني 2027؟","السنة المستهدفة لاكتمال الحوكمة ومسار الخير وشبكة المجموعات."],
+["ما هو «DAO POOL 2026»؟","أول مجمع موزع — Meteora dAMM v2 — أُطلق في 2026."],
+["هل eCNH ملتزم بالقوانين؟","القواعد تختلف بحسب الدولة: استشر محامين محليين؛ يعمل DAO فقط في مناطق ملتزمة."],
+["أي الدول والمدن يمكنها المشاركة؟","المناطق الصديقة لـ Web3 أولًا — راجع قسم «الولايات الصديقة»."],
+["ما مخاطر التنظيم على الأصول المرتبطة بالرنمينبي؟","تنظيم الصرف والعملات المستقرة صارم: الإصدار والاسترداد والترويج تحتاج آراء قانونية."],
+["لماذا المناطق الملتزمة فقط؟","لتقليل المخاطر القانونية وحماية المشاركين وDAO."],
+["ما مخاطر الاستثمار؟","سيولة ضعيفة وتقلب عالٍ ولا ربط — فقد تفقد رأس مالك كله."],
+["هل ستكون هناك إصدارات إضافية؟","الهدف: صلاحيات علنية بلا إصدار أو تجميد، تحت إشراف المجتمع."],
+["كيف نتجنب المبالغة؟","حقائق قابلة للتحقق فقط، بلا وعود بأرباح، مع تنبيه للطبيعة التجريبية."],
+["هل يلزم KYC/AML؟","التداول اللامركزي لا؛ الصرف الخيري والنقاط النقدية يتبعان المتطلبات."],
+["وماذا عن الضرائب؟","تختلف بحسب الدولة — استشر مختصين محليين."],
+["هل يوجد إخلاء مسؤولية؟","نعم — أسفل الصفحة: لا شيء هنا نصيحة استثمارية."],
+["وماذا لو تعذر التحقق من الاحتياطيات؟","يُعلن بوضوح حالة «عدم الربط» حتى تحقق احتياطيات واسترداد 1:1."],
+["ما الحدود القانونية للحكم الذاتي؟","لا يعد DAO بشخصية اعتبارية أو مسؤولية؛ المهم يتبع القانون المحلي."],
+["ماذا أفعل عند الاحتيال؟","توقف فورًا واحفظ الأدلة وأبلغ المجتمع والشرطة."],
+["ماذا يعني «قاعدة تسوية اقتصاد الذكاء الاصطناعي»؟","المدفوعات الدقيقة بين الوكلاء تحتاج طبقة رخيصة وسريعة — Solana توفرها."],
+["كيف يرتبط eCNH باقتصاد الذكاء الاصطناعي؟","نستكشف دفع الوكلاء مقابل البيانات والخدمات بمدفوعات دقيقة بـ eCNH."],
+["ما هو RWA؟","ترميز الأصول الحقيقية على السلسلة — اتجاه استكشاف طويل المدى لـ eCNH."],
+["ما فلسفة الوعي الكوني؟","ربما الوعي ليس حصريًا للبشر؛ قد يحوي الكون عقولًا لا تُتصور."],
+["هل الوعي حصري للبشر؟","مجهول. التواضع والفضول هما كيفية نظرنا إلى النجوم."],
+["ما علاقة الحضارة النجمية بـ eCNH؟","على مستوى الرؤية: إذا توجهت البشرية إلى النجوم، قد تصبح طبقة تسوية مفتوحة محايدة منفعة عامة."],
+["ماذا يعني «الثروة الهائلة»؟","مساحة النمو طويل المدى من اندماج Web3+AI+RWA، لا المضاربة القصيرة."],
+["ما هي «القرية العالمية»؟","مجتمع عالمي مترابط كالقرية — وهو ما يخدمه eCNH."],
+["كيف يندمج Web3 وAI وRWA؟","حقوق على السلسلة + تنفيذ ذكي + أصول حقيقية، ثلاث طبقات."],
+["ما خطة السنوات الثلاث؟","مجمّع في 2026، حوكمة في 2027، مجتمعات متعددة اللغات وتسويات حقيقية في 2028."],
+["كيف أساهم بالكود أو المحتوى؟","PR على GitHub أو ترجمات عبر منصات المهام."],
+["كيف أتواصل مع المجتمع؟","عبر القنوات الرسمية المعلنة على الموقع — احذر المنتحلين."]]},
+bless:{title:"🙏 أدعية الخير · لجميع الكائنات",
+ wishes:[
+"أن يسافر جميع الكائنات بسلام ويتمتعوا بالصحة",
+"أن يكون جميع الكائنات مفعمين بالطعام والكساء بلا حاجة",
+"أن يمتنع جميع الكائنات، في هذه الحياة وفي كل الأعمار، عن السوء والكذب ويحافظوا على أفكار صالحة وطيبة",
+"أن تتحقق أمنيات جميع الكائنات",
+"أن يُعافى جميع الكائنات من المرض والبلاء والمحنة",
+"أن تُصفَّر ديون جميع الكائنات ويحققوا الحرية المالية",
+"أن يكون جميع الكائنات أحرارًا مطمئنين قادرين على الذهاب حيث يشاؤون",
+"أن يحظى جميع الكائنات بالحب السلس وزواج سعيد",
+"أن يزرع جميع الكائنات البر والحكمة ويزدادا نموًا",
+"أن يترك جميع الكائنات المعاناة ويعيشوا في سكينة وراحة",
+"أن يكون لدى جميع الكائنات مال لا ينفد، بمصروف 1000 يوان يوميًا، ويرزقون وافرًا",
+"أن يسير كل شيء لجميع الكائنات كما يتمنون، بسلام وسلاسة",
+"أن ينمو جميع الأطفال أصحاء سعداء",
+"أن يكون لجميع المسنين أبناء وأحفاد بارّون، بسلام وبهجة",
+"أن يعيش جميع الآباء والأمهات طويلًا بصحة وسعادة",
+"أن يبتعد جميع الكائنات عن المسالك السيئة ويقتربوا من المعلمين الصالحين"
+]},
+footer:{disc:"⚠️ إخلاء مسؤولية: eCNH هو التوكن التجريبي المجتمعي الموزع طويل المدى لأندروميدا والحضارات النجمية؛ هدفه المستقبلي يتجاوز العملة المستقرة وهو غير مرتبط بالـ CNH الخارجية. هذا الموقع معلوماتي وتعليمي فقط وليس نصيحة مالية أو قانونية أو ضريبية. الأصول الرقمية شديدة التقلب وقد تفقد رأس مالك بالكامل. تعرف على قانونك المحلي واستشر المختصين. الأعمال المرتبطة بالرنمينبي تخضع لتنظيم الصرف؛ يعمل DAO فقط في ولايات ملتزمة.",
+ links:[["سعر Orb Markets",LINKS.orb],["DAO POOL Meteora",LINKS.meteora],["WBTC/eCNH Orca",LINKS.orca],["العقد على Solscan",LINKS.solscan]],
+ rights:"eCNH DAO 2027 · مجتمع القرية العالمية الموزع · الاكتفاء · الاقتصاد · القراءة · اللطف"}
+};
+
+/* ================= engine ================= */
+let cur=localStorage.getItem("ecnh_lang")||"zh";
+let curT=localStorage.getItem("ecnh_theme")||"apple";
+let qaFilter="",qaCat=0;
+const BEMO=["🕊️","🍚","🪷","✨","🌿","💰","🦋","💞","📿","☁️","💎","🎊","🌱","🌳","🌸","🌟"];
+const blessIO=("IntersectionObserver" in window)?new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");blessIO.unobserve(e.target)}}),{threshold:.12}):null;
+
+const QA_RANGE=[[0,20],[20,40],[40,55],[55,75],[75,88],[88,100]]; // per category (exclusive end)
+function catOf(i){for(let c=0;c<QA_RANGE.length;c++){if(i>=QA_RANGE[c][0]&&i<QA_RANGE[c][1])return c}return 0}
+
+function render(){
+ const L=L10N[cur];document.documentElement.lang=cur;
+ document.documentElement.dir=L.dir||"ltr";
+ document.documentElement.dataset.theme=curT;
+ // nav
+ document.getElementById("nav").innerHTML=L.nav.map(([id,t])=>`<a href="#${id}">${t}</a>`).join("");
+ // hero
+ document.getElementById("hBadge").textContent=L.hero.badge;
+ document.getElementById("hTitle").innerHTML=L.hero.title;
+ document.getElementById("hSub").textContent=L.hero.sub;
+ document.getElementById("copyBtn").textContent=L.hero.ca;
+ document.getElementById("hLinks").innerHTML=L.hero.links.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${t}</a>`).join("");
+ document.getElementById("hStats").innerHTML=L.hero.stats.map(([b,s])=>`<div class="stat"><b>${b}</b><span>${s}</span></div>`).join("");
+ // about
+ document.getElementById("abTitle").innerHTML=`<span class="n">01</span>${L.about.title}`;
+ document.getElementById("abText").textContent=L.about.text;
+ document.getElementById("abItems").innerHTML=L.about.items.map(([e,k,v])=>`<div class="card idCard"><div class="em">${e}</div><div><b>${k}</b><p>${v}</p></div></div>`).join("");
+ document.getElementById("abNote").textContent=L.about.note;
+ // path
+ document.getElementById("pTitle").innerHTML=`<span class="n">02</span>${L.path.title}`;
+ document.getElementById("pIntro").textContent=L.path.intro;
+ document.getElementById("pItems").innerHTML=L.path.items.map(([n,t,d])=>`<div class="card step"><div class="num">${n}</div><div><h3>${t}</h3><p>${d}</p></div></div>`).join("");
+ // jurisdictions
+ document.getElementById("jTitle").innerHTML=`<span class="n">03</span>${L.jur.title}`;
+ document.getElementById("jIntro").textContent=L.jur.intro;
+ document.getElementById("jGroups").innerHTML=L.jur.groups.map(([g,ps])=>`<div class="card jGroup"><h3>${g}</h3><div class="chips">${ps.map(p=>`<span class="chip">${p}</span>`).join("")}</div></div>`).join("");
+ document.getElementById("jNote").textContent=L.jur.note;
+ // vision
+ document.getElementById("vTitle").innerHTML=`<span class="n">04</span>${L.vision.title}`;
+ let vb=L.vision.paras.map(p=>`<p>${p}</p>`).join("");
+ vb+=L.vision.quotes.map(([q,b])=>`<div class="quote">${q}<small>${b}</small></div>`).join("");
+ vb+=`<div class="values">${L.vision.values.map(v=>`<span>${v}</span>`).join("")}</div>`;
+ document.getElementById("vBody").innerHTML=vb;
+ // charity
+ document.getElementById("cTitle").innerHTML=`<span class="n">05</span>${L.charity.title}`;
+ document.getElementById("cIntro").textContent=L.charity.intro;
+ document.getElementById("cAlloc").innerHTML=L.charity.alloc.map(([p,t,w,d])=>`<div class="row"><div class="top"><span><b>${p}</b> · ${t}</span></div><div class="bar"><div class="fill" style="width:${w}%"></div></div><p class="desc">${d}</p></div>`).join("");
+ document.getElementById("cNote").textContent=L.charity.note;
+ // roadmap
+ document.getElementById("rTitle").innerHTML=`<span class="n">06</span>${L.roadmap.title}`;
+ document.getElementById("rItems").innerHTML=L.roadmap.items.map(([t,d])=>`<div class="node"><b>${t}</b><p>${d}</p></div>`).join("");
+ // qa
+ document.getElementById("qTitle").innerHTML=`<span class="n">07</span>${L.qa.title}`;
+ document.getElementById("qLead").textContent=L.qa.lead;
+ document.getElementById("qSearch").placeholder=L.qa.search;
+ document.getElementById("qCat").innerHTML=L.qa.cats.map((c,i)=>`<option value="${i}">${c}</option>`).join("");
+ document.getElementById("qCat").value=qaCat;
+ renderQA();
+ // footer
+ document.getElementById("fDisc").textContent=L.footer.disc;
+ document.getElementById("fLinks").innerHTML=L.footer.links.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${t}</a>`).join("");
+ document.getElementById("fRights").textContent=L.footer.rights;
+ // blessings
+ document.getElementById("bTitle").textContent=L.bless.title;
+ const bg=document.getElementById("bGrid");
+ bg.innerHTML=L.bless.wishes.map((w,i)=>`<div class="wish" style="transition-delay:${(i%4)*90}ms"><span class="em">${BEMO[i%BEMO.length]}</span><p>${w}</p></div>`).join("");
+ if(blessIO){bg.querySelectorAll(".wish").forEach(el=>blessIO.observe(el))}else{bg.querySelectorAll(".wish").forEach(el=>el.classList.add("in"))}
+ // controls
+ document.getElementById("langSel").innerHTML=Object.keys(L10N).map(k=>`<option value="${k}">${L10N[k].name}</option>`).join("");
+ document.getElementById("langSel").value=cur;
+ document.querySelectorAll(".themeBtns button").forEach(b=>b.classList.toggle("on",b.dataset.t===curT));
+}
+function renderQA(){
+ const L=L10N[cur];const kw=qaFilter.trim().toLowerCase();
+ const idxs=L.qa.items.map((it,i)=>i).filter(i=>{
+  if(qaCat>0&&catOf(i)!==qaCat-1)return false;
+  if(!kw)return true;
+  return L.qa.items[i][0].toLowerCase().includes(kw)||L.qa.items[i][1].toLowerCase().includes(kw);
+ });
+ document.getElementById("qCount").textContent=L.qa.count.replace("{n}",idxs.length);
+ document.getElementById("qList").innerHTML=idxs.map(i=>`<details class="qaItem"><summary>${L.qa.items[i][0]}</summary><div class="ans">${L.qa.items[i][1]}</div></details>`).join("")||`<p style="color:var(--muted)">${L.qa.empty}</p>`;
+}
+document.getElementById("copyBtn").onclick=e=>{
+ navigator.clipboard.writeText(CA).then(()=>{e.target.textContent=L10N[cur].hero.copied;setTimeout(()=>e.target.textContent=L10N[cur].hero.ca,1600)});
+};
+document.getElementById("langSel").onchange=e=>{cur=e.target.value;localStorage.setItem("ecnh_lang",cur);render()};
+document.querySelectorAll(".themeBtns button").forEach(b=>b.onclick=()=>{curT=b.dataset.t;localStorage.setItem("ecnh_theme",curT);render()});
+document.getElementById("qSearch").oninput=e=>{qaFilter=e.target.value;renderQA()};
+document.getElementById("qCat").onchange=e=>{qaCat=+e.target.value;renderQA()};
+window.addEventListener("scroll",()=>{document.getElementById("top").style.display=scrollY>500?"block":"none"});
+render();
+</script>
+</body>
+</html>
