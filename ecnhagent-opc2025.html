@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="blue">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>eCNH Agent OPC · 地球村一人公司 | Earth Village One-Person Company</title>
+<meta name="description" content="eCNH (Earth CNH) Agent OPC 单页门户：购买方式、合规城市、2027 路线图、100 问答、30 大行业、20 Skills、10 城 eCNH OPC、AI 高管团队、300 句华夏正能量语料库。">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f4fbf6;--card:#ffffff;--ink:#14351f;--sub:#4c6d58;--acc:#1f9d55;--acc2:#77c043;
+  --line:#d8ecdd;--hl:#e6f6eb;--shadow:0 4px 18px rgba(31,157,85,.10);
+}
+html[data-theme="blue"]{
+  --bg:#0a1526;--card:#101f38;--ink:#e9f2ff;--sub:#8fa6c9;--acc:#3b82f6;--acc2:#22d3ee;
+  --line:#1e3357;--hl:#14284a;--shadow:0 4px 20px rgba(0,0,0,.35);
+}
+html[data-theme="classical"]{
+  --bg:#f6efdd;--card:#fdf8ec;--ink:#3a2a18;--sub:#7c6a4c;--acc:#a8402c;--acc2:#8a6d3b;
+  --line:#e4d6b4;--hl:#f3e9cf;--shadow:0 4px 16px rgba(120,90,40,.14);
+}
+body{font-family:"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;transition:background .4s,color .4s}
+html[data-theme="classical"] body{font-family:"Noto Serif SC","Songti SC","SimSun",serif}
+a{color:var(--acc);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
+.hd{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 20px;max-width:1080px;margin:0 auto;flex-wrap:wrap}
+.brand{font-weight:800;font-size:1.15rem}
+.brand small{display:block;font-weight:400;font-size:.72rem;color:var(--sub)}
+.hd-ctrl{display:flex;gap:8px;align-items:center}
+.themes{display:flex;gap:6px}
+.tdot{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);cursor:pointer}
+.tdot.on{border-color:var(--ink);transform:scale(1.12)}
+.tdot.g{background:linear-gradient(135deg,#1f9d55,#a3e635)}
+.tdot.b{background:linear-gradient(135deg,#3b82f6,#22d3ee)}
+.tdot.c{background:linear-gradient(135deg,#a8402c,#e8c877)}
+.langbtn{border:1px solid var(--acc);color:var(--acc);background:transparent;border-radius:20px;padding:4px 14px;cursor:pointer;font-weight:700}
+.langbtn:hover{background:var(--acc);color:#fff}
+nav{display:flex;flex-wrap:wrap;gap:8px;padding:10px 0}
+.chip{background:var(--hl);color:var(--sub);border:1px solid var(--line);border-radius:20px;padding:4px 12px;font-size:.82rem;cursor:pointer}
+.chip:hover{color:var(--acc);border-color:var(--acc)}
+.hero{padding:56px 0 36px;text-align:center}
+.hero h1{font-size:clamp(1.8rem,4.5vw,3rem);letter-spacing:.5px}
+.hero h1 em{font-style:normal;color:var(--acc)}
+.hero p.sub{color:var(--sub);max-width:720px;margin:14px auto 22px}
+.ca-box{display:inline-flex;align-items:center;gap:10px;background:var(--card);border:1px dashed var(--acc);border-radius:12px;padding:10px 16px;font-family:ui-monospace,Consolas,monospace;font-size:.82rem;max-width:92%;overflow:auto}
+.ca-box button{border:none;background:var(--acc);color:#fff;border-radius:8px;padding:6px 14px;cursor:pointer;white-space:nowrap}
+.stats{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:22px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 16px;font-size:.85rem;color:var(--sub)}
+.stat b{color:var(--acc)}
+section{padding:34px 0}
+section h2{font-size:1.5rem;margin-bottom:6px}
+section h2 .en{display:block;font-size:.8rem;color:var(--sub);font-weight:400}
+section .intro{color:var(--sub);margin-bottom:20px;max-width:860px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+.card h3{font-size:1.02rem;margin-bottom:6px}
+.card p,.card li{color:var(--sub);font-size:.9rem}
+.card .num{display:inline-block;background:var(--acc);color:#fff;width:26px;height:26px;border-radius:50%;text-align:center;line-height:26px;font-size:.8rem;margin-right:8px}
+.card .tag{display:inline-block;background:var(--hl);color:var(--acc);border-radius:6px;padding:2px 8px;font-size:.75rem;margin-bottom:8px}
+ul.tick{list-style:none;margin-top:8px}
+ul.tick li{padding-left:20px;position:relative;margin:4px 0}
+ul.tick li:before{content:"◆";position:absolute;left:0;color:var(--acc2);font-size:.7rem;top:5px}
+.risk{background:var(--hl);border-left:4px solid var(--acc2);border-radius:8px;padding:12px 16px;font-size:.85rem;color:var(--sub);margin-top:16px}
+.road{border-left:3px solid var(--acc);margin-left:10px;padding-left:22px}
+.road .item{position:relative;margin-bottom:20px}
+.road .item:before{content:"";position:absolute;left:-29px;top:6px;width:13px;height:13px;border-radius:50%;background:var(--acc);border:3px solid var(--bg)}
+.road .yr{font-weight:800;color:var(--acc)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:8px;overflow:hidden}
+details summary{cursor:pointer;padding:12px 16px;font-weight:600;list-style:none;position:relative;padding-right:40px}
+details summary::-webkit-details-marker{display:none}
+details summary:after{content:"+";position:absolute;right:16px;color:var(--acc);font-size:1.2rem}
+details[open] summary:after{content:"−"}
+details .ans{padding:0 16px 14px;color:var(--sub);font-size:.92rem}
+.qa-filter{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.qa-filter .chip.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+.qcat{display:inline-block;background:var(--hl);color:var(--acc);border-radius:6px;padding:1px 8px;font-size:.72rem;margin-right:8px}
+.searchbox{width:100%;padding:11px 16px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);font-size:.95rem;margin-bottom:14px;outline:none}
+.searchbox:focus{border-color:var(--acc)}
+.qcount{font-size:.8rem;color:var(--sub);margin-bottom:10px}
+ol.quotes{columns:2;column-gap:26px;list-style-position:inside}
+ol.quotes li{break-inside:avoid;padding:6px 0;border-bottom:1px dashed var(--line);font-size:.92rem}
+ol.quotes li small{display:block;color:var(--sub);font-size:.78rem}
+@media(max-width:700px){ol.quotes{columns:1}}
+.links{display:grid;gap:10px}
+.linkcard{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;flex-wrap:wrap}
+.linkcard .u{font-family:ui-monospace,Consolas,monospace;font-size:.8rem;color:var(--sub);word-break:break-all}
+.roles{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.roles span{background:var(--hl);color:var(--acc);border-radius:20px;padding:4px 14px;font-size:.85rem;font-weight:600}
+footer{margin-top:40px;border-top:1px solid var(--line);background:var(--card);padding:34px 0 24px}
+footer h3{margin-bottom:10px}
+.f-ca{font-family:ui-monospace,Consolas,monospace;background:var(--hl);border-radius:10px;padding:12px 14px;word-break:break-all;font-size:.8rem;margin-bottom:16px}
+.disc{font-size:.8rem;color:var(--sub);margin-top:18px;border-top:1px dashed var(--line);padding-top:14px}
+.top{position:fixed;right:18px;bottom:18px;background:var(--acc);color:#fff;border:none;border-radius:50%;width:42px;height:42px;font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow)}
+.bless{text-align:center;color:var(--sub);font-size:.92rem;line-height:2.1;margin-top:20px}
+.bless b{color:var(--acc)}
+</style>
+</head>
+<body>
+<header>
+  <div class="hd">
+    <div class="brand">eCNH Agent OPC<small id="brandSub"></small></div>
+    <div class="hd-ctrl">
+      <div class="themes" title="Theme">
+        <div class="tdot g" data-t="green" title="翠绿 Apple Green"></div>
+        <div class="tdot b" data-t="blue" title="科技蓝 Tech Blue"></div>
+        <div class="tdot c" data-t="classical" title="古典 Classical"></div>
+      </div>
+      <button class="langbtn" id="langBtn">EN</button>
+    </div>
+  </div>
+  <div class="wrap"><nav id="nav"></nav></div>
+</header>
+
+<main class="wrap" id="main"></main>
+
+<footer>
+  <div class="wrap" id="footer"></div>
+</footer>
+<button class="top" id="topBtn" title="Top">↑</button>
+
+<script>
+/* ================= i18n 静态文案 ================= */
+let lang = localStorage.getItem('ecnh-lang') || 'zh';
+let theme = localStorage.getItem('ecnh-theme') || 'blue';
+const L = o => Array.isArray(o) ? o[lang==='zh'?0:1] : (o[lang] || o.zh);
+
+const I = {
+  brandSub:{zh:'仙女座华夏币 · 地球文明协议 · 全球一人公司网络',en:'Andromeda eCNH · Earth Civilization Protocol · Global OPC Network'},
+  nav:{about:['关于 eCNH','About'],buy:['购买方式','How to Buy'],rwa:['RWA 场景','RWA Use Cases'],cities:['合规城市','Compliant Cities'],road:['发展路线图','Roadmap'],plan:['2027 Agent OPC 计划','2027 Agent OPC Plan'],gongyi:['公益发愿','Philanthropy Pledge'],qa:['100 问答','100 Q&A'],ind:['30 大行业','30 Industries'],skills:['20 Skills','20 Skills'],opc:['10 城 eCNH OPC','10 eCNH OPCs'],ceo:['AI 高管团队','AI Executives'],quotes:['300 正能量语句','300 Quotes']},
+  heroT1:{zh:'eCNH Agent ',en:'eCNH Agent '},
+  heroT2:{zh:'OPC · 地球村一人公司',en:'OPC · Earth Village One-Person Company'},
+  heroSub:{zh:'以 eCNH（Earth CNH / 离岸华夏币）为纽带，用 AI Agent 与一人公司（OPC）组织形态，连接亚洲、地球村与未来星际文明的开放协作网络。本页为信息整理与社区科普，不构成投资建议。',
+           en:'With eCNH (Earth CNH / Offshore Chinese Yuan token) as the link, AI Agents and One-Person Companies (OPC) connect Asia, the Global Village and future interstellar civilization. This page is for information only — not investment advice.'},
+  copy:{zh:'复制 CA',en:'Copy CA'},copied:{zh:'已复制 ✓',en:'Copied ✓'},
+  chart:{zh:'查看行情 Orb",',en:'View Chart on Orb'},dash:{zh:'兑换面板 Dashboard',en:'Swap Dashboard'},
+  stat1:['Solana 链','On Solana'],stat2:['目标锚定 1:1 CNH','Target peg 1:1 CNH'],stat3:['每日 0.1% 发展愿景','0.1% daily growth vision'],stat4:['10 城一人公司节点','10 city OPC nodes'],stat5:['300 句华夏语料','300 Chinese quotes'],
+  introAbout:{zh:'eCNH（仙女座华夏币 /  Earth CNH = Europe CNH = East CNH = Energy CNH）是部署在 Solana 链上的社区代币，由分布式 eCNH DAO 发展小组推动，承载跨越 3000 年、通向星辰的文明叙事。诚实定位：它目前不是严格意义上的稳定币，价格由市场供需决定，与 1 CNH 尚无 1:1 锚定；与央行数字人民币 e-CNY 无任何官方关系；当前流动性薄弱，存在归零可能。',
+              en:'eCNH (Andromeda CNH; Earth CNH = Europe CNH = East CNH = Energy CNH) is a community token on Solana, driven by the distributed eCNH DAO working group, carrying a 3,000-year civilization narrative toward the stars. Honest positioning: it is NOT yet a true stablecoin — price is market-driven, not pegged 1:1 to CNH; it has no relation to the e-CNY CBDC; liquidity is thin and it can go to zero.'},
+  factTotal:['总量（自行核验）','Total supply (verify yourself)'],factTotalV:['约 100 万亿枚（以链上浏览器为准）','~100 trillion (check on-chain explorer)'],
+  factMkt:['主要交易池','Main pools'],factMktV:['Meteora（eCNH/SOL）· Raydium（eCNH/USDC）· Orca（SOL/eCNH）','Meteora (eCNH/SOL) · Raydium (eCNH/USDC) · Orca (SOL/eCNH)'],
+  factGov:['治理形态','Governance'],factGovV:['分布式 DAO 发展小组（筹）：提案 + 投票 + 多签 + 时间锁','Distributed DAO working group: proposals + voting + multisig + timelock'],
+  factChain:['公链','Chain'],factVal:['Solana 主网','Solana Mainnet'],
+  factPeg:['锚定','Peg'],factPegV:['1 eCNH ≈ 1 CNH（目标，非储备背书）','1 eCNH ≈ 1 CNH (target, not reserve-backed)'],
+  factSwap:['支持兑换','Swap pairs'],factSwapV:['PYUSD / EURC / USDT / USDC / SOL','PYUSD / EURC / USDT / USDC / SOL'],
+  factPos:['定位','Position'],factPosV:['星际文明协议 · 开放社区叙事','Interstellar Civilization Protocol · open community narrative'],
+  buyIntro:{zh:'海外用户的主流参与路径（先法币 → SOL/USDC，再兑换 eCNH）：',en:'Main paths for overseas users (fiat → SOL/USDC first, then swap to eCNH):'},
+  rwaIntro:{zh:'项目探讨的 RWA（真实世界资产代币化）方向，目前多处于概念与早期试点阶段：',en:'RWA (Real-World Asset) directions discussed by the project — mostly conceptual / early pilot stage:'},
+  citiesIntro:{zh:'对加密资产与稳定币监管相对清晰、适合海外用户合规参与的城市与地区：',en:'Cities and regions with relatively clear crypto/stablecoin regulation, suitable for compliant participation:'},
+  roadIntro:{zh:'逐年推进、每年逐步完善的社区发展路线图：',en:'A community roadmap, improved step by step year by year:'},
+  planIntro:{zh:'2027 年是「eCNH Agent OPC 元年」，重点是把 AI Agent、一人公司与合规节点结合起来：',en:'2027 is the "eCNH Agent OPC year" — combining AI Agents, one-person companies and compliant city nodes:'},
+  daoIntro:{zh:'DAO 六大工作组（分布式组织架构，以贡献获得席位）：',en:'Six DAO working groups (distributed org, seats earned by contribution):'},
+  gongyiIntro:{zh:'如果海外 eCNH 生态有利润收入，社区发愿按以下方向分配（每 1–3 年完善一次方案，为天地立心，为生民立命）：',en:'If the overseas eCNH ecosystem generates profit, the community pledges the following allocation (refined every 1–3 years — to serve Heaven and Earth, to secure livelihood for the people):'},
+  qaIntro:{zh:'关于 eCNH、Agent 与 OPC 的 100 个常见问答，按主题分类：',en:'100 frequently asked questions about eCNH, Agent and OPC, grouped by topic:'},
+  searchPh:{zh:'搜索问题或答案…',en:'Search questions or answers…'},
+  quotesIntro:{zh:'华夏三千年修身立业的智慧结晶，作为 eCNH Agent 的价值观语料库，塑造稳健、克制、长期主义的 Agent 人格：',
+               en:'Timeless wisdom for self-cultivation — the value system corpus of the eCNH Agent, shaping a steady, restrained, long-term agent personality:'},
+  total:{zh:'共',en:'Total'},items:{zh:'句',en:'quotes'},
+  ceoIntro:{zh:'Become CEO 是一个开源多智能体系统：在 Discord 上 5 分钟部署完整的 AI 高管团队（CEO、CTO、CFO、CMO、CISO、COO、CHRO），基于 OpenClaw 构建，可在 Oracle Cloud 永久免费层运行；OpenExecutive 则是另一套开源虚拟高管小组，二者互为补充。一人公司 + AI 高管团队 = 一个人就是一支舰队。',
+            en:'Become CEO is an open-source multi-agent system: deploy a full AI executive team (CEO, CTO, CFO, CMO, CISO, COO, CHRO) on Discord in 5 minutes, built on OpenClaw and runnable free forever on Oracle Cloud free tier. OpenExecutive is a complementary open-source virtual executive group. OPC + AI executives = one person, one fleet.'},
+  ceoNote:{zh:'注：以上均为第三方开源项目，使用前请自行审阅源码与许可协议。',en:'Note: third-party open-source projects — review the source code and license before use.'},
+  skillsIntro:{zh:'集全球设计师与程序员公认最好用的 20 项 Skill，eCNH Agent 与 OPC 成员的必修清单：',en:'The 20 most loved skills for designers and developers worldwide — a must-learn list for eCNH Agents and OPC members:'},
+  opcIntro:{zh:'全球建立 10 个 eCNH OPC（eCNH Agent Operation Company）一人公司节点：统一品牌与语料、本地合规、独立核算。',en:'10 eCNH OPC (eCNH Agent Operation Company) nodes worldwide: unified brand & corpus, local compliance, independent accounting.'},
+  footerTitle:{zh:'eCNH 合约地址（CA）与全部链接',en:'eCNH Contract Address (CA) & All Links'},
+  linksT:{zh:'相关链接',en:'Links'},
+  discT:{zh:'免责声明 / Disclaimer',en:''},
+  disc:{zh:'本页面为社区信息整理与科普，不构成任何投资建议、要约或承诺。eCNH 无官方背景、无储备审计，价格可能剧烈波动甚至归零。「每日 0.1%」为发展愿景而非收益承诺。数字资产风险极高，请遵守所在司法辖区法律法规，仅以可承受损失的资金参与，并自行完成 KYC、税务与合规审查。中国大陆对虚拟货币相关业务活动有严格限制，请严格遵守当地法律。',
+        en:'This page is community information only — not investment advice, an offer, or a promise. eCNH has no official backing or reserve audit; its price can be extremely volatile or go to zero. "0.1% daily" is a development vision, not a return promise. Crypto assets are high risk: follow your local laws, participate only with funds you can afford to lose, and complete your own KYC, tax and compliance checks. Mainland China strictly restricts virtual-currency business activities — comply with local law.'},
+  caLabel:{zh:'合约地址 CA',en:'Contract Address (CA)'},
+  riskWarn:{zh:'风险提示：以下内容仅为信息整理，不构成任何投资建议。',en:'Risk notice: information only, not investment advice.'},
+};
+
+/* ================= 数据 ================= */
+const CA='7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5';
+const LINKS=[
+ ['Orb Markets 行情','Orb Markets chart','https://orbmarkets.io/token/'+CA],
+ ['eCNH 兑换面板（第三方）','eCNH Swap Dashboard (3rd party)','https://eCNH.base44.app'],
+ ['Meteora · eCNH DAO POOL 2026','Meteora · eCNH DAO POOL 2026','https://app.meteora.ag/dammv2/Ac2bwg4ByZr2FePpuKKdjGLpfRMenFsjgt17St9PfBKC'],
+ ['Orca · WBTC/eCNH 池','Orca · WBTC/eCNH pool','https://www.orca.so/pools/8y1GD4aVZjJbqc2PL8BZfh1k6shJzJ4h9Ky2'],
+ ['Orb · SOL/eCNH 池','Orb · SOL/eCNH pool','https://orbmarkets.io/address/EzNXT9LEDRX33t1S7wEbKqvPJUAFJXNgXBzH2QF17aXF'],
+ ['Orb · eCNH/EURC 池','Orb · eCNH/EURC pool','https://orbmarkets.io/address/6atEtNWMfLUPuzMoDMCGfmvhKjTvQYEPSnGWqXreH3sT'],
+ ['UCOIN eCNH 官方页','UCOIN eCNH page','https://ucoingroup.github.io/eCNH/'],
+ ['eCNH 2025 页面','eCNH 2025 page','https://ecnh.freedev.app/ecnh2025/'],
+ ['Become CEO — AI 高管团队','Become CEO — AI executive team','https://become-ceo.com/zh'],
+ ['GitHub · wanikua/become-ceo','GitHub · wanikua/become-ceo','https://github.com/wanikua/become-ceo'],
+ ['GitHub · SenteLabsAI/OpenExecutive','GitHub · SenteLabsAI/OpenExecutive','https://github.com/SenteLabsAI/OpenExecutive'],
+ ['Solscan 合约查验','Solscan contract verification','https://solscan.io/token/'+CA],
+ ['联系邮箱 earthcnh@gmail.com','Contact: earthcnh@gmail.com','mailto:earthcnh@gmail.com'],
+];
+const BUY=[
+ {t:['Solana DEX 兑换','Solana DEX swap'],d:['通过 Jupiter、Orca、Raydium 等去中心化交易所，用 SOL/USDC/USDT 兑换 eCNH，适合已有 Solana 钱包与加密资产的用户。','Swap SOL/USDC/USDT to eCNH on Jupiter, Orca or Raydium — for users who already hold a Solana wallet and crypto.']},
+ {t:['项目方面板','Project dashboard'],d:['eCNH.base44.app 提供兑换入口，宣称支持 PYUSD、EURC、USDT、USDC、SOL 交易对（面向全球，中国大陆除外；请自行核实安全性）。','eCNH.base44.app offers a swap entry claiming PYUSD/EURC/USDT/USDC/SOL pairs (global except mainland China; verify safety yourself).']},
+ {t:['OTC 场外交易','OTC desk'],d:['通过合规 OTC 平台或持牌经纪商完成法币 → 加密 → eCNH，适合需要法币入金通道的用户，务必核对手方资质。','Fiat → crypto → eCNH via licensed OTC desks or brokers — for users needing fiat on-ramps; always verify the counterparty.']},
+ {t:['跨链桥接','Cross-chain bridge'],d:['从以太坊等其他链把 USDC 等资产桥接到 Solana，再兑换 eCNH，注意桥接合约风险。','Bridge USDC etc. from Ethereum or other chains to Solana, then swap — mind bridge contract risk.']},
+];
+const RWA=[
+ {t:['光伏储能项目','Solar & storage projects'],d:['东盟地区太阳能农场代币化，用 eCNH 参与众筹，以 NFT 股权凭证获得发电收益分红。','Tokenized solar farms in ASEAN crowdfunded with eCNH; NFT equity certificates share power-revenue dividends.']},
+ {t:['跨境贸易结算','Cross-border trade settlement'],d:['一带一路沿线商品贸易以 eCNH 作为结算媒介，直接支付结算、降低汇兑成本（须在合规前提下）。','Belt-and-Road trade using eCNH as a settlement medium to cut FX costs (compliance first).']},
+ {t:['大宗商品代币化','Commodity tokenization'],d:['以人民币计价的农产品、矿产品等实物资产上链，抵押 eCNH 购买代币化商品份额。','On-chain RMB-denominated agri/mining assets; pledge eCNH to buy tokenized commodity shares.']},
+ {t:['供应链金融','Supply-chain finance'],d:['中小企业用 eCNH 进行应收账款融资，社区为生态提供流动性支持。','SMEs finance receivables with eCNH; the community provides liquidity.']},
+];
+const CITIES=[
+ {c:['新加坡','Singapore'],r:['MAS 持牌制度，稳定币框架清晰','MAS licensing, clear stablecoin framework'],a:['亚洲加密中心，合规交易所多，离岸人民币市场成熟','Asia crypto hub, licensed exchanges, mature offshore RMB market']},
+ {c:['香港（中国）','Hong Kong, China'],r:['2025年8月《稳定币条例》生效','Stablecoins Ordinance in force since Aug 2025'],a:['全球最大离岸人民币中心，CNH 流动性最充裕','World\u2019s largest offshore RMB hub, deepest CNH liquidity']},
+ {c:['迪拜 / 阿联酋','Dubai / UAE'],r:['VARA 虚拟资产监管框架','VARA virtual-asset framework'],a:['Web3 企业聚集，一带一路人民币结算活跃','Web3 cluster, active Belt-and-Road RMB settlement']},
+ {c:['瑞士 · 楚格','Zug, Switzerland'],r:['FINMA 监管，「加密谷」生态','FINMA oversight, Crypto Valley'],a:['合规程度高，金融基础设施完善','High compliance, mature financial infrastructure']},
+ {c:['吉隆坡，马来西亚','Kuala Lumpur, Malaysia'],r:['SC 监管沙盒','SC regulatory sandbox'],a:['东盟人民币清算中心之一，生活成本低','An ASEAN RMB clearing hub, low living cost']},
+ {c:['曼谷，泰国','Bangkok, Thailand'],r:['SEC 监管数字资产','SEC-regulated digital assets'],a:['mBridge 跨境结算试点区域','mBridge cross-border pilot region']},
+ {c:['阿拉木图，哈萨克斯坦','Almaty, Kazakhstan'],r:['AFSA 数字资产牌照','AFSA digital-asset licence'],a:['中亚人民币结算枢纽，一带一路核心节点','Central-Asia RMB hub on the Belt and Road']},
+ {c:['伦敦，英国','London, UK'],r:['FCA 加密资产监管制度','FCA crypto regime'],a:['全球金融中心，法务与合规人才密集','Global financial centre, rich legal & compliance talent']},
+];
+const ROAD=[
+ {y:'2026',t:['奠基之年','Foundation'],d:['CA 信息透明化、社区品牌与多语内容体系、300 句华夏正能量语料库上线、建立安全与反诈科普。','Transparent CA info, community branding, multilingual content, the 300-quote value corpus, and security education.']},
+ {y:'2027',t:['Agent OPC 元年','Agent OPC Year One'],d:['发布 eCNH Agent 开源 SDK，全球 10 城落地 eCNH OPC 一人公司，集成 AI 高管团队，每日 0.1% 发展节奏运转。','Ship the eCNH Agent open SDK, launch 10 eCNH OPC city nodes, integrate AI executive teams, run the 0.1%-daily growth rhythm.']},
+ {y:'2028',t:['RWA 试点','RWA Pilots'],d:['光伏储能众筹与跨境贸易小额结算试点，邀请第三方审计与合规顾问出具报告。','Pilot solar crowdfunding and small-value trade settlement, with third-party audit and compliance reports.']},
+ {y:'2029',t:['合规深化','Compliance Deepening'],d:['在新加坡/迪拜/香港寻求持牌合作与互操作，完善 KYC/AML、税务指引与治理金库多签。','Seek licensed partnerships and interoperability in Singapore/Dubai/Hong Kong; strengthen KYC/AML, tax guidance and multisig treasury.']},
+ {y:'2030',t:['星际愿景','Interstellar Vision'],d:['发布「星际文明协议」白皮书，跨链扩展与开发者基金，让协议服务于更大尺度的协作叙事。','Publish the Interstellar Civilization Protocol whitepaper, expand cross-chain, launch a developer fund for larger-scale collaboration.']},
+];
+const PLAN=[
+ ['发布 eCNH Agent 开源 SDK：Solana 上一键接入 Agent 支付与行情接口。','Ship the open-source eCNH Agent SDK: one-click agent payments & market data on Solana.'],
+ ['全球 10 城落地 eCNH OPC 一人公司节点（统一品牌、本地合规、独立核算）。','Launch 10 eCNH OPC city nodes (one brand, local compliance, independent books).'],
+ ['集成 Become CEO / OpenExecutive 虚拟高管团队，7×24 自动化运营。','Integrate Become CEO / OpenExecutive virtual executives for 7×24 automated ops.'],
+ ['每日 0.1% 发展节奏：内容、代码、生态三线并进，公开进度看板。','0.1%-daily rhythm: content, code and ecosystem in parallel, with a public progress board.'],
+ ['合规先行：新加坡/迪拜/香港持牌合作，KYC/AML 与税务申报体系。','Compliance first: licensed partnerships in SG/Dubai/HK, KYC/AML and tax reporting.'],
+ ['RWA 试点：光伏储能与众包跨境贸易小额结算的最小可行案例。','RWA pilots: MVP cases in solar crowdfunding and small trade settlement.'],
+ ['DAO 治理：社区金库、提案投票、多签托管，透明公开。','DAO governance: community treasury, proposal voting, multisig custody, full transparency.'],
+ ['把 300 句华夏正能量语料库注入 Agent 人格，塑造长期主义价值观。','Inject the 300-quote Chinese value corpus into the agent personality — long-termism by design.'],
+ ['与香港持牌 CNH 稳定币保持互操作预留，拥抱合规基础设施。','Reserve interoperability with Hong Kong\u2019s licensed CNH stablecoins — embrace compliant rails.'],
+ ['全球志愿者与开发者激励计划：贡献即积分，积分即荣誉。','Global volunteer & developer incentive program: contributions become points, points become honor.'],
+];
+const IND={
+ asia:{t:['亚洲 10 大行业','Asia · 10 industries'],l:[['跨境贸易结算','Cross-border trade settlement'],['光伏储能与新能源','Solar storage & new energy'],['供应链金融','Supply-chain finance'],['数字支付与钱包','Digital payments & wallets'],['跨境电商','Cross-border e-commerce'],['智能制造','Smart manufacturing'],['绿色农业与农产品溯源','Green agriculture & traceability'],['文化旅游与数字文创','Culture, tourism & digital IP'],['教育科技','EdTech'],['医疗健康与康养','Healthcare & wellness']]},
+ world:{t:['地球村 10 大行业','Global Village · 10 industries'],l:[['稳定币与合规基础设施','Stablecoins & compliance infra'],['RWA 真实世界资产代币化','RWA tokenization'],['大宗商品贸易','Commodity trading'],['航运与跨境物流','Shipping & logistics'],['碳信用与 ESG','Carbon credit & ESG'],['AI 算力与云计算','AI compute & cloud'],['金融科技与跨境理财','FinTech & cross-border wealth'],['知识产权与数字版权','IP & digital copyright'],['公益慈善与透明捐赠','Philanthropy & transparent giving'],['元宇宙与数字身份','Metaverse & digital identity']]},
+ star:{t:['星际文明 10 大行业','Interstellar · 10 industries'],l:[['深空通信网络','Deep-space communication'],['太空资源勘探与采矿','Space prospecting & mining'],['在轨制造与装配','In-orbit manufacturing'],['空间太阳能电站','Space-based solar power'],['星际数据存储与备份','Interstellar data vaults'],['太空旅游与轨道酒店','Space tourism & orbital hotels'],['行星栖息地建设','Planetary habitats'],['太空农业与生命保障','Space agriculture & life support'],['天体资源交易市场','Celestial-resource marketplaces'],['星际治理与协作协议','Interstellar governance protocols']]},
+};
+const SKILLS=[
+ ['Figma 界面设计','Figma UI design'],['设计系统与组件库','Design systems & component libraries'],['Tailwind CSS 快速布局','Tailwind CSS rapid layout'],['React / Next.js 开发','React / Next.js development'],['Three.js 三维视觉','Three.js 3D visuals'],['SVG 图形与插画','SVG graphics & illustration'],['动效与微交互','Motion & micro-interactions'],['品牌识别与 Logo','Brand identity & logo'],['版式与字体排印','Typography & layout'],['用户体验研究','UX research'],['无障碍设计 a11y','Accessibility (a11y)'],['Web 性能优化','Web performance optimization'],['SEO / AEO 可见度','SEO / AEO visibility'],['国际化 i18n 与本地化','i18n & localization'],['Solana / Rust 开发','Solana / Rust development'],['智能合约安全审计','Smart-contract security audit'],['代币经济建模','Token-economy modeling'],['数据可视化 D3','Data visualization (D3)'],['提示词工程','Prompt engineering'],['开源社区运营','Open-source community ops'],
+];
+const OPC=[
+ ['eCNH·Singapore 新加坡','eCNH·Singapore','东南亚合规枢纽与贸易结算'],
+ ['eCNH·HongKong 香港','eCNH·Hong Kong','离岸人民币与稳定币研究'],
+ ['eCNH·Dubai 迪拜','eCNH·Dubai','中东 Web3 与一带一路结算'],
+ ['eCNH·Zug 楚格','eCNH·Zug','欧洲合规与加密谷协作'],
+ ['eCNH·KL 吉隆坡','eCNH·KL','东盟清算与社区运营'],
+ ['eCNH·Bangkok 曼谷','eCNH·Bangkok','文旅支付与数字文创试点'],
+ ['eCNH·Almaty 阿拉木图','eCNH·Almaty','中亚节点与物流协作'],
+ ['eCNH·Tokyo 东京','eCNH·Tokyo','亚太开源技术与内容协作'],
+ ['eCNH·London 伦敦','eCNH·London','欧洲金融、法务与合规研究'],
+ ['eCNH·SF 旧金山','eCNH·San Francisco','AI Agent 与开发者生态'],
+];
+const CEO_ROLES=['CEO 首席执行官','CTO 首席技术官','CFO 首席财务官','CMO 首席营销官','CISO 首席安全官','COO 首席运营官','CHRO 首席人才官'];
+const DAO_GROUPS=[
+ ['技术组','合约权限、多签、审计、看板','Tech','Contract permissions, multisig, audit, dashboards'],
+ ['流动性组','池子管理、做市、套利机制','Liquidity','Pool management, market-making, arbitrage'],
+ ['合规组','各辖区法律研究、牌照路径','Compliance','Legal research per jurisdiction, licence paths'],
+ ['社区组','内容、教育、新成员引导','Community','Content, education, onboarding'],
+ ['研究组','宏观、货币、生态研究','Research','Macro, monetary & ecosystem research'],
+ ['增长组','生态应用、伙伴合作','Growth','Ecosystem apps, partnerships'],
+];
+const GIVE=[
+ ['20–30%','技术完善升级','Long-term tech upgrades'],
+ ['10–20%','海外分布式 Web3 小组运营','Overseas distributed Web3 group ops'],
+ ['10–20%','悄悄的公益：支持月收入低于 1000 元 CNH 的全球华人（生活、医疗、教育、养老）','Quiet charity: supporting Chinese community members earning under 1,000 CNH/month (living, healthcare, education, elderly care)'],
+ ['5–10%','长期流动池建设','Long-term liquidity pool building'],
+ ['剩余','备用金、新技术开发与草根民生基础设施 · 天下华人为公','Reserve, new tech & grassroots infrastructure — the world belongs to all'],
+];
+
+const QUOTES=[
+["智不露锋芒，谋不露声色。","Wisdom hides its edge; strategy hides its voice."],
+["贫不露寒酸，富不露骄矜。","In poverty, show no desolation; in wealth, show no arrogance."],
+["大道贵在藏，至境贵在淡。","The great Way treasures concealment; the highest state values calmness."],
+["胸有丘壑而不扬，腹有乾坤而不悟。","Hold valleys in your chest without flaunting; carry a universe within without displaying."],
+["不计一时之得失，不逐一时之虚名。","Count not momentary gains and losses; chase not fleeting fame."],
+["守愚以观世相，抱拙以渡平生。","Keep simplicity to observe the world; hold humility to sail through life."],
+["上善若水，水善利万物而不争。","The highest good is like water, benefiting all without contending."],
+["大巧若拙，大辩若讷。","Great skill looks clumsy; great eloquence seems hesitant."],
+["千里之行，始于足下。","A journey of a thousand miles begins beneath one's feet."],
+["天行健，君子以自强不息。","As Heaven moves vigorously, the noble self-improves without rest."],
+["地势坤，君子以厚德载物。","As Earth is receptive, the noble carries the world with ample virtue."],
+["穷则独善其身，达则兼济天下。","In hardship, cultivate yourself; in success, benefit all."],
+["静以修身，俭以养德。","Tranquility cultivates the self; frugality nurtures virtue."],
+["非淡泊无以明志，非宁静无以致远。","Without simplicity there is no clear purpose; without calm there is no far reach."],
+["博学之，审问之，慎思之，明辨之，笃行之。","Learn widely, inquire thoroughly, think carefully, discern clearly, practice earnestly."],
+["三人行，必有我师焉。","Among any three walking, one can be my teacher."],
+["学而不思则罔，思而不学则殆。","Learning without thought is lost; thought without learning is perilous."],
+["知之为知之，不知为不知，是知也。","Know what you know; admit what you don't — that is true knowledge."],
+["己所不欲，勿施于人。","Do not do to others what you would not want done to yourself."],
+["天将降大任于斯人也，必先苦其心志，劳其筋骨。","Before Heaven bestows a great mission, it first tempers the mind and body."],
+["生于忧患，死于安乐。","We thrive in adversity and perish in comfort."],
+["路漫漫其修远兮，吾将上下而求索。","The road is long and far; I will seek high and low."],
+["亦余心之所善兮，虽九死其犹未悔。","For what my heart holds dear, nine deaths would bring no regret."],
+["长风破浪会有时，直挂云帆济沧海。","A time will come to ride the wind and cleave the waves — hoist the sail and cross the sea."],
+["天生我材必有用，千金散尽还复来。","Heaven made me for a purpose; scattered gold will return again."],
+["会当凌绝顶，一览众山小。","One day I'll stand atop the highest peak and see all mountains small."],
+["沉舟侧畔千帆过，病树前头万木春。","A thousand sails pass the sunken boat; spring blooms before the withered tree."],
+["山重水复疑无路，柳暗花明又一村。","When mountains and rivers seem to end, a village appears past willows and flowers."],
+["宝剑锋从磨砺出，梅花香自苦寒来。","The sword's edge comes from grinding; plum blossom's scent from bitter cold."],
+["千磨万击还坚劲，任尔东西南北风。","Through countless blows the bamboo stands firm, whatever winds may blow."],
+["少壮不努力，老大徒伤悲。","Idle in youth, regret in age."],
+["盛年不重来，一日难再晨。","Prime years never return; a day has but one morning."],
+["及时当勉励，岁月不待人。","Exhort yourself in time — the years wait for no one."],
+["黑发不知勤学早，白首方悔读书迟。","Black-haired, we don't know to study early; white-haired, we regret too late."],
+["纸上得来终觉浅，绝知此事要躬行。","Knowledge from paper is shallow; true knowing demands practice."],
+["问渠那得清如许，为有源头活水来。","Why is the pond so clear? Fresh water flows from its source."],
+["立志宜思真品格，读书须尽苦功夫。","Set ambitions on true character; study demands full effort."],
+["读书百遍，其义自见。","Read a book a hundred times, and its meaning reveals itself."],
+["书山有路勤为径，学海无涯苦作舟。","Diligence is the path up the mountain of books; toil the boat across the boundless sea of learning."],
+["业精于勤，荒于嬉；行成于思，毁于随。","Skill grows from diligence and rots in play; conduct forms in reflection and ruins in drift."],
+["玉不琢，不成器；人不学，不知道。","Uncarved jade is no vessel; the unlearned know not the Way."],
+["敏而好学，不耻下问。","Clever and fond of learning, unashamed to ask those below."],
+["温故而知新，可以为师矣。","Review the old to know the new — fit to be a teacher."],
+["学而时习之，不亦说乎。","To learn and practice in season — is that not a joy?"],
+["吾生也有涯，而知也无涯。","Life is finite, yet knowledge is boundless."],
+["锲而不舍，金石可镂。","Carve without giving up, and even metal and stone can be engraved."],
+["不积跬步，无以至千里。","Without piling up small steps, one cannot reach a thousand miles."],
+["绳锯木断，水滴石穿。","A rope saws through wood; dripping water pierces stone."],
+["有志者事竟成。","Where there is a will, there is a way."],
+["精诚所至，金石为开。","Utmost sincerity can open metal and stone."],
+["天下无难事，只怕有心人。","Nothing is difficult for one who sets their heart on it."],
+["只要功夫深，铁杵磨成针。","With enough effort, an iron pestle is ground into a needle."],
+["不经一番寒彻骨，怎得梅花扑鼻香。","Without bone-chilling cold, how could plum blossoms smell so sweet?"],
+["欲穷千里目，更上一层楼。","To see a thousand miles further, climb one more floor."],
+["海纳百川，有容乃大。","The sea accepts a hundred rivers — capacity makes greatness."],
+["壁立千仞，无欲则刚。","The cliff stands a thousand fathoms — without craving, one is strong."],
+["满招损，谦受益。","Arrogance invites loss; humility brings benefit."],
+["虚心使人进步，骄傲使人落后。","Modesty brings progress; pride brings backwardness."],
+["良药苦口利于病，忠言逆耳利于行。","Good medicine tastes bitter but cures; honest advice grates but guides."],
+["三省吾身，则知明而行无过矣。","Examine yourself daily thrice, and you'll see clearly and act without fault."],
+["老吾老以及人之老，幼吾幼以及人之幼。","Honor elders as your own; cherish children as your own."],
+["己欲立而立人，己欲达而达人。","Help others stand as you wish to stand; help others succeed as you wish to succeed."],
+["恻隐之心，仁之端也。","Compassion is the seed of benevolence."],
+["与人为善，暖于布帛。","Kindness to others warms more than cloth."],
+["勿以恶小而为之，勿以善小而不为。","Do no small evil; neglect no small good."],
+["积善之家，必有余庆。","A household that accumulates goodness will have abundant blessings."],
+["上善若水，大爱无疆。","Highest good is like water; great love knows no borders."],
+["桃李不言，下自成蹊。","Peach and plum trees speak not, yet paths form beneath them."],
+["赠人玫瑰，手有余香。","Give a rose, and fragrance lingers on your hand."],
+["严于律己，宽以待人。","Be strict with yourself, generous with others."],
+["得道多助，失道寡助。","The just gain many helpers; the unjust few."],
+["天时不如地利，地利不如人和。","Good timing is less than good ground; good ground less than good people."],
+["和以处众，宽以待下，恕以待人。","Harmony with the many, leniency with subordinates, forgiveness toward all."],
+["君子和而不同。","The noble harmonizes without conforming."],
+["君子坦荡荡，小人长戚戚。","The noble is open and at ease; the petty anxious and fretful."],
+["君子之交淡如水。","The friendship of the noble is plain like water."],
+["言必信，行必果。","Words must be trustworthy; deeds must be decisive."],
+["人无信不立，业无信不兴。","Without trust one cannot stand; without trust no business thrives."],
+["一言既出，驷马难追。","Once a word is spoken, four horses cannot chase it back."],
+["诚者，天之道也；思诚者，人之道也。","Sincerity is the Way of Heaven; pursuing sincerity is the Way of Man."],
+["精诚所至，无坚不摧。","Where utmost sincerity arrives, nothing hard cannot be broken."],
+["尊师重道，敬业乐群。","Respect teachers and the Way; be devoted to work and delight in community."],
+["百善孝为先。","Of all virtues, filial piety comes first."],
+["家和万事兴。","When the family is harmonious, all things prosper."],
+["远亲不如近邻。","Distant kin are less help than close neighbors."],
+["滴水之恩，当涌泉相报。","A drop of kindness deserves repayment with a gushing spring."],
+["知恩图报，善莫大焉。","To remember and repay kindness — no greater good."],
+["慈善之心，人皆有之。","A charitable heart exists in everyone."],
+["助人为快乐之本。","Helping others is the root of happiness."],
+["众志成城，众行致远。","United wills form a fortress; together we go far."],
+["有志不在年高，无志空活百岁。","Aspiration isn't about age; without it a hundred years are empty."],
+["志当存高远。","Aspirations should be high and far."],
+["志不立，天下无可成之事。","Without a set will, nothing in the world can be accomplished."],
+["燕雀安知鸿鹄之志。","How can sparrows know the ambition of swans?"],
+["老骥伏枥，志在千里。","The old steed in the stable still dreams of a thousand miles."],
+["烈士暮年，壮心不已。","The hero in twilight years keeps an undying heart."],
+["长风万里，其志弥坚。","Across ten thousand miles of wind, the will grows firmer."],
+["穷且益坚，不坠青云之志。","The poorer and harder, the firmer — never drop the lofty aspiration."],
+["天生我材必有用。","Heaven made me — I must be of use."],
+["大鹏一日同风起，扶摇直上九万里。","The great peng bird rises with the wind straight up ninety thousand li."],
+["乘风破浪，勇立潮头。","Ride wind and waves; stand bravely at the crest."],
+["敢为人先，追求卓越。","Dare to be first; pursue excellence."],
+["心有多大，舞台就有多大。","As big as your heart, so big your stage."],
+["梦想不分年龄，奋斗不问出处。","Dreams have no age limit; striving asks no origin."],
+["幸福都是奋斗出来的。","All happiness comes from striving."],
+["越努力，越幸运。","The harder you work, the luckier you get."],
+["每一个不曾起舞的日子，都是对生命的辜负。","Every day without dancing is a day betrayed of life."],
+["星光不问赶路人，时光不负有心人。","Starlight questions not the traveler; time never fails the devoted."],
+["道阻且长，行则将至。","The road is hard and long, but walking will bring you there."],
+["行而不辍，未来可期。","Keep walking without stopping, and the future is promising."],
+["万事开头难，肯干就不难。","All beginnings are hard — start willing, and it's not hard."],
+["千里之行，始于今日。","The thousand-mile journey begins today."],
+["心中有光，脚下有路。","With light in the heart, there's a road underfoot."],
+["目标如灯塔，行动如船桨。","Goals are the lighthouse; actions are the oars."],
+["每天进步一点点，日积月累成大器。","Improve a little daily; accumulation makes greatness."],
+["复利是世界上第八大奇迹。","Compound interest is the eighth wonder of the world."],
+["一步一个脚印，稳中求进。","One steady step at a time — progress within stability."],
+["量变引起质变，坚持创造奇迹。","Quantitative change becomes qualitative; persistence works miracles."],
+["不积小流，无以成江海。","Without small streams, no rivers and seas."],
+["骐骥一跃，不能十步；驽马十驾，功在不舍。","A fine horse leaps but ten paces; a nag in ten days wins by not giving up."],
+["塞翁失马，焉知非福。","The old man lost his horse — who knows it isn't a blessing?"],
+["失之东隅，收之桑榆。","Lose at sunrise, gain at sunset."],
+["车到山前必有路，船到桥头自然直。","When the cart reaches the mountain, a road appears; at the bridge the boat straightens itself."],
+["山不转水转，水不转人转。","If the mountain won't turn, the water will; if water won't, people will."],
+["退一步海阔天空，让三分风平浪静。","Step back and the sea and sky open wide; yield a bit and the storm calms."],
+["得之坦然，失之淡然。","Gain with composure; lose with equanimity."],
+["宠辱不惊，看庭前花开花落。","Unmoved by favor or disgrace, watch flowers bloom and fall in the courtyard."],
+["去留无意，望天上云卷云舒。","Careless of staying or leaving, watch clouds roll and unfurl in the sky."],
+["心若不动，风又奈何。","If the heart doesn't stir, what can the wind do?"],
+["你若盛开，蝴蝶自来。","If you bloom, butterflies will come by themselves."],
+["心宽一寸，路宽一丈。","Widen your heart an inch, and the road widens ten feet."],
+["笑一笑，十年少。","A smile takes ten years off your age."],
+["知足常乐，能忍自安。","Contentment brings constant joy; forbearance brings peace."],
+["平常心是道。","The ordinary mind is the Way."],
+["静坐常思己过，闲谈莫论人非。","In quiet, reflect on your faults; in chat, speak not of others' wrongs."],
+["难得糊涂。","A little muddled-headedness is a rare blessing."],
+["水至清则无鱼，人至察则无徒。","Water too clear has no fish; one too critical has no companions."],
+["大事化小，小事化了。","Shrink big troubles into small, and dissolve small ones."],
+["忍一时风平浪静。","Endure a moment, and the wind and waves calm."],
+["拿得起，放得下。","Able to take it up, able to let it go."],
+["一念放下，万般自在。","Release one thought, and gain boundless ease."],
+["心中有爱，处处春天。","With love in the heart, everywhere is spring."],
+["生活不止眼前的苟且，还有诗和远方。","Life is more than the immediate grind — there are poems and distant lands."],
+["面朝大海，春暖花开。","Face the sea, with spring warmth and blossoms."],
+["人间值得，未来可期。","The world is worth it; the future is promising."],
+["但行好事，莫问前程。","Just do good deeds; ask not what lies ahead."],
+["尽人事，听天命。","Do your utmost, then accept what Heaven ordains."],
+["谋事在人，成事在天。","Man proposes; Heaven disposes."],
+["得不骄，失不馁。","Not arrogant in gain, not discouraged in loss."],
+["明者因时而变，知者随事而制。","The wise adapt to the times; the astute shape plans to circumstances."],
+["穷则变，变则通，通则久。","Stagnation calls for change; change brings flow; flow endures."],
+["苟日新，日日新，又日新。","If you can renew yourself one day, do so every day, and again each day."],
+["周虽旧邦，其命维新。","Though Zhou is an old state, its mandate is renewal."],
+["青出于蓝而胜于蓝。","Indigo born of blue surpasses blue."],
+["长江后浪推前浪。","The waves behind push the waves ahead of the Yangtze."],
+["顺势而为，乘势而上。","Follow the trend; ride the momentum upward."],
+["时势造英雄。","The times make the hero."],
+["机不可失，时不再来。","Seize the opportunity — it won't come twice."],
+["兵贵神速，事贵乘时。","Speed is prized in war; timing is prized in affairs."],
+["凡事预则立，不预则废。","With preparation, things stand; without, they fail."],
+["人无远虑，必有近忧。","Without far-sighted thought, near troubles will come."],
+["居安思危，思则有备。","In peace, think of danger; thinking, you'll be prepared."],
+["未雨绸缪，有备无患。","Repair the roof before rain; prepared, no calamity."],
+["前人栽树，后人乘凉。","Ancestors plant trees; descendants enjoy the shade."],
+["他山之石，可以攻玉。","Stones from other hills can polish jade."],
+["众人拾柴火焰高。","Many hands gather firewood — the flame rises high."],
+["独木不成林，单丝不成线。","One tree makes no forest; one thread no rope."],
+["三个臭皮匠，顶个诸葛亮。","Three cobblers combined equal Zhuge Liang."],
+["集思广益，众擎易举。","Pool wisdom for wider benefit; many hands lift with ease."],
+["分工协作，合作共赢。","Divide the work, cooperate, and all win together."],
+["各美其美，美人之美，美美与共，天下大同。","Cherish your own beauty, appreciate others', share beauty together — the world as one."],
+["海内存知己，天涯若比邻。","With a true friend somewhere in the world, the ends of earth feel near."],
+["四海之内皆兄弟。","Within the four seas, all are brothers."],
+["天下兴亡，匹夫有责。","The rise and fall of the world is every common person's duty."],
+["为天地立心，为生民立命。","Establish a heart for Heaven and Earth; secure a livelihood for the people."],
+["为往圣继绝学，为万世开太平。","Continue the sages' interrupted learning; open peace for ten thousand generations."],
+["苟利国家生死以，岂因祸福避趋之。","If it benefits the country, give life or death — never dodge for fortune or fear."],
+["先天下之忧而忧，后天下之乐而乐。","Worry before the world worries; rejoice after the world rejoices."],
+["位卑未敢忘忧国。","Though lowly placed, I dare not forget my concern for the country."],
+["富贵不能淫，贫贱不能移，威武不能屈。","Wealth cannot corrupt, poverty cannot sway, power cannot bend the noble."],
+["君子爱财，取之有道。","The noble loves wealth but earns it the right way."],
+["不义而富且贵，于我如浮云。","Riches gained unjustly are floating clouds to me."],
+["见利思义，临财不苟。","Think of righteousness at the sight of profit; be upright before money."],
+["清风两袖朝天去。","With only clean breeze in my sleeves I face Heaven."],
+["出淤泥而不染，濯清涟而不妖。","Rising from mud unstained, bathed in clear ripples yet not seductive — the lotus."],
+["粉身碎骨浑不怕，要留清白在人间。","Fearless of being ground to powder — leave only purity in the world."],
+["宁为玉碎，不为瓦全。","Better be broken jade than intact tile."],
+["威武不屈，贫贱不移。","Unbent by power, unmoved by poverty."],
+["人间正道是沧桑。","The right path of the human world passes through trials."],
+["邪不压正，善不欺良。","Evil never crushes justice; the good never bully the kind."],
+["身正不怕影子斜。","Stand upright and fear no crooked shadow."],
+["平生不做亏心事，半夜不怕鬼敲门。","Never do a guilty deed, and no knock at midnight frightens you."],
+["明人不做暗事。","Honest people do nothing underhand."],
+["光明磊落，坦坦荡荡。","Open and aboveboard, candid and at ease."],
+["心底无私天地宽。","With no selfishness in the heart, heaven and earth are wide."],
+["仰不愧于天，俯不怍于人。","Looking up, no shame before Heaven; looking down, none before people."],
+["仰天大笑出门去，我辈岂是蓬蒿人。","Laughing skyward I stride out the door — was I born to dwell among weeds?"],
+["安能摧眉折腰事权贵。","How could I bow and scrape to the powerful?"],
+["竹可焚而不可毁其节。","Bamboo may burn, but its joints cannot be destroyed."],
+["君子喻于义，小人喻于利。","The noble understands righteousness; the petty understands only profit."],
+["见贤思齐焉，见不贤而内自省也。","Seeing the worthy, think to equal them; seeing the unworthy, examine yourself."],
+["三军可夺帅也，匹夫不可夺志也。","An army may lose its commander, but a man cannot lose his will."],
+["岁寒，然后知松柏之后凋也。","Only in the coldest winter do we know pine and cypress wither last."],
+["天下为公。","The world belongs to all."],
+["修身齐家治国平天下。","Cultivate the self, order the family, govern the state, bring peace to the world."],
+["自强不息，厚德载物。","Strive without cease; carry all with ample virtue."],
+["大道至简，实干为要。","The great Way is utterly simple; real work is what matters."],
+["言顾行，行顾言。","Let words match deeds and deeds match words."],
+["不降其志，不辱其身。","Neither lower your will nor disgrace your person."],
+["水满则溢，月盈则亏。","Water full overflows; the moon full wanes."],
+["过犹不及，恰到好处。","Going too far is as bad as falling short — aim for just right."],
+["大智若愚，大勇若怯。","Great wisdom looks foolish; great courage looks timid."],
+["将欲取之，必先予之。","To take, one must first give."],
+["以柔克刚，以静制动。","Use softness to overcome hardness; stillness to master motion."],
+["知人者智，自知者明。","Knowing others is wisdom; knowing yourself is enlightenment."],
+["胜人者有力，自胜者强。","Overcoming others takes force; overcoming yourself is true strength."],
+["千里之堤，溃于蚁穴。","A thousand-li dike collapses from an ant hole."],
+["防微杜渐，慎终如始。","Check problems at the bud; be as careful at the end as at the start."],
+["谨于言而慎于行。","Be careful in speech and prudent in action."],
+["讷于言而敏于行。","Slow in words, quick in deeds."],
+["病从口入，祸从口出。","Illness enters by the mouth; misfortune exits by it."],
+["良言一句三冬暖，恶语伤人六月寒。","One kind word warms three winters; a cruel word chills midsummer."],
+["话到嘴边留半句，事从礼上让三分。","Hold half a sentence at the lips; yield three parts on grounds of courtesy."],
+["与人方便，自己方便。","Make things easy for others, and they'll be easy for you."],
+["冤家宜解不宜结。","Feuds are better resolved than deepened."],
+["得饶人处且饶人。","Forgive where forgiveness is possible."],
+["宰相肚里能撑船。","A prime minister's belly can pole a boat — greatness tolerates much."],
+["大人不记小人过。","The great don't hold the petty's faults."],
+["饶人不是痴汉，痴汉不会饶人。","To forgive is wisdom; only fools never forgive."],
+["礼之用，和为贵。","In the practice of courtesy, harmony is the treasure."],
+["敬人者，人恒敬之。","Respect others, and they will respect you."],
+["爱人者，人恒爱之。","Love others, and they will love you."],
+["投我以木桃，报之以琼瑶。","You gave me a peach; I return fine jade."],
+["君子成人之美。","The noble helps others achieve what is good."],
+["乐见人善，成人之美。","Delight in others' goodness; help complete their worthy aims."],
+["与朋友交，言而有信。","In friendship, be true to your word."],
+["益者三友，友直友谅友多闻。","Three helpful friends: upright, sincere, and knowledgeable."],
+["近朱者赤，近墨者黑。","Near vermilion one reddens; near ink one blackens."],
+["路遥知马力，日久见人心。","Distance tests a horse; time reveals a heart."],
+["起居有常，饮食有节。","Keep regular hours and moderate meals."],
+["早睡早起，精神百倍。","Early to bed and early to rise — energy multiplied."],
+["饭后百步走，活到九十九。","A hundred steps after meals — live to ninety-nine."],
+["笑口常开，青春常在。","A smiling mouth keeps youth evergreen."],
+["心平气和，百病不生。","A calm temper keeps a hundred illnesses away."],
+["一屋不扫，何以扫天下。","One who won't sweep a room — how could they order the world?"],
+["一粥一饭，当思来处不易。","For each bowl of porridge, remember it did not come easily."],
+["半丝半缕，恒念物力维艰。","For each half-thread, recall how hard things are made."],
+["由俭入奢易，由奢入俭难。","Easy to go from thrift to luxury, hard to return."],
+["静以养心，动以养身。","Stillness nourishes the heart; motion nourishes the body."],
+["读书养性，运动养生。","Reading cultivates character; exercise sustains health."],
+["粗茶淡饭，其乐融融。","Plain tea and simple rice, yet joy abounds."],
+["生活简单，内心丰盈。","Live simply; be inwardly rich."],
+["慢慢走，欣赏啊。","Walk slowly, and admire the view."],
+["认真生活，快乐工作。","Live earnestly; work joyfully."],
+["热爱可抵岁月漫长。","Passion outlasts the long years."],
+["心中有诗，眼里有光。","With poetry in the heart, there is light in the eyes."],
+["眼里有光，脚下有路。","Light in the eyes, a road underfoot."],
+["早起的鸟儿有虫吃。","The early bird catches the worm."],
+["一日之计在于晨。","The day's plan starts with the morning."],
+["一年之计在于春。","The year's plan starts with spring."],
+["种树最好的时间是十年前，其次是现在。","The best time to plant a tree was ten years ago; the second best is now."],
+["种瓜得瓜，种豆得豆。","Sow melons, reap melons; sow beans, reap beans."],
+["春华秋实，耕耘有获。","Spring blossoms, autumn fruit — toil brings harvest."],
+["流水不腐，户枢不蠹。","Flowing water never stagnates; a door hinge never gets worm-eaten."],
+["生命在于运动。","Life lies in movement."],
+["身体是革命的本钱。","Health is the capital of all endeavor."],
+["劳逸结合，张弛有度。","Alternate work and rest with measured rhythm."],
+["好习惯是日复一日养成的。","Good habits are built day after day."],
+["平凡的日子，认真过就是不凡。","A common day lived earnestly becomes uncommon."],
+["十年树木，百年树人。","Ten years to grow a tree; a hundred to cultivate a person."],
+["师者，所以传道授业解惑也。","A teacher transmits the Way, imparts knowledge, and resolves doubts."],
+["教学相长。","Teaching and learning grow together."],
+["活到老，学到老。","Learn as long as you live."],
+["读书破万卷，下笔如有神。","Read ten thousand volumes, and writing flows like divine inspiration."],
+["腹有诗书气自华。","With poetry and books within, elegance shows without."],
+["读万卷书，行万里路。","Read ten thousand books; travel ten thousand miles."],
+["知行合一。","Unity of knowledge and action."],
+["学然后知不足，教然后知困。","Only by learning do we see our lack; only by teaching do we find our confusion."],
+["少年强则国强。","When the young are strong, the nation is strong."],
+["前事不忘，后事之师。","Don't forget past events — they are teachers for what comes."],
+["以史为鉴，可以知兴替。","Use history as a mirror to know rise and fall."],
+["以人为鉴，可以明得失。","Use people as a mirror to understand gain and loss."],
+["大道之行，天下为公。","When the great Way prevails, the world belongs to all."],
+["仓廪实而知礼节，衣食足而知荣辱。","With granaries full, people know courtesy; fed and clothed, they know honor."],
+["水能载舟，亦能覆舟。","Water carries the boat; water can capsize it."],
+["治大国若烹小鲜。","Governing a great nation is like cooking a small fish."],
+["功成不必在我，功成必定有我。","Success need not bear my name, but my effort must be in it."],
+["知己知彼，百战不殆。","Know yourself and the other — a hundred battles, no peril."],
+["运筹帷幄，决胜千里。","Plan within the tent; win a thousand li away."],
+["仰望星空，脚踏实地。","Gaze at the stars while standing on solid ground."],
+["我们的征途是星辰大海。","Our journey is to the sea of stars."],
+["心怀山海，眼有星辰。","Hold mountains and seas in the heart; keep stars in the eyes."],
+["星河滚烫，人间理想。","The galaxy burns hot — ideals live in the human world."],
+["乘长风破万里浪。","Ride the long wind and break ten thousand miles of waves."],
+["九万里风鹏正举。","At ninety thousand li, the wind bears the roc upward."],
+["可上九天揽月，可下五洋捉鳖。","Climb the ninth heaven to pluck the moon; dive five oceans to seize the turtle."],
+["志之所趋，无远勿届。","Where the will points, no distance is too far."],
+["心之所向，素履以往。","Where the heart points, walk there in plain shoes."],
+["千帆过尽，初心依旧。","After a thousand sails have passed, the original heart remains."],
+["不畏浮云遮望眼，自缘身在最高层。","Fear no floating clouds blocking the view — I stand at the highest point."],
+];
+const QA=[
+/* A 基础认知 1-12 */
+{c:"A",q:["eCNH 是什么？","What is eCNH?"],a:["部署在 Solana 链上的社区代币项目，由分布式 eCNH DAO 发展小组推动，长期愿景是成为离岸人民币场景的开放金融工具与文明叙事载体。","A community token on Solana, driven by the distributed eCNH DAO working group, with a long-term vision of an open financial tool for offshore RMB scenarios and a civilization narrative."]},
+{c:"A",q:["eCNH 是稳定币吗？","Is eCNH a stablecoin?"],a:["目前不是。价格由市场供需决定，尚未实现与 CNH 的 1:1 锚定；建立储备机制是 DAO 的中期目标。","Not yet. Price is market-driven, not pegged 1:1 to CNH; building a reserve mechanism is the DAO's mid-term goal."]},
+{c:"A",q:["谁管理 eCNH？","Who governs eCNH?"],a:["由社区 DAO 治理，发展方向通过提案与投票决定，关键操作由多签加时间锁执行。","Governed by the community DAO: direction via proposals and votes, key operations via multisig with timelock."]},
+{c:"A",q:["合约地址是什么？","What is the contract address?"],a:["7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5。任何交易前务必核对 CA，谨防仿盘。","7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 — always verify the CA before trading; beware of imitations."]},
+{c:"A",q:["部署在哪条链？","Which chain is it deployed on?"],a:["Solana，采用 SPL Token 标准。","Solana, using the SPL Token standard."]},
+{c:"A",q:["总量是多少？","What is the total supply?"],a:["社区资料为 100 万亿枚，请在链上浏览器自行核验；未来供应规则将由治理重新定义。","Community sources say ~100 trillion — verify on an explorer; future supply rules will be redefined by governance."]},
+{c:"A",q:["在哪些市场交易？","Where can it be traded?"],a:["Meteora（eCNH/SOL）、Raydium（eCNH/USDC）、Orca（SOL/eCNH）等 Solana DEX 池。","Solana DEX pools such as Meteora (eCNH/SOL), Raydium (eCNH/USDC) and Orca (SOL/eCNH)."]},
+{c:"A",q:["在哪里看行情？","Where to check the price?"],a:["orbmarkets.io 聚合页与 Solana 链上浏览器；把 CA 粘贴即可查询。","Aggregator pages like orbmarkets.io and Solana explorers — just paste the CA."]},
+{c:"A",q:["eCNH 和离岸人民币 CNH 什么关系？","How does eCNH relate to offshore CNH?"],a:["CNH 是在中国大陆以外流通的人民币；eCNH 是以服务 CNH 应用场景为愿景的链上社区项目，目前两者没有官方联系。","CNH is offshore-circulating RMB; eCNH is an on-chain community project aspiring to serve CNH scenarios — no official link today."]},
+{c:"A",q:["eCNH 和数字人民币 e-CNY 什么区别？","How is eCNH different from e-CNY?"],a:["e-CNY 是中国人民银行发行的法定 CBDC；eCNH 是民间社区实验，无任何官方关系。","e-CNY is the PBoC's sovereign CBDC; eCNH is a civic community experiment with no official relationship."]},
+{c:"A",q:["「仙女座华夏」是什么意思？","What does 'Andromeda' mean here?"],a:["社区文化品牌：仙女座星系象征长远志向，华夏代表华人文化认同，属文化叙事而非实体背书。","A cultural brand: the Andromeda galaxy symbolizes long-term aspiration; Huaxia stands for Chinese cultural identity — narrative, not backing."]},
+{c:"A",q:["参与前必须知道什么？","What must one know before participating?"],a:["价格波动极大、流动性薄、存在归零可能，只应使用可承受损失的资金。","Extreme volatility, thin liquidity, possible total loss — use only funds you can afford to lose."]},
+/* B 价格与锚定 13-24 */
+{c:"B",q:["目标锚定什么资产？","What is the target peg?"],a:["路线建议：过渡期锚 USDC（流动性桥梁），目标期锚 CNH（储备支持）。","Suggested route: peg to USDC in transition (liquidity bridge), then to CNH (reserve-backed) as the goal."]},
+{c:"B",q:["为什么当前价格波动大？","Why is the price so volatile?"],a:["池子深度不足、日成交额小，小额买卖即可造成大波动。","Shallow pools and tiny daily volume mean small trades move the price a lot."]},
+{c:"B",q:["什么是深度、价差、滑点？","What are depth, spread and slippage?"],a:["深度是池内可用资金量；价差是买卖报价差；滑点是成交价与预期的偏离，三者共同决定交易成本。","Depth is the pool's available funds; spread is the bid-ask gap; slippage is deviation from the expected price — together they set trading cost."]},
+{c:"B",q:["如何形成 1:1 锚定？","How can a 1:1 peg form?"],a:["需要真实储备 + 开放赎回 + 套利机制三者配合，仅靠宣传无法锚定。","Real reserves + open redemption + arbitrage must work together; publicity alone cannot peg a price."]},
+{c:"B",q:["储备由谁托管？","Who would custody the reserves?"],a:["目标方案是持牌托管机构，由多签与法律协议约束，社区无权挪用。","The target is licensed custodians bound by multisig and legal agreements — the community cannot misappropriate them."]},
+{c:"B",q:["什么是储备证明？","What is Proof of Reserves?"],a:["定期由独立审计方核对链上发行量与链下储备余额并公示，让「储备多少、发行多少」可验证。","Independent auditors regularly reconcile on-chain supply with off-chain reserves and publish it, making 'issue only what is reserved' verifiable."]},
+{c:"B",q:["增发和销毁机制是什么？","What are the mint and burn rules?"],a:["目标规则：有储备流入才增发，赎回时销毁，杜绝凭空增发。","Target rule: mint only against reserve inflows; burn upon redemption — no minting out of thin air."]},
+{c:"B",q:["与 USDC 什么关系？","What is the role of USDC?"],a:["USDC 是 Solana 上深度最好的合规稳定币，适合作为 eCNH 的主要报价与流动性资产。","USDC is the deepest compliant stablecoin on Solana — suited as eCNH's main quote and liquidity asset."]},
+{c:"B",q:["套利如何维持锚定？","How does arbitrage maintain the peg?"],a:["当 eCNH 偏离锚定价，套利者可在池与赎回通道间搬砖，把价格拉回。","When eCNH deviates from the peg, arbitrageurs trade between the pool and redemption channel to pull the price back."]},
+{c:"B",q:["主要价格风险有哪些？","What are the main price risks?"],a:["无锚定风险、流动性枯竭、集中持仓砸盘、监管变化、合约漏洞。","No-peg risk, liquidity drying up, concentrated holders dumping, regulatory change, contract bugs."]},
+{c:"B",q:["eCNH 会归零吗？","Can eCNH go to zero?"],a:["任何小市值代币都存在归零可能，没有人能承诺相反。","Any small-cap token can go to zero — no one can promise otherwise."]},
+{c:"B",q:["货币政策由谁决定？","Who decides monetary policy?"],a:["DAO 治理投票，且增发类提案需满足上限与时间锁。","DAO governance voting, with minting proposals subject to caps and timelocks."]},
+/* C 技术与安全 25-36 */
+{c:"C",q:["SPL Token 是什么？","What is SPL Token?"],a:["Solana 的代币标准，类似以太坊的 ERC-20。","Solana's token standard, analogous to ERC-20 on Ethereum."]},
+{c:"C",q:["合约权限有哪些？","What contract authorities exist?"],a:["铸造权限、冻结权限等；权限状态应在社区看板公开。","Mint and freeze authorities, among others; their status should be public on the community dashboard."]},
+{c:"C",q:["铸造权限应该怎么处理？","What should be done with mint authority?"],a:["长期应转移至多签 + 时间锁，或彻底放弃，杜绝单点作恶。","Long term: transfer to multisig + timelock or revoke entirely — eliminate single points of abuse."]},
+{c:"C",q:["有冻结权限吗？","Is there a freeze authority?"],a:["以链上实际权限为准，社区文档应明确披露并说明用途。","On-chain reality is authoritative; community docs must disclose it and explain its purpose."]},
+{c:"C",q:["如何验证合约信息？","How to verify contract info?"],a:["用 Solana 浏览器查看 CA、权限、持仓分布，与官方文档比对。","Use a Solana explorer to check CA, authorities and holder distribution against official docs."]},
+{c:"C",q:["用什么钱包？","Which wallets?"],a:["Phantom、Solflare 等主流 Solana 钱包均可，务必从官方渠道下载。","Mainstream Solana wallets like Phantom or Solflare — download only from official channels."]},
+{c:"C",q:["如何保管私钥？","How to keep keys safe?"],a:["助记词离线抄写、永不拍照上传、不告知任何人；大额考虑硬件钱包。","Write the seed phrase offline, never photograph or share it; use a hardware wallet for large holdings."]},
+{c:"C",q:["如何防骗？","How to avoid scams?"],a:["只信官方公布的 CA 与链接，警惕假客服、假空投、假授权。","Trust only the official CA and links; beware fake support, fake airdrops, fake approvals."]},
+{c:"C",q:["如何识别仿盘？","How to spot fake copies?"],a:["核对合约地址是唯一可靠方法，名称相同不代表是同一代币。","Verifying the contract address is the only reliable way — the same name is not the same token."]},
+{c:"C",q:["有跨链计划吗？","Are there cross-chain plans?"],a:["属研究阶段议题，跨链会引入额外安全风险，需先做好单链基础。","A research-stage topic — bridging adds risk; strengthen the single-chain base first."]},
+{c:"C",q:["会做合约审计吗？","Will there be an audit?"],a:["DAO 计划在扩募资金中优先安排第三方审计。","The DAO plans to prioritize a third-party audit as funds allow."]},
+{c:"C",q:["有漏洞赏金计划吗？","Is there a bug bounty?"],a:["建议设立，鼓励白帽提交安全问题。","Recommended — encourage white hats to report vulnerabilities."]},
+/* D 市场与流动性 37-48 */
+{c:"D",q:["当前有哪些交易对？","Which pairs exist now?"],a:["eCNH/SOL（Meteora）、eCNH/USDC（Raydium）、SOL/eCNH（Orca）等，详见行情页。","eCNH/SOL (Meteora), eCNH/USDC (Raydium), SOL/eCNH (Orca) — see the chart page."]},
+{c:"D",q:["为什么流动性分散？","Why is liquidity fragmented?"],a:["历史上开过多个池，资金被摊薄；整合是当前首要任务。","Multiple pools were opened historically, diluting funds; consolidation is the top priority."]},
+{c:"D",q:["如何提升深度？","How to deepen liquidity?"],a:["集中到一两个主池、引入做市激励、预留套利资金。","Focus on one or two main pools, add market-making incentives, reserve arbitrage funds."]},
+{c:"D",q:["做市激励怎么设计？","How to design LP incentives?"],a:["向主池 LP 提供社区金库激励，按锁仓时间与深度贡献分配。","Reward main-pool LPs from the community treasury, allocated by lock-up time and depth contribution."]},
+{c:"D",q:["做 LP 有什么风险？","What are the LP risks?"],a:["无常损失、抵押资产价格波动、智能合约风险。","Impermanent loss, price volatility of paired assets, smart-contract risk."]},
+{c:"D",q:["稳定池和普通池区别？","Stable vs. regular pools?"],a:["稳定池（如 eCNH/USDC）适合锚定资产对，价差小；普通池（如 eCNH/SOL）适合波动对。","Stable pools (eCNH/USDC) suit pegged pairs with small spreads; regular pools (eCNH/SOL) suit volatile pairs."]},
+{c:"D",q:["可以上中心化交易所吗？","Can it list on CEXs?"],a:["需满足各所合规要求与流动性门槛，属于中期目标。","Requires each exchange's compliance and liquidity thresholds — a mid-term goal."]},
+{c:"D",q:["有 OTC 吗？","Is there OTC?"],a:["未来可探索合规 OTC 通道，当前请勿参与场外私下交易。","Compliant OTC may be explored later; avoid private over-the-counter trades for now."]},
+{c:"D",q:["交易手续费多少？","What are the fees?"],a:["取决于 DEX 池费率与网络费，Solana 网络费极低。","Depends on the DEX pool fee plus network fee; Solana network fees are extremely low."]},
+{c:"D",q:["价格用什么预言机？","Which price oracle?"],a:["锚定机制建立前以池价为准；建立后需接入可靠价格源。","Pool price rules until a peg mechanism exists; then a reliable oracle is required."]},
+{c:"D",q:["为什么日成交量小？","Why is daily volume small?"],a:["项目早期、应用场景未落地，这是客观现状，也是路线图要解决的问题。","It's an early-stage project without live use cases — the objective reality the roadmap addresses."]},
+{c:"D",q:["有数据看板吗？","Is there a data dashboard?"],a:["DAO 计划建设公开看板：供应、持有人、集中度、池深度、成交量。","The DAO plans a public dashboard: supply, holders, concentration, pool depth, volume."]},
+/* E DAO 治理 49-62 */
+{c:"E",q:["什么是 DAO？","What is a DAO?"],a:["去中心化自治组织：规则写在链上，决策由社区投票，执行由多签完成。","A decentralized autonomous organization: rules on-chain, decisions by community vote, execution by multisig."]},
+{c:"E",q:["eCNH DAO 的使命是什么？","What is the eCNH DAO mission?"],a:["以透明、合规、社区共建的方式，探索华人社区的开放金融与文化传播。","To explore open finance and cultural transmission for Chinese communities, transparently, compliantly and collaboratively."]},
+{c:"E",q:["如何加入发展小组？","How to join the working groups?"],a:["按六大工作组（技术/流动性/合规/社区/研究/增长）认领任务，以贡献获得席位。","Claim tasks in one of six groups (tech/liquidity/compliance/community/research/growth); seats are earned by contribution."]},
+{c:"E",q:["提案流程是什么？","What is the proposal process?"],a:["论坛讨论 7 天 → 温度检查 → 链上投票 → 多签 + 时间锁执行。","7-day forum discussion → temperature check → on-chain vote → multisig + timelock execution."]},
+{c:"E",q:["投票权怎么算？","How is voting power counted?"],a:["持币量加权，并设单地址投票权上限防止巨鲸操控。","Token-weighted, with a per-address cap to prevent whale domination."]},
+{c:"E",q:["什么是多签？","What is multisig?"],a:["多人共管的钱包，如 5/9 表示 9 人中至少 5 人签名才能动用。","A wallet co-managed by several people — e.g. 5-of-9 means at least five must sign to spend."]},
+{c:"E",q:["时间锁有什么用？","What does a timelock do?"],a:["交易通过后延迟执行（如 48 小时），给社区反应窗口，防止突然作恶。","Delays execution after approval (e.g. 48 hours), giving the community a reaction window against sudden abuse."]},
+{c:"E",q:["金库怎么管理？","How is the treasury managed?"],a:["预算提案制、季度报告、链上地址全公开。","Budget proposals, quarterly reports, fully public on-chain addresses."]},
+{c:"E",q:["如何防止巨鲸操控？","How to prevent whale manipulation?"],a:["投票权上限、二次方投票、锁仓加权等工具组合（治理议题）。","Tools like voting caps, quadratic voting and lock-up weighting (governance topics)."]},
+{c:"E",q:["贡献者如何退出？","How can contributors exit?"],a:["角色可自由退出，金库资产按既定规则交接，社区知识文档化留存。","Roles can be freely exited; treasury assets hand over by rule; community knowledge is documented."]},
+{c:"E",q:["贡献者有什么激励？","What incentives exist for contributors?"],a:["社区金库的资助与声誉激励，明确不与拉新人数挂钩。","Treasury grants and reputation incentives — explicitly not tied to referral counts."]},
+{c:"E",q:["会议节奏是什么？","What is the meeting rhythm?"],a:["建议：周会（工作组）+ 月度全体 + 季度路线复盘，全部公开纪要。","Suggested: weekly group meetings, monthly all-hands, quarterly roadmap reviews — minutes all public."]},
+{c:"E",q:["透明度承诺有哪些？","What transparency commitments?"],a:["供应量、集中度、储备、赎回、权限状态定期披露。","Regular disclosure of supply, concentration, reserves, redemptions and authority status."]},
+{c:"E",q:["与其他 DAO 如何协作？","How does it cooperate with other DAOs?"],a:["技术开源、标准互通、联合研究，不承诺任何财务互绑。","Open-source tech, interoperable standards, joint research — no financial entanglement."]},
+/* F 合规与风险 63-78 */
+{c:"F",q:["eCNH 合法吗？","Is eCNH legal?"],a:["因司法辖区而异，请咨询当地持牌律师；DAO 不向受限地区推广。","Varies by jurisdiction — consult a licensed local lawyer; the DAO does not promote to restricted regions."]},
+{c:"F",q:["eCNH 是证券吗？","Is eCNH a security?"],a:["取决于各辖区 Howey 等测试与具体销售方式；DAO 不做收益承诺以降低风险。","Depends on tests like Howey and the sales method per jurisdiction; the DAO makes no return promises to reduce risk."]},
+{c:"F",q:["发行 CNH 稳定币需要什么牌照？","What licences would a CNH stablecoin need?"],a:["视地区可能需要支付牌照、电子货币牌照或稳定币发行牌照（如香港 2025 条例、欧盟 MiCA EMT）。","Depending on region: payment, e-money or stablecoin-issuer licences (e.g. Hong Kong 2025 Ordinance, EU MiCA EMT)."]},
+{c:"F",q:["反洗钱要求是什么？","What are the AML requirements?"],a:["法币出入金环节执行 KYC/AML，遵守 FATF「转移规则」与旅行规则。","KYC/AML on fiat on/off-ramps; follow FATF transfer rules and the travel rule."]},
+{c:"F",q:["持有要交税吗？","Is holding taxable?"],a:["多数辖区对加密资产交易征税，请咨询当地税务顾问。","Most jurisdictions tax crypto transactions — consult a local tax adviser."]},
+{c:"F",q:["中国大陆居民可以参与吗？","Can mainland China residents participate?"],a:["大陆严禁虚拟货币相关业务活动；DAO 不在大陆运营、推广或提供服务。","Mainland China strictly bans virtual-currency business activities; the DAO neither operates, promotes nor serves there."]},
+{c:"F",q:["美国用户可以参与吗？","Can US users participate?"],a:["初期建议限制美国人士参与，直至合规路径明确。","US persons are suggested to be excluded initially, until a compliant path is clear."]},
+{c:"F",q:["最大的投资风险是什么？","What is the biggest investment risk?"],a:["流动性风险与归零风险居首，其次是集中持仓与监管风险。","Liquidity and total-loss risk come first, then concentration and regulatory risk."]},
+{c:"F",q:["集中度风险多大？","How large is the concentration risk?"],a:["社区分析显示前十大地址约 19%（请自行核验），治理与做市设计需对冲此风险。","Community analysis suggests top-10 addresses hold ~19% (verify yourself); governance and market-making must hedge this."]},
+{c:"F",q:["智能合约风险是什么？","What is smart-contract risk?"],a:["漏洞被利用可能导致资产损失，审计只能降低而非消除风险。","Exploited bugs can cause asset loss; audits reduce but do not eliminate risk."]},
+{c:"F",q:["监管变化风险是什么？","What is regulatory risk?"],a:["各辖区政策仍在演变，可能影响交易、持有与推广。","Policies are still evolving and may affect trading, holding and promotion."]},
+{c:"F",q:["遇到问题如何反馈？","How to report issues?"],a:["通过官方治理论坛提案或工作组渠道，无任何「客服私聊」。","Via the official governance forum or working-group channels — there is no 'support DM'."]},
+{c:"F",q:["官方会承诺收益吗？","Does the project promise returns?"],a:["永远不会。任何承诺收益、保本、拉盘的信息都是骗局。","Never. Any promise of returns, principal protection or pump plans is a scam."]},
+{c:"F",q:["有拉人头奖励吗？","Are there referral rewards?"],a:["没有，也禁止此类推广方式。","No — and such promotion is prohibited."]},
+{c:"F",q:["哪些社区行为被禁止？","Which community behaviors are banned?"],a:["喊单、承诺收益、传销式推广、假冒官方、虚假信息披露。","Shilling, return promises, pyramid promotion, impersonating officials, false disclosures."]},
+{c:"F",q:["免责声明的核心是什么？","What is the core of the disclaimer?"],a:["DYOR（自己做研究）、自担风险、无追索对象。","DYOR, risk borne by yourself, no recourse."]},
+/* G 生态与 OPC 79-90 */
+{c:"G",q:["跨境汇款愿景是什么？","What is the remittance vision?"],a:["长期探索低成本华人跨境价值传输，前提是合规通道与深度达标。","Long-term exploration of low-cost cross-border value transfer — contingent on compliant rails and adequate depth."]},
+{c:"G",q:["贸易结算愿景是什么？","What is the trade-settlement vision?"],a:["服务东南亚华人中小企业间的对账与结算实验（沙盒化推进）。","Serving reconciliation and settlement pilots for Chinese SMEs in Southeast Asia, sandbox-style."]},
+{c:"G",q:["能做社区积分吗？","Can it be used as community points?"],a:["可以：社区贡献记录、荣誉体系与链上凭证。","Yes: contribution records, honor systems and on-chain certificates."]},
+{c:"G",q:["能做 NFT 吗？","Can NFTs be issued?"],a:["文化主题数字藏品是低风险切入点，与 eCNH 联动但独立核算。","Cultural NFTs are a low-risk entry point — linked to eCNH but independently accounted."]},
+{c:"G",q:["商户支付试点可行吗？","Are merchant-payment pilots feasible?"],a:["在监管友好辖区与愿意参与的华人商户做小额试点。","Small-value pilots with willing Chinese merchants in regulation-friendly jurisdictions."]},
+{c:"G",q:["会做 GameFi/SocialFi 吗？","Will there be GameFi/SocialFi?"],a:["属可选生态方向，不做财务预期宣传。","Optional ecosystem directions — no financial expectations promoted."]},
+{c:"G",q:["教育内容有哪些？","What educational content exists?"],a:["货币史、稳定币原理、链上安全、DAO 治理的系列科普。","Series on monetary history, stablecoin mechanics, on-chain security and DAO governance."]},
+{c:"G",q:["如何做公益？","How is charity done?"],a:["透明捐赠实验：链上可追溯的小额公益支出。","Transparent donation experiments: traceable small-value charitable spending on-chain."]},
+{c:"G",q:["什么是 eCNH Agent 与 OPC？","What are eCNH Agent and OPC?"],a:["Agent 是围绕生态的 AI 智能体助手（内容、问答、看板、自动化）；OPC（One Person Company）是一人公司，用 AI 高管团队补齐职能，一人即一支舰队。","Agent: AI assistants for content, Q&A, dashboards and automation; OPC (One Person Company): a solo company staffed by an AI executive team — one person, one fleet."]},
+{c:"G",q:["10 个 eCNH OPC 节点是什么？","What are the 10 eCNH OPC nodes?"],a:["eCNH Agent Operation Company：分布新加坡、香港、迪拜、楚格、吉隆坡、曼谷、阿拉木图、东京、伦敦、旧金山的一人公司节点——统一品牌、本地合规、独立核算。","eCNH Agent Operation Companies: one-person nodes in Singapore, Hong Kong, Dubai, Zug, KL, Bangkok, Almaty, Tokyo, London and San Francisco — one brand, local compliance, independent books."]},
+{c:"G",q:["OPC 如何做合规？","How does an OPC stay compliant?"],a:["当地依法注册、税务申报、KYC/AML、不碰非法资金、不向受限地区推广。","Register locally, file taxes, apply KYC/AML, touch no illicit funds, and never promote to restricted regions."]},
+{c:"G",q:["有开发者资助吗？","Are there developer grants?"],a:["建议设立小额 Grant，资助工具、看板与教育项目。","Small grants are recommended for tools, dashboards and education projects."]},
+/* H 星际文明与愿景 91-100 */
+{c:"H",q:["「星际文明」指什么？","What does 'interstellar civilization' mean?"],a:["一种文化叙事：以千年尺度思考文明与价值存储，激励长期主义。","A cultural narrative: thinking about civilization and value storage at a millennium scale, inspiring long-termism."]},
+{c:"H",q:["「仙女座」有何寓意？","What does Andromeda symbolize?"],a:["距银河系最近的大星系，象征「最远也可抵达」的探索精神。","The nearest major galaxy — symbolizing an exploratory spirit where even the farthest is reachable."]},
+{c:"H",q:["星际时代需要货币吗？","Will the interstellar era need currency?"],a:["这是哲学问题：跨光年的信任与结算或需全新范式，社区以此激发讨论。","A philosophical question: trust and settlement across light-years may need a new paradigm — the community uses it to spark discussion."]},
+{c:"H",q:["2050 愿景是什么？","What is the 2050 vision?"],a:["成为合规、透明、被广泛理解的华人社区开放金融基础设施。","To become compliant, transparent, widely understood open-finance infrastructure for Chinese communities."]},
+{c:"H",q:["太空经济与数字资产有关吗？","Is the space economy related to digital assets?"],a:["卫星通信、轨道数据交易等正在兴起，加密技术可能参与其中。","Satellite communications and orbital data markets are rising; crypto may play a role."]},
+{c:"H",q:["有时间胶囊计划吗？","Is there a time-capsule plan?"],a:["社区可把治理文档与故事写入链上，作为数字文明的「时间胶囊」。","The community can write governance docs and stories on-chain as a digital-civilization time capsule."]},
+{c:"H",q:["如何代际传承？","How to pass it to the next generation?"],a:["教育下一代金融素养与开源协作文化。","Teach the next generation financial literacy and open-source collaboration culture."]},
+{c:"H",q:["愿景如何避免变成炒作噱头？","How to keep vision from becoming hype?"],a:["每个愿景都配可验证的近期里程碑，做不到就明确说做不到。","Pair every vision with verifiable near-term milestones — and say plainly when something can't be done."]},
+{c:"H",q:["如何理性看待愿景与现实？","How to view vision vs. reality rationally?"],a:["愿景是方向，现实是流动性、合规与产品；先走好脚下一小步。","Vision is the direction; reality is liquidity, compliance and product — take the small step first."]},
+{c:"H",q:["结语是什么？","What is the closing message?"],a:["从修复一个流动性池、公开一份储备证明、写好一份提案开始——千里之行，始于足下。","Start by fixing one liquidity pool, publishing one proof of reserves, writing one good proposal — a journey of a thousand miles begins beneath your feet."]},
+];
+const QA_CATS=[['A','基础认知','Basics'],['B','价格与锚定','Price & Peg'],['C','技术与安全','Tech & Security'],['D','市场与流动性','Market & Liquidity'],['E','DAO 治理','DAO Governance'],['F','合规与风险','Compliance & Risk'],['G','生态与 OPC','Ecosystem & OPC'],['H','星际文明与愿景','Interstellar Vision']];
+
+/* ================= 渲染 ================= */
+const $=id=>document.getElementById(id);
+const card=(inner,cls)=>`<div class="card ${cls||''}">${inner}</div>`;
+let qaFilter='ALL';
+
+function renderNav(){
+  $('nav').innerHTML=Object.entries(I.nav).map(([k,v])=>`<span class="chip" onclick="document.getElementById('s-${k}').scrollIntoView({behavior:'smooth'})">${L(v)}</span>`).join('');
+}
+function renderMain(){
+  const n=I.nav;
+  let h=`
+  <div class="hero">
+    <h1>${L(I.heroT1)}<em>${L(I.heroT2)}</em></h1>
+    <p class="sub">${L(I.heroSub)}</p>
+    <div class="ca-box"><span>${I.caLabel[lang]}:</span><span id="caTxt">${CA}</span><button onclick="copyCA()">${L(I.copy)}</button></div>
+    <div style="display:flex;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap">
+      <a class="langbtn" style="text-decoration:none" href="https://orbmarkets.io/token/${CA}" target="_blank" rel="noopener">📈 ${L(I.chart)}</a>
+      <a class="langbtn" style="text-decoration:none" href="https://eCNH.base44.app" target="_blank" rel="noopener">💱 ${L(I.dash)}</a>
+      <a class="langbtn" style="text-decoration:none" href="https://solscan.io/token/${CA}" target="_blank" rel="noopener">🔍 Solscan ${lang==='zh'?'查验':'Verify'}</a>
+    </div>
+    <div class="stats">
+      <span class="stat">⛓ ${L(I.stat1)}</span><span class="stat">⚖ ${L(I.stat2)}</span>
+      <span class="stat">📈 ${L(I.stat3)}</span><span class="stat">🌍 ${L(I.stat4)}</span><span class="stat">📜 ${L(I.stat5)}</span>
+    </div>
+  </div>
+
+  <section id="s-about"><h2>${L(n.about)}<span class="en">About eCNH</span></h2><p class="intro">${L(I.introAbout)}</p>
+    <div class="grid g2">
+      ${card(`<h3>${L(I.factChain)}</h3><p>${L(I.factVal)}</p>`)}
+      ${card(`<h3>${L(I.factTotal)}</h3><p>${L(I.factTotalV)}</p>`)}
+      ${card(`<h3>${L(I.factPeg)}</h3><p>${L(I.factPegV)}</p>`)}
+      ${card(`<h3>${L(I.factMkt)}</h3><p>${L(I.factMktV)}</p>`)}
+      ${card(`<h3>${L(I.factSwap)}</h3><p>${L(I.factSwapV)}</p>`)}
+      ${card(`<h3>${L(I.factGov)}</h3><p>${L(I.factGovV)}</p>`)}
+      ${card(`<h3>${L(I.factPos)}</h3><p>${L(I.factPosV)}</p>`)}
+      ${card(`<h3>${lang==='zh'?'八条底线共识':'Eight Bottom Lines'}</h3><p>${lang==='zh'?'先明确定义 · 按储备增发 · 先修流动性 · 分阶段目标 · 治理设上限 · 按场景选市场 · 透明披露 · 不喊单不承诺收益不拉人头。':'Define clearly · issue by reserves · fix liquidity first · staged goals · governance caps · scenario-driven markets · transparent disclosure · no shilling, no return promises, no pyramid promotion.'}</p>`)}
+    </div>
+    <div class="risk">⚠ ${L(I.riskWarn)}</div>
+  </section>
+
+  <section id="s-buy"><h2>${L(n.buy)}<span class="en">How to Buy</span></h2><p class="intro">${L(I.buyIntro)}</p>
+    <div class="grid g2">${BUY.map((b,i)=>card(`<span class="tag">${i+1}</span><h3>${L(b.t)}</h3><p>${L(b.d)}</p>`)).join('')}</div>
+    <div class="risk">🔗 ${lang==='zh'?'通用路径：合规交易所购入 SOL/USDC → 提币至 Phantom/Solflare 钱包 → DEX 或面板兑换 eCNH。':'General path: buy SOL/USDC on a licensed exchange → withdraw to Phantom/Solflare → swap on DEX or dashboard.'}</div>
+  </section>
+
+  <section id="s-rwa"><h2>${L(n.rwa)}<span class="en">Real-World Assets</span></h2><p class="intro">${L(I.rwaIntro)}</p>
+    <div class="grid g2">${RWA.map((r,i)=>card(`<span class="num">${i+1}</span><h3>${L(r.t)}</h3><p>${L(r.d)}</p>`)).join('')}</div>
+  </section>
+
+  <section id="s-cities"><h2>${L(n.cities)}<span class="en">Compliant Cities</span></h2><p class="intro">${L(I.citiesIntro)}</p>
+    <div class="grid g2">${CITIES.map(c=>card(`<h3>${L(c.c)}</h3><ul class="tick"><li><b>${lang==='zh'?'监管':'Regulation'}:</b> ${L(c.r)}</li><li><b>${lang==='zh'?'优势':'Advantage'}:</b> ${L(c.a)}</li></ul>`)).join('')}</div>
+  </section>
+
+  <section id="s-road"><h2>${L(n.road)}<span class="en">Roadmap</span></h2><p class="intro">${L(I.roadIntro)}</p>
+    <div class="road">${ROAD.map(r=>`<div class="item"><div class="yr">${r.y} · ${L(r.t)}</div><p style="color:var(--sub)">${L(r.d)}</p></div>`).join('')}</div>
+  </section>
+
+  <section id="s-plan"><h2>${L(n.plan)}<span class="en">2027 Agent OPC Plan</span></h2><p class="intro">${L(I.planIntro)}</p>
+    <div class="grid g2">${PLAN.map((p,i)=>card(`<span class="num">${i+1}</span>${lang==='zh'?p[0]:p[1]}`)).join('')}</div>
+    <h3 style="margin:22px 0 6px">${L(I.daoIntro)}</h3>
+    <div class="grid g3">${DAO_GROUPS.map(g=>card(`<h3>${lang==='zh'?g[0]:g[2]}</h3><p>${lang==='zh'?g[1]:g[3]}</p>`)).join('')}</div>
+  </section>
+
+  <section id="s-gongyi"><h2>${L(n.gongyi)}<span class="en">Philanthropy Pledge · Profit Allocation</span></h2><p class="intro">${L(I.gongyiIntro)}</p>
+    <div class="grid g2">${GIVE.map(g=>card(`<span class="tag">${lang==='zh'?g[0]:g[0]}</span><h3>${lang==='zh'?g[1]:g[2]}</h3>`)).join('')}</div>
+    <div class="bless" style="margin-top:18px"><b>为天地立心，为生民立命，为往圣继绝学，为万世开太平。</b><br><b>先天下之忧而忧，后天下之乐而乐。</b><br>自立 · 勤俭 · 读书 · 友善 ｜ Self-reliance · Frugality · Learning · Kindness</div>
+  </section>
+
+  <section id="s-ind"><h2>${L(n.ind)}<span class="en">30 Industries</span></h2>
+    <div class="grid g3">${Object.values(IND).map(g=>card(`<h3>${L(g.t)}</h3><ul class="tick">${g.l.map((x,i)=>`<li>${i+1}. ${L(x)}</li>`).join('')}</ul>`)).join('')}</div>
+  </section>
+
+  <section id="s-skills"><h2>${L(n.skills)}<span class="en">Top 20 Skills</span></h2><p class="intro">${L(I.skillsIntro)}</p>
+    <div class="grid g4">${SKILLS.map((s,i)=>card(`<span class="num">${i+1}</span><b>${lang==='zh'?s[0]:s[1]}</b>`)).join('')}</div>
+  </section>
+
+  <section id="s-opc"><h2>${L(n.opc)}<span class="en">10 eCNH OPCs Worldwide</span></h2><p class="intro">${L(I.opcIntro)}</p>
+    <div class="grid g3">${OPC.map(o=>card(`<h3>${lang==='zh'?o[0]:o[1]}</h3><p>${lang==='zh'?o[2]:o[2]}</p>`)).join('')}</div>
+  </section>
+
+  <section id="s-ceo"><h2>${L(n.ceo)}<span class="en">Become CEO · AI Executive Team</span></h2><p class="intro">${L(I.ceoIntro)}</p>
+    <div class="roles">${CEO_ROLES.map(r=>`<span>${r}</span>`).join('')}</div>
+    <div class="links">
+      <div class="linkcard"><div><b>Become CEO</b><div class="u">https://become-ceo.com/zh</div></div><a href="https://become-ceo.com/zh" target="_blank" rel="noopener">${lang==='zh'?'访问':'Visit'} →</a></div>
+      <div class="linkcard"><div><b>GitHub · wanikua/become-ceo</b><div class="u">https://github.com/wanikua/become-ceo</div></div><a href="https://github.com/wanikua/become-ceo" target="_blank" rel="noopener">GitHub →</a></div>
+      <div class="linkcard"><div><b>GitHub · SenteLabsAI/OpenExecutive（虚拟高管小组）</b><div class="u">https://github.com/SenteLabsAI/OpenExecutive</div></div><a href="https://github.com/SenteLabsAI/OpenExecutive" target="_blank" rel="noopener">GitHub →</a></div>
+    </div>
+    <div class="risk">${L(I.ceoNote)}</div>
+  </section>
+
+  <section id="s-qa"><h2>${L(n.qa)}<span class="en">100 Q&A</span></h2><p class="intro">${L(I.qaIntro)}</p>
+    <div class="qa-filter" id="qaFilter"></div>
+    <input class="searchbox" id="qaSearch" placeholder="${L(I.searchPh)}" oninput="renderQA()">
+    <div id="qaList"></div>
+  </section>
+
+  <section id="s-quotes"><h2>${L(n.quotes)}<span class="en">300 Chinese Quotes · Agent Value Corpus</span></h2><p class="intro">${L(I.quotesIntro)}</p>
+    <input class="searchbox" id="qSearch" placeholder="${L(I.searchPh)}" oninput="renderQuotes()">
+    <div class="qcount" id="qCount"></div>
+    <ol class="quotes" id="qList"></ol>
+  </section>`;
+  $('main').innerHTML=h;
+  renderQAFilters();renderQA();renderQuotes();
+}
+function renderQAFilters(){
+  const n=I.nav;
+  $('qaFilter').innerHTML=`<span class="chip ${qaFilter==='ALL'?'on':''}" onclick="setQAFilter('ALL')">${lang==='zh'?'全部':'All'}</span>`+
+    QA_CATS.map(c=>`<span class="chip ${qaFilter===c[0]?'on':''}" onclick="setQAFilter('${c[0]}')">${c[0]} · ${lang==='zh'?c[1]:c[2]}</span>`).join('');
+}
+function setQAFilter(f){qaFilter=f;renderQAFilters();renderQA();}
+function renderQA(){
+  const kw=($('qaSearch').value||'').toLowerCase();
+  const list=QA.map((q,i)=>({q,i})).filter(({q})=>{
+    if(qaFilter!=='ALL'&&q.c!==qaFilter)return false;
+    if(!kw)return true;
+    return (q.q[0]+q.q[1]+q.a[0]+q.a[1]).toLowerCase().includes(kw);
+  });
+  $('qaList').innerHTML=list.map(({q,i})=>`<details><summary><span class="qcat">${q.c}${String(i+1).padStart(3,'0')}</span>${lang==='zh'?q.q[0]:q.q[1]}</summary><div class="ans">${lang==='zh'?q.a[0]:q.a[1]}</div></details>`).join('')
+    ||`<p style="color:var(--sub)">${lang==='zh'?'没有匹配的问答。':'No matching Q&A.'}</p>`;
+}
+function renderQuotes(){
+  const kw=($('qSearch').value||'').toLowerCase();
+  const list=QUOTES.map((q,i)=>({q,i})).filter(({q})=>!kw||(q[0]+q[1]).toLowerCase().includes(kw));
+  $('qCount').textContent=`${I.total[lang]} ${list.length} / ${QUOTES.length} ${I.items[lang]}`;
+  $('qList').innerHTML=list.map(({q,i})=>`<li>${i+1}. ${q[0]}<small>${q[1]}</small></li>`).join('');
+}
+function renderFooter(){
+  $('footer').innerHTML=`
+    <h3>${L(I.footerTitle)}</h3>
+    <div class="f-ca"><b>${I.caLabel[lang]}:</b><br>${CA}<br><button class="langbtn" style="margin-top:8px" onclick="copyCA()">${L(I.copy)}</button></div>
+    <h3>${L(I.linksT)}</h3>
+    <div class="links">${LINKS.map(l=>`<div class="linkcard"><div><b>${lang==='zh'?l[0]:l[1]}</b><div class="u">${l[2]}</div></div><a href="${l[2]}" target="_blank" rel="noopener">↗</a></div>`).join('')}</div>
+    <div class="bless">
+      愿所有众生平安出行，身体健康 · 愿所有众生吃饱穿暖，衣食无忧<br>
+      愿所有众生不妄语，保持正念善念 · 愿所有众生心想事成<br>
+      愿所有众生无病无灾无难 · 愿所有众生负债清零，实现财务自由<br>
+      愿所有众生自由自在，能够去自己想去的地方 · 愿所有众生爱情顺利，婚姻美满<br>
+      愿所有众生福慧双修，福慧增长 · 愿所有众生离苦得乐，清闲自在<br>
+      愿所有孩子健康快乐成长 · 愿所有老人子孝孙贤，平安喜乐<br>
+      愿所有父母健康长寿快乐 · 愿所有众生远离恶道，亲近善知识<br>
+      <b>全球人类共建共享 eCNH · Earth & Global Humanity Builds and Shares eCNH Together</b><br>
+      服务 2.8 亿华人，以及对华人和 Web3 友善的 28 亿全球网友，与星际文明中友善的大千世界。<br>
+      Serving 280M Chinese worldwide, 2.8B Web3-friendly global citizens, and the friendly worlds among the stars.
+    </div>
+    <div class="disc"><b>${lang==='zh'?'免责声明':'Disclaimer'}</b><br>${L(I.disc)}</div>
+    <p style="text-align:center;color:var(--sub);font-size:.75rem;margin-top:16px">eCNH Agent OPC · ${lang==='zh'?'地球村一人公司 · 星际文明协议':'Earth Village OPC · Interstellar Civilization Protocol'} · 2026–2030</p>`;
+}
+function applyTheme(){
+  document.documentElement.setAttribute('data-theme',theme);
+  localStorage.setItem('ecnh-theme',theme);
+  document.querySelectorAll('.tdot').forEach(d=>d.classList.toggle('on',d.dataset.t===theme));
+}
+function setLang(l){
+  lang=l;localStorage.setItem('ecnh-lang',l);
+  $('langBtn').textContent=l==='zh'?'EN':'中文';
+  renderAll();
+}
+function renderAll(){renderNav();renderMain();renderFooter();}
+function copyCA(){
+  const done=()=>{const b=document.querySelector('.ca-box button');if(b){b.textContent=L(I.copied);setTimeout(()=>b.textContent=L(I.copy),1500);}};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(CA).then(done).catch(()=>fallbackCopy(done));}
+  else fallbackCopy(done);
+}
+function fallbackCopy(cb){const ta=document.createElement('textarea');ta.value=CA;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);cb();}
+document.querySelectorAll('.tdot').forEach(d=>d.onclick=()=>{theme=d.dataset.t;applyTheme();});
+$('langBtn').onclick=()=>setLang(lang==='zh'?'en':'zh');
+$('topBtn').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+applyTheme();
+$('langBtn').textContent=lang==='zh'?'EN':'中文';
+renderAll();
+</script>
+</body>
+</html>
