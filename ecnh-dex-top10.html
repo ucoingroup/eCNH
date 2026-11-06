@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="blue" data-lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>地球村 × eCNH｜华语最友好的 10 个 DEX</title>
+<meta name="description" content="eCNH 是 Solana SPL 代币，本页按华语友好度、能否买到 eCNH、流动性深度三项，排名地球村对 eCNH Web3 华语用户最友好的 10 个 DEX。中英双语。">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f4f7ff;--surface:#fff;--surface2:#f7f9ff;--text:#0f1b33;--muted:#5b6b87;
+  --acc:#2f6bff;--acc2:#7aa2ff;--accsoft:rgba(47,107,255,.09);--line:#e3eaf9;
+  --shadow:0 10px 34px rgba(23,50,110,.09);--radius:16px;
+  --font:"Noto Sans SC","PingFang SC","Microsoft YaHei",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+}
+html[data-theme="green"]{
+  --bg:#f5fbf6;--surface:#fff;--surface2:#f5fbf7;--text:#10231a;--muted:#556b5f;
+  --acc:#22a45d;--acc2:#63ce93;--accsoft:rgba(34,164,93,.09);--line:#e0f0e6;
+  --shadow:0 10px 34px rgba(20,90,50,.09);
+}
+html[data-theme="classic"]{
+  --bg:#faf6ee;--surface:#fffdf8;--surface2:#f8f2e6;--text:#2b2118;--muted:#7a6a55;
+  --acc:#a8332a;--acc2:#c9694f;--accsoft:rgba(168,51,42,.08);--line:#eadfcc;
+  --shadow:0 10px 34px rgba(80,50,20,.10);
+  --font:"Songti SC","Noto Serif SC","Source Han Serif SC",Georgia,"Microsoft YaHei",serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.75;-webkit-font-smoothing:antialiased;transition:background .35s,color .35s}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+/* language */
+html[data-lang="zh"] .en{display:none!important}
+html[data-lang="en"] .zh{display:none!important}
+
+/* topbar */
+.topbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.tbin{max-width:1120px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{font-weight:800;font-size:1rem;letter-spacing:.3px;display:flex;align-items:center;gap:8px}
+.brand i{width:9px;height:9px;border-radius:50%;background:var(--acc);display:inline-block;box-shadow:0 0 0 4px var(--accsoft)}
+.spacer{flex:1}
+.switch{display:flex;align-items:center;gap:8px}
+.langbtn{border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:999px;padding:6px 14px;font-size:.82rem;font-weight:700;cursor:pointer;font-family:inherit;transition:.2s}
+.langbtn:hover{border-color:var(--acc);color:var(--acc)}
+.dots{display:flex;gap:7px;padding-left:6px;border-left:1px solid var(--line)}
+.dot{width:15px;height:15px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:.2s}
+.dot[data-t="green"]{background:#22a45d}
+.dot[data-t="blue"]{background:#2f6bff}
+.dot[data-t="classic"]{background:#a8332a}
+.dot.on{border-color:var(--text);transform:scale(1.12)}
+
+/* hero */
+.hero{padding:64px 0 40px;text-align:center}
+.eyebrow{display:inline-block;font-size:.78rem;letter-spacing:2px;font-weight:700;color:var(--acc);background:var(--accsoft);border-radius:999px;padding:5px 16px;margin-bottom:20px}
+h1{font-size:clamp(1.8rem,4.2vw,2.9rem);line-height:1.25;font-weight:800;letter-spacing:-.5px}
+h1 em{font-style:normal;color:var(--acc)}
+.lede{margin:18px auto 0;max-width:780px;font-size:1.02rem;color:var(--muted)}
+.cachip{display:inline-flex;align-items:center;gap:10px;margin-top:26px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 8px 8px 18px;box-shadow:var(--shadow);font-size:.82rem;max-width:100%;overflow:auto}
+.cachip b{font-weight:700;color:var(--muted);font-size:.76rem;letter-spacing:1px}
+.cachip code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.8rem;color:var(--text);white-space:nowrap}
+.cachip button{border:none;background:var(--acc);color:#fff;border-radius:999px;padding:7px 15px;font-size:.78rem;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap}
+.cachip button:hover{filter:brightness(1.08)}
+
+/* section */
+section{padding:44px 0}
+.sechead{margin-bottom:24px}
+.sechead h2{font-size:1.42rem;font-weight:800;letter-spacing:-.2px;display:flex;align-items:center;gap:10px}
+.sechead h2::before{content:"";width:5px;height:22px;border-radius:3px;background:var(--acc);display:inline-block}
+.sechead p{margin-top:8px;color:var(--muted);font-size:.94rem;max-width:860px}
+
+/* criteria cards */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.crit{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+.crit .ic{font-size:1.4rem;margin-bottom:10px}
+.crit h3{font-size:1rem;font-weight:800;margin-bottom:6px}
+.crit p{font-size:.88rem;color:var(--muted)}
+.alert{margin-top:16px;background:var(--accsoft);border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:12px;padding:16px 20px;font-size:.9rem}
+.alert b{color:var(--acc)}
+.alert code{font-family:ui-monospace,Menlo,monospace;font-size:.82rem;background:var(--surface);padding:2px 7px;border-radius:6px;border:1px solid var(--line);word-break:break-all}
+
+/* table */
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow)}
+table{width:100%;border-collapse:collapse;font-size:.87rem;min-width:660px}
+th{text-align:left;font-size:.76rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);font-weight:700;padding:14px 16px;background:var(--surface2);border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--surface2)}
+.rk{font-weight:800;color:var(--acc);font-size:1rem;width:44px}
+.dnm{font-weight:700}
+.star{color:var(--acc);letter-spacing:1px;white-space:nowrap;font-size:.86rem}
+
+/* cards */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px 22px 20px;box-shadow:var(--shadow);transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-3px);box-shadow:0 16px 42px rgba(23,50,110,.14)}
+.card .num{position:absolute;top:18px;right:20px;font-size:1.9rem;font-weight:800;color:var(--acc);opacity:.13;line-height:1}
+.card h3{font-size:1.08rem;font-weight:800;margin-bottom:6px;padding-right:44px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.tag{font-size:.7rem;font-weight:700;letter-spacing:.5px;padding:3px 10px;border-radius:999px;background:var(--accsoft);color:var(--acc)}
+.tag.gray{background:var(--surface2);color:var(--muted);border:1px solid var(--line)}
+.card .stars{font-size:.84rem;color:var(--acc);letter-spacing:1.5px;margin-bottom:10px}
+.card p{font-size:.9rem;color:var(--muted)}
+.tip{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-size:.82rem;color:var(--muted);display:flex;gap:8px}
+.tip b{color:var(--acc);flex-shrink:0}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+.step::before{counter-increment:s;content:counter(s);display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:9px;background:var(--acc);color:#fff;font-weight:800;font-size:.85rem;margin-bottom:12px}
+.step h4{font-size:.94rem;font-weight:800;margin-bottom:6px}
+.step p{font-size:.84rem;color:var(--muted)}
+
+/* alt */
+.alts{display:flex;gap:10px;flex-wrap:wrap}
+.alt{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 16px;font-size:.86rem;box-shadow:var(--shadow);flex:1 1 240px}
+.alt b{display:block;font-size:.92rem;margin-bottom:3px}
+.alt span{color:var(--muted);font-size:.82rem}
+
+/* disclaimer + footer */
+.disc{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px;font-size:.85rem;color:var(--muted);box-shadow:var(--shadow)}
+.disc h3{font-size:.95rem;color:var(--text);margin-bottom:10px;font-weight:800}
+.disc ul{margin:10px 0 0 18px}
+.disc li{margin-bottom:6px}
+footer{border-top:1px solid var(--line);margin-top:40px;padding:34px 0 50px;font-size:.82rem;color:var(--muted)}
+.fgrid{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 18px}
+.fgrid a{color:var(--acc);text-decoration:none;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px;font-weight:600;transition:.2s}
+.fgrid a:hover{background:var(--acc);color:#fff;border-color:var(--acc)}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--text);color:var(--bg);padding:10px 22px;border-radius:999px;font-size:.84rem;font-weight:700;opacity:0;pointer-events:none;transition:.3s;z-index:99}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media(max-width:860px){
+  .grid3,.cards,.steps{grid-template-columns:1fr}
+  .hero{padding:42px 0 26px}
+  section{padding:32px 0}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="tbin">
+    <div class="brand"><i></i>eCNH × DEX</div>
+    <div class="spacer"></div>
+    <div class="switch">
+      <button class="langbtn" id="langBtn" onclick="toggleLang()">EN</button>
+      <div class="dots">
+        <span class="dot on" data-t="blue" onclick="setTheme('blue')" title="科技蓝"></span>
+        <span class="dot" data-t="green" onclick="setTheme('green')" title="苹果绿"></span>
+        <span class="dot" data-t="classic" onclick="setTheme('classic')" title="华夏古典"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">
+      <span class="zh">地 球 村 · 华 语 视 角</span>
+      <span class="en">GLOBAL VILLAGE · CHINESE-SPEAKING VIEW</span>
+    </span>
+    <h1>
+      <span class="zh">地球村对 eCNH Web3 <em>华语最友好的 10 个 DEX</em></span>
+      <span class="en">The 10 Most <em>Chinese-Friendly DEXs</em> for eCNH in the Global Village</span>
+    </h1>
+    <p class="lede">
+      <span class="zh">eCNH 是运行在 Solana 上的 SPL 代币，所以真正能买到它的，只有支持 Solana 的 DEX 与聚合器。本页按「华语友好度 × 能否买到 eCNH × 流动性深度」三项打分排序，帮你找到界面看得懂、报价靠得住的那一个。</span>
+      <span class="en">eCNH is an SPL token on Solana, so only Solana-capable DEXs and aggregators can actually trade it. This list ranks them by Chinese-language friendliness × ability to trade eCNH × liquidity depth — so you can pick one you can read and trust.</span>
+    </p>
+    <div class="cachip">
+      <b>CA</b><code id="caTxt">7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5</code>
+      <button onclick="copyCA()"><span class="zh">复制</span><span class="en">Copy</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section>
+    <div class="sechead">
+      <h2><span class="zh">为什么只有这 10 个</span><span class="en">Why exactly these 10</span></h2>
+      <p><span class="zh">eCNH 不在以太坊主网，以太坊系 DEX（Uniswap、Curve 等）无法直接交易，必须先跨链桥接到 Solana。因此候选池只有「支持 Solana SPL 的平台」，再按以下三项打分。</span>
+      <span class="en">eCNH is not on Ethereum mainnet, so Ethereum-native DEXs (Uniswap, Curve, etc.) cannot trade it directly — you would have to bridge to Solana first. The candidate pool is therefore limited to Solana SPL-capable platforms, scored on three criteria.</span></p>
+    </div>
+    <div class="grid3">
+      <div class="crit"><div class="ic">🈶</div><h3><span class="zh">华语友好度</span><span class="en">Chinese friendliness</span></h3>
+        <p><span class="zh">是否有简体 / 繁体中文界面、中文客服与中文教程、是否有华语团队运营。</span><span class="en">Simplified or Traditional Chinese UI, Chinese support and tutorials, Chinese-speaking team behind it.</span></p></div>
+      <div class="crit"><div class="ic">🔍</div><h3><span class="zh">能不能买到 eCNH</span><span class="en">Can it trade eCNH</span></h3>
+        <p><span class="zh">是否原生支持 Solana SPL 代币、能否粘贴合约地址直接搜索、是否有可用交易对。</span><span class="en">Native SPL support, contract-address search, and a working eCNH trading pair.</span></p></div>
+      <div class="crit"><div class="ic">💧</div><h3><span class="zh">流动性深度</span><span class="en">Liquidity depth</span></h3>
+        <p><span class="zh">聚合器可拆单降低冲击成本；单一池子深度浅，大额容易滑点过高。</span><span class="en">Aggregators split orders to reduce price impact; single pools are shallow and punish large trades.</span></p></div>
+    </div>
+    <div class="alert">
+      <span class="zh">⚠ <b>第一原则：粘贴 CA，不要搜名字。</b> 同名假币极多，唯一可信的合约地址是 <code>7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5</code>，交易前请先在 Solscan 核对。</span>
+      <span class="en">⚠ <b>Rule one: paste the contract address, never search by name.</b> Impostor tokens are everywhere. The only valid address is <code>7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5</code> — verify it on Solscan before trading.</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="sechead">
+      <h2><span class="zh">一眼看懂：10 个 DEX 速览</span><span class="en">At a glance: the 10 DEXs</span></h2>
+    </div>
+    <div class="tblwrap">
+      <table>
+        <thead><tr>
+          <th>#</th>
+          <th><span class="zh">平台</span><span class="en">Platform</span></th>
+          <th><span class="zh">类型</span><span class="en">Type</span></th>
+          <th><span class="zh">华语友好</span><span class="en">Chinese</span></th>
+          <th><span class="zh">一句话理由</span><span class="en">Why it matters</span></th>
+        </tr></thead>
+        <tbody id="tblBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="sechead">
+      <h2><span class="zh">逐个拆解</span><span class="en">One by one</span></h2>
+      <p><span class="zh">星级只看「华语使用体验」，不代表平台安全性或 eCNH 本身的投资价值。</span><span class="en">Stars measure Chinese-language experience only — not platform security, nor the investment merits of eCNH.</span></p>
+    </div>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <section>
+    <div class="sechead">
+      <h2><span class="zh">备选 3 个</span><span class="en">Three honorable mentions</span></h2>
+    </div>
+    <div class="alts">
+      <div class="alt"><b>Manifest</b><span><span class="zh">Solana 零手续费订单簿，适合挂限价单，中文资料较少。</span><span class="en">Zero-fee on-chain order book on Solana — good for limit orders, limited Chinese docs.</span></span></div>
+      <div class="alt"><b>Phoenix</b><span><span class="zh">老牌 Solana 订单簿 DEX，界面纯英文，适合有经验者。</span><span class="en">A veteran Solana order-book DEX, English-only, best for experienced traders.</span></span></div>
+      <div class="alt"><b>1inch / Matcha</b><span><span class="zh">多链聚合，Solana 支持与中文界面都较弱，仅作比价参考。</span><span class="en">Multi-chain aggregators with weak Solana coverage and weak Chinese support — price reference only.</span></span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sechead">
+      <h2><span class="zh">用 DEX 买 eCNH 的 4 个关键动作</span><span class="en">Four steps that actually matter</span></h2>
+    </div>
+    <div class="steps">
+      <div class="step"><h4><span class="zh">粘贴 CA 搜索</span><span class="en">Paste the CA</span></h4>
+        <p><span class="zh">在兑换框里粘贴完整合约地址，确认名称、图标、持币地址数一致再继续。</span><span class="en">Paste the full contract address, then confirm name, icon and holder count match.</span></p></div>
+      <div class="step"><h4><span class="zh">先小额试单</span><span class="en">Start small</span></h4>
+        <p><span class="zh">池子浅，先买最小金额，滑点设 1–3%，确认到账后再逐步加大。</span><span class="en">Pools are shallow. Buy a minimal amount with 1–3% slippage, confirm receipt, then scale up.</span></p></div>
+      <div class="step"><h4><span class="zh">核对池子</span><span class="en">Check the pool</span></h4>
+        <p><span class="zh">优先 eCNH/USDC（Raydium）、eCNH DAO POOL（Meteora）、SOL/eCNH（Orca）。</span><span class="en">Prefer eCNH/USDC (Raydium), eCNH DAO POOL (Meteora), SOL/eCNH (Orca).</span></p></div>
+      <div class="step"><h4><span class="zh">交易后清授权</span><span class="en">Revoke approvals</span></h4>
+        <p><span class="zh">撤销多余代币授权，大额使用硬件钱包，不要在公共 WiFi 下签名。</span><span class="en">Revoke surplus token approvals, use a hardware wallet for size, never sign on public Wi-Fi.</span></p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="disc">
+      <h3><span class="zh">风险与免责声明</span><span class="en">Risk & disclaimer</span></h3>
+      <ul>
+        <li><span class="zh">本页仅为信息整理，<b>不构成任何投资建议</b>，也不构成对任何平台的推荐或背书。</span><span class="en">This page is informational only. It is <b>not investment advice</b> and not an endorsement of any platform.</span></li>
+        <li><span class="zh">加密资产价格波动剧烈，eCNH 流动性有限，可能出现大幅滑点或无法成交。</span><span class="en">Crypto assets are highly volatile; eCNH liquidity is limited and may cause severe slippage or failed fills.</span></li>
+        <li><span class="zh">各平台的界面语言、支持网络与可用交易对会随时更新，请以官方最新版本为准。</span><span class="en">UI languages, supported networks and available pairs change frequently — always check the platform's current version.</span></li>
+        <li><span class="zh">请自行核实合约地址 <code>7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5</code>，谨防同名假币与钓鱼网站。</span><span class="en">Verify the contract address <code>7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5</code> yourself; beware of impostor tokens and phishing sites.</span></li>
+        <li><span class="zh">请遵守所在地法律法规与税务要求，自行完成 KYC 与合规申报。</span><span class="en">Comply with local laws and tax rules; complete KYC and declarations on your own responsibility.</span></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><b>eCNH</b> · <span class="zh">Solana 链上社区代币 · 合约地址</span><span class="en">Community token on Solana · Contract address</span></div>
+    <div style="margin-top:6px;font-family:ui-monospace,Menlo,monospace;word-break:break-all">7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5</div>
+    <div class="fgrid">
+      <a href="https://orbmarkets.io/token/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5" target="_blank" rel="noopener"><span class="zh">Orb 行情</span><span class="en">Orb Markets</span></a>
+      <a href="https://solscan.io/token/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5" target="_blank" rel="noopener">Solscan</a>
+      <a href="https://jup.ag" target="_blank" rel="noopener">Jupiter</a>
+      <a href="https://raydium.io" target="_blank" rel="noopener">Raydium</a>
+      <a href="https://www.orca.so" target="_blank" rel="noopener">Orca</a>
+      <a href="https://meteora.ag" target="_blank" rel="noopener">Meteora</a>
+    </div>
+    <div style="font-size:.78rem">
+      <span class="zh">本页为独立信息整理页，与上述任何平台无隶属关系。内容不构成投资建议。</span>
+      <span class="en">An independent informational page, not affiliated with any listed platform. Not investment advice.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"><span class="zh">已复制合约地址</span><span class="en">Contract address copied</span></div>
+
+<script>
+const CA = '7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5';
+
+const DEX = [
+  { name:'OKX 内置 DEX', nameEn:'OKX Built-in DEX', typeZh:'交易所内嵌聚合', typeEn:'Exchange-embedded aggregator', star:5,
+    whyZh:'中文界面最完整，KYC 后 USDT 直买 Solana 代币',
+    whyEn:'Most complete Chinese UI; buy Solana tokens with USDT after KYC',
+    zh:'简体 / 繁体中文界面最完整，KYC 后用 USDT 就能直接买 Solana 代币，不需要自己管理私钥，是第一次接触 eCNH 的华语用户最省心的入口。',
+    en:'The most complete Simplified and Traditional Chinese interface. After KYC you can buy Solana tokens directly with USDT without managing a private key — the easiest entry point for a first eCNH purchase.',
+    tipZh:'需完成 KYC；资产在交易所账户内属托管，提到自托管钱包才真正持有。',
+    tipEn:'KYC required; assets are custodial until you withdraw to a self-custody wallet.' },
+
+  { name:'Bitget Wallet Swap', nameEn:'Bitget Wallet Swap', typeZh:'钱包内聚合', typeEn:'In-wallet aggregator', star:5,
+    whyZh:'华语团队，可粘贴 CA 搜索，手机端体验最好',
+    whyEn:'Chinese-speaking team, CA search, best mobile experience',
+    zh:'华语团队运营，中文界面与中文客服齐全，聚合 Solana 全链流动性，可以直接粘贴 eCNH 合约地址搜索，避免搜名字买到假币。',
+    en:'Run by a Chinese-speaking team with a full Chinese UI and support. It aggregates Solana liquidity and accepts a pasted contract address — which keeps you away from name-search fakes.',
+    tipZh:'只从官方渠道下载 App，假冒钱包插件与安装包很多。',
+    tipEn:'Install only from official channels — fake wallet apps and extensions are common.' },
+
+  { name:'TokenPocket', nameEn:'TokenPocket', typeZh:'钱包内聚合', typeEn:'In-wallet aggregator', star:5,
+    whyZh:'华语老牌多链钱包，DApp 浏览器可直达 Jupiter',
+    whyEn:'Veteran Chinese multi-chain wallet with a DApp browser',
+    zh:'华语市场老牌多链钱包，中文界面成熟、Solana 支持完善，内置 DApp 浏览器可以一键打开 Jupiter、Raydium、Orca，不用来回复制链接。',
+    en:'A long-standing multi-chain wallet from the Chinese market with a mature Chinese UI and solid Solana support. Its DApp browser opens Jupiter, Raydium and Orca in one tap.',
+    tipZh:'助记词离线手写备份，不要截图、不要存云盘。',
+    tipEn:'Back up the seed phrase offline on paper — never screenshot it or store it in the cloud.' },
+
+  { name:'Jupiter', nameEn:'Jupiter', typeZh:'Solana 第一聚合器', typeEn:'Solana top aggregator', star:4,
+    whyZh:'eCNH 最优报价的主要来源，中文教程最多',
+    whyEn:'Primary source of best-execution quotes; most Chinese tutorials',
+    zh:'Solana 上交易量最大的聚合器，自动路由 Raydium、Orca、Meteora 等全部 eCNH 池子，通常给出最优报价。界面是英文，但网上华语教程最多，照着做即可。',
+    en:'Solana\u2019s largest aggregator, auto-routing across every eCNH pool on Raydium, Orca and Meteora to find the best price. The UI is English, but Chinese tutorials are plentiful.',
+    tipZh:'签名前关闭「无限授权」，手动设置滑点上限。',
+    tipEn:'Disable infinite approvals and set a manual slippage cap before signing.' },
+
+  { name:'Raydium', nameEn:'Raydium', typeZh:'AMM / CLMM', typeEn:'AMM / CLMM', star:3,
+    whyZh:'eCNH/USDC 主池所在地，链上完全透明',
+    whyEn:'Home of the main eCNH/USDC pool, fully on-chain',
+    zh:'eCNH/USDC 主要流动性池就在这里，池子深度、手续费与价格影响全部链上可查。适合想先看清池子结构再动手的用户。',
+    en:'The main eCNH/USDC pool lives here. Depth, fees and price impact are all visible on-chain — ideal if you want to inspect the pool before trading.',
+    tipZh:'池子浅，大额务必分批；下单时注意价格影响提示。',
+    tipEn:'The pool is shallow — split large orders and watch the price-impact warning.' },
+
+  { name:'Orca', nameEn:'Orca', typeZh:'CLMM 集中流动性', typeEn:'CLMM concentrated liquidity', star:3,
+    whyZh:'SOL/eCNH 池所在，中等金额滑点相对可控',
+    whyEn:'Hosts the SOL/eCNH pool with manageable slippage',
+    zh:'SOL/eCNH 池所在平台，集中流动性设计让中等金额的成交滑点相对可控，界面简洁、操作路径短，适合已持有 SOL 的用户直接兑换。',
+    en:'Hosts the SOL/eCNH pool. Its concentrated-liquidity design keeps slippage manageable for mid-sized trades, and the interface is clean and short — good if you already hold SOL.',
+    tipZh:'行情剧烈时集中流动性池可能单边失衡，先看池子当前状态。',
+    tipEn:'In volatile markets a concentrated pool can become one-sided — check pool status first.' },
+
+  { name:'Meteora', nameEn:'Meteora', typeZh:'DLMM 动态费率', typeEn:'DLMM dynamic fees', star:3,
+    whyZh:'eCNH DAO POOL 2026 所在，适合小额社区交易',
+    whyEn:'Hosts eCNH DAO POOL 2026; suits small community trades',
+    zh:'eCNH DAO POOL 2026 就部署在这里。动态费率机制对波动更敏感，但小额、低频的社区交易体验不错，也是观察 DAO 流动性变化最直接的窗口。',
+    en:'Where eCNH DAO POOL 2026 is deployed. Dynamic fees react to volatility, but small low-frequency community trades work well — and it is the most direct window into DAO liquidity.',
+    tipZh:'动态费率会随波动上升，交易前先看当前费率档位。',
+    tipEn:'Dynamic fees rise with volatility — check the current fee tier before trading.' },
+
+  { name:'PancakeSwap', nameEn:'PancakeSwap', typeZh:'多链 AMM（已支持 Solana）', typeEn:'Multi-chain AMM (Solana-enabled)', star:4,
+    whyZh:'华语社区最大 DEX 之一，中文界面与社群活跃',
+    whyEn:'One of the largest DEXs among Chinese users',
+    zh:'华语社区规模最大的 DEX 之一，中文界面完整、中文社群活跃。已支持 Solana 网络，对本来就熟悉这个平台的用户来说学习成本最低。',
+    en:'One of the largest DEXs among Chinese-speaking users, with a full Chinese UI and active communities. Solana is now supported, so existing users face almost no learning curve.',
+    tipZh:'务必确认网络选的是 Solana，选错链会导致资产无法找回。',
+    tipEn:'Make sure the network is Solana — a wrong chain can make funds unrecoverable.' },
+
+  { name:'Byreal', nameEn:'Byreal', typeZh:'Solana 原生 DEX', typeEn:'Solana-native DEX', star:4,
+    whyZh:'Bitget 生态，CLMM + RFQ 混合撮合，深度增长快',
+    whyEn:'Bitget ecosystem, CLMM + RFQ hybrid matching',
+    zh:'Bitget 生态内的 Solana 原生 DEX，采用 CLMM 加 RFQ 混合撮合，报价路径更短。华语背景团队，对华语用户的问题响应较快，深度增长也快。',
+    en:'A Solana-native DEX inside the Bitget ecosystem, combining CLMM with RFQ for shorter quote paths. A Chinese-background team responds quickly to Chinese-speaking users, and depth is growing fast.',
+    tipZh:'生态较新，先用小额验证报价与成交再加大。',
+    tipEn:'Relatively new — validate quotes and fills with small amounts first.' },
+
+  { name:'Titan', nameEn:'Titan', typeZh:'Solana 第二聚合器', typeEn:'Solana secondary aggregator', star:3,
+    whyZh:'与 Jupiter 交叉比价，避免单一报价偏差',
+    whyEn:'Cross-check quotes against Jupiter',
+    zh:'Solana 上的第二聚合器，路由逻辑与 Jupiter 不同，报价常有差异。适合在大额交易前做一次交叉比价，避免被单一聚合器的路由偏差影响。',
+    en:'A second aggregator on Solana with different routing logic, so quotes often diverge from Jupiter. Useful for cross-checking before a large trade.',
+    tipZh:'报价有效期极短，看到合适价格要立即成交。',
+    tipEn:'Quotes expire in seconds — execute immediately when the price is right.' }
+];
+
+const S = n => '★'.repeat(n) + '☆'.repeat(5 - n);
+const T = (zh, en) => '<span class="zh">' + zh + '</span><span class="en">' + en + '</span>';
+
+/* table */
+document.getElementById('tblBody').innerHTML = DEX.map((d, i) => 
+  '<tr>' +
+    '<td class="rk">' + (i + 1) + '</td>' +
+    '<td class="dnm">' + d.name + '</td>' +
+    '<td>' + T(d.typeZh, d.typeEn) + '</td>' +
+    '<td class="star">' + S(d.star) + '</td>' +
+    '<td>' + T(d.whyZh, d.whyEn) + '</td>' +
+  '</tr>'
+).join('');
+
+/* cards */
+document.getElementById('cards').innerHTML = DEX.map((d, i) =>
+  '<article class="card">' +
+    '<span class="num">' + String(i + 1).padStart(2, '0') + '</span>' +
+    '<h3>' + d.name + '</h3>' +
+    '<div class="tags">' +
+      '<span class="tag">' + T(d.typeZh, d.typeEn) + '</span>' +
+      '<span class="tag gray">Solana</span>' +
+    '</div>' +
+    '<div class="stars">' + S(d.star) + '</div>' +
+    '<p>' + T(d.zh, d.en) + '</p>' +
+    '<div class="tip"><b>' + T('注意', 'Note') + '</b><span>' + T(d.tipZh, d.tipEn) + '</span></div>' +
+  '</article>'
+).join('');
+
+/* language */
+function applyLang(l){
+  document.documentElement.setAttribute('lang', l === 'zh' ? 'zh-CN' : 'en');
+  document.documentElement.setAttribute('data-lang', l);
+  document.getElementById('langBtn').textContent = l === 'zh' ? 'EN' : '中文';
+  try { localStorage.setItem('ecnh_dex_lang', l); } catch (e) {}
+}
+function toggleLang(){
+  const cur = document.documentElement.getAttribute('data-lang');
+  applyLang(cur === 'zh' ? 'en' : 'zh');
+}
+
+/* theme */
+function setTheme(t){
+  document.documentElement.setAttribute('data-theme', t);
+  document.querySelectorAll('.dot').forEach(function(el){
+    el.classList.toggle('on', el.dataset.t === t);
+  });
+  try { localStorage.setItem('ecnh_dex_theme', t); } catch (e) {}
+}
+
+/* copy */
+function copyCA(){
+  const done = function(){
+    const t = document.getElementById('toast');
+    t.classList.add('on');
+    setTimeout(function(){ t.classList.remove('on'); }, 1800);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(CA).then(done).catch(fallback);
+  } else { fallback(); }
+  function fallback(){
+    const ta = document.createElement('textarea');
+    ta.value = CA;
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+    done();
+  }
+}
+
+/* init */
+(function(){
+  let lang = 'zh', theme = 'blue';
+  try {
+    lang = localStorage.getItem('ecnh_dex_lang') || 'zh';
+    theme = localStorage.getItem('ecnh_dex_theme') || 'blue';
+  } catch (e) {}
+  applyLang(lang);
+  setTheme(theme);
+})();
+</script>
+</body>
+</html>
