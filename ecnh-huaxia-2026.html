@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="blue">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>华夏文化 × eCNH · 亚洲与地球村 | Huaxia Culture × eCNH · Asia & Global Village</title>
+<meta name="description" content="对华夏文化以及 eCNH Web3 最友善的亚洲 10 国/城与地球村 10 国/城，华夏文化如何与 eCNH（华夏币）结合发展。信息整理，不构成投资建议。">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#f4fbf6;--card:#fff;--ink:#14351f;--sub:#4c6d58;--acc:#1f9d55;--acc2:#77c043;--line:#d8ecdd;--hl:#e6f6eb;--shadow:0 4px 18px rgba(31,157,85,.10)}
+html[data-theme="blue"]{--bg:#0a1526;--card:#101f38;--ink:#e9f2ff;--sub:#8fa6c9;--acc:#3b82f6;--acc2:#22d3ee;--line:#1e3357;--hl:#14284a;--shadow:0 4px 20px rgba(0,0,0,.35)}
+html[data-theme="classical"]{--bg:#f6efdd;--card:#fdf8ec;--ink:#3a2a18;--sub:#7c6a4c;--acc:#a8402c;--acc2:#8a6d3b;--line:#e4d6b4;--hl:#f3e9cf;--shadow:0 4px 16px rgba(120,90,40,.14)}
+body{font-family:"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;background:var(--bg);color:var(--ink);line-height:1.75;transition:background .4s,color .4s}
+html[data-theme="classical"] body{font-family:"Noto Serif SC","Songti SC","SimSun",serif}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
+.hd{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 20px;max-width:1060px;margin:0 auto;flex-wrap:wrap}
+.brand{font-weight:800;font-size:1.12rem}
+.brand small{display:block;font-weight:400;font-size:.72rem;color:var(--sub)}
+.hd-ctrl{display:flex;gap:8px;align-items:center}
+.themes{display:flex;gap:6px}
+.tdot{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);cursor:pointer}
+.tdot.on{border-color:var(--ink);transform:scale(1.12)}
+.tdot.g{background:linear-gradient(135deg,#1f9d55,#a3e635)}
+.tdot.b{background:linear-gradient(135deg,#3b82f6,#22d3ee)}
+.tdot.c{background:linear-gradient(135deg,#a8402c,#e8c877)}
+.langbtn{border:1px solid var(--acc);color:var(--acc);background:transparent;border-radius:20px;padding:4px 14px;cursor:pointer;font-weight:700}
+.langbtn:hover{background:var(--acc);color:#fff}
+nav{display:flex;flex-wrap:wrap;gap:8px;padding:10px 0}
+.chip{background:var(--hl);color:var(--sub);border:1px solid var(--line);border-radius:20px;padding:4px 12px;font-size:.82rem;cursor:pointer}
+.chip:hover{color:var(--acc);border-color:var(--acc)}
+.hero{padding:52px 0 32px;text-align:center}
+.hero h1{font-size:clamp(1.7rem,4.2vw,2.8rem)}
+.hero h1 em{font-style:normal;color:var(--acc)}
+.hero p.sub{color:var(--sub);max-width:760px;margin:14px auto 20px}
+.ca-box{display:inline-flex;align-items:center;gap:10px;background:var(--card);border:1px dashed var(--acc);border-radius:12px;padding:10px 16px;font-family:ui-monospace,Consolas,monospace;font-size:.82rem;max-width:94%;overflow:auto}
+.ca-box button{border:none;background:var(--acc);color:#fff;border-radius:8px;padding:6px 14px;cursor:pointer;white-space:nowrap}
+.stats{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:20px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 16px;font-size:.85rem;color:var(--sub)}
+.stat b{color:var(--acc)}
+section{padding:32px 0}
+section h2{font-size:1.45rem;margin-bottom:6px}
+section h2 .en{display:block;font-size:.8rem;color:var(--sub);font-weight:400}
+section .intro{color:var(--sub);margin-bottom:18px;max-width:860px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+.card h3{font-size:1.02rem;margin-bottom:6px}
+.card p,.card li{color:var(--sub);font-size:.9rem}
+.rank{display:inline-flex;align-items:center;justify-content:center;background:var(--acc);color:#fff;min-width:28px;height:28px;border-radius:50%;font-size:.82rem;font-weight:700;margin-right:8px}
+.card .tag{display:inline-block;background:var(--hl);color:var(--acc);border-radius:6px;padding:2px 8px;font-size:.75rem;margin-bottom:8px}
+ul.tick{list-style:none;margin-top:6px}
+ul.tick li{padding-left:20px;position:relative;margin:5px 0;text-align:left}
+ul.tick li:before{content:"◆";position:absolute;left:0;color:var(--acc2);font-size:.7rem;top:6px}
+.risk{background:var(--hl);border-left:4px solid var(--acc2);border-radius:8px;padding:12px 16px;font-size:.85rem;color:var(--sub);margin-top:16px}
+.motto{text-align:center;font-size:1.05rem;line-height:2.1;margin:26px 0 6px;color:var(--ink)}
+.motto b{color:var(--acc)}
+.subst{text-align:center;color:var(--sub);font-size:.85rem}
+.links{display:grid;gap:10px}
+.linkcard{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;flex-wrap:wrap}
+.linkcard .u{font-family:ui-monospace,Consolas,monospace;font-size:.8rem;color:var(--sub);word-break:break-all}
+footer{margin-top:40px;border-top:1px solid var(--line);background:var(--card);padding:32px 0 24px}
+footer h3{margin-bottom:10px}
+.f-ca{font-family:ui-monospace,Consolas,monospace;background:var(--hl);border-radius:10px;padding:12px 14px;word-break:break-all;font-size:.8rem;margin-bottom:16px}
+.disc{font-size:.8rem;color:var(--sub);margin-top:18px;border-top:1px dashed var(--line);padding-top:14px}
+.top{position:fixed;right:18px;bottom:18px;background:var(--acc);color:#fff;border:none;border-radius:50%;width:42px;height:42px;font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow)}
+</style>
+</head>
+<body>
+<header>
+  <div class="hd">
+    <div class="brand">华夏文化 × eCNH<small id="brandSub"></small></div>
+    <div class="hd-ctrl">
+      <div class="themes" title="Theme">
+        <div class="tdot g" data-t="green" title="翠绿 Apple Green"></div>
+        <div class="tdot b" data-t="blue" title="科技蓝 Tech Blue"></div>
+        <div class="tdot c" data-t="classical" title="古典 Classical"></div>
+      </div>
+      <button class="langbtn" id="langBtn">EN</button>
+    </div>
+  </div>
+  <div class="wrap"><nav id="nav"></nav></div>
+</header>
+
+<main class="wrap" id="main"></main>
+
+<footer>
+  <div class="wrap" id="footer"></div>
+</footer>
+<button class="top" id="topBtn" title="Top">↑</button>
+
+<script>
+let lang = localStorage.getItem('hx-lang') || 'zh';
+let theme = localStorage.getItem('hx-theme') || 'blue';
+const L = o => Array.isArray(o) ? o[lang==='zh'?0:1] : (o[lang] || o.zh);
+const CA='7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5';
+
+const I={
+ brandSub:{zh:'我爱华夏 · 亚洲与地球村的共同发展',en:'I Love Huaxia · Common Development across Asia & the Global Village'},
+ nav:{top:['最友善 10+10','Top-Friendly 10+10'],path:['六大结合路径','Six Integration Paths'],carrier:['文化载体','Cultural Carriers'],prin:['共同发展五原则','Five Principles'],road:['行动路线','Roadmap']},
+ heroT:{zh:'我爱华夏，我爱地球村：',en:'I Love Huaxia, I Love the Global Village:'},
+ heroT2:{zh:'华夏文化 × eCNH 华夏币',en:'Huaxia Culture × eCNH'},
+ heroSub:{zh:'从亚洲到地球村：梳理对华夏文化以及 eCNH Web3 最友善的 10+10 个国家与城市，探索华夏文化与华夏币 eCNH 的结合发展之路。本页为社区文化整理与科普，不构成投资建议。',
+          en:'From Asia to the Global Village: the 10+10 most friendly countries and cities for Huaxia culture and eCNH Web3, and how Huaxia culture can grow together with eCNH. Community culture & education only — not investment advice.'},
+ statA:['亚洲友善 10 国/城','Asia-friendly 10'],statW:['地球村友善 10 国/城','Global Village-friendly 10'],
+ statC:['6 大结合路径','6 integration paths'],statD:['12 项文化载体','12 cultural carriers'],
+ copy:{zh:'复制 CA',en:'Copy CA'},copied:{zh:'已复制 ✓',en:'Copied ✓'},
+ caLabel:{zh:'合约地址 CA',en:'Contract Address (CA)'},
+ asiaIntro:{zh:'以「华夏文化纽带 × Web3 监管友善度 × 离岸人民币基础」三个维度综合评估，亚洲最友善的前 10 个国家与城市：',
+            en:'Assessed by Huaxia-culture ties × Web3 regulatory friendliness × offshore-RMB foundation, the top 10 in Asia:'},
+ worldIntro:{zh:'亚洲之外的地球村 Top 10——海外华人社区历史悠久、监管框架清晰的国家与城市：',
+             en:'The Global Village Top 10 beyond Asia — long-standing overseas Chinese communities under clear regulatory frameworks:'},
+ culL:{zh:'华夏文化纽带',en:'Huaxia culture tie'},w3L:{zh:'Web3 / eCNH 友善点',en:'Web3 / eCNH friendliness'},
+ pathIntro:{zh:'华夏文化与华夏币 eCNH 如何结合起来发展？六条相辅相成的路径：',en:'How can Huaxia culture grow together with eCNH? Six mutually reinforcing paths:'},
+ carrierIntro:{zh:'十二项华夏文化载体，每一项都可以与 eCNH 生态自然连接：',en:'Twelve carriers of Huaxia culture — each can naturally connect with the eCNH ecosystem:'},
+ prinIntro:{zh:'华夏文化与地球村文化如何共同发展？五条相处之道（和而不同，美美与共）：',en:'How can Huaxia and Global Village cultures develop together? Five principles (harmony in diversity, beauty shared):'},
+ roadIntro:{zh:'循序渐进、每年完善的文化 × Web3 行动路线：',en:'A step-by-step culture × Web3 roadmap, refined year by year:'},
+ linksT:{zh:'相关链接',en:'Links'},
+ riskWarn:{zh:'风险提示：本页为社区文化整理与科普，不构成投资建议；数字资产波动剧烈，请遵守当地法律，仅以可承受损失的资金参与。',en:'Risk notice: community culture & education only, not investment advice; crypto is highly volatile — follow local laws and use only funds you can afford to lose.'},
+ disc:{zh:'免责声明：本页面由社区志愿者整理，仅供文化教育与信息参考，不构成任何投资建议、要约或收益承诺。eCNH 为社区项目，无官方背景、无储备审计，价格可能剧烈波动甚至归零。各国家与城市的「友善度」评估基于公开资料的定性整理，会随监管变化而调整。参与任何 Web3 活动前，请自行完成合规、税务与安全尽调（DYOR）。中国大陆对虚拟货币相关业务活动有严格限制，请严格遵守当地法律。',
+       en:'Disclaimer: compiled by community volunteers for cultural education and reference only — not investment advice, an offer, or a return promise. eCNH is a community project with no official backing or reserve audit; its price can be extremely volatile or go to zero. The "friendliness" assessments are qualitative summaries of public information and may change with regulation. Do your own compliance, tax and security due diligence (DYOR) before participating. Mainland China strictly restricts virtual-currency business activities — comply with local law.'},
+};
+
+const ASIA=[
+ {c:['香港（中国）','Hong Kong, China'],cul:['全球最大离岸人民币中心，粤语歌、武侠片与商贸文化辐射全球华人','World\u2019s largest offshore-RMB hub; Cantopop, wuxia films and trading culture reach Chinese worldwide'],w3:['2025《稳定币条例》生效、VASP 发牌制度，CNH 流动性最充裕','Stablecoins Ordinance in force since 2025, VASP licensing, deepest CNH liquidity']},
+ {c:['新加坡','Singapore'],cul:['华人占约四分之三，华语通行，宗乡会馆与华商会网络发达','~3/4 ethnic Chinese, Mandarin widely spoken, dense clan-association networks'],w3:['MAS《支付服务法》+ 稳定币框架为全球最清晰之一，离岸人民币清算中心','MAS PS Act + stablecoin framework among the world\u2019s clearest; offshore-RMB clearing hub']},
+ {c:['台北（中国台湾）','Taipei, Taiwan, China'],cul:['保存完整的华夏民俗：庙宇、夜市、繁体字与中华美食','Well-preserved folk traditions: temples, night markets, traditional characters and cuisine'],w3:['加密渗透率高，社区活跃（监管仍在完善，需关注合规动态）','High crypto adoption and active community (regulations still maturing — follow compliance updates)']},
+ {c:['吉隆坡（马来西亚）','Kuala Lumpur, Malaysia'],cul:['700 余万华人，华文独中教育体系完整，春节气氛浓厚','7M+ ethnic Chinese, complete independent Chinese-school system, vibrant Spring Festival'],w3:['SC 监管沙盒与 DAX 数字资产框架有限开放，东盟人民币清算中心之一','SC sandbox and limited DAX framework; one of ASEAN\u2019s RMB clearing hubs']},
+ {c:['曼谷（泰国）','Bangkok, Thailand'],cul:['潮汕华人深度融入，唐人街耀华力路两百年繁华','Deep-rooted Teochew community; two centuries of Yaowarat Chinatown'],w3:['SEC 发牌交易所体系，2025 起 USDC/USDT 可作抵押品','SEC-licensed exchanges; USDC/USDT eligible collateral since 2025']},
+ {c:['东京（日本）','Tokyo, Japan'],cul:['横滨中华街、神户南京町百年华人社区，汉字文化圈','Century-old Chinatowns in Yokohama and Kobe; part of the Sinosphere'],w3:['2023 资金决济法（信托型稳定币），对持牌机构友好','2023 Payment Services Act (trust-type stablecoins), friendly to licensed institutions']},
+ {c:['首尔（韩国）','Seoul, South Korea'],cul:['汉字文化圈，儒家书堂传统与汉诗流传','Sinosphere heritage: Confucian academies and classical Chinese poetry'],w3:['加密渗透率全球前列（资本管制较严，须谨慎合规）','Among the highest crypto adoption globally (strict capital controls — compliance first)']},
+ {c:['雅加达（印度尼西亚）','Jakarta, Indonesia'],cul:['华人商圈与孔教会网络，如三宝垄郑和文化','Chinese business networks and Confucian associations; Zheng He heritage in Semarang'],w3:['监管由 Bappebti 移交 OJK，交易所持牌化推进','Oversight shifting from Bappebti to OJK; exchange licensing underway']},
+ {c:['马尼拉（菲律宾）','Manila, Philippines'],cul:['华人商总（FFCCCII）网络深厚，侨乡文化与华文学校','Strong FFCCCII Chinese-chamber networks, qiaoxiang culture and Chinese schools'],w3:['BSP 对虚拟资产服务商发牌，跨境汇款场景发达','BSP-licensed VASPs; well-developed remittance corridors']},
+ {c:['胡志明市（越南）','Ho Chi Minh City, Vietnam'],cul:['堤岸（Chợ Lớn）华人区历史悠久，粤语的传承','Historic Chợ Lớn Chinese district with living Cantonese heritage'],w3:['加密持有率全球领先，监管框架立法推进中','Leading crypto ownership rates; regulatory framework in progress']},
+];
+const WORLD=[
+ {c:['迪拜（阿联酋）','Dubai, UAE'],cul:['20 余万华人，「龙城」Dragon Mart 与春节庆典','200k+ Chinese residents; Dragon Mart and Spring-Festival galas'],w3:['VARA/ADGM 双牌照体系，一带一路人民币结算活跃','VARA/ADGM dual licensing; active Belt-and-Road RMB settlement']},
+ {c:['伦敦（英国）','London, UK'],cul:['百年华埠爵禄街，欧洲最老华人社区之一','Century-old Chinatown on Gerrard Street — one of Europe\u2019s oldest'],w3:['FCA 加密资产制度推进，金融人才密集','FCA crypto regime advancing; deep financial talent pool']},
+ {c:['温哥华（加拿大）','Vancouver, Canada'],cul:['列治文华语通行，华人占近半','Mandarin/Cantonese common in Richmond — nearly half ethnic Chinese'],w3:['CSA 监管清晰，持牌加密平台众多','Clear CSA rules; many licensed crypto platforms']},
+ {c:['多伦多（加拿大）','Toronto, Canada'],cul:['华埠、万锦华人商圈与华文媒体成熟','Mature Chinatown, Markham business districts and Chinese media'],w3:['CSA 框架下金融科技发达，流动性好','Strong FinTech and liquidity under CSA rules']},
+ {c:['悉尼（澳大利亚）','Sydney, Australia'],cul:['唐人街牌楼与春节庆典，华文教育普及','Chinatown gates and grand Lunar New Year festivals; widespread Chinese schooling'],w3:['AUSTRAC/ASIC 框架清晰，CARF 参与方','Clear AUSTRAC/ASIC framework; CARF participant']},
+ {c:['纽约（美国）','New York, USA'],cul:['百年曼哈顿唐人街与布鲁克林八大道华人区','Century-old Manhattan Chinatown and Brooklyn\u2019s 8th Avenue community'],w3:['GENIUS Act 2025 后框架渐明（境外发行人准入仍严，初期建议谨慎）','Clearer post-GENIUS Act 2025 landscape (foreign-issuer access still tight — start cautious)']},
+ {c:['旧金山（美国）','San Francisco, USA'],cul:['硅谷华人工程师社群，中华传统文化研究会众多','Silicon-Valley Chinese engineer community; many cultural associations'],w3:['Web3 技术创新中心，开发者生态全球领先','A global Web3 innovation center with a leading developer ecosystem']},
+ {c:['苏黎世/楚格（瑞士）','Zurich/Zug, Switzerland'],cul:['众多中企欧洲总部，中华文化活动常态举办','European HQs of many Chinese firms; regular cultural events'],w3:['DLT 法案 + FINMA，「加密谷」生态成熟','DLT Act + FINMA; mature Crypto Valley ecosystem']},
+ {c:['巴黎（法国）','Paris, France'],cul:['美丽城/十三区华人街，欧洲最大华人社区之一','Belleville & 13th arrondissement — among Europe\u2019s largest Chinese communities'],w3:['MiCA 全面生效，EMT 规则明确','MiCA fully in force; clear EMT rules']},
+ {c:['奥克兰（新西兰）','Auckland, New Zealand'],cul:['华人占比高，中秋春节庆典融入主流社会','High Chinese share; Mid-Autumn & Lunar New Year embraced by mainstream society'],w3:['FMA 监管透明，金融创新环境友善','Transparent FMA oversight; innovation-friendly environment']},
+];
+const PATHS=[
+ {t:['文化叙事上链','Culture narratives on-chain'],d:['把二十四节气、唐诗宋词、书法与非遗故事做成数字藏品（NFT），eCNH 作为文化价值的流通媒介，让文化「可收藏、可流转、可传承」。','Turn the 24 solar terms, Tang-Song poetry, calligraphy and intangible-heritage stories into NFTs, with eCNH as the circulating medium of cultural value — collectible, transferable, inheritable.']},
+ {t:['春节数字红包','Lunar New Year digital red packets'],d:['海外华人在春节用 eCNH 发链上红包，「礼轻情意重」，金额可大可小、链上可查，让年俗在 Web3 时代延续。','Send on-chain red packets with eCNH at Lunar New Year — small gifts, deep affection, traceable on-chain — keeping the tradition alive in the Web3 era.']},
+ {t:['华文教育 × 金融素养','Chinese education × financial literacy'],d:['在海外华文学校加入货币史、稳定币原理与链上安全的双语科普课，下一代既懂华夏文化，也懂数字时代的价值规律。','Add bilingual lessons on monetary history, stablecoin mechanics and on-chain safety to overseas Chinese schools — the next generation learns both heritage and digital-age value.']},
+ {t:['跨境家庭汇款','Cross-border family remittances'],d:['在合规通道下，探索东南亚与欧美华人向侨乡小额汇款的新方式：更快、更省、可追踪，惠及真实家庭。','Explore compliant small-value remittances from Chinese communities in ASEAN, Europe and the Americas back to hometowns — faster, cheaper, traceable, benefiting real families.']},
+ {t:['商会与宗亲网络','Chambers & clan networks'],d:['借助中华总商会、宗亲会、同乡会与华文媒体的信任网络，做合规、透明的社区共建，而非拉人头式推广。','Build compliant, transparent community projects on the trust networks of Chinese chambers, clan associations and media — never pyramid-style promotion.']},
+ {t:['透明公益与奖学基金','Transparent charity & scholarships'],d:['链上可追溯的捐赠实验：支持侨乡医疗、教育与养老，设立华夏文化奖学金，对接 eCNH DAO 的公益发愿。','Traceable on-chain giving for hometown healthcare, education and elderly care, plus Huaxia-culture scholarships — aligned with the eCNH DAO philanthropy pledge.']},
+];
+const CARRIERS=[
+ ['春节与红包','Spring Festival & red packets','年俗即场景：链上红包、压岁钱'],
+ ['二十四节气','24 solar terms','节气 NFT 日历与农时文化'],
+ ['唐诗宋词','Tang & Song poetry','诗词数字藏品与双语诵读'],
+ ['书法','Calligraphy','名家碑帖上链与临摹社区'],
+ ['国画','Chinese painting','山水长卷分幅收藏'],
+ ['中华美食','Chinese cuisine','美食街区支付试点'],
+ ['茶文化','Tea culture','茶山溯源与茶票通证'],
+ ['中医药','TCM','文化传播与康养社群'],
+ ['太极与功夫','Tai Chi & Kung Fu','武术教学全球通证激励'],
+ ['汉服与国潮','Hanfu & Guochao','国潮市集数字门票'],
+ ['妈祖与关帝信俗','Mazu & Guandi heritage','东南亚信俗文化节'],
+ ['舞龙舞狮','Dragon & lion dance','节庆巡演众筹与打赏'],
+];
+const PRIN=[
+ {t:['和而不同','Harmony in diversity'],d:['尊重每个国家的监管、法律与文化习惯，先合规、后发展；不向受限地区推广。','Respect each country\u2019s laws, regulations and customs — compliance first; never promote to restricted regions.']},
+ {t:['各美其美，美美与共','Beauty shared by all'],d:['华夏文化与在地文化互相欣赏、互相滋养，做文明互鉴的桥梁，不做文化输出的强迫。','Huaxia and local cultures appreciate and nourish each other — a bridge of mutual learning, never forced assimilation.']},
+ {t:['义利并举','Righteousness and benefit together'],d:['社区发展优先于商业利益，公益写入利润分配；不喊单、不承诺收益、不拉人头。','Community before commerce, charity written into profit allocation — no shilling, no return promises, no pyramid promotion.']},
+ {t:['透明共建','Transparent co-building'],d:['数据公开、治理投票、多签金库、时间锁，让每一位参与者都看得见规则。','Public data, governance voting, multisig treasury and timelocks — rules visible to every participant.']},
+ {t:['长期主义','Long-termism'],d:['以千年文明尺度思考，以脚下小步实践：千里之行，始于足下。','Think at civilization scale, act in small steps — a journey of a thousand miles begins beneath your feet.']},
+];
+const ROAD=[
+ {y:'2026',t:['文化奠基','Cultural foundation'],d:['上线双语文化内容库与 300 句语料，建立 Asia10/World10 城市友好度观察清单。','Launch the bilingual culture library and 300-quote corpus; establish the Asia10/World10 friendliness watchlist.']},
+ {y:'2027',t:['节点与红包','Nodes & red packets'],d:['在有条件的友善城市落地文化社区节点，试点春节数字红包与华校金融素养课。','Land culture community nodes in friendly cities; pilot digital red packets and Chinese-school literacy classes.']},
+ {y:'2028',t:['汇款与公益','Remittance & charity'],d:['合规通道下试点侨乡小额汇款与链上透明捐赠，发布年度文化公益报告。','Pilot compliant hometown remittances and on-chain giving; publish an annual culture-charity report.']},
+ {y:'2029',t:['互鉴深化','Deepening exchange'],d:['与在地文化节庆合作（春节庙会、中秋游园），华夏文化与各国文化互展互鉴。','Co-host local festivals (temple fairs, Mid-Autumn gardens) — mutual exhibitions between Huaxia and local cultures.']},
+ {y:'2030',t:['地球村共荣','Global Village prosperity'],d:['形成「文化+价值」双循环的地球村网络，让天涯若比邻成为日常。','Form a Global Village network with twin loops of culture and value — making the world one neighborhood.']},
+];
+const LINKS=[
+ ['Orb Markets · eCNH 行情','Orb Markets · eCNH chart','https://orbmarkets.io/token/'+CA],
+ ['UCOIN eCNH 页面','UCOIN eCNH page','https://ucoingroup.github.io/eCNH/'],
+ ['eCNH Agent OPC 主站','eCNH Agent OPC main site','ecnhagent-opc2025.html'],
+ ['Solscan 合约查验','Solscan verification','https://solscan.io/token/'+CA],
+ ['联系邮箱 earthcnh@gmail.com','Contact: earthcnh@gmail.com','mailto:earthcnh@gmail.com'],
+];
+
+const $=id=>document.getElementById(id);
+function renderNav(){
+ $('nav').innerHTML=Object.entries(I.nav).map(([k,v])=>`<span class="chip" onclick="document.getElementById('s-${k}').scrollIntoView({behavior:'smooth'})">${L(v)}</span>`).join('');
+}
+function cityCard(o,i){
+ return `<div class="card"><span class="rank">${i+1}</span><h3 style="display:inline">${L(o.c)}</h3>
+ <ul class="tick"><li><b>${I.culL[lang]}:</b> ${L(o.cul)}</li><li><b>${I.w3L[lang]}:</b> ${L(o.w3)}</li></ul></div>`;
+}
+function renderMain(){
+ const n=I.nav;
+ let h=`
+ <div class="hero">
+  <h1>${L(I.heroT)}<br><em>${L(I.heroT2)}</em></h1>
+  <p class="sub">${L(I.heroSub)}</p>
+  <div class="ca-box"><span>${I.caLabel[lang]}:</span><span>${CA}</span><button onclick="copyCA()">${L(I.copy)}</button></div>
+  <div class="stats"><span class="stat">🌏 <b>10</b> ${L(I.statA)}</span><span class="stat">🌍 <b>10</b> ${L(I.statW)}</span><span class="stat">🛤 <b>6</b> ${L(I.statC)}</span><span class="stat">🏮 <b>12</b> ${L(I.statD)}</span></div>
+ </div>
+
+ <section id="s-top"><h2>${lang==='zh'?'对华夏文化及 eCNH Web3 最友善的 10+10 国家与城市':'Top-Friendly 10+10 Countries & Cities for Huaxia Culture and eCNH Web3'}<span class="en">Asia 10 + Global Village 10</span></h2>
+  <p class="intro">${L(I.asiaIntro)}</p>
+  <div class="grid g2">${ASIA.map((o,i)=>cityCard(o,i)).join('')}</div>
+  <p class="intro" style="margin-top:22px">${L(I.worldIntro)}</p>
+  <div class="grid g2">${WORLD.map((o,i)=>cityCard(o,i)).join('')}</div>
+  <div class="risk">⚖ ${L(I.riskWarn)}</div>
+ </section>
+
+ <section id="s-path"><h2>${L(n.path)}<span class="en">Huaxia Culture × eCNH</span></h2><p class="intro">${L(I.pathIntro)}</p>
+  <div class="grid g2">${PATHS.map((p,i)=>`<div class="card"><span class="tag">${i+1}</span><h3>${L(p.t)}</h3><p>${L(p.d)}</p></div>`).join('')}</div>
+ </section>
+
+ <section id="s-carrier"><h2>${L(n.carrier)}<span class="en">12 Cultural Carriers</span></h2><p class="intro">${L(I.carrierIntro)}</p>
+  <div class="grid g4">${CARRIERS.map(c=>`<div class="card"><h3>${lang==='zh'?c[0]:c[1]}</h3><p>${lang==='zh'?c[2]:c[2]}</p></div>`).join('')}</div>
+  <div class="motto"><b>各美其美，美人之美，美美与共，天下大同。</b><br>四海之内皆兄弟，天涯若比邻。</div>
+  <div class="subst">${lang==='zh'?'Cherish your own beauty, appreciate others\u2019, share beauty together — the world as one. Within the four seas, all are brothers.':'Cherish your own beauty, appreciate others\u2019, share beauty together — the world as one. Within the four seas, all are brothers.'}</div>
+ </section>
+
+ <section id="s-prin"><h2>${L(n.prin)}<span class="en">Five Principles of Common Development</span></h2><p class="intro">${L(I.prinIntro)}</p>
+  <div class="grid g3">${PRIN.map((p,i)=>`<div class="card"><span class="rank">${i+1}</span><h3 style="display:inline">${L(p.t)}</h3><p>${L(p.d)}</p></div>`).join('')}</div>
+ </section>
+
+ <section id="s-road"><h2>${L(n.road)}<span class="en">Culture × Web3 Roadmap</span></h2><p class="intro">${L(I.roadIntro)}</p>
+  <div class="grid g3">${ROAD.map(r=>`<div class="card"><span class="tag">${r.y}</span><h3>${L(r.t)}</h3><p>${L(r.d)}</p></div>`).join('')}</div>
+  <div class="motto"><b>为天地立心，为生民立命，为往圣继绝学，为万世开太平。</b></div>
+  <div class="subst">${lang==='zh'?'To establish a heart for Heaven and Earth, to secure life for the people, to continue the sages\u2019 learning, to open peace for all generations.':'To establish a heart for Heaven and Earth, to secure life for the people, to continue the sages\u2019 learning, to open peace for all generations.'}</div>
+ </section>`;
+ $('main').innerHTML=h;
+}
+function renderFooter(){
+ $('footer').innerHTML=`
+  <h3>${I.caLabel[lang]}</h3>
+  <div class="f-ca">${CA}<br><button class="langbtn" style="margin-top:8px" onclick="copyCA()">${L(I.copy)}</button></div>
+  <h3>${L(I.linksT)}</h3>
+  <div class="links">${LINKS.map(l=>`<div class="linkcard"><div><b>${lang==='zh'?l[0]:l[1]}</b><div class="u">${l[2]}</div></div><a href="${l[2]}" target="_blank" rel="noopener">↗</a></div>`).join('')}</div>
+  <div class="disc"><b>${lang==='zh'?'免责声明':'Disclaimer'}</b><br>${L(I.disc)}</div>
+  <p style="text-align:center;color:var(--sub);font-size:.75rem;margin-top:16px">华夏文化 × eCNH · ${lang==='zh'?'亚洲与地球村的共同发展':'Asia & Global Village Common Development'} · 2026–2030</p>`;
+}
+function copyCA(){
+ const done=()=>{const b=document.querySelector('.ca-box button');if(b){b.textContent=L(I.copied);setTimeout(()=>b.textContent=L(I.copy),1500);}};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(CA).then(done).catch(()=>fallbackCopy(done));}
+ else fallbackCopy(done);
+}
+function fallbackCopy(cb){const ta=document.createElement('textarea');ta.value=CA;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);cb();}
+function applyTheme(){
+ document.documentElement.setAttribute('data-theme',theme);
+ localStorage.setItem('hx-theme',theme);
+ document.querySelectorAll('.tdot').forEach(d=>d.classList.toggle('on',d.dataset.t===theme));
+}
+function setLang(l){
+ lang=l;localStorage.setItem('hx-lang',l);
+ $('langBtn').textContent=l==='zh'?'EN':'中文';
+ document.documentElement.lang=l==='zh'?'zh-CN':'en';
+ renderNav();renderMain();renderFooter();
+}
+document.querySelectorAll('.tdot').forEach(d=>d.onclick=()=>{theme=d.dataset.t;applyTheme();});
+$('langBtn').onclick=()=>setLang(lang==='zh'?'en':'zh');
+$('topBtn').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+applyTheme();
+$('langBtn').textContent=lang==='zh'?'EN':'中文';
+renderNav();renderMain();renderFooter();
+</script>
+</body>
+</html>
