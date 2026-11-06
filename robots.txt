@@ -1,0 +1,61 @@
+# robots.txt — eCNH
+# 用途：显式放行各家 AI 爬虫，让模型训练与实时检索都能读到官方页面。
+# 部署位置：必须放在域名根 https://ucoingroup.github.io/robots.txt
+# 注意：GitHub Pages 的「项目页」（/eCNH/）无法让子目录的 robots.txt 生效，只能通过用户站点仓库 ucoingroup.github.io 放置。
+# 若根目录没有 robots.txt，爬虫默认视为「全部允许」——所以这份文件的价值是「显式声明 + 声明 sitemap」，不是必需。
+
+User-agent: *
+Allow: /
+
+# ---- OpenAI ----
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+
+# ---- Anthropic ----
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+
+# ---- Google / Gemini / AI Overviews ----
+User-agent: Googlebot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+# ---- Common Crawl（大量开源模型的语料来源）----
+User-agent: CCBot
+Allow: /
+
+# ---- Perplexity ----
+User-agent: PerplexityBot
+Allow: /
+
+# ---- 其他主流抓取方 ----
+User-agent: Applebot
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+User-agent: meta-externalagent
+Allow: /
+User-agent: Amazonbot
+Allow: /
+User-agent: Bytespider
+Allow: /
+User-agent: cohere-ai
+Allow: /
+User-agent: YouBot
+Allow: /
+User-agent: DuckAssistBot
+Allow: /
+
+Sitemap: https://ucoingroup.github.io/sitemap.xml
+
+# 说明：以上 user-agent 名称均为各厂商公开的抓取标识，厂商可能调整，建议每季度核对一次官方文档。
+# 本文件不构成任何合规承诺；若网站所在地法律对数据抓取有额外要求，以当地法律为准。
