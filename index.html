@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh" data-theme="blue" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>eCNH · Earth CNH ｜ 离岸华夏币 · Offshore Chinese Yuan</title>
+<meta name="description" content="eCNH 是运行在 Solana 上的社区代币，以 1 eCNH ≈ 1 CNH 为长期锚定目标，连接华夏文明与星际文明叙事。30 种语言，三种主题。">
+<meta name="theme-color" content="#2f6bff">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f5f7fb;--paper:#fff;--paper2:#f8fafd;--text:#131b2a;--muted:#5c697d;--line:#e3e8f1;
+  --acc:#2f6bff;--acc2:#7aa2ff;--soft:rgba(47,107,255,.08);--shadow:0 8px 28px rgba(20,40,90,.07);
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+}
+html[data-theme="green"]{--bg:#f4faf6;--paper:#fff;--paper2:#f6fbf8;--text:#12241a;--muted:#576b60;--line:#dfeee5;--acc:#1f9c58;--acc2:#5fd39a;--soft:rgba(31,156,88,.09)}
+html[data-theme="classic"]{--bg:#faf6ed;--paper:#fffdf7;--paper2:#f9f3e8;--text:#2b2118;--muted:#7a6a54;--line:#eadfcc;--acc:#a8332a;--acc2:#d08a72;--soft:rgba(168,51,42,.07);--font:"Songti SC","Noto Serif SC",Georgia,"Microsoft YaHei",serif}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.78;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html[lang="zh"] .en{display:none!important}
+html:not([lang="zh"]) .zh{display:none!important}
+a{color:var(--acc);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.bar{position:sticky;top:0;z-index:80;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.barin{max-width:1100px;margin:0 auto;padding:9px 20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.logo{font-weight:800;font-size:.9rem;display:flex;align-items:center;gap:8px;letter-spacing:.3px}
+.logo i{width:9px;height:9px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 4px var(--soft)}
+.logo small{font-weight:600;color:var(--muted);font-size:.72rem;letter-spacing:0}
+.sp{flex:1}
+select.lang{border:1px solid var(--line);background:var(--paper);color:var(--text);border-radius:999px;padding:5px 10px;font-size:.76rem;font-family:inherit;font-weight:600;cursor:pointer;max-width:190px}
+select.lang:focus{outline:2px solid var(--soft)}
+.dots{display:flex;gap:6px;padding-left:8px;border-left:1px solid var(--line)}
+.dot{width:13px;height:13px;border-radius:50%;border:2px solid transparent;cursor:pointer}
+.dot[data-t="blue"]{background:#2f6bff}.dot[data-t="green"]{background:#1f9c58}.dot[data-t="classic"]{background:#a8332a}
+.dot.on{border-color:var(--text);transform:scale(1.12)}
+
+.wrap{max-width:1100px;margin:0 auto;padding:0 22px}
+header.hero{padding:64px 0 26px;position:relative}
+.kicker{font-size:.72rem;letter-spacing:2.6px;font-weight:800;color:var(--acc);text-transform:uppercase;margin-bottom:14px}
+h1{font-size:clamp(2.4rem,7vw,4rem);line-height:1.06;font-weight:800;letter-spacing:-1.4px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+h1 .coh{font-size:clamp(.9rem,2vw,1.15rem);font-weight:700;color:var(--muted);letter-spacing:0}
+.sub{margin-top:16px;max-width:760px;font-size:1.02rem;color:var(--muted)}
+.ca{margin-top:22px;display:flex;flex-wrap:wrap;align-items:center;gap:9px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:11px 14px;box-shadow:var(--shadow);max-width:100%}
+.ca b{font-size:.7rem;letter-spacing:1.2px;color:var(--muted);text-transform:uppercase}
+.ca code{font-family:ui-monospace,Menlo,monospace;font-size:.79rem;word-break:break-all;color:var(--text)}
+.btn{border:1px solid var(--line);background:var(--paper);color:var(--text);border-radius:999px;padding:7px 15px;font-size:.77rem;font-weight:700;cursor:pointer;font-family:inherit;transition:.2s;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{border-color:var(--acc);color:var(--acc);text-decoration:none}
+.btn.solid{background:var(--acc);color:#fff;border-color:var(--acc)}
+.btn.solid:hover{filter:brightness(1.08);color:#fff}
+.cta{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}
+
+.banner{margin:20px auto 0;max-width:1100px;padding:0 22px}
+.banner div{background:var(--soft);border-left:3px solid var(--acc);border-radius:0 10px 10px 0;padding:10px 16px;font-size:.82rem;color:var(--muted)}
+.banner b{color:var(--acc)}
+
+section{padding:34px 0;border-top:1px solid var(--line)}
+section:first-of-type{border-top:none}
+h2{font-size:1.3rem;font-weight:800;display:flex;align-items:center;gap:11px;margin-bottom:8px;letter-spacing:-.2px}
+h2::before{content:"";width:5px;height:21px;border-radius:3px;background:var(--acc)}
+h3{font-size:1rem;font-weight:800;margin:20px 0 7px}
+p.body{color:var(--muted);font-size:.94rem;margin-top:9px;max-width:860px}
+p.body strong{color:var(--text)}
+blockquote{margin:12px 0;padding:12px 18px;border-left:3px solid var(--acc2);background:var(--paper2);border-radius:0 10px 10px 0;color:var(--muted);font-size:.9rem}
+.grid{display:grid;gap:12px;margin-top:16px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:17px 19px;box-shadow:var(--shadow)}
+.card .lbl{font-size:.7rem;font-weight:800;letter-spacing:1.2px;color:var(--acc);text-transform:uppercase}
+.card .val{font-size:1.02rem;font-weight:800;margin-top:5px;line-height:1.45;word-break:break-word}
+.card .hint{font-size:.78rem;color:var(--muted);margin-top:5px}
+.mono{font-family:ui-monospace,Menlo,monospace;font-size:.84rem}
+ul.clean{list-style:none;margin-top:10px}
+ul.clean li{position:relative;padding-left:19px;color:var(--muted);font-size:.92rem;margin-bottom:6px}
+ul.clean li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:2px;background:var(--acc);opacity:.7}
+
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:13px;background:var(--paper);box-shadow:var(--shadow);margin-top:16px}
+table{width:100%;border-collapse:collapse;font-size:.85rem;min-width:520px}
+th{text-align:left;font-size:.68rem;letter-spacing:1px;text-transform:uppercase;color:var(--muted);padding:11px 14px;background:var(--paper2);border-bottom:1px solid var(--line);font-weight:700;white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--paper2)}
+
+.wish{background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:20px 22px;box-shadow:var(--shadow);margin-top:14px}
+.wish p{font-size:.9rem;color:var(--muted);line-height:2.05}
+.quotes{margin-top:14px;display:grid;gap:8px}
+.quotes div{font-size:.92rem;color:var(--text);border-left:3px solid var(--acc2);padding-left:13px}
+
+footer{border-top:1px solid var(--line);margin-top:16px;padding:26px 0 60px;font-size:.8rem;color:var(--muted)}
+footer .disc{margin-top:14px;padding:15px 18px;background:var(--paper);border:1px solid var(--line);border-radius:12px;font-size:.79rem;line-height:1.9}
+footer code{font-family:ui-monospace,Menlo,monospace;word-break:break-all;background:var(--paper2);border:1px solid var(--line);border-radius:5px;padding:1px 6px}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--acc);color:#fff;padding:9px 20px;border-radius:999px;font-size:.8rem;font-weight:700;opacity:0;pointer-events:none;transition:.25s;z-index:99}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+[dir="rtl"] body{direction:rtl}
+[dir="rtl"] h1{direction:ltr}
+[dir="rtl"] .wish p{line-height:2.2}
+
+@media(max-width:860px){.g3,.g2{grid-template-columns:1fr}header.hero{padding:40px 0 18px}section{padding:26px 0}}
+@media print{.bar,.cta,.toast{display:none}body{background:#fff}}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="barin">
+    <div class="logo"><i></i>eCNH <small>Earth CNH · 离岸华夏币</small></div>
+    <div class="sp"></div>
+    <select class="lang" id="langSel" aria-label="Language"></select>
+    <div class="dots">
+      <span class="dot on" data-t="blue" onclick="setTheme('blue')" title="Tech Blue"></span>
+      <span class="dot" data-t="green" onclick="setTheme('green')" title="Apple Green"></span>
+      <span class="dot" data-t="classic" onclick="setTheme('classic')" title="Chinese Classic"></span>
+    </div>
+  </div>
+</div>
+
+<header class="hero wrap">
+  <div class="kicker" data-i18n="k">星际文明协议 · Earth Civilization Protocol</div>
+  <h1>eCNH <span class="coh" data-i18n="t">离岸华夏币</span></h1>
+  <p class="sub" data-i18n="s">连接华夏文明三千年与未来三千年的星际文明共同体。</p>
+
+  <div class="ca">
+    <b>CA</b>
+    <code id="caText">7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5</code>
+    <button class="btn" id="copyBtn" onclick="copyCA()">复制</button>
+  </div>
+  <div class="cta">
+    <a class="btn solid" href="https://orbmarkets.io/token/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5" target="_blank" rel="noopener">Orb Markets ↗</a>
+    <a class="btn" href="https://solscan.io/token/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5" target="_blank" rel="noopener">Solscan ↗</a>
+    <a class="btn" href="https://app.meteora.ag/dammv2/Ac2bwg4ByZr2FePpuKKdjGLpfRMenFsjgt17St9PfBKC" target="_blank" rel="noopener">DAO POOL 2026 ↗</a>
+  </div>
+</header>
+
+<div class="banner"><div id="langNote"></div></div>
+
+<section class="wrap">
+  <div class="grid g3">
+    <div class="card"><div class="lbl"><span class="zh">公链</span><span class="en">Chain</span></div><div class="val">Solana · SPL</div><div class="hint"><span class="zh">由 Solscan 与 Orb 链接可推定</span><span class="en">Inferred from Solscan and Orb links</span></div></div>
+    <div class="card"><div class="lbl"><span class="zh">总供应量</span><span class="en">Total supply</span></div><div class="val">100,000,000,000,000</div><div class="hint"><span class="zh">100 万亿 eCNH</span><span class="en">100 trillion eCNH</span></div></div>
+    <div class="card"><div class="lbl"><span class="zh">锚定目标</span><span class="en">Peg target</span></div><div class="val">1 eCNH ≈ 1 CNH</div><div class="hint"><span class="zh">长期目标，非当前兑换承诺</span><span class="en">Long-term target, not a redemption promise</span></div></div>
+    <div class="card"><div class="lbl"><span class="zh">允许波动</span><span class="en">Allowed band</span></div><div class="val">±1–3%</div><div class="hint"><span class="zh">每日 / 每月</span><span class="en">Daily / monthly</span></div></div>
+    <div class="card"><div class="lbl"><span class="zh">年增发上限</span><span class="en">Annual growth cap</span></div><div class="val">0.03–3%</div><div class="hint"><span class="zh">不超过总量的 0.03–3%</span><span class="en">Of total supply, per year</span></div></div>
+    <div class="card"><div class="lbl"><span class="zh">治理</span><span class="en">Governance</span></div><div class="val">DAO</div><div class="hint"><span class="zh">eCNH 星际联盟治理小组</span><span class="en">Interstellar Alliance Governance Group</span></div></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2 data-i18n="s1">稳定机制</h2>
+  <p class="body"><span class="zh">未来目标稳定机制，Andromeda <strong>1 eCNH ≈ 1 eCNH ≈ 1 CNH</strong>。</span><span class="en">Stability mechanism — the Andromeda standard: <strong>1 eCNH ≈ 1 eCNH ≈ 1 CNH</strong>.</span></p>
+  <p class="body"><span class="zh">未来目标 <strong>1 eCNH ≈ 1 CNH</strong>，每日 / 每月允许 <strong>±1–3% 波动</strong>，同时通过与 eaco 和 USDC、USDT、PYUSD、EURC 等稳定币配对；等 <strong>100 万亿 eCNH</strong> 全部流通之后，后续可以开通 SOL、BTC、ETH、BNB、AVAX、DOGE、TRX 等的兑换流通联动机制，确保价值稳定性。</span><span class="en">The long-term target is <strong>1 eCNH ≈ 1 CNH</strong>, with <strong>±1–3%</strong> daily/monthly fluctuation allowed, paired against stablecoins such as eaco, USDC, USDT, PYUSD and EURC. Once the full <strong>100 trillion eCNH</strong> is in circulation, exchange-linkage mechanisms with SOL, BTC, ETH, BNB, AVAX, DOGE, TRX and others can be enabled to support price stability.</span></p>
+  <div class="grid g3">
+    <div class="card"><div class="lbl">01</div><div class="val"><span class="zh">锚定目标</span><span class="en">Peg target</span></div><div class="hint"><span class="zh">长期把 1 eCNH 拉近 1 CNH，是目标而非承诺</span><span class="en">Move 1 eCNH toward 1 CNH — a target, not a commitment</span></div></div>
+    <div class="card"><div class="lbl">02</div><div class="val"><span class="zh">波动区间</span><span class="en">Fluctuation band</span></div><div class="hint"><span class="zh">±1–3% 被视为正常波动，无强制干预机制</span><span class="en">±1–3% treated as normal; no enforced intervention mechanism</span></div></div>
+    <div class="card"><div class="lbl">03</div><div class="val"><span class="zh">联动条件</span><span class="en">Linkage condition</span></div><div class="hint"><span class="zh">100 万亿全部流通后才开通多币种兑换联动</span><span class="en">Multi-asset linkage only after full 100T circulation</span></div></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2 data-i18n="s2">核心理念</h2>
+
+  <h3><span class="zh">宇宙 eCNH 星际文明连接</span><span class="en">Interstellar civilization connection via eCNH</span></h3>
+  <p class="body"><span class="zh">通过 eCNH 作为媒介，连接华夏文明 3000 年的历史底蕴与未来 3000 年的星际文明，形成跨越时空的文明共同体。</span><span class="en">Using eCNH as a medium, connect 3,000 years of Chinese civilization's heritage with 3,000 years of future interstellar civilization, forming a timeless community of civilizations across space and time.</span></p>
+
+  <h3><span class="zh">游戏融合</span><span class="en">Game integration</span></h3>
+  <p class="body"><span class="zh">探索作为全球 10 大星际科幻探索战争游戏的通用游戏币，在虚拟世界中建立统一的经济体系。</span><span class="en">As the universal in-game currency for one of the top 10 global interstellar sci-fi exploration and war games, eCNH establishes a unified economic system in virtual worlds.</span></p>
+
+  <blockquote><span class="zh">earth &amp; Global Humanity Builds and Shares eCNH Together ｜ 全球人类共建共享 eCNH</span><span class="en">earth &amp; Global Humanity Builds and Shares eCNH Together</span></blockquote>
+</section>
+
+<section class="wrap">
+  <h2 data-i18n="s3">AI 驱动与自动更新</h2>
+  <div class="grid g2">
+    <div class="card">
+      <div class="lbl"><span class="zh">AI 驱动</span><span class="en">AI-driven</span></div>
+      <p class="body" style="margin-top:8px"><span class="zh">每天通过全球 10 大开源 AI 的公开免费 API 真实数据，更新 eCNH 的各项功能发展参考方案，确保系统智能演进。</span><span class="en">Real-time data from the public, free APIs of the top 10 global open-source AI models updates eCNH's functional development plans daily, supporting continuous evolution.</span></p>
+    </div>
+    <div class="card">
+      <div class="lbl"><span class="zh">自动更新机制</span><span class="en">Auto-update</span></div>
+      <p class="body" style="margin-top:8px"><span class="zh">每个小时自动更新，比如 <strong>1 点 01 分、9 点 01 分、17 点 01 分</strong>的时候自动更新 eCNH 相关数据和功能发展方案。</span><span class="en">eCNH data and development plans update hourly — for example at <strong>01:01, 09:01 and 17:01</strong> — to keep the system real-time adaptable.</span></p>
+    </div>
+  </div>
+  <p class="body"><span class="zh">说明：这是项目方自述的运营方式，属于方案描述，不是技术保证；具体更新以仓库提交与站点显示为准。</span><span class="en">Note: this describes the project team's own operating approach. It is a plan description, not a technical guarantee; actual updates are best verified via repository commits and the live site.</span></p>
+</section>
+
+<section class="wrap">
+  <h2 data-i18n="s4">经济稳定性</h2>
+  <p class="body"><span class="zh">每年 eCNH 增加流通量不超过总量的 <strong>0.03–3%</strong>，防止通胀通缩，维护经济系统的稳定运行。</span><span class="en">Annual eCNH circulation growth is capped at <strong>0.03–3%</strong> of total supply to prevent inflation or deflation and keep the economy stable.</span></p>
+  <p class="body"><span class="zh">按 100 万亿总量折算，年度新增流通量约在 <strong>300 亿至 3 万亿 eCNH</strong> 之间。区间跨度达 100 倍，说明这是原则性上限而非精确公式。</span><span class="en">Against a 100 trillion supply, that implies roughly <strong>30 billion to 3 trillion eCNH</strong> of new circulation per year. A 100× range indicates a principled ceiling rather than a precise formula.</span></p>
+</section>
+
+<section class="wrap">
+  <h2 data-i18n="s5">社区治理</h2>
+  <p class="body"><span class="zh">探索建立 eCNH 星际联盟治理网友小组，通过 <strong>DAO 机制</strong>实现社区自治，确保系统的民主决策和透明运行。</span><span class="en">Exploring the eCNH Interstellar Alliance Governance Group, using <strong>DAO mechanisms</strong> for community-driven, democratic and transparent decision-making.</span></p>
+  <ul class="clean">
+    <li><span class="zh"><strong>ecnh dao group 2027</strong>：长期治理与愿文小组</span><span class="en"><strong>ecnh dao group 2027</strong>: long-term governance and aspiration group</span></li>
+    <li><span class="zh"><strong>distributed eCNH DAO game POOL 2026</strong>：Meteora 上的分布式流动性池，游戏与 DAO 的交汇点</span><span class="en"><strong>distributed eCNH DAO game POOL 2026</strong>: a distributed pool on Meteora where the game and the DAO meet</span></li>
+  </ul>
+</section>
+
+<section class="wrap">
+  <h2 data-i18n="s6">核心优势</h2>
+  <h3><span class="zh">全球化与星际化</span><span class="en">Globalization and interstellarization</span></h3>
+  <p class="body"><span class="zh">即使星球探索大战，或者发生类似清朝、国民党、苏联等垮台的事情等，并不影响 eCNH 的永久发展和东南亚 + 中东中亚 + 非洲 + 全球以及星际宇宙流通使用。</span><span class="en">Even in the face of interstellar exploration wars, or collapses akin to the Qing Dynasty, Nationalist China or the Soviet Union, eCNH's development and circulation across Southeast Asia, the Middle East, Central Asia, Africa, the wider world and the interstellar universe remain unaffected.</span></p>
+  <p class="body"><span class="zh">说明：以上为项目方原文表述，属于叙事性主张，不是对未来的保证，也不构成任何政治判断。</span><span class="en">Note: the above is the project team's original wording — a narrative claim, not a guarantee about the future, and not a political statement.</span></p>
+</section>
+
+<section class="wrap">
+  <h2 data-i18n="s7">生态与链接</h2>
+  <p class="body"><span class="zh">以下平台均为第三方，与 eCNH 社区无隶属关系；池子深度有限，交易前请核对合约地址并设置滑点上限。</span><span class="en">All platforms below are third parties and not affiliated with the eCNH community. Liquidity is thin — verify the contract address and set a slippage cap before trading.</span></p>
+  <div class="tblwrap">
+    <table>
+      <thead><tr><th><span class="zh">类别</span><span class="en">Type</span></th><th><span class="zh">名称</span><span class="en">Name</span></th><th><span class="zh">链接</span><span class="en">Link</span></th></tr></thead>
+      <tbody>
+        <tr><td><span class="zh">官网</span><span class="en">Site</span></td><td>eCNH</td><td><a href="https://ucoingroup.github.io/eCNH/" target="_blank" rel="noopener">ucoingroup.github.io/eCNH</a></td></tr>
+        <tr><td><span class="zh">浏览器</span><span class="en">Explorer</span></td><td>Solscan</td><td><a href="https://solscan.io/token/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5" target="_blank" rel="noopener">7GQnq…DHRH</a></td></tr>
+        <tr><td><span class="zh">行情</span><span class="en">Chart</span></td><td>Orb Markets</td><td><a href="https://orbmarkets.io/token/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5" target="_blank" rel="noopener">orbmarkets.io</a></td></tr>
+        <tr><td><span class="zh">流动性池</span><span class="en">Pool</span></td><td>eCNH-PYUSD · Orca</td><td><a href="https://www.orca.so/pools/4RdJnPy3nb821SqZdJZmvD4aixCVsjzcbhiLL32iTuRS" target="_blank" rel="noopener">Orca ↗</a></td></tr>
+        <tr><td><span class="zh">流动性池</span><span class="en">Pool</span></td><td>eCNH-USDC · Orca</td><td><a href="https://www.orca.so/pools/BHf1yCvj6qh2E1y2JLrjesP7RRC8XjBN3FyHeq45LnBZ" target="_blank" rel="noopener">Orca ↗</a></td></tr>
+        <tr><td><span class="zh">流动性池</span><span class="en">Pool</span></td><td>DAO game POOL 2026 · Meteora</td><td><a href="https://app.meteora.ag/dammv2/Ac2bwg4ByZr2FePpuKKdjGLpfRMenFsjgt17St9PfBKC" target="_blank" rel="noopener">Meteora ↗</a></td></tr>
+        <tr><td><span class="zh">流动性池</span><span class="en">Pool</span></td><td>eCNH / WBTC · Orca</td><td><a href="https://www.orca.so/pools/8y1GD4aVZjJbqc2PL8BZfh1k6shJzJ4h9Ky2qXD5SEE2" target="_blank" rel="noopener">Orca ↗</a></td></tr>
+        <tr><td><span class="zh">流动性池</span><span class="en">Pool</span></td><td>eCNH-BNB</td><td><a href="https://orbmarkets.io/address/9ABB49kmPwjKdbzepwDKyQXwG6TuAmxdzduaAVqs9C48" target="_blank" rel="noopener">Orb ↗</a></td></tr>
+        <tr><td><span class="zh">流动性池</span><span class="en">Pool</span></td><td>SOL-eCNH</td><td><a href="https://orbmarkets.io/address/EzNXT9LEDRX33t1S7wEbKqvPJUAFJXNgXBzH2QF17aXF" target="_blank" rel="noopener">Orb ↗</a></td></tr>
+        <tr><td><span class="zh">流动性池</span><span class="en">Pool</span></td><td>eCNH-EURC</td><td><a href="https://orbmarkets.io/address/6atEtNWMfLUPuzMoDMCGfmvhKjTvQYEPSnGWqXreH3sT" target="_blank" rel="noopener">Orb ↗</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2><span class="zh">背景知识</span><span class="en">Background</span></h2>
+  <h3><span class="zh">仙女座星系</span><span class="en">The Andromeda Galaxy</span></h3>
+  <p class="body"><span class="zh">仙女座星系（Andromeda Galaxy，编号 M31）是我们银河系最近的巨大邻居，也是人类肉眼可见的最遥远天体之一。它不仅是天文学研究的里程碑，也是未来银河系命运的关键角色；它的庞大、接近与结构复杂性，使其成为星际文明设定中最常被引用的真实星系之一。</span><span class="en">The Andromeda Galaxy (M31) is the nearest giant neighbour of our Milky Way and one of the most distant objects visible to the naked eye. It is both a milestone of astronomy and a key player in the Milky Way's far future; its size, proximity and structural complexity make it the most frequently cited real galaxy in interstellar-civilization settings.</span></p>
+  <h3><span class="zh">离岸华夏币（CNH）</span><span class="en">Offshore renminbi (CNH)</span></h3>
+  <p class="body"><span class="zh">离岸华夏币（CNH）与美元（USD）的汇率，是指在中国大陆以外的市场上华夏币与美元之间的兑换比率。离岸华夏币指在境外交易的华夏币，通常通过香港、新加坡等国际金融中心流通；岸内华夏币（CNY）则指在中国境内使用的华夏币。离岸汇率受市场供求、国际经济形势、央行政策等多种因素影响，因此与岸内汇率可能有所不同。</span><span class="en">The CNH/USD rate is the exchange ratio between the renminbi and the US dollar in markets outside mainland China. CNH is renminbi traded offshore, typically through financial centres such as Hong Kong and Singapore; CNY is renminbi used inside the mainland. Because the offshore rate reflects supply and demand, global conditions and central-bank policy, it can differ from the onshore rate.</span></p>
+</section>
+
+<section class="wrap">
+  <h2 data-i18n="s8">ecnh dao group 2027 愿文</h2>
+  <div class="wish">
+    <p><span class="zh">愿所有众生平安出行，身体健康<br>愿所有众生吃饱穿暖衣食无忧<br>愿所有众生今生乃至生生世世不邪淫，不妄语，保持正念善念<br>愿所有众生心想事成<br>愿所有众生无病无灾无难<br>愿所有众生负债累累清零，实现财务上自由<br>愿所有众生自由自在，能够去自己想去的地方<br>愿所有众生爱情顺利婚姻美满<br>愿所有众生福慧双修福慧增长<br>愿所有众生离苦得乐清闲自在<br>愿所有众生有花不完的钱，每天有 1000 元零花钱财源广进<br>愿所有众生万事如意平安顺遂<br>愿所有孩子健康快乐成长<br>愿所有老人子孝孙贤，平安喜乐<br>愿所有父母健康长寿快乐<br>愿所有众生远离恶道亲近善知识</span><span class="en">May all beings travel safely and be in good health.<br>May all beings have enough food and warm clothing.<br>May all beings keep right thoughts and right speech, in this life and those to come.<br>May all beings see their wishes fulfilled.<br>May all beings be free from illness and misfortune.<br>May all beings clear their debts and reach financial freedom.<br>May all beings be free to go wherever they wish.<br>May all beings find love and harmonious marriage.<br>May all beings grow in both merit and wisdom.<br>May all beings be free from suffering and at ease.<br>May all beings have inexhaustible resources and daily abundance.<br>May all beings be safe, well and at peace.<br>May all children grow up healthy and happy.<br>May all elders be cared for and joyful.<br>May all parents live long and happily.<br>May all beings leave the lower paths and draw near to wise teachers.</span></p>
+  </div>
+  <div class="quotes">
+    <div><span class="zh">为天地立心，为生民立命，为往圣继绝学，为万世开太平。</span><span class="en">To establish the heart of heaven and earth, the mission of the people, the lost learning of the sages, and peace for all generations.</span></div>
+    <div><span class="zh">先天下之忧而忧，后天下之乐而乐。</span><span class="en">Be first to bear the world's worries, last to enjoy its joys.</span></div>
+    <div><span class="zh">自立，勤俭，读书，友善。</span><span class="en">Stand on your own; be thrifty, studious and kind.</span></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2><span class="zh">未来兑换汇率参考目标</span><span class="en">Future exchange-rate reference targets</span></h2>
+  <div class="wish">
+    <p><span class="zh"><strong>备注（务必阅读）</strong>：以下为<strong>未来目标兑换汇率参考数据</strong>，按长期锚定愿景 <strong>1 eCNH ≈ 1 CNH（华夏币）</strong>推算，<strong>仅供规划与参考</strong>。它不是当前市场汇率，不构成任何兑换承诺、报价或投资建议；实际汇率以持牌金融机构的实时报价为准。CNH＝华夏币；eCNH＝华夏币代币（Solana 链上社区代币）。加密资产波动剧烈，eCNH 流动性有限，交易前请核对合约地址并设置滑点上限。</span>
+    <span class="en"><strong>Note (please read)</strong>: the figures below are <strong>future target exchange-rate references</strong>, derived from the long-term peg vision of <strong>1 eCNH ≈ 1 CNH (the Huaxia coin)</strong>, <strong>for planning and reference only</strong>. They are not current market rates and do not constitute any exchange promise, quote or investment advice; actual rates are subject to real-time quotes from licensed institutions. CNH = the Huaxia coin; eCNH = the Huaxia token (a community token on Solana). Crypto assets are volatile and eCNH liquidity is thin — verify the contract address and set a slippage cap before trading.</span></p>
+  </div>
+
+  <h3><span class="zh">一、10 城 eCNH OPC 节点货币</span><span class="en">1. Currencies of the 10 eCNH OPC city nodes</span></h3>
+  <div class="tblwrap">
+    <table>
+      <thead>
+        <tr><th><span class="zh">城市节点</span><span class="en">City node</span></th><th><span class="zh">货币</span><span class="en">Currency</span></th><th><span class="zh">未来目标参考汇率</span><span class="en">Future target reference</span></th></tr>
+      </thead>
+      <tbody>
+        <tr><td>eCNH·Singapore 新加坡</td><td><span class="zh">SGD 新加坡元</span><span class="en">SGD Singapore dollar</span></td><td class="mono">100 SGD ≈ 521.00 eCNH</td></tr>
+        <tr><td>eCNH·HongKong 香港</td><td><span class="zh">HKD 港元</span><span class="en">HKD Hong Kong dollar</span></td><td class="mono">100 HKD ≈ 84.90 eCNH</td></tr>
+        <tr><td>eCNH·Dubai 迪拜</td><td><span class="zh">AED 阿联酋迪拉姆</span><span class="en">AED UAE dirham</span></td><td class="mono">100 AED ≈ 181.50 eCNH</td></tr>
+        <tr><td>eCNH·Zug 楚格</td><td><span class="zh">CHF 瑞士法郎</span><span class="en">CHF Swiss franc</span></td><td class="mono">100 CHF ≈ 807.00 eCNH</td></tr>
+        <tr><td>eCNH·KL 吉隆坡</td><td><span class="zh">MYR 马来西亚林吉特</span><span class="en">MYR Malaysian ringgit</span></td><td class="mono">100 MYR ≈ 164.20 eCNH</td></tr>
+        <tr><td>eCNH·Bangkok 曼谷</td><td><span class="zh">THB 泰铢</span><span class="en">THB Thai baht</span></td><td class="mono">100 THB ≈ 18.80 eCNH</td></tr>
+        <tr><td>eCNH·Almaty 阿拉木图</td><td><span class="zh">KZT 哈萨克斯坦坚戈</span><span class="en">KZT Kazakhstani tenge</span></td><td class="mono">100 KZT ≈ 1.38 eCNH</td></tr>
+        <tr><td>eCNH·Tokyo 东京</td><td><span class="zh">JPY 日元</span><span class="en">JPY Japanese yen</span></td><td class="mono">100 JPY ≈ 4.22 eCNH</td></tr>
+        <tr><td>eCNH·London 伦敦</td><td><span class="zh">GBP 英镑</span><span class="en">GBP Pound sterling</span></td><td class="mono">100 GBP ≈ 891.00 eCNH</td></tr>
+        <tr><td>eCNH·SF 旧金山</td><td><span class="zh">USD 美元</span><span class="en">USD US dollar</span></td><td class="mono">100 USD ≈ 666.00 eCNH</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3><span class="zh">二、其他高频贸易 / Web3 常用货币（25 种）</span><span class="en">2. Other high-frequency trade / Web3 currencies (25)</span></h3>
+  <div class="tblwrap">
+    <table>
+      <thead>
+        <tr><th><span class="zh">代码</span><span class="en">Code</span></th><th><span class="zh">货币名称</span><span class="en">Currency</span></th><th><span class="zh">未来目标参考汇率</span><span class="en">Future target reference</span></th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="mono">EUR</td><td><span class="zh">欧元</span><span class="en">Euro</span></td><td class="mono">100 EUR ≈ 747.90 eCNH</td></tr>
+        <tr><td class="mono">AUD</td><td><span class="zh">澳元</span><span class="en">Australian dollar</span></td><td class="mono">100 AUD ≈ 469.50 eCNH</td></tr>
+        <tr><td class="mono">CAD</td><td><span class="zh">加拿大元</span><span class="en">Canadian dollar</span></td><td class="mono">100 CAD ≈ 477.80 eCNH</td></tr>
+        <tr><td class="mono">NZD</td><td><span class="zh">新西兰元</span><span class="en">New Zealand dollar</span></td><td class="mono">100 NZD ≈ 376.20 eCNH</td></tr>
+        <tr><td class="mono">KRW</td><td><span class="zh">韩元</span><span class="en">South Korean won</span></td><td class="mono">100 KRW ≈ 0.50 eCNH</td></tr>
+        <tr><td class="mono">VND</td><td><span class="zh">越南盾</span><span class="en">Vietnamese dong</span></td><td class="mono">100 VND ≈ 0.028 eCNH</td></tr>
+        <tr><td class="mono">PHP</td><td><span class="zh">菲律宾比索</span><span class="en">Philippine peso</span></td><td class="mono">100 PHP ≈ 11.70 eCNH</td></tr>
+        <tr><td class="mono">IDR</td><td><span class="zh">印尼盾</span><span class="en">Indonesian rupiah</span></td><td class="mono">100 IDR ≈ 0.047 eCNH</td></tr>
+        <tr><td class="mono">MMK</td><td><span class="zh">缅甸缅元</span><span class="en">Myanmar kyat</span></td><td class="mono">100 MMK ≈ 0.31 eCNH</td></tr>
+        <tr><td class="mono">INR</td><td><span class="zh">印度卢比</span><span class="en">Indian rupee</span></td><td class="mono">100 INR ≈ 7.95 eCNH</td></tr>
+        <tr><td class="mono">RUB</td><td><span class="zh">俄罗斯卢布</span><span class="en">Russian ruble</span></td><td class="mono">100 RUB ≈ 8.20 eCNH</td></tr>
+        <tr><td class="mono">TRY</td><td><span class="zh">土耳其里拉</span><span class="en">Turkish lira</span></td><td class="mono">100 TRY ≈ 19.60 eCNH</td></tr>
+        <tr><td class="mono">SAR</td><td><span class="zh">沙特里亚尔</span><span class="en">Saudi riyal</span></td><td class="mono">100 SAR ≈ 178.00 eCNH</td></tr>
+        <tr><td class="mono">BHD</td><td><span class="zh">巴林第纳尔</span><span class="en">Bahraini dinar</span></td><td class="mono">100 BHD ≈ 1760.00 eCNH</td></tr>
+        <tr><td class="mono">MXN</td><td><span class="zh">墨西哥比索</span><span class="en">Mexican peso</span></td><td class="mono">100 MXN ≈ 38.50 eCNH</td></tr>
+        <tr><td class="mono">BRL</td><td><span class="zh">巴西雷亚尔</span><span class="en">Brazilian real</span></td><td class="mono">100 BRL ≈ 129.00 eCNH</td></tr>
+        <tr><td class="mono">ZAR</td><td><span class="zh">南非兰特</span><span class="en">South African rand</span></td><td class="mono">100 ZAR ≈ 40.20 eCNH</td></tr>
+        <tr><td class="mono">PLN</td><td><span class="zh">波兰兹罗提</span><span class="en">Polish złoty</span></td><td class="mono">100 PLN ≈ 170.60 eCNH</td></tr>
+        <tr><td class="mono">CZK</td><td><span class="zh">捷克克朗</span><span class="en">Czech koruna</span></td><td class="mono">100 CZK ≈ 29.80 eCNH</td></tr>
+        <tr><td class="mono">SEK</td><td><span class="zh">瑞典克朗</span><span class="en">Swedish krona</span></td><td class="mono">100 SEK ≈ 69.30 eCNH</td></tr>
+        <tr><td class="mono">NOK</td><td><span class="zh">挪威克朗</span><span class="en">Norwegian krone</span></td><td class="mono">100 NOK ≈ 70.10 eCNH</td></tr>
+        <tr><td class="mono">DKK</td><td><span class="zh">丹麦克朗</span><span class="en">Danish krone</span></td><td class="mono">100 DKK ≈ 100.50 eCNH</td></tr>
+        <tr><td class="mono">HUF</td><td><span class="zh">匈牙利福林</span><span class="en">Hungarian forint</span></td><td class="mono">100 HUF ≈ 2.05 eCNH</td></tr>
+        <tr><td class="mono">LAK</td><td><span class="zh">老挝基普</span><span class="en">Lao kip</span></td><td class="mono">100 LAK ≈ 0.032 eCNH</td></tr>
+        <tr><td class="mono">KHR</td><td><span class="zh">柬埔寨瑞尔</span><span class="en">Cambodian riel</span></td><td class="mono">100 KHR ≈ 0.16 eCNH</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer class="wrap">
+  <div><strong>eCNH</strong> · <span class="zh">版本 v0.1 · 更新 2026-11 · 30 种语言</span><span class="en">v0.1 · updated Nov 2026 · 30 languages</span></div>
+  <div style="margin-top:8px">
+    <a href="https://ucoingroup.github.io/eCNH/" target="_blank" rel="noopener">Website</a> ·
+    <a href="https://github.com/ucoingroup/eCNH" target="_blank" rel="noopener">GitHub</a> ·
+    <a href="README.md">README</a>
+  </div>
+  <div class="disc">
+    <b><span class="zh">免责声明</span><span class="en">Disclaimer</span></b><br>
+    <span class="zh">本页为社区信息整理与科普，<b>不构成任何投资建议、要约或收益承诺</b>，也不构成法律、税务或合规意见。eCNH 为社区项目，<b>无央行或官方背景</b>，与任何中央银行及官方数字货币（e-CNY）无任何隶属或合作关系；项目未公开储备审计，「1 eCNH ≈ 1 CNH」为长期目标而非当前兑换承诺。加密资产价格波动剧烈，eCNH 流动性有限，可能出现较大滑点或无法成交。请自行核对合约地址 <code>7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5</code>，谨防同名假币与钓鱼网站，并遵守所在地法律法规与税务要求。中国大陆对虚拟货币相关业务活动有严格限制，请严格遵守当地法律。</span>
+    <span class="en">Community information and educational material — <b>not investment advice</b>, an offer, or a promise of return, and not legal, tax or compliance advice. eCNH is a community project with <b>no central bank or official backing</b> and no affiliation with the People's Bank of China or e-CNY. No reserve audit has been published; "1 eCNH ≈ 1 CNH" is a long-term target, not a redemption commitment. Crypto assets are highly volatile and eCNH liquidity is thin, so slippage or failed fills are possible. Verify the contract address <code>7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5</code> yourself, beware of impostor tokens and phishing sites, and comply with local law and tax rules. Mainland China strictly restricts virtual-currency business activity.</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Copied</div>
+
+<script>
+const CA = '7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5';
+
+const LANGS = [
+  ['zh','华语'],['en','English'],['es','Español'],['hi','हिन्दी'],['ar','العربية'],
+  ['bn','বাংলা'],['pt','Português'],['ru','Русский'],['ja','日本語'],['pa','ਪੰਜਾਬੀ'],
+  ['de','Deutsch'],['jv','Basa Jawa'],['ko','한국어'],['fr','Français'],['te','తెలుగు'],
+  ['mr','मराठी'],['tr','Türkçe'],['ta','தமிழ்'],['vi','Tiếng Việt'],['ur','اردو'],
+  ['it','Italiano'],['th','ไทย'],['gu','ગુજરાતી'],['fa','فارسی'],['pl','Polski'],
+  ['kn','ಕನ್ನಡ'],['ml','മലയാളം'],['uk','Українська'],['id','Bahasa Indonesia'],['nl','Nederlands']
+];
+
+const I18N = {
+zh:{k:'星际文明协议 · 地球文明协议',t:'离岸华夏币',s:'连接华夏文明三千年与未来三千年的星际文明共同体。',s1:'稳定机制',s2:'核心理念',s3:'AI 驱动与自动更新',s4:'经济稳定性',s5:'社区治理',s6:'核心优势',s7:'生态与链接',s8:'ecnh dao group 2027 愿文',copy:'复制',copied:'已复制合约地址',note:'本页章节标题、要点与免责声明已按所选语言显示；详细段落以华语与英文为准。'},
+en:{k:'Earth Civilization Protocol',t:'Offshore Chinese Yuan',s:'A civilizational bridge between 3,000 years of Chinese heritage and 3,000 years of interstellar future.',s1:'Stability mechanism',s2:'Core concept',s3:'AI-driven & auto-update',s4:'Economic stability',s5:'Community governance',s6:'Core advantages',s7:'Ecosystem & links',s8:'ecnh dao group 2027 aspirations',copy:'Copy',copied:'Contract address copied',note:'Section titles, key points and the disclaimer follow your selected language; full paragraphs are provided in Chinese and English.'},
+es:{k:'Protocolo de la Civilización Terrestre',t:'Yuan chino offshore',s:'Un puente civilizatorio entre 3.000 años de herencia china y 3.000 años de futuro interestelar.',s1:'Mecanismo de estabilidad',s2:'Concepto central',s3:'Impulsado por IA y actualización automática',s4:'Estabilidad económica',s5:'Gobernanza comunitaria',s6:'Ventajas clave',s7:'Ecosistema y enlaces',s8:'Aspiraciones de ecnh dao group 2027',copy:'Copiar',copied:'Dirección del contrato copiada',note:'Los títulos, los puntos clave y el aviso legal siguen el idioma elegido; los párrafos completos se ofrecen en chino e inglés.'},
+hi:{k:'पृथ्वी सभ्यता प्रोटोकॉल',t:'अपतटीय चीनी युआन',s:'3,000 वर्षों की चीनी विरासत और 3,000 वर्षों के अंतरतारकीय भविष्य के बीच सभ्यता का सेतु।',s1:'स्थिरता तंत्र',s2:'मूल विचार',s3:'एआई संचालित और स्वतः अद्यतन',s4:'आर्थिक स्थिरता',s5:'समुदाय शासन',s6:'मुख्य लाभ',s7:'पारिस्थितिकी और लिंक',s8:'ecnh dao group 2027 संकल्प',copy:'कॉपी करें',copied:'अनुबंध पता कॉपी हो गया',note:'अनुभाग शीर्षक, मुख्य बिंदु और अस्वीकरण चुनी गई भाषा में हैं; विस्तृत अनुच्छेद चीनी और अंग्रेज़ी में हैं।'},
+ar:{k:'بروتوكول الحضارة الأرضية',t:'اليوان الصيني الخارجي',s:'جسر حضاري بين 3000 عام من التراث الصيني و3000 عام من المستقبل بين النجوم.',s1:'آلية الاستقرار',s2:'الفكرة الجوهرية',s3:'مدعوم بالذكاء الاصطناعي وتحديث تلقائي',s4:'الاستقرار الاقتصادي',s5:'الحوكمة المجتمعية',s6:'المزايا الأساسية',s7:'المنظومة والروابط',s8:'تطلعات ecnh dao group 2027',copy:'نسخ',copied:'تم نسخ عنوان العقد',note:'عناوين الأقسام والنقاط الرئيسية وإخلاء المسؤولية باللغة المختارة؛ الفقرات الكاملة بالصينية والإنجليزية.'},
+bn:{k:'পৃথিবী সভ্যতা প্রোটোকল',t:'অফশোর চীনা ইউয়ান',s:'৩,০০০ বছরের চীনা ঐতিহ্য ও ৩,০০০ বছরের আন্তঃনক্ষত্র ভবিষ্যতের মধ্যে সভ্যতার সেতু।',s1:'স্থিতিশীলতা ব্যবস্থা',s2:'মূল ধারণা',s3:'এআই চালিত ও স্বয়ংক্রিয় হালনাগাদ',s4:'অর্থনৈতিক স্থিতিশীলতা',s5:'সম্প্রদায় শাসন',s6:'মূল সুবিধা',s7:'ইকোসিস্টেম ও লিংক',s8:'ecnh dao group 2027 প্রত্যাশা',copy:'কপি',copied:'চুক্তির ঠিকানা কপি হয়েছে',note:'বিভাগের শিরোনাম, মূল বিষয় ও দাবিত্যাগ নির্বাচিত ভাষায়; বিস্তারিত অনুচ্ছেদ চীনা ও ইংরেজিতে।'},
+pt:{k:'Protocolo da Civilização Terrestre',t:'Yuan chinês offshore',s:'Uma ponte civilizacional entre 3.000 anos de herança chinesa e 3.000 anos de futuro interestelar.',s1:'Mecanismo de estabilidade',s2:'Conceito central',s3:'Impulsionado por IA e atualização automática',s4:'Estabilidade econômica',s5:'Governança comunitária',s6:'Vantagens principais',s7:'Ecossistema e links',s8:'Aspirações do ecnh dao group 2027',copy:'Copiar',copied:'Endereço do contrato copiado',note:'Títulos, pontos-chave e aviso legal seguem o idioma escolhido; os parágrafos completos estão em chinês e inglês.'},
+ru:{k:'Протокол земной цивилизации',t:'Офшорный китайский юань',s:'Цивилизационный мост между 3000 годами китайского наследия и 3000 годами межзвёздного будущего.',s1:'Механизм стабильности',s2:'Ключевая идея',s3:'На основе ИИ и автообновление',s4:'Экономическая стабильность',s5:'Управление сообществом',s6:'Ключевые преимущества',s7:'Экосистема и ссылки',s8:'Цели ecnh dao group 2027',copy:'Копировать',copied:'Адрес контракта скопирован',note:'Заголовки разделов, ключевые тезисы и дисклеймер — на выбранном языке; полные абзацы на китайском и английском.'},
+ja:{k:'地球文明プロトコル',t:'オフショア人民元',s:'3000年の華夏文明と、これから3000年の星間文明をつなぐ共同体。',s1:'安定化メカニズム',s2:'基本理念',s3:'AI ドリブンと自動更新',s4:'経済の安定性',s5:'コミュニティガバナンス',s6:'主な強み',s7:'エコシステムとリンク',s8:'ecnh dao group 2027 の願い',copy:'コピー',copied:'コントラクトアドレスをコピーしました',note:'見出し・要点・免責事項は選択した言語で表示され、詳細な本文は中国語と英語で提供されます。'},
+pa:{k:'ਧਰਤੀ ਸਭਿਅਤਾ ਪ੍ਰੋਟੋਕਾਲ',t:'ਆਫਸ਼ੋਰ ਚੀਨੀ ਯੂਆਨ',s:'3,000 ਸਾਲਾਂ ਦੀ ਚੀਨੀ ਵਿਰਾਸਤ ਅਤੇ 3,000 ਸਾਲਾਂ ਦੇ ਤਾਰਿਆਂ ਵਿੱਚ ਭਵਿੱਖ ਵਿਚਕਾਰ ਸਭਿਅਤਾ ਦਾ ਪੁਲ।',s1:'ਸਥਿਰਤਾ ਵਿਧੀ',s2:'ਮੂਲ ਵਿਚਾਰ',s3:'AI ਸੰਚਾਲਿਤ ਅਤੇ ਸਵੈ-ਅੱਪਡੇਟ',s4:'ਆਰਥਿਕ ਸਥਿਰਤਾ',s5:'ਭਾਈਚਾਰਕ ਸ਼ਾਸਨ',s6:'ਮੁੱਖ ਲਾਭ',s7:'ਈਕੋਸਿਸਟਮ ਅਤੇ ਲਿੰਕ',s8:'ecnh dao group 2027 ਸੰਕਲਪ',copy:'ਕਾਪੀ',copied:'ਕਾਂਟ੍ਰੈਕਟ ਪਤਾ ਕਾਪੀ ਹੋ ਗਿਆ',note:'ਸ਼ੀਰਸ਼ਕ, ਮੁੱਖ ਨੁਕਤੇ ਅਤੇ ਬੇਦਾਅਵਾ ਚੁਣੀ ਭਾਸ਼ਾ ਵਿੱਚ ਹਨ; ਵਿਸਥਾਰਤ ਪੈਰੇ ਚੀਨੀ ਅਤੇ ਅੰਗਰੇਜ਼ੀ ਵਿੱਚ।'},
+de:{k:'Protokoll der Erdzivilisation',t:'Offshore-Renminbi',s:'Eine zivilisatorische Brücke zwischen 3.000 Jahren chinesischem Erbe und 3.000 Jahren interstellarer Zukunft.',s1:'Stabilitätsmechanismus',s2:'Grundidee',s3:'KI-gesteuert und automatische Updates',s4:'Wirtschaftliche Stabilität',s5:'Community-Governance',s6:'Zentrale Vorteile',s7:'Ökosystem und Links',s8:'Bestrebungen von ecnh dao group 2027',copy:'Kopieren',copied:'Vertragsadresse kopiert',note:'Abschnittstitel, Kernpunkte und Haftungsausschluss folgen der gewählten Sprache; vollständige Absätze auf Chinesisch und Englisch.'},
+jv:{k:'Protokol Peradaban Bumi',t:'Yuan Cina lepas pantai',s:'Kreteg peradaban antarane 3.000 taun warisan Cina lan 3.000 taun masa depan antarbintang.',s1:'Mekanisme stabilitas',s2:'Konsep inti',s3:'Didhukung AI lan nganyari otomatis',s4:'Stabilitas ekonomi',s5:'Tata kelola komunitas',s6:'Keunggulan utama',s7:'Ekosistem lan pranala',s8:'Aspirasi ecnh dao group 2027',copy:'Salin',copied:'Alamat kontrak wis disalin',note:'Judul bagean, poin utama lan penafian miturut basa sing dipilih; paragraf lengkap ing basa Cina lan Inggris.'},
+ko:{k:'지구 문명 프로토콜',t:'역외 위안화',s:'3000년 화하 문명과 향후 3000년 성간 문명을 잇는 공동체.',s1:'안정화 메커니즘',s2:'핵심 이념',s3:'AI 기반 및 자동 업데이트',s4:'경제적 안정성',s5:'커뮤니티 거버넌스',s6:'핵심 장점',s7:'생태계와 링크',s8:'ecnh dao group 2027 염원',copy:'복사',copied:'컨트랙트 주소가 복사되었습니다',note:'섹션 제목, 핵심 사항, 면책 조항은 선택한 언어로 표시되며 전문 단락은 중국어와 영어로 제공됩니다.'},
+fr:{k:'Protocole de la civilisation terrestre',t:'Yuan chinois offshore',s:'Un pont civilisationnel entre 3 000 ans d’héritage chinois et 3 000 ans d’avenir interstellaire.',s1:'Mécanisme de stabilité',s2:'Idée centrale',s3:'Piloté par l’IA et mise à jour automatique',s4:'Stabilité économique',s5:'Gouvernance communautaire',s6:'Atouts clés',s7:'Écosystème et liens',s8:'Vœux de ecnh dao group 2027',copy:'Copier',copied:'Adresse du contrat copiée',note:'Les titres, points clés et l’avertissement suivent la langue choisie ; les paragraphes complets sont en chinois et en anglais.'},
+te:{k:'భూమి నాగరికత ప్రోటోకాల్',t:'ఆఫ్‌షోర్ చైనీస్ యువాన్',s:'3,000 సంవత్సరాల చైనీస్ వారసత్వానికి, 3,000 సంవత్సరాల అంతర్నక్షత్ర భవిష్యత్తుకు మధ్య నాగరికత వంతెన.',s1:'స్థిరత్వ యంత్రాంగం',s2:'ప్రధాన భావన',s3:'AI ఆధారిత మరియు స్వయం నవీకరణ',s4:'ఆర్థిక స్థిరత్వం',s5:'సమాజ పరిపాలన',s6:'ముఖ్య ప్రయోజనాలు',s7:'పరిసర వ్యవస్థ మరియు లింకులు',s8:'ecnh dao group 2027 ఆకాంక్ష',copy:'కాపీ',copied:'కాంట్రాక్ట్ చిరునామా కాపీ అయింది',note:'విభాగ శీర్షికలు, ముఖ్య అంశాలు మరియు నిరాకరణ ఎంచుకున్న భాషలో ఉన్నాయి; పూర్తి పేరాలు చైనీస్ మరియు ఆంగ్లంలో.'},
+mr:{k:'पृथ्वी संस्कृती प्रोटोकॉल',t:'ऑफशोअर चिनी युआन',s:'३,००० वर्षांच्या चिनी वारशाचा आणि ३,००० वर्षांच्या आंतरतारकीय भविष्याचा दुवा.',s1:'स्थिरता यंत्रणा',s2:'मूळ संकल्पना',s3:'एआय चालित आणि स्वयं-अद्ययावत',s4:'आर्थिक स्थिरता',s5:'समुदाय सुशासन',s6:'मुख्य फायदे',s7:'परिसंस्था आणि दुवे',s8:'ecnh dao group 2027 संकल्प',copy:'कॉपी',copied:'करार पत्ता कॉपी झाला',note:'विभाग शीर्षके, मुख्य मुद्दे आणि अस्वीकरण निवडलेल्या भाषेत आहेत; संपूर्ण परिच्छेद चिनी आणि इंग्रजीत.'},
+tr:{k:'Dünya Medeniyeti Protokolü',t:'Offshore Çin Yuanı',s:'3.000 yıllık Çin mirası ile 3.000 yıllık yıldızlararası gelecek arasında bir medeniyet köprüsü.',s1:'İstikrar mekanizması',s2:'Temel fikir',s3:'Yapay zekâ destekli ve otomatik güncelleme',s4:'Ekonomik istikrar',s5:'Topluluk yönetişimi',s6:'Temel avantajlar',s7:'Ekosistem ve bağlantılar',s8:'ecnh dao group 2027 temennisi',copy:'Kopyala',copied:'Sözleşme adresi kopyalandı',note:'Bölüm başlıkları, ana noktalar ve sorumluluk reddi seçilen dilde; tam paragraflar Çince ve İngilizce.'},
+ta:{k:'புவி நாகரிக நெறிமுறை',t:'கடல்கடந்த சீன யுவான்',s:'3,000 ஆண்டு சீன பாரம்பரியத்திற்கும் 3,000 ஆண்டு விண்மீன் எதிர்காலத்திற்கும் இடையிலான நாகரிகப் பாலம்.',s1:'நிலைத்தன்மை முறை',s2:'முதன்மைக் கருத்து',s3:'AI இயக்கி தானியங்கி புதுப்பிப்பு',s4:'பொருளாதார நிலைத்தன்மை',s5:'சமூக நிர்வாகம்',s6:'முக்கிய நன்மைகள்',s7:'சூழலமைப்பு மற்றும் இணைப்புகள்',s8:'ecnh dao group 2027 விருப்பம்',copy:'நகலெடு',copied:'ஒப்பந்த முகவரி நகலெடுக்கப்பட்டது',note:'பிரிவுத் தலைப்புகள், முக்கியக் குறிப்புகள் மற்றும் பொறுப்புத் துறப்பு தேர்ந்தெடுத்த மொழியில்; முழுப் பத்திகள் சீனம் மற்றும் ஆங்கிலத்தில்.'},
+vi:{k:'Giao thức Văn minh Trái đất',t:'Nhân dân tệ ngoài lãnh thổ',s:'Cầu nối văn minh giữa 3.000 năm di sản Trung Hoa và 3.000 năm tương lai liên sao.',s1:'Cơ chế ổn định',s2:'Ý tưởng cốt lõi',s3:'Vận hành bởi AI và tự động cập nhật',s4:'Ổn định kinh tế',s5:'Quản trị cộng đồng',s6:'Lợi thế chính',s7:'Hệ sinh thái và liên kết',s8:'Nguyện vọng ecnh dao group 2027',copy:'Sao chép',copied:'Đã sao chép địa chỉ hợp đồng',note:'Tiêu đề mục, điểm chính và tuyên bố miễn trừ theo ngôn ngữ đã chọn; đoạn văn đầy đủ bằng tiếng Trung và tiếng Anh.'},
+ur:{k:'زمینی تہذیب پروٹوکول',t:'سمندری چینی یوآن',s:'3,000 سالہ چینی ورثے اور 3,000 سالہ بین النجوم مستقبل کے درمیان تہذیبی پل۔',s1:'استحکام کا طریقہ',s2:'بنیادی تصور',s3:'اے آئی پر مبنی اور خودکار اپ ڈیٹ',s4:'معاشی استحکام',s5:'کمیونٹی گورننس',s6:'بنیادی فوائد',s7:'ماحولیاتی نظام اور لنکس',s8:'ecnh dao group 2027 آرزو',copy:'نقل کریں',copied:'کنٹریکٹ ایڈریس نقل ہو گیا',note:'سیکشن عنوانات، اہم نکات اور دستبرداری منتخب زبان میں ہیں؛ مکمل پیراگراف چینی اور انگریزی میں۔'},
+it:{k:'Protocollo della civiltà terrestre',t:'Yuan cinese offshore',s:'Un ponte tra 3.000 anni di eredità cinese e 3.000 anni di futuro interstellare.',s1:'Meccanismo di stabilità',s2:'Idea centrale',s3:'Guidato dall’IA e aggiornamento automatico',s4:'Stabilità economica',s5:'Governance della community',s6:'Vantaggi chiave',s7:'Ecosistema e link',s8:'Aspirazioni di ecnh dao group 2027',copy:'Copia',copied:'Indirizzo del contratto copiato',note:'Titoli, punti chiave e disclaimer seguono la lingua scelta; i paragrafi completi sono in cinese e inglese.'},
+th:{k:'พิธีสารอารยธรรมโลก',t:'หยวนนอกประเทศ',s:'สะพานอารยธรรมระหว่างมรดกจีน 3,000 ปีกับอนาคตระหว่างดวงดาวอีก 3,000 ปี',s1:'กลไกเสถียรภาพ',s2:'แนวคิดหลัก',s3:'ขับเคลื่อนด้วย AI และอัปเดตอัตโนมัติ',s4:'เสถียรภาพทางเศรษฐกิจ',s5:'ธรรมาภิบาลชุมชน',s6:'ข้อได้เปรียบหลัก',s7:'ระบบนิเวศและลิงก์',s8:'ความปรารถนา ecnh dao group 2027',copy:'คัดลอก',copied:'คัดลอกที่อยู่สัญญาแล้ว',note:'หัวข้อ ส่วนสำคัญ และข้อจำกัดความรับผิดใช้ภาษาที่เลือก ส่วนย่อหน้าเต็มมีภาษาจีนและอังกฤษ'},
+gu:{k:'પૃથ્વી સભ્યતા પ્રોટોકોલ',t:'ઓફશોર ચિની યુઆન',s:'3,000 વર્ષના ચિની વારસા અને 3,000 વર્ષના આંતરતારક ભવિષ્ય વચ્ચે સભ્યતાનો સેતુ.',s1:'સ્થિરતા વ્યવસ્થા',s2:'મુખ્ય વિચાર',s3:'AI સંચાલિત અને સ્વયં અપડેટ',s4:'આર્થિક સ્થિરતા',s5:'સમુદાય શાસન',s6:'મુખ્ય ફાયદા',s7:'ઇકોસિસ્ટમ અને લિંક',s8:'ecnh dao group 2027 સંકલ્પ',copy:'કૉપિ',copied:'કોન્ટ્રાક્ટ સરનામું કૉપિ થયું',note:'વિભાગ શીર્ષકો, મુખ્ય મુદ્દા અને અસ્વીકરણ પસંદ કરેલી ભાષામાં છે; સંપૂર્ણ ફકરા ચિની અને અંગ્રેજીમાં.'},
+fa:{k:'پروتکل تمدن زمینی',t:'یوان چین فراساحلی',s:'پلی تمدنی میان ۳۰۰۰ سال میراث چین و ۳۰۰۰ سال آیندهٔ میان‌ستاره‌ای.',s1:'سازوکار ثبات',s2:'اندیشهٔ اصلی',s3:'مبتنی بر هوش مصنوعی و به‌روزرسانی خودکار',s4:'ثبات اقتصادی',s5:'حاکمیت اجتماعی',s6:'مزیت‌های کلیدی',s7:'زیست‌بوم و پیوندها',s8:'آرمان ecnh dao group 2027',copy:'کپی',copied:'نشانی قرارداد کپی شد',note:'عنوان بخش‌ها، نکات کلیدی و سلب مسئولیت به زبان انتخاب‌شده است؛ بندهای کامل به چینی و انگلیسی ارائه می‌شود.'},
+pl:{k:'Protokół cywilizacji ziemskiej',t:'juan offshore',s:'Most cywilizacyjny między 3000 latami chińskiego dziedzictwa a 3000 latami międzygwiezdnej przyszłości.',s1:'Mechanizm stabilności',s2:'Idea przewodnia',s3:'Napędzane AI i automatyczna aktualizacja',s4:'Stabilność gospodarcza',s5:'Zarządzanie społecznością',s6:'Kluczowe zalety',s7:'Ekosystem i linki',s8:'Dążenia ecnh dao group 2027',copy:'Kopiuj',copied:'Skopiowano adres kontraktu',note:'Tytuły sekcji, kluczowe punkty i zastrzeżenia są w wybranym języku; pełne akapity po chińsku i angielsku.'},
+kn:{k:'ಭೂಮಿ ನಾಗರಿಕತೆ ಪ್ರೋಟೋಕಾಲ್',t:'ಆಫ್‌ಶೋರ್ ಚೀನೀ ಯುವಾನ್',s:'3,000 ವರ್ಷಗಳ ಚೀನೀ ಪರಂಪರೆ ಮತ್ತು 3,000 ವರ್ಷಗಳ ಅಂತರತಾರಾ ಭವಿಷ್ಯದ ನಡುವೆ ನಾಗರಿಕತೆಯ ಸೇತುವೆ.',s1:'ಸ್ಥಿರತೆ ವ್ಯವಸ್ಥೆ',s2:'ಮೂಲ ಕಲ್ಪನೆ',s3:'AI ಚಾಲಿತ ಮತ್ತು ಸ್ವಯಂ ನವೀಕರಣ',s4:'ಆರ್ಥಿಕ ಸ್ಥಿರತೆ',s5:'ಸಮುದಾಯ ಆಡಳಿತ',s6:'ಮುಖ್ಯ ಲಾಭಗಳು',s7:'ಪರಿಸರ ವ್ಯವಸ್ಥೆ ಮತ್ತು ಕೊಂಡಿಗಳು',s8:'ecnh dao group 2027 ಆಶಯ',copy:'ನಕಲಿಸಿ',copied:'ಒಪ್ಪಂದದ ವಿಳಾಸ ನಕಲಾಗಿದೆ',note:'ವಿಭಾಗ ಶೀರ್ಷಿಕೆಗಳು, ಮುಖ್ಯ ಅಂಶಗಳು ಮತ್ತು ಹಕ್ಕುತ್ಯಾಗ ಆಯ್ಕೆಮಾಡಿದ ಭಾಷೆಯಲ್ಲಿವೆ; ಪೂರ್ಣ ಪ್ಯಾರಾಗಳು ಚೀನೀ ಮತ್ತು ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ.'},
+ml:{k:'ഭൂമി സംസ്കാര പ്രോട്ടോക്കോൾ',t:'ഓഫ്‌ഷോർ ചൈനീസ് യുവാൻ',s:'3,000 വർഷത്തെ ചൈനീസ് പാരമ്പര്യവും 3,000 വർഷത്തെ അന്തർനക്ഷത്ര ഭാവിയും തമ്മിലുള്ള സംസ്കാര സേതു.',s1:'സ്ഥിരതാ സംവിധാനം',s2:'അടിസ്ഥാന ആശയം',s3:'AI അധിഷ്ഠിതവും സ്വയം പുതുക്കലും',s4:'സാമ്പത്തിക സ്ഥിരത',s5:'സമൂഹ ഭരണം',s6:'പ്രധാന നേട്ടങ്ങൾ',s7:'ആവാസവ്യവസ്ഥയും ലിങ്കുകളും',s8:'ecnh dao group 2027 ആശംസ',copy:'പകർത്തുക',copied:'കരാർ വിലാസം പകർത്തി',note:'വിഭാഗ ശീർഷകങ്ങളും പ്രധാന പോയിന്റുകളും നിരാകരണവും തിരഞ്ഞെടുത്ത ഭാഷയിലാണ്; പൂർണ്ണ ഖണ്ഡികകൾ ചൈനീസിലും ഇംഗ്ലീഷിലും.'},
+uk:{k:'Протокол земної цивілізації',t:'Офшорний китайський юань',s:'Цивілізаційний міст між 3000 роками китайської спадщини та 3000 роками міжзоряного майбутнього.',s1:'Механізм стабільності',s2:'Ключова ідея',s3:'На основі ШІ та автооновлення',s4:'Економічна стабільність',s5:'Управління спільнотою',s6:'Ключові переваги',s7:'Екосистема та посилання',s8:'Прагнення ecnh dao group 2027',copy:'Копіювати',copied:'Адресу контракту скопійовано',note:'Заголовки розділів, ключові тези й дисклеймер — обраною мовою; повні абзаци китайською та англійською.'},
+id:{k:'Protokol Peradaban Bumi',t:'Yuan Tiongkok lepas pantai',s:'Jembatan peradaban antara 3.000 tahun warisan Tiongkok dan 3.000 tahun masa depan antarbintang.',s1:'Mekanisme stabilitas',s2:'Gagasan inti',s3:'Didorong AI dan pembaruan otomatis',s4:'Stabilitas ekonomi',s5:'Tata kelola komunitas',s6:'Keunggulan utama',s7:'Ekosistem dan tautan',s8:'Harapan ecnh dao group 2027',copy:'Salin',copied:'Alamat kontrak disalin',note:'Judul bagian, poin utama, dan penafian mengikuti bahasa yang dipilih; paragraf lengkap tersedia dalam bahasa Tiongkok dan Inggris.'},
+nl:{k:'Protocol van de aardse beschaving',t:'Offshore Chinese yuan',s:'Een beschavingsbrug tussen 3.000 jaar Chinese erfenis en 3.000 jaar interstellair toekomst.',s1:'Stabiliteitsmechanisme',s2:'Kernidee',s3:'AI-gedreven en automatische updates',s4:'Economische stabiliteit',s5:'Community-governance',s6:'Belangrijkste voordelen',s7:'Ecosysteem en links',s8:'Wensen van ecnh dao group 2027',copy:'Kopiëren',copied:'Contractadres gekopieerd',note:'Kopjes, kernpunten en disclaimer volgen de gekozen taal; volledige alinea’s zijn in het Chinees en Engels.'}
+};
+
+const RTL = ['ar','ur','fa'];
+const sel = document.getElementById('langSel');
+LANGS.forEach(([code, name]) => {
+  const o = document.createElement('option');
+  o.value = code; o.textContent = name;
+  sel.appendChild(o);
+});
+
+let lang = localStorage.getItem('ecnh-lang') || (navigator.language || 'zh').slice(0, 2);
+if (!I18N[lang]) lang = 'en';
+let theme = localStorage.getItem('ecnh-theme') || 'blue';
+
+function applyLang(code){
+  lang = I18N[code] ? code : 'en';
+  const t = I18N[lang];
+  document.documentElement.setAttribute('lang', lang);
+  document.documentElement.setAttribute('dir', RTL.indexOf(lang) > -1 ? 'rtl' : 'ltr');
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (t[k] != null) el.textContent = t[k];
+  });
+  document.getElementById('langNote').textContent = t.note;
+  document.getElementById('copyBtn').textContent = t.copy;
+  sel.value = lang;
+  localStorage.setItem('ecnh-lang', lang);
+  document.title = 'eCNH · ' + t.t;
+}
+
+function setTheme(t){
+  theme = t;
+  document.documentElement.setAttribute('data-theme', t);
+  document.querySelectorAll('.dot').forEach(d => d.classList.toggle('on', d.dataset.t === t));
+  localStorage.setItem('ecnh-theme', t);
+}
+
+function copyCA(){
+  const done = () => {
+    const toast = document.getElementById('toast');
+    toast.textContent = I18N[lang].copied;
+    toast.classList.add('on');
+    setTimeout(() => toast.classList.remove('on'), 1800);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(CA).then(done).catch(fallback);
+  } else { fallback(); }
+  function fallback(){
+    const ta = document.createElement('textarea');
+    ta.value = CA;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); done(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+}
+
+sel.addEventListener('change', e => applyLang(e.target.value));
+setTheme(theme);
+applyLang(lang);
+</script>
+</body>
+</html>
