@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="blue" data-lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>亚洲与地球村：对 eCNH Web3 最友善的 100 个国家和城市</title>
+<meta name="description" content="亚洲 50 + 地球村 50，共 100 个对 eCNH Web3 友善度分级评定的国家和城市，含监管机构、2026 年稳定币状态与 CNH 兼容度说明。">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f5f7fb;--paper:#fff;--paper2:#f8fafd;--text:#131b2a;--muted:#5c697d;--line:#e3e8f1;
+  --acc:#2f6bff;--soft:rgba(47,107,255,.08);--shadow:0 8px 28px rgba(20,40,90,.07);
+  --ok:#12915a;--warn:#b4741a;--bad:#c0392b;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+}
+html[data-theme="green"]{--bg:#f4faf6;--paper:#fff;--paper2:#f6fbf8;--text:#12241a;--muted:#576b60;--line:#dfeee5;--acc:#1f9c58;--soft:rgba(31,156,88,.09)}
+html[data-theme="classic"]{--bg:#faf6ed;--paper:#fffdf7;--paper2:#f9f3e8;--text:#2b2118;--muted:#7a6a54;--line:#eadfcc;--acc:#a8332a;--soft:rgba(168,51,42,.07);--font:"Songti SC","Noto Serif SC",Georgia,"Microsoft YaHei",serif}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.75;-webkit-font-smoothing:antialiased}
+html[data-lang="zh"] .en{display:none!important}
+html[data-lang="en"] .zh{display:none!important}
+
+.bar{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.barin{max-width:1120px;margin:0 auto;padding:10px 22px;display:flex;align-items:center;gap:10px}
+.logo{font-weight:800;font-size:.86rem;display:flex;align-items:center;gap:8px}
+.logo i{width:8px;height:8px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 4px var(--soft)}
+.sp{flex:1}
+.btn{border:1px solid var(--line);background:var(--paper);color:var(--text);border-radius:999px;padding:6px 14px;font-size:.77rem;font-weight:700;cursor:pointer;font-family:inherit;transition:.2s}
+.btn:hover{border-color:var(--acc);color:var(--acc)}
+.btn.solid{background:var(--acc);color:#fff;border-color:var(--acc)}
+.btn.solid:hover{filter:brightness(1.08);color:#fff}
+.dots{display:flex;gap:6px;padding-left:8px;border-left:1px solid var(--line)}
+.dot{width:13px;height:13px;border-radius:50%;border:2px solid transparent;cursor:pointer}
+.dot[data-t="blue"]{background:#2f6bff}.dot[data-t="green"]{background:#1f9c58}.dot[data-t="classic"]{background:#a8332a}
+.dot.on{border-color:var(--text);transform:scale(1.1)}
+
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+header{padding:56px 0 20px}
+.kicker{font-size:.72rem;letter-spacing:2.4px;font-weight:800;color:var(--acc);text-transform:uppercase;margin-bottom:14px}
+h1{font-size:clamp(1.6rem,4vw,2.35rem);line-height:1.32;font-weight:800;letter-spacing:-.4px}
+h1 em{font-style:normal;color:var(--acc)}
+.lede{margin-top:16px;max-width:860px;font-size:.96rem;color:var(--muted)}
+.ca{margin-top:16px;font-family:ui-monospace,Menlo,monospace;font-size:.78rem;color:var(--muted);word-break:break-all}
+.ca b{color:var(--text)}
+.stats{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
+.pill{font-size:.76rem;font-weight:700;padding:5px 13px;border-radius:999px;background:var(--paper);border:1px solid var(--line);color:var(--muted)}
+.pill b{color:var(--acc)}
+
+section{padding:28px 0}
+h2.sh{font-size:1.16rem;font-weight:800;display:flex;align-items:center;gap:10px;margin-bottom:6px}
+h2.sh::before{content:"";width:5px;height:19px;border-radius:3px;background:var(--acc)}
+p.sd{color:var(--muted);font-size:.87rem;margin-bottom:16px;max-width:880px}
+
+.method{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.meth{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px;box-shadow:var(--shadow)}
+.meth b{display:block;font-size:.9rem;margin-bottom:4px}
+.meth span{font-size:.82rem;color:var(--muted)}
+
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:16px}
+.chip{font-size:.76rem;font-weight:700;padding:6px 13px;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--muted);cursor:pointer;font-family:inherit;transition:.18s}
+.chip:hover{border-color:var(--acc);color:var(--acc)}
+.chip.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.search{flex:1;min-width:160px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:7px 15px;font-size:.8rem;font-family:inherit;color:var(--text);outline:none}
+.search:focus{border-color:var(--acc)}
+.count{font-size:.76rem;color:var(--muted);font-weight:700}
+
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:16px 18px;box-shadow:var(--shadow);position:relative;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(20,40,90,.12)}
+.card .top{display:flex;align-items:baseline;gap:9px;margin-bottom:1px}
+.card .rk{font-family:ui-monospace,Menlo,monospace;font-size:.72rem;font-weight:800;color:var(--acc);opacity:.6}
+.card h3{font-size:.98rem;font-weight:800;line-height:1.4}
+.card .cty{font-size:.77rem;color:var(--muted);margin-bottom:8px}
+.card .meta{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-bottom:9px}
+.tag{font-size:.67rem;font-weight:800;padding:2px 9px;border-radius:999px;background:var(--soft);color:var(--acc);white-space:nowrap}
+.tag.gray{background:var(--paper2);color:var(--muted);border:1px solid var(--line)}
+.star{font-size:.74rem;color:var(--acc);letter-spacing:1.2px}
+.card .st{font-size:.82rem;color:#3b4759;margin-bottom:6px}
+html[data-theme="classic"] .card .st{color:#4a3d2e}
+.card .nt{font-size:.78rem;color:var(--muted);padding-top:7px;border-top:1px dashed var(--line)}
+.empty{padding:28px;text-align:center;color:var(--muted);font-size:.86rem}
+
+.ins{display:grid;gap:11px}
+.ins .item{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:0 12px 12px 0;padding:15px 20px;box-shadow:var(--shadow)}
+.ins h4{font-size:.93rem;font-weight:800;margin-bottom:5px}
+.ins p{font-size:.85rem;color:var(--muted)}
+.risk{border-left:3px solid var(--acc);background:var(--soft);border-radius:0 12px 12px 0;padding:17px 21px;font-size:.84rem;color:var(--muted);margin-top:14px}
+.risk b{color:var(--acc)}
+.risk code{font-family:ui-monospace,Menlo,monospace;font-size:.78rem;background:var(--paper);border:1px solid var(--line);border-radius:5px;padding:1px 6px;word-break:break-all}
+.legend{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:4px 0 22px}
+.lg{background:var(--paper);border:1px solid var(--line);border-radius:11px;padding:12px 14px;box-shadow:var(--shadow)}
+.lg b{display:block;font-size:.82rem;color:var(--acc);letter-spacing:1px}
+.lg span{font-size:.75rem;color:var(--muted);line-height:1.6;display:block;margin-top:3px}
+.tblwrap{max-height:540px;overflow:auto;border:1px solid var(--line);border-radius:13px;background:var(--paper);box-shadow:var(--shadow);margin-bottom:8px}
+.tblwrap table{width:100%;border-collapse:collapse;font-size:.8rem;min-width:560px}
+.tblwrap th{position:sticky;top:0;z-index:2;text-align:left;font-size:.68rem;letter-spacing:1px;text-transform:uppercase;color:var(--muted);padding:10px 13px;background:var(--paper2);border-bottom:1px solid var(--line);font-weight:700;white-space:nowrap}
+.tblwrap td{padding:8px 13px;border-bottom:1px solid var(--line);vertical-align:top}
+.tblwrap tr:last-child td{border-bottom:none}
+.tblwrap tbody tr:hover{background:var(--paper2)}
+.tblwrap td:first-child{font-family:ui-monospace,Menlo,monospace;color:var(--acc);font-weight:700;white-space:nowrap}
+.tblwrap td .sm{color:var(--muted);font-size:.74rem}
+.ghead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:30px 0 6px}
+.ghead h3{font-size:1.04rem;font-weight:800}
+.ghead .cnt2{font-size:.72rem;font-weight:700;color:var(--acc);background:var(--soft);padding:2px 10px;border-radius:999px}
+.ghead .gsub{font-size:.79rem;color:var(--muted);flex-basis:100%}
+.purpose{margin-top:8px}
+footer{border-top:1px solid var(--line);margin-top:28px;padding:24px 0 56px;font-size:.79rem;color:var(--muted)}
+footer a{color:var(--acc);text-decoration:none;font-weight:600}
+@media(max-width:820px){.method,.cards{grid-template-columns:1fr}header{padding:36px 0 14px}section{padding:20px 0}}
+@media print{.bar,.controls{display:none}body{background:#fff}.card{break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="barin">
+    <div class="logo"><i></i>eCNH · 100 CITIES</div>
+    <div class="sp"></div>
+    <button class="btn solid" id="langBtn" onclick="toggleLang()">EN</button>
+    <div class="dots">
+      <span class="dot on" data-t="blue" onclick="setTheme('blue')"></span>
+      <span class="dot" data-t="green" onclick="setTheme('green')"></span>
+      <span class="dot" data-t="classic" onclick="setTheme('classic')"></span>
+    </div>
+  </div>
+</div>
+
+<header class="wrap">
+  <div class="kicker"><span class="zh">监管地图 · 2026 年 11 月</span><span class="en">REGULATORY MAP · NOV 2026</span></div>
+  <h1>
+    <span class="zh">亚洲与地球村：对 eCNH Web3 <em>最友善的 100 个国家和城市</em></span>
+    <span class="en">Asia and the Global Village: the <em>100 most eCNH-friendly cities</em></span>
+  </h1>
+  <p class="lede">
+    <span class="zh">亚洲 50 个、地球村 50 个，共 100 个城市按「监管清晰度 × 合法可用性 × 华语可及性」分五档评级。<strong>不按交易所成交量排，也不按加密热度排</strong>——热度高的地方，常常恰恰不承认人民币计价支付代币。</span>
+    <span class="en">Fifty cities in Asia and fifty across the Global Village, each graded in five tiers on regulatory clarity, lawful usability and Chinese-language accessibility. <strong>This is not a trading-volume or hype ranking</strong> — the loudest crypto hubs are often the ones that will not recognise an RMB-denominated payment token at all.</span>
+  </p>
+  <div class="ca"><span class="zh">合约地址 CA</span><span class="en">Contract address</span>：<b>7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5</b></div>
+  <div class="stats">
+    <span class="pill"><b>100</b> <span class="zh">城市</span><span class="en">cities</span></span>
+    <span class="pill"><b>50</b> <span class="zh">亚洲</span><span class="en">Asia</span></span>
+    <span class="pill"><b>50</b> <span class="zh">地球村</span><span class="en">Global Village</span></span>
+    <span class="pill"><b>5</b> <span class="zh">个城市进入最高档</span><span class="en">cities in the top tier</span></span>
+    <span class="pill"><span class="zh">资料时点</span><span class="en">Data as of</span> <b>2026-11</b></span>
+  </div>
+</header>
+
+<section class="wrap">
+  <h2 class="sh"><span class="zh">怎么评的</span><span class="en">How the scoring works</span></h2>
+  <p class="sd"><span class="zh">三个维度各占权重，相加后落成 1–5 星。星级描述的是「一个合规的 CNH 计价代币在这里有没有活路」，不是「这里能不能炒币」。</span><span class="en">Three weighted dimensions produce a 1–5 star grade. The stars describe whether a compliant CNH-denominated token has any room to exist here — not whether you can speculate on coins.</span></p>
+  <div class="method">
+    <div class="meth"><b><span class="zh">① 监管清晰度</span><span class="en">① Regulatory clarity</span></b><span><span class="zh">有没有成文法律、发牌机构是谁、规则是否已生效，而非仅停留在口号或沙盒。</span><span class="en">Is there statute, who licenses, and is the regime actually in force — not just rhetoric or a sandbox.</span></span></div>
+    <div class="meth"><b><span class="zh">② 合法可用性</span><span class="en">② Lawful usability</span></b><span><span class="zh">持牌后能否开银行账户、能否对接支付与清算、能否面向真实商户收款。</span><span class="en">After licensing: can you bank, plug into payment rails, and serve real merchants.</span></span></div>
+    <div class="meth"><b><span class="zh">③ 华语可及性</span><span class="en">③ Chinese-language access</span></b><span><span class="zh">华人社群密度、中文服务能力、与离岸人民币清算网络的距离。</span><span class="en">Density of Chinese communities, Chinese-language services, and proximity to offshore CNH clearing.</span></span></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2 class="sh"><span class="zh">全部 100 个城市：亚洲 50 + 地球村 50</span><span class="en">All 100 cities: Asia 50 + Global Village 50</span><span class="cnt" id="cnt">100</span></h2>
+  <p class="sd"><span class="zh">上表是完整速览，下方按「亚洲 / 地球村」分区展开每一条的监管机构、2026 年状态与判断依据。点击筛选或搜索，表格与卡片会同步更新。</span><span class="en">The table above is the full index; below, every entry is expanded by region with its regulator, 2026 status and reasoning. Filters and search update both the table and the cards.</span></p>
+
+  <div class="legend">
+    <div class="lg"><b>★★★★★ · 5</b><span><span class="zh">法律文本未排除人民币，可持牌发行</span><span class="en">RMB not excluded in law; licensing possible</span></span></div>
+    <div class="lg"><b>★★★★☆ · 4</b><span><span class="zh">有明确发牌路径，CNH 需另设结构</span><span class="en">Clear licensing path; CNH needs its own structure</span></span></div>
+    <div class="lg"><b>★★★☆☆ · 3</b><span><span class="zh">允许但不明确，多靠个案或沙盒</span><span class="en">Permitted but unclear — case-by-case or sandbox</span></span></div>
+    <div class="lg"><b>★★☆☆☆ · 2</b><span><span class="zh">仅个别场景可行，成本高于收益</span><span class="en">Only niche use; cost exceeds benefit</span></span></div>
+    <div class="lg"><b>★☆☆☆☆ · 1</b><span><span class="zh">明确禁止或高风险，不建议进入</span><span class="en">Prohibited or high risk — not advisable</span></span></div>
+  </div>
+
+  <div class="controls">
+    <button class="chip on" data-g="all" onclick="setG('all')"><span class="zh">全部</span><span class="en">All</span></button>
+    <button class="chip" data-g="A" onclick="setG('A')"><span class="zh">亚洲 50</span><span class="en">Asia 50</span></button>
+    <button class="chip" data-g="W" onclick="setG('W')"><span class="zh">地球村 50</span><span class="en">Global 50</span></button>
+    <span style="width:100%;height:0"></span>
+    <button class="chip on" data-s="all" onclick="setS('all')"><span class="zh">全部星级</span><span class="en">All grades</span></button>
+    <button class="chip" data-s="5" onclick="setS('5')">5★</button>
+    <button class="chip" data-s="4" onclick="setS('4')">4★</button>
+    <button class="chip" data-s="3" onclick="setS('3')">3★</button>
+    <button class="chip" data-s="low" onclick="setS('low')">≤2★</button>
+    <input class="search" id="q" oninput="render()" placeholder="搜索城市或国家 / Search city or country">
+    <span class="count" id="shown"></span>
+  </div>
+
+  <div class="tblwrap">
+    <table>
+      <thead><tr>
+        <th>#</th>
+        <th><span class="zh">城市</span><span class="en">City</span></th>
+        <th><span class="zh">国家 / 地区</span><span class="en">Country</span></th>
+        <th><span class="zh">监管机构</span><span class="en">Regulator</span></th>
+        <th><span class="zh">星级</span><span class="en">Grade</span></th>
+      </tr></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+  <p class="sd" style="font-size:.75rem;margin:10px 0 0"><span class="zh">表内 100 行与下方卡片来自同一份数据；按 # 排序即原始排名，亚洲为 1–50，地球村为 51–100。</span><span class="en">All 100 rows share the same data as the cards below. Rank order is original: 1–50 Asia, 51–100 Global Village.</span></p>
+
+  <div id="grpA">
+    <div class="ghead">
+      <h3><span class="zh">一、亚洲 50 个国家和地区</span><span class="en">I. Asia — 50 jurisdictions</span></h3>
+      <span class="cnt2" id="cntA">50</span>
+      <span class="gsub"><span class="zh">从香港、新加坡、迪拜、阿布扎比、东京五个最高档开始，到明确禁止的南亚与中亚部分辖区。亚洲是 eCNH 唯一有真实制度空间的大洲。</span><span class="en">From the five top-tier hubs — Hong Kong, Singapore, Dubai, Abu Dhabi, Tokyo — down to jurisdictions that prohibit it outright. Asia is the only continent with real institutional room for eCNH.</span></span>
+    </div>
+    <div class="cards" id="cardsA"></div>
+  </div>
+
+  <div id="grpW">
+    <div class="ghead">
+      <h3><span class="zh">二、地球村 50 个国家和地区</span><span class="en">II. Global Village — 50 jurisdictions</span></h3>
+      <span class="cnt2" id="cntW">50</span>
+      <span class="gsub"><span class="zh">欧洲 26、北美 8、拉美 6、非洲 6、大洋洲 4。欧洲靠 MiCA 统一规则，北美靠州级与联邦双轨，拉美与非洲靠真实的汇款与通胀需求。</span><span class="en">Europe 26, North America 8, Latin America 6, Africa 6, Oceania 4. Europe runs on MiCA, North America on state-plus-federal tracks, Latin America and Africa on genuine remittance and inflation demand.</span></span>
+    </div>
+    <div class="cards" id="cardsW"></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2 class="sh"><span class="zh">按目的选城市：十个真实需求</span><span class="en">Pick by purpose: ten real needs</span></h2>
+  <p class="sd"><span class="zh">同一个「友善」，对不同目的意味着完全不同的答案。下表按实际要办的事给首选与次选，避免拿一张总榜硬套。</span><span class="en">The same word "friendly" means different things depending on what you actually need to do. Here are first and second choices by task, so you don't force one ranking onto every decision.</span></p>
+  <div class="tblwrap" style="max-height:none">
+    <table class="purpose">
+      <thead><tr>
+        <th><span class="zh">要做的事</span><span class="en">What you need</span></th>
+        <th><span class="zh">首选</span><span class="en">First choice</span></th>
+        <th><span class="zh">次选</span><span class="en">Second choice</span></th>
+        <th><span class="zh">理由</span><span class="en">Why</span></th>
+      </tr></thead>
+      <tbody>
+        <tr><td><span class="zh">拿稳定币发行牌照</span><span class="en">Stablecoin issuance licence</span></td><td>香港</td><td>阿布扎比</td><td><span class="zh">法律定义未排除人民币，且已有实际发牌</span><span class="en">RMB not excluded by definition, with licences actually issued</span></td></tr>
+        <tr><td><span class="zh">开银行账户与储备托管</span><span class="en">Banking and reserve custody</span></td><td>新加坡</td><td>苏黎世</td><td><span class="zh">银行体系对虚拟资产最成熟，托管与审计配套完整</span><span class="en">Most mature banks for virtual assets; full custody and audit support</span></td></tr>
+        <tr><td><span class="zh">做 RWA 与大宗商品代币化</span><span class="en">RWA and commodity tokenisation</span></td><td>日内瓦</td><td>迪拜</td><td><span class="zh">大宗贸易融资与信托结构集中，法律确定性高</span><span class="en">Commodity trade finance and trust structures with legal certainty</span></td></tr>
+        <tr><td><span class="zh">面向欧盟 27 国展业</span><span class="en">Serving the EU-27</span></td><td>都柏林</td><td>卢森堡</td><td><span class="zh">MiCA 护照 + 英语法域，但要接受非欧元稳定币的规模上限</span><span class="en">MiCA passporting in English, subject to the non-euro volume cap</span></td></tr>
+        <tr><td><span class="zh">东南亚本地收款</span><span class="en">Southeast Asian collection</span></td><td>曼谷</td><td>吉隆坡</td><td><span class="zh">有牌照与真实商户场景，mBridge 试点参与方</span><span class="en">Licensed with real merchant use cases and mBridge participation</span></td></tr>
+        <tr><td><span class="zh">华人社群与中文服务</span><span class="en">Chinese community and service</span></td><td>香港</td><td>吉隆坡</td><td><span class="zh">中文即母语环境，法律与银行都用中文可通</span><span class="en">Chinese works end-to-end in law, banking and daily life</span></td></tr>
+        <tr><td><span class="zh">低成本离岸注册</span><span class="en">Low-cost offshore incorporation</span></td><td>纳闽</td><td>瓦杜兹</td><td><span class="zh">离岸牌照成熟、税负低，但银行开户难度上升</span><span class="en">Mature offshore licences and low tax, though banking is harder</span></td></tr>
+        <tr><td><span class="zh">中亚与一带一路结算</span><span class="en">Central Asia and BRI settlement</span></td><td>阿拉木图</td><td>阿斯塔纳</td><td><span class="zh">AIFC 普通法法域，已有离岸人民币代币获牌</span><span class="en">AIFC common-law jurisdiction with a licensed offshore RMB token</span></td></tr>
+        <tr><td><span class="zh">真实汇款与支付需求</span><span class="en">Real remittance demand</span></td><td>内罗毕</td><td>马尼拉</td><td><span class="zh">移动支付基础好、汇款刚需强，但客单价低</span><span class="en">Strong mobile money and remittance need, but low ticket sizes</span></td></tr>
+        <tr><td><span class="zh">监管最宽松、试错成本低</span><span class="en">Lightest regulation, lowest cost of trial</span></td><td>第比利斯</td><td>比什凯克</td><td><span class="zh">注册与税负都轻，但市场小、银行配套弱</span><span class="en">Light registration and tax, but small markets and weak banking</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2 class="sh"><span class="zh">六个必须说清的发现</span><span class="en">Six findings that matter</span></h2>
+  <div class="ins">
+    <div class="item">
+      <h4><span class="zh">1. 五个最高档辖区，只有香港的法律文本没排除人民币</span><span class="en">1. Of five top-tier jurisdictions, only Hong Kong does not exclude RMB</span></h4>
+      <p><span class="zh">香港《稳定币条例》覆盖「法币稳定币」，CNH 属于法币；新加坡的单一货币框架只认 SGD 与 G10；美国 GENIUS 法案以美元计价为核心；欧盟 MiCA 对非欧元稳定币设每日交易上限；日本则要求与日元或持牌信托挂钩。这不是偏好问题，是法律定义问题。</span><span class="en">Hong Kong's ordinance covers fiat-referenced stablecoins and CNH is fiat. Singapore's single-currency framework recognises only SGD and G10. The US GENIUS Act centres on USD. MiCA caps non-euro stablecoins by daily volume. Japan ties issuance to JPY or licensed trusts. This is legal definition, not preference.</span></p>
+    </div>
+    <div class="item">
+      <h4><span class="zh">2. 「加密友好」与「对 eCNH 友好」是两张完全不同的名单</span><span class="en">2. "Crypto-friendly" and "eCNH-friendly" are two different lists</span></h4>
+      <p><span class="zh">迈阿密、奥斯汀、巴厘岛这类地方对炒币很宽松，但都不具备发行离岸人民币支付代币的法律路径。反过来，香港、阿拉木图这类地方热度不高，制度上却有位置。看这张表时请先确认自己需要哪一种。</span><span class="en">Miami, Austin or Bali are relaxed about trading but offer no legal path to issuing an offshore RMB payment token. Hong Kong or Almaty are quieter but have structural room. Decide which one you actually need before reading the table.</span></p>
+    </div>
+    <div class="item">
+      <h4><span class="zh">3. 中亚出现了一个真实的 CNH 代币实验场</span><span class="en">3. Central Asia has a genuine CNH-token experiment</span></h4>
+      <p><span class="zh">阿拉木图 AIFC 法域已为离岸人民币代币发出牌照（AxCNH 为公开案例），采用英国普通法体系、独立法院，是 100 个城市里少数「法律上真的能装下 CNH」的地方。缺点是市场深度与银行配套远不如香港。</span><span class="en">The AIFC jurisdiction in Almaty has licensed an offshore RMB token (AxCNH is the public example), operating under English common law with its own court — one of the few places on this list where a CNH token legally fits. Depth and banking support lag far behind Hong Kong.</span></p>
+    </div>
+    <div class="item">
+      <h4><span class="zh">4. 欧盟 27 国能进，但做不大</span><span class="en">4. The EU is open, but capped</span></h4>
+      <p><span class="zh">MiCA 给非欧元稳定币设了每日 2 亿欧元或 100 万笔交易的上限，超过即须停止发行。这意味着欧洲可以作为一个合规展示窗口，却很难成为主要流通市场。真正做规模，仍要回到亚洲时区。</span><span class="en">MiCA caps non-euro stablecoins at €200m or one million transactions per day, beyond which issuance must stop. Europe works as a compliance showcase, not a primary circulation market. Scale still lives in Asian time zones.</span></p>
+    </div>
+    <div class="item">
+      <h4><span class="zh">5. 非洲与拉美的真实需求来自汇款，不是投机</span><span class="en">5. Real demand in Africa and Latin America is remittances, not speculation</span></h4>
+      <p><span class="zh">内罗毕、拉各斯、布宜诺斯艾利斯、圣保罗的稳定币使用率上升，驱动力是本币贬值与跨境汇款成本，而不是杠杆交易。这类市场对「锚定人民币」本身没有偏好，但对低成本、可结算的稳定币有刚需——这是 eCNH 最务实的落地场景。</span><span class="en">Stablecoin usage is rising in Nairobi, Lagos, Buenos Aires and São Paulo because of currency depreciation and remittance costs, not leverage. These markets have no particular attachment to RMB — but a real need for cheap, settleable stablecoins. That is eCNH's most practical use case.</span></p>
+    </div>
+    <div class="item">
+      <h4><span class="zh">6. 一半以上的城市，星级其实只有 2–3</span><span class="en">6. More than half the list sits at 2–3 stars</span></h4>
+      <p><span class="zh">100 个城市里，5★ 只有 5 个，4★ 12 个，其余多为「允许但不明确」或「明确禁止」。这不是清单不够努力，而是 CNH 计价代币在全球仍属少数派。把 3★ 当成「可以去做」，是这份文档最容易被误读的地方。</span><span class="en">Of 100 cities, only five are 5★ and twelve are 4★; the rest are either "permitted but unclear" or "explicitly prohibited". That reflects reality, not a weak list. Treating 3★ as a green light is the easiest way to misread this document.</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2 class="sh"><span class="zh">使用这份清单的三条纪律</span><span class="en">Three rules for using this list</span></h2>
+  <div class="ins">
+    <div class="item"><h4><span class="zh">① 星级不是法律意见</span><span class="en">① Stars are not legal advice</span></h4><p><span class="zh">所有评级都是对公开资料的定性归纳，任何实际展业前须由当地执业律师出具意见。监管状态变化极快，本文所记为 2026 年 11 月可查证的信息。</span><span class="en">Every grade is a qualitative summary of public information. Obtain a local counsel opinion before any actual operation. Rules move fast; this reflects what was verifiable in November 2026.</span></p></div>
+    <div class="item"><h4><span class="zh">② 先确认「发行地」与「展业地」是两件事</span><span class="en">② Issuance and operation are two different places</span></h4><p><span class="zh">在 A 地注册发行主体、在 B 地服务用户，是常见结构；但两边的合规义务都要满足，不能靠「注册在宽松地」规避展业地法律。</span><span class="en">Incorporating the issuer in A while serving users in B is common, but both sets of obligations apply. A lenient registry does not override the law where you actually operate.</span></p></div>
+    <div class="item"><h4><span class="zh">③ 不要用「监管友好」替代「商业可行」</span><span class="en">③ Do not confuse regulatory openness with commercial viability</span></h4><p><span class="zh">有些辖区法律宽松但几乎没有用户、没有银行、没有清算通道。落地成本往往高于在严格辖区合规的成本。</span><span class="en">Some jurisdictions are permissive but have no users, no banks and no clearing. The cost of operating there often exceeds the cost of complying somewhere strict.</span></p></div>
+  </div>
+  <div class="risk">
+    <span class="zh"><b>风险提示：</b>本页为公开信息整理，<b>不构成投资建议</b>，也不构成法律、税务或合规意见，更不构成对任何司法辖区或平台的推荐。加密资产价格波动剧烈，eCNH 流动性有限，可能出现较大滑点或无法成交。请自行核对合约地址 <code>7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5</code>，谨防同名假币与钓鱼网站，并遵守所在地法律法规与税务要求。eCNH 为社区项目，与中国人民银行、数字人民币（e-CNY）无任何隶属或合作关系。中国大陆对虚拟货币相关业务活动有严格限制，请严格遵守当地法律。</span>
+    <span class="en"><b>Risk notice:</b> public information only — <b>not investment advice</b>, nor legal, tax or compliance advice, nor an endorsement of any jurisdiction or platform. Crypto assets are highly volatile and eCNH liquidity is thin, so slippage or failed fills are possible. Verify the contract address <code>7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5</code> yourself, beware of impostor tokens and phishing sites, and comply with local law and tax rules. eCNH is a community project with no affiliation to the People's Bank of China or e-CNY. Mainland China strictly restricts virtual-currency business activity.</span>
+  </div>
+</section>
+
+<footer class="wrap">
+  <div><span class="zh">eCNH · 100 城监管地图 · 版本 v0.1 · 更新 2026-11 · 配套文档 ecnh-top100-cities.md</span><span class="en">eCNH · 100-city regulatory map · v0.1 · updated Nov 2026 · companion doc: ecnh-top100-cities.md</span></div>
+  <div style="margin-top:8px">
+    <a href="https://ucoingroup.github.io/eCNH/" target="_blank" rel="noopener"><span class="zh">官方网站</span><span class="en">Official site</span></a> ·
+    <a href="ecnh-top30-cities.html"><span class="zh">30 城精编版</span><span class="en">Top 30 edition</span></a> ·
+    <a href="ecnh-ai-prompt.html"><span class="zh">AI 提示词包</span><span class="en">AI prompt kit</span></a>
+  </div>
+</footer>
+
+<script type="application/json" id="edata">
+[
+{"r":1,"c":"香港","ce":"Hong Kong","k":"中国","ke":"China","g":"A","reg":"HKMA · SFC","s":"《稳定币条例》2025-08 生效，2026 年上半年发出首批牌照，法币稳定币须持牌发行","se":"Stablecoin Ordinance in force since Aug 2025; first licences issued in H1 2026 — fiat-referenced stablecoins require a licence","n":"全球最大离岸人民币中心，条例未把人民币排除在外","ne":"World's largest offshore CNH centre; the ordinance does not exclude RMB","star":5},
+{"r":2,"c":"新加坡","ce":"Singapore","k":"新加坡","ke":"Singapore","g":"A","reg":"MAS","s":"《支付服务法》DPT 牌照 + 单一货币稳定币框架（仅 SGD 与 G10 货币）","se":"DPT licensing under the Payment Services Act plus a single-currency stablecoin framework limited to SGD and G10 currencies","n":"合规度最高，但框架内没有 CNH，适合做技术总部","ne":"Highest compliance bar, but CNH sits outside the framework — better as a tech HQ","star":5},
+{"r":3,"c":"迪拜","ce":"Dubai","k":"阿联酋","ke":"UAE","g":"A","reg":"VARA · CBUAE","s":"VARA 虚拟资产服务商牌照，2025 年起稳定币须经央行批准，约 30 家持牌机构","se":"VARA VASP licensing; since 2025 stablecoins need central bank approval; around 30 licensed firms","n":"零个税、华人社群众多、跨境电商与贸易结算活跃","ne":"Zero personal income tax, large Chinese diaspora, active trade settlement","star":5},
+{"r":4,"c":"阿布扎比","ce":"Abu Dhabi","k":"阿联酋","ke":"UAE","g":"A","reg":"ADGM FSRA","s":"法币参考代币（FRT）规则 2026-01-01 生效，禁止算法稳定币","se":"Fiat-referenced token rules effective 1 Jan 2026; algorithmic stablecoins banned","n":"机构资本密集，适合储备托管与 RWA 结构","ne":"Institutional capital hub suited to reserve custody and RWA structures","star":5},
+{"r":5,"c":"东京","ce":"Tokyo","k":"日本","ke":"Japan","g":"A","reg":"FSA","s":"《资金结算法》修订 2026-06 全面实施，银行型与信托型稳定币合法","se":"Revised Payment Services Act fully effective Jun 2026; bank- and trust-issued stablecoins legal","n":"日元稳定币生态成熟，CNH 需另立结构；华人消费市场大","ne":"Mature JPY stablecoin ecosystem; CNH needs a separate structure","star":5},
+{"r":6,"c":"首尔","ce":"Seoul","k":"韩国","ke":"South Korea","g":"A","reg":"FSC · BOK","s":"《虚拟资产用户保护法》已施行，稳定币专门法仍在国会审议","se":"Virtual Asset User Protection Act in force; a dedicated stablecoin bill still pending in the National Assembly","n":"韩元稳定币讨论热烈，交易深度好，中文社群活跃","ne":"Heated KRW stablecoin debate, deep markets, active Chinese community","star":4},
+{"r":7,"c":"台北","ce":"Taipei","k":"中国台湾","ke":"Taiwan, China","g":"A","reg":"FSC","s":"VASP 登记制，专法草案审议中，2025 年起强化反洗钱","se":"VASP registration regime with a dedicated act still in draft; AML rules tightened from 2025","n":"华语环境零门槛，生态小而密，跨境支付需求强","ne":"Zero language barrier, small dense ecosystem, strong cross-border payment demand","star":4},
+{"r":8,"c":"吉隆坡","ce":"Kuala Lumpur","k":"马来西亚","ke":"Malaysia","g":"A","reg":"SC","s":"证券委员会数字资产指引，持牌交易所运营，稳定币须个案审批","se":"SC digital asset guidelines with licensed exchanges; stablecoins approved case by case","n":"成本低、华语通用，东盟人民币清算节点之一","ne":"Low cost, Chinese widely spoken, an ASEAN RMB clearing node","star":4},
+{"r":9,"c":"曼谷","ce":"Bangkok","k":"泰国","ke":"Thailand","g":"A","reg":"SEC · BOT","s":"SEC 数字资产牌照，央行推进稳定币沙盒与跨境结算试点","se":"SEC digital asset licences; the central bank runs a stablecoin sandbox and cross-border settlement pilots","n":"mBridge 参与方，旅游与贸易支付场景丰富","ne":"mBridge participant with rich tourism and trade payment use cases","star":4},
+{"r":10,"c":"阿拉木图","ce":"Almaty","k":"哈萨克斯坦","ke":"Kazakhstan","g":"A","reg":"AFSA · AIFC","s":"AIFC 数字资产牌照，离岸人民币代币 AxCNH 已在此获牌","se":"AIFC digital asset licences; the offshore RMB token AxCNH is licensed here","n":"中亚人民币结算枢纽，一带一路核心节点","ne":"Central Asian RMB settlement hub on the Belt and Road","star":4},
+{"r":11,"c":"麦纳麦","ce":"Manama","k":"巴林","ke":"Bahrain","g":"A","reg":"CBB","s":"CBB 加密资产模块与稳定币规则，持牌即可服务海湾市场","se":"CBB crypto-asset module with stablecoin rules; licensed firms can serve the Gulf","n":"海湾金融门户，成本低于迪拜，监管成熟","ne":"Gulf financial gateway, cheaper than Dubai, mature regulator","star":4},
+{"r":12,"c":"大阪","ce":"Osaka","k":"日本","ke":"Japan","g":"A","reg":"FSA","s":"随国家修法同步放开，大阪推进金融特区与稳定币试点","se":"Follows the national reform; Osaka is pushing a financial special zone and stablecoin pilots","n":"世博后遗留的数字支付基础设施可复用","ne":"Digital payment infrastructure left by Expo 2025 can be reused","star":4},
+{"r":13,"c":"福冈","ce":"Fukuoka","k":"日本","ke":"Japan","g":"A","reg":"FSA","s":"国家层面同东京，福冈列为创业特区，稳定币实验活跃","se":"Same national regime as Tokyo; Fukuoka is a designated startup zone with active stablecoin experiments","n":"生活成本低，适合小团队落地","ne":"Low living cost — good for small teams","star":4},
+{"r":14,"c":"釜山","ce":"Busan","k":"韩国","ke":"South Korea","g":"A","reg":"FSC","s":"韩国监管框架内，釜山推进数字资产交易所试点","se":"Within the Korean framework, Busan is piloting a digital asset exchange","n":"地方政府主动，成本低于首尔","ne":"Proactive local government; cheaper than Seoul","star":3},
+{"r":15,"c":"济州","ce":"Jeju","k":"韩国","ke":"South Korea","g":"A","reg":"FSC","s":"国家框架适用，济州为区块链特区","se":"National rules apply; Jeju is a blockchain special zone","n":"适合注册与测试，不适合大规模展业","ne":"Good for incorporation and testing, not for large-scale operations","star":3},
+{"r":16,"c":"纳闽","ce":"Labuan","k":"马来西亚","ke":"Malaysia","g":"A","reg":"Labuan FSA","s":"离岸金融牌照，可覆盖数字资产相关业务","se":"Offshore financial licences that can cover digital-asset activity","n":"税务优惠，离岸结构常用","ne":"Tax incentives; commonly used for offshore structures","star":3},
+{"r":17,"c":"雅加达","ce":"Jakarta","k":"印度尼西亚","ke":"Indonesia","g":"A","reg":"OJK","s":"加密资产监管 2025 年由 Bappebti 移交 OJK，新规逐步落地","se":"Crypto supervision moved from Bappebti to OJK in 2025; new rules phasing in","n":"人口红利大，华人商业网络强","ne":"Huge population, strong Chinese business networks","star":3},
+{"r":18,"c":"登巴萨（巴厘）","ce":"Denpasar (Bali)","k":"印度尼西亚","ke":"Indonesia","g":"A","reg":"OJK","s":"同印尼国家框架，地方以旅游支付场景为主","se":"Same national regime; local focus on tourism payments","n":"数字游民聚集，社区传播快","ne":"Digital-nomad hub with fast community spread","star":3},
+{"r":19,"c":"马尼拉","ce":"Manila","k":"菲律宾","ke":"Philippines","g":"A","reg":"BSP","s":"BSP 虚拟资产服务商牌照，已有比索稳定币试点","se":"BSP VASP licensing; peso stablecoin pilots already running","n":"汇款需求全球前列，劳务输出大国","ne":"Top-tier remittance demand from a major labour-exporting country","star":3},
+{"r":20,"c":"胡志明市","ce":"Ho Chi Minh City","k":"越南","ke":"Vietnam","g":"A","reg":"SBV","s":"《数字技术产业法》2026 年生效，交易所试点启动，稳定币规则待定","se":"Digital Technology Industry Law effective 2026 with an exchange pilot; stablecoin rules still pending","n":"年轻人口与高加密渗透率","ne":"Young population with high crypto adoption","star":3},
+{"r":21,"c":"伊斯坦布尔","ce":"Istanbul","k":"土耳其","ke":"Türkiye","g":"A","reg":"CMB · SPK","s":"2024 年资本市场法修订后，VASP 须取得 SPK 许可","se":"After the 2024 Capital Markets Law amendment, VASPs need SPK authorisation","n":"欧亚枢纽，里拉贬值推高加密需求","ne":"Eurasian hub; lira depreciation drives crypto demand","star":3},
+{"r":22,"c":"第比利斯","ce":"Tbilisi","k":"格鲁吉亚","ke":"Georgia","g":"A","reg":"NBG","s":"VASP 注册制自 2023 年起执行，税制宽松","se":"VASP registration since 2023 with a light tax regime","n":"对个人加密活动友善，成本低","ne":"Friendly to individual crypto activity, low cost","star":3},
+{"r":23,"c":"多哈","ce":"Doha","k":"卡塔尔","ke":"Qatar","g":"A","reg":"QFCRA · CRA","s":"QFC 数字资产实验室 2025 年启动，牌照逐步发放","se":"QFC digital asset lab launched in 2025 with licences rolling out","n":"资本充裕，规则偏保守","ne":"Deep capital, conservative rules","star":3},
+{"r":24,"c":"马斯喀特","ce":"Muscat","k":"阿曼","ke":"Oman","g":"A","reg":"CMA","s":"2025 年虚拟资产框架，开放持牌与沙盒","se":"2025 virtual asset framework opening licensing and sandboxes","n":"海湾后起者，门槛较低","ne":"A Gulf latecomer with lower entry barriers","star":3},
+{"r":25,"c":"阿斯塔纳","ce":"Astana","k":"哈萨克斯坦","ke":"Kazakhstan","g":"A","reg":"AIFC · AFSA","s":"AIFC 法域内可发数字资产，适用英国普通法","se":"Digital assets can be issued within the AIFC common-law jurisdiction","n":"适合做中亚总部与合规架构","ne":"Suited to a Central Asian HQ and compliance structure","star":3},
+{"r":26,"c":"塔什干","ce":"Tashkent","k":"乌兹别克斯坦","ke":"Uzbekistan","g":"A","reg":"NAPP","s":"持牌交易所与挖矿合法化，2024 年起收紧外汇","se":"Licensed exchanges and mining legalised; FX rules tightened since 2024","n":"中亚人口最多，年轻用户多","ne":"Largest Central Asian population, young user base","star":3},
+{"r":27,"c":"特拉维夫","ce":"Tel Aviv","k":"以色列","ke":"Israel","g":"A","reg":"ISA · BOI","s":"2025 年数字资产法案推进，稳定币纳入监管","se":"Digital asset bill advancing in 2025, bringing stablecoins under supervision","n":"技术人才密集，网络安全强","ne":"Dense tech talent and strong cybersecurity","star":3},
+{"r":28,"c":"宿务","ce":"Cebu","k":"菲律宾","ke":"Philippines","g":"A","reg":"BSP","s":"同菲律宾国家框架","se":"Same national framework as the Philippines","n":"BPO 产业聚集，跨境收付需求实在","ne":"BPO hub with real cross-border payment needs","star":2},
+{"r":29,"c":"河内","ce":"Hanoi","k":"越南","ke":"Vietnam","g":"A","reg":"SBV","s":"同越南国家框架，试点先行","se":"Same Vietnamese framework, pilot-first approach","n":"政策执行端更谨慎","ne":"More cautious in enforcement","star":2},
+{"r":30,"c":"澳门","ce":"Macao","k":"中国","ke":"China","g":"A","reg":"AMCM","s":"无专门虚拟资产法，仅个案许可，以反洗钱监管为主","se":"No dedicated virtual asset law; case-by-case permits with AML supervision","n":"可作为葡语系与湾区连接的窗口","ne":"A window to Lusophone markets and the Greater Bay Area","star":2},
+{"r":31,"c":"金边","ce":"Phnom Penh","k":"柬埔寨","ke":"Cambodia","g":"A","reg":"NBC","s":"2025 年起草加密资产规则，Bakong 主导支付体系","se":"Drafting crypto rules from 2025; Bakong dominates payments","n":"美元化经济体，本地稳定币需求特殊","ne":"Dollarised economy with unusual local stablecoin demand","star":2},
+{"r":32,"c":"万象","ce":"Vientiane","k":"老挝","ke":"Laos","g":"A","reg":"BSL","s":"2024 年起试点加密业务，规模受限","se":"Crypto business pilots since 2024, limited in scale","n":"电力与挖矿基础好，金融基础弱","ne":"Good power and mining base, weak financial infrastructure","star":2},
+{"r":33,"c":"埃里温","ce":"Yerevan","k":"亚美尼亚","ke":"Armenia","g":"A","reg":"CBA","s":"2024 年数字资产法，牌照制度初建","se":"2024 digital asset law with a nascent licensing regime","n":"成本低，俄语区人才流入","ne":"Low cost, inflows of Russian-speaking talent","star":2},
+{"r":34,"c":"巴库","ce":"Baku","k":"阿塞拜疆","ke":"Azerbaijan","g":"A","reg":"CBA","s":"2025 年起规范加密服务商，仍在起步阶段","se":"Regulating crypto service providers from 2025; still early","n":"能源国，主权基金体量大","ne":"Energy economy with a large sovereign fund","star":2},
+{"r":35,"c":"比什凯克","ce":"Bishkek","k":"吉尔吉斯斯坦","ke":"Kyrgyzstan","g":"A","reg":"FSA","s":"2022 年虚拟资产法，2025 年推出黄金锚定代币","se":"2022 virtual asset law; a gold-backed token launched in 2025","n":"小而开放，适合试验","ne":"Small and open — good for experiments","star":2},
+{"r":36,"c":"乌兰巴托","ce":"Ulaanbaatar","k":"蒙古","ke":"Mongolia","g":"A","reg":"FRC","s":"数字资产法草案与沙盒推进中","se":"Digital asset draft law and sandbox in progress","n":"矿业主导，金融体系薄","ne":"Mining-led with a thin financial sector","star":2},
+{"r":37,"c":"孟买","ce":"Mumbai","k":"印度","ke":"India","g":"A","reg":"FIU-IND · RBI","s":"FIU 登记 + 30% 资本利得税 + 1% TDS，无稳定币法","se":"FIU registration, 30% capital gains tax and 1% TDS; no stablecoin law","n":"市场巨大但税负与合规成本高","ne":"Huge market but heavy tax and compliance burden","star":2},
+{"r":38,"c":"班加罗尔","ce":"Bengaluru","k":"印度","ke":"India","g":"A","reg":"FIU-IND · RBI","s":"同印度联邦框架","se":"Same Indian federal framework","n":"技术人才密集，适合研发中心","ne":"Tech talent hub, good for R&D centres","star":2},
+{"r":39,"c":"新德里","ce":"New Delhi","k":"印度","ke":"India","g":"A","reg":"FIU-IND · RBI","s":"同印度联邦框架，政策制定中心","se":"Same federal framework; the policy-making centre","n":"政策风向观察点","ne":"Where policy direction is set","star":2},
+{"r":40,"c":"卡拉奇","ce":"Karachi","k":"巴基斯坦","ke":"Pakistan","g":"A","reg":"PVARA · SBP","s":"2025 年虚拟资产法设立 PVARA，牌照制度启动","se":"The 2025 Virtual Assets Act created PVARA and started licensing","n":"人口大国，汇款需求强","ne":"Large population with strong remittance demand","star":2},
+{"r":41,"c":"伊斯兰堡","ce":"Islamabad","k":"巴基斯坦","ke":"Pakistan","g":"A","reg":"PVARA","s":"同巴基斯坦国家框架，监管机构所在地","se":"Same national framework; seat of the regulator","n":"政策窗口期，早期进入者少","ne":"Policy window with few early entrants","star":2},
+{"r":42,"c":"科伦坡","ce":"Colombo","k":"斯里兰卡","ke":"Sri Lanka","g":"A","reg":"CBSL","s":"央行曾警示加密风险，2025 年起研究沙盒","se":"The central bank has warned on crypto and studied a sandbox from 2025","n":"南亚航运节点，规模小","ne":"South Asian shipping node, small market","star":2},
+{"r":43,"c":"安曼","ce":"Amman","k":"约旦","ke":"Jordan","g":"A","reg":"CBJ","s":"央行沙盒与数字支付框架，加密交易仍受限","se":"Central bank sandbox and digital payment framework; crypto trading still restricted","n":"稳定但市场小","ne":"Stable but small","star":2},
+{"r":44,"c":"利雅得","ce":"Riyadh","k":"沙特阿拉伯","ke":"Saudi Arabia","g":"A","reg":"SAMA · CMA","s":"SAMA 参与 mBridge，零售加密仍受限，稳定币规则审慎","se":"SAMA joins mBridge; retail crypto still restricted and stablecoin rules cautious","n":"主权资本雄厚，To-B 机会大于 To-C","ne":"Deep sovereign capital; B2B beats B2C here","star":2},
+{"r":45,"c":"斯里巴加湾","ce":"Bandar Seri Begawan","k":"文莱","ke":"Brunei","g":"A","reg":"AMBD","s":"无加密牌照制度，未授权支付代币被禁止","se":"No crypto licensing regime; unauthorised payment tokens prohibited","n":"市场极小，合规风险高于收益","ne":"Tiny market; compliance risk outweighs upside","star":1},
+{"r":46,"c":"仰光","ce":"Yangon","k":"缅甸","ke":"Myanmar","g":"A","reg":"CBM","s":"2024 年起加强管控，加密交易受限","se":"Tighter controls since 2024; crypto trading restricted","n":"政治与合规风险高，不建议进入","ne":"High political and compliance risk — not advisable","star":1},
+{"r":47,"c":"达卡","ce":"Dhaka","k":"孟加拉国","ke":"Bangladesh","g":"A","reg":"Bangladesh Bank","s":"央行明确禁止加密交易与支付","se":"The central bank explicitly prohibits crypto trading and payments","n":"法律风险高","ne":"High legal risk","star":1},
+{"r":48,"c":"加德满都","ce":"Kathmandu","k":"尼泊尔","ke":"Nepal","g":"A","reg":"NRB","s":"央行禁止加密交易，2025 年仍维持","se":"The central bank bans crypto trading, still in force in 2025","n":"不建议","ne":"Not advisable","star":1},
+{"r":49,"c":"科威特城","ce":"Kuwait City","k":"科威特","ke":"Kuwait","g":"A","reg":"CBK","s":"央行禁止加密支付与相关服务","se":"The central bank prohibits crypto payments and related services","n":"无落地空间","ne":"No room to operate","star":1},
+{"r":50,"c":"杜尚别","ce":"Dushanbe","k":"塔吉克斯坦","ke":"Tajikistan","g":"A","reg":"NBT","s":"加密活动受限，未见牌照制度","se":"Crypto activity restricted; no licensing regime","n":"不建议","ne":"Not advisable","star":1},
+{"r":51,"c":"伦敦","ce":"London","k":"英国","ke":"United Kingdom","g":"W","reg":"FCA · BoE","s":"FCA 稳定币最终规则 2026-06 定稿，制度 2027-10 起实施","se":"FCA final stablecoin rules published Jun 2026; regime starts Oct 2027","n":"离岸人民币第二大中心，专业服务强","ne":"Second-largest offshore CNH centre with deep professional services","star":4},
+{"r":52,"c":"楚格","ce":"Zug","k":"瑞士","ke":"Switzerland","g":"W","reg":"FINMA","s":"DLT 法案下可发代币化资产与支付代币，需银行或 DLT 牌照","se":"Under the DLT Act, tokenised assets and payment tokens need a bank or DLT licence","n":"加密谷核心，基金会结构成熟","ne":"Heart of Crypto Valley with mature foundation structures","star":4},
+{"r":53,"c":"苏黎世","ce":"Zurich","k":"瑞士","ke":"Switzerland","g":"W","reg":"FINMA","s":"同瑞士联邦框架，私人银行密集","se":"Same Swiss framework with dense private banking","n":"适合储备托管与机构合作","ne":"Good for reserve custody and institutional partnerships","star":4},
+{"r":54,"c":"日内瓦","ce":"Geneva","k":"瑞士","ke":"Switzerland","g":"W","reg":"FINMA","s":"同瑞士联邦框架，大宗商品贸易融资集中","se":"Same Swiss framework; hub for commodity trade finance","n":"RWA 与大宗商品代币化可选地","ne":"An option for RWA and commodity tokenisation","star":4},
+{"r":55,"c":"瓦杜兹","ce":"Vaduz","k":"列支敦士登","ke":"Liechtenstein","g":"W","reg":"FMA","s":"TVTG 代币法，代币化与稳定币发行路径明确","se":"The TVTG Token Act gives a clear path for tokenisation and stablecoin issuance","n":"小而专，审批效率高","ne":"Small and specialised with fast approvals","star":3},
+{"r":56,"c":"卢森堡","ce":"Luxembourg","k":"卢森堡","ke":"Luxembourg","g":"W","reg":"CSSF","s":"MiCA 框架 + 基金业基础，可作电子货币代币发行","se":"MiCA plus a fund-industry base; can issue e-money tokens","n":"欧元基金与跨境分销强","ne":"Strong in euro funds and cross-border distribution","star":3},
+{"r":57,"c":"都柏林","ce":"Dublin","k":"爱尔兰","ke":"Ireland","g":"W","reg":"CBI","s":"MiCA 护照 + 英语法域，科技总部集中","se":"MiCA passporting in an English-speaking jurisdiction with tech HQs","n":"适合做欧盟合规总部","ne":"Good EU compliance HQ","star":3},
+{"r":58,"c":"阿姆斯特丹","ce":"Amsterdam","k":"荷兰","ke":"Netherlands","g":"W","reg":"DNB","s":"MiCA 实施，DNB 登记","se":"MiCA implemented with DNB registration","n":"支付与物流枢纽","ne":"Payments and logistics hub","star":3},
+{"r":59,"c":"法兰克福","ce":"Frankfurt","k":"德国","ke":"Germany","g":"W","reg":"BaFin","s":"MiCA 实施，BaFin 监管大型机构","se":"MiCA implemented; BaFin supervises large institutions","n":"欧洲央行所在地，机构信任度高","ne":"Home of the ECB; high institutional trust","star":3},
+{"r":60,"c":"柏林","ce":"Berlin","k":"德国","ke":"Germany","g":"W","reg":"BaFin","s":"同德国联邦框架，创业生态强","se":"Same German framework with a strong startup scene","n":"人才与成本平衡","ne":"Balanced talent and cost","star":3},
+{"r":61,"c":"巴黎","ce":"Paris","k":"法国","ke":"France","g":"W","reg":"AMF · ACPR","s":"MiCA + PACTE 法，PSAN 牌照","se":"MiCA plus the PACTE Act's PSAN licence","n":"欧盟大陆资本中心","ne":"Continental EU capital centre","star":3},
+{"r":62,"c":"瓦莱塔","ce":"Valletta","k":"马耳他","ke":"Malta","g":"W","reg":"MFSA","s":"MiCA + VFA 框架，早期加密法域","se":"MiCA plus the VFA framework; an early crypto jurisdiction","n":"牌照路径成熟，实质经营要求提高","ne":"Mature licensing path with stricter substance rules","star":3},
+{"r":63,"c":"里斯本","ce":"Lisbon","k":"葡萄牙","ke":"Portugal","g":"W","reg":"CMVM · BdP","s":"MiCA 实施，个人税制友好","se":"MiCA implemented; friendly personal tax treatment","n":"成本低，数字游民多","ne":"Low cost, many digital nomads","star":3},
+{"r":64,"c":"马德里","ce":"Madrid","k":"西班牙","ke":"Spain","g":"W","reg":"CNMV","s":"MiCA 实施，2025 年起强化宣传监管","se":"MiCA implemented; marketing supervision tightened from 2025","n":"拉美通道","ne":"Gateway to Latin America","star":3},
+{"r":65,"c":"米兰","ce":"Milan","k":"意大利","ke":"Italy","g":"W","reg":"CONSOB · BdI","s":"MiCA 实施，监管趋严","se":"MiCA implemented with tightening supervision","n":"产业与设计资源好","ne":"Strong industrial and design resources","star":3},
+{"r":66,"c":"维也纳","ce":"Vienna","k":"奥地利","ke":"Austria","g":"W","reg":"FMA","s":"MiCA 实施，隐私保护传统强","se":"MiCA implemented with a strong privacy tradition","n":"中欧枢纽，成本可控","ne":"Central European hub with controllable costs","star":3},
+{"r":67,"c":"塔林","ce":"Tallinn","k":"爱沙尼亚","ke":"Estonia","g":"W","reg":"FIU","s":"MiCA 实施，电子居民制度便利注册","se":"MiCA implemented; e-Residency makes incorporation easy","n":"注册快，适合远程团队","ne":"Fast incorporation for remote teams","star":3},
+{"r":68,"c":"维尔纽斯","ce":"Vilnius","k":"立陶宛","ke":"Lithuania","g":"W","reg":"Bank of Lithuania","s":"MiCA 实施，曾是最快发牌法域之一","se":"MiCA implemented; once one of the fastest licensing jurisdictions","n":"电子货币机构牌照集中","ne":"Cluster of e-money institution licences","star":3},
+{"r":69,"c":"华沙","ce":"Warsaw","k":"波兰","ke":"Poland","g":"W","reg":"KNF","s":"MiCA 实施，监管表态偏强硬","se":"MiCA implemented, though the regulator's rhetoric is hawkish","n":"市场大，政策不确定性高","ne":"Large market with policy uncertainty","star":2},
+{"r":70,"c":"布拉格","ce":"Prague","k":"捷克","ke":"Czechia","g":"W","reg":"CNB","s":"MiCA 实施，2025 年通过加密友好税法","se":"MiCA implemented alongside a crypto-friendly tax law passed in 2025","n":"持币三年免资本利得税","ne":"Three-year holding exempt from capital gains tax","star":3},
+{"r":71,"c":"布达佩斯","ce":"Budapest","k":"匈牙利","ke":"Hungary","g":"W","reg":"MNB","s":"MiCA 实施，2025 年起收紧外汇与加密审查","se":"MiCA implemented; FX and crypto scrutiny tightened from 2025","n":"政策摇摆","ne":"Policy swings","star":2},
+{"r":72,"c":"里加","ce":"Riga","k":"拉脱维亚","ke":"Latvia","g":"W","reg":"Latvijas Banka","s":"MiCA 实施，早期牌照曾被大量撤销","se":"MiCA implemented after a wave of early licence revocations","n":"合规成本上升","ne":"Rising compliance costs","star":2},
+{"r":73,"c":"雅典","ce":"Athens","k":"希腊","ke":"Greece","g":"W","reg":"HCMC","s":"MiCA 实施，市场尚小","se":"MiCA implemented; market still small","n":"成本低，航运金融特色","ne":"Low cost with a shipping finance niche","star":2},
+{"r":74,"c":"尼科西亚","ce":"Nicosia","k":"塞浦路斯","ke":"Cyprus","g":"W","reg":"CySEC","s":"MiCA 实施，外汇与经纪商聚集","se":"MiCA implemented; FX and broker cluster","n":"牌照与运营成本较低","ne":"Lower licensing and operating costs","star":3},
+{"r":75,"c":"贝尔格莱德","ce":"Belgrade","k":"塞尔维亚","ke":"Serbia","g":"W","reg":"NBS","s":"2025 年数字资产法，牌照制度新建","se":"2025 digital asset law with a new licensing regime","n":"欧洲成本洼地","ne":"Low-cost European base","star":2},
+{"r":76,"c":"基辅","ce":"Kyiv","k":"乌克兰","ke":"Ukraine","g":"W","reg":"NBU · NSSMC","s":"虚拟资产法推进中，战时资本管制","se":"Virtual asset law in progress amid wartime capital controls","n":"重建期机会与高风险并存","ne":"Reconstruction upside with high risk","star":2},
+{"r":77,"c":"纽约","ce":"New York","k":"美国","ke":"United States","g":"W","reg":"NYDFS · OCC","s":"联邦 GENIUS 法案 2027-01 生效，州层面 BitLicense","se":"Federal GENIUS Act effective Jan 2027; state BitLicense regime","n":"机构资本与法律服务最强","ne":"Deepest institutional capital and legal services","star":3},
+{"r":78,"c":"旧金山","ce":"San Francisco","k":"美国","ke":"United States","g":"W","reg":"Federal · California","s":"同美国联邦与加州框架，创业资本密集","se":"Federal and California frameworks with dense venture capital","n":"AI × Web3 人才密度最高","ne":"Highest AI × Web3 talent density","star":3},
+{"r":79,"c":"迈阿密","ce":"Miami","k":"美国","ke":"United States","g":"W","reg":"Florida · Federal","s":"州级友好表态，联邦框架适用","se":"Crypto-friendly state stance under the federal framework","n":"拉美资本入口，华语社群增长","ne":"Latin American capital gateway with a growing Chinese community","star":3},
+{"r":80,"c":"夏延（怀俄明）","ce":"Cheyenne (Wyoming)","k":"美国","ke":"United States","g":"W","reg":"WY DFS","s":"SPDI 银行牌照 + 加密友好州法","se":"SPDI bank charter plus crypto-friendly state law","n":"适合做发行主体与信托结构","ne":"Good for issuers and trust structures","star":3},
+{"r":81,"c":"奥斯汀","ce":"Austin","k":"美国","ke":"United States","g":"W","reg":"Texas · Federal","s":"州级监管宽松，电力与矿场资源好","se":"Light state oversight with strong power and mining resources","n":"成本低于东西海岸","ne":"Cheaper than the coasts","star":2},
+{"r":82,"c":"多伦多","ce":"Toronto","k":"加拿大","ke":"Canada","g":"W","reg":"OSC · CSA","s":"CSA 注册制，稳定币按证券或支付工具审查","se":"CSA registration; stablecoins reviewed as securities or payment instruments","n":"华语人口多，银行体系稳","ne":"Large Chinese-speaking population, stable banks","star":3},
+{"r":83,"c":"温哥华","ce":"Vancouver","k":"加拿大","ke":"Canada","g":"W","reg":"BCSC","s":"同加拿大 CSA 框架，BC 省对矿场另有电网限制","se":"Same CSA framework; BC imposes extra grid limits on mining","n":"亚太时区与华人社群优势","ne":"Asia-Pacific time zone and Chinese community","star":3},
+{"r":84,"c":"蒙特利尔","ce":"Montreal","k":"加拿大","ke":"Canada","g":"W","reg":"AMF","s":"同 CSA 框架，AI 研究集中","se":"Same CSA framework; strong AI research","n":"成本低，法语环境","ne":"Low cost, French-speaking","star":2},
+{"r":85,"c":"拿骚","ce":"Nassau","k":"巴哈马","ke":"Bahamas","g":"W","reg":"SCB","s":"DARE 法案，数字资产牌照成熟","se":"DARE Act with a mature digital asset licensing regime","n":"离岸结构常用，透明度要求提高","ne":"Common offshore structure; transparency requirements rising","star":3},
+{"r":86,"c":"圣保罗","ce":"São Paulo","k":"巴西","ke":"Brazil","g":"W","reg":"BCB · CVM","s":"2025 年起稳定币规则咨询，Pix 覆盖极广","se":"Stablecoin rule consultation from 2025; Pix is ubiquitous","n":"拉美最大市场，华人商贸密集","ne":"Largest Latin American market with dense Chinese trade","star":3},
+{"r":87,"c":"布宜诺斯艾利斯","ce":"Buenos Aires","k":"阿根廷","ke":"Argentina","g":"W","reg":"CNV","s":"VASP 登记制自 2024 年起实施","se":"VASP registry in force since 2024","n":"高通胀推动稳定币真实需求","ne":"Inflation drives genuine stablecoin demand","star":3},
+{"r":88,"c":"圣地亚哥","ce":"Santiago","k":"智利","ke":"Chile","g":"W","reg":"CMF","s":"《金融科技法》2023 年生效，交易所须持牌","se":"Fintech Act effective 2023; exchanges must be licensed","n":"监管清晰，市场稳健","ne":"Clear rules, stable market","star":3},
+{"r":89,"c":"墨西哥城","ce":"Mexico City","k":"墨西哥","ke":"Mexico","g":"W","reg":"CNBV · Banxico","s":"《金融科技法》下电子支付基金机构牌照，加密交易受限","se":"Fintech Law licensing for e-payment funds; crypto trading restricted","n":"汇款走廊巨大，合规门槛高","ne":"Huge remittance corridor with a high compliance bar","star":2},
+{"r":90,"c":"波哥大","ce":"Bogotá","k":"哥伦比亚","ke":"Colombia","g":"W","reg":"SFC","s":"监管沙盒与试点，尚无完整稳定币法","se":"Regulatory sandbox and pilots; no full stablecoin law yet","n":"汇款需求强，政策渐进","ne":"Strong remittance demand, gradual policy","star":2},
+{"r":91,"c":"内罗毕","ce":"Nairobi","k":"肯尼亚","ke":"Kenya","g":"W","reg":"CBK · CMA","s":"《VASP 法》2025 年出台，牌照申请 2026 年截止","se":"VASP Act passed in 2025 with licence applications closing in 2026","n":"移动支付基础好，东非门户","ne":"Strong mobile money base; East African gateway","star":3},
+{"r":92,"c":"约翰内斯堡","ce":"Johannesburg","k":"南非","ke":"South Africa","g":"W","reg":"FSCA","s":"CASP 牌照自 2023 年起发放，2025 年纳入交易所监管","se":"CASP licences issued since 2023; exchanges supervised from 2025","n":"非洲最成熟金融体系","ne":"Africa's most mature financial system","star":3},
+{"r":93,"c":"开普敦","ce":"Cape Town","k":"南非","ke":"South Africa","g":"W","reg":"FSCA","s":"同南非国家框架，金融科技聚集","se":"Same South African framework with a fintech cluster","n":"成本与生活质量平衡","ne":"Balanced cost and quality of life","star":3},
+{"r":94,"c":"路易港","ce":"Port Louis","k":"毛里求斯","ke":"Mauritius","g":"W","reg":"FSC","s":"VASP 牌照制度，2024 年起收紧实质经营要求","se":"VASP licensing with stricter substance rules from 2024","n":"非洲与亚洲之间的桥梁","ne":"Bridge between Africa and Asia","star":3},
+{"r":95,"c":"拉各斯","ce":"Lagos","k":"尼日利亚","ke":"Nigeria","g":"W","reg":"SEC · CBN","s":"《投资与证券法》2025 年承认数字资产，交易所须 SEC 牌照","se":"The 2025 ISA recognises digital assets; exchanges need SEC licences","n":"人口与支付需求大，汇兑管制是难点","ne":"Large population and payment demand; FX controls are the hurdle","star":2},
+{"r":96,"c":"维多利亚","ce":"Victoria","k":"塞舌尔","ke":"Seychelles","g":"W","reg":"FSA","s":"VASP 法 2024 年生效，离岸牌照可用","se":"VASP Act effective 2024; offshore licences available","n":"离岸注册常见，银行开户偏难","ne":"Common offshore registration; banking access is harder","star":2},
+{"r":97,"c":"悉尼","ce":"Sydney","k":"澳大利亚","ke":"Australia","g":"W","reg":"ASIC · AUSTRAC","s":"2025 年数字资产框架立法，交易所须持牌","se":"Digital asset framework legislated in 2025; exchanges must be licensed","n":"亚太时区，华人社群成熟","ne":"Asia-Pacific time zone with a mature Chinese community","star":3},
+{"r":98,"c":"墨尔本","ce":"Melbourne","k":"澳大利亚","ke":"Australia","g":"W","reg":"ASIC","s":"同澳大利亚联邦框架","se":"Same Australian federal framework","n":"成本低于悉尼，金融科技活跃","ne":"Cheaper than Sydney with active fintech","star":3},
+{"r":99,"c":"奥克兰","ce":"Auckland","k":"新西兰","ke":"New Zealand","g":"W","reg":"FMA","s":"FMA 对稳定币持审慎态度，2025 年起加强披露","se":"The FMA is cautious on stablecoins, with tighter disclosure from 2025","n":"小而稳，适合小规模试点","ne":"Small and stable — good for small pilots","star":3},
+{"r":100,"c":"惠灵顿","ce":"Wellington","k":"新西兰","ke":"New Zealand","g":"W","reg":"FMA · RBNZ","s":"央行数字货币与稳定币咨询推进中","se":"CBDC and stablecoin consultations under way","n":"政策讨论阶段，落地尚早","ne":"Still at the policy discussion stage","star":2}
+]
+</script>
+
+<script>
+const DATA = JSON.parse(document.getElementById('edata').textContent);
+let lang = localStorage.getItem('t100-lang') || 'zh';
+let theme = localStorage.getItem('t100-theme') || 'blue';
+let g = 'all', s = 'all';
+
+document.documentElement.setAttribute('data-lang', lang);
+document.documentElement.setAttribute('data-theme', theme);
+document.getElementById('langBtn').textContent = lang === 'zh' ? 'EN' : '中文';
+
+function toggleLang(){
+  lang = lang === 'zh' ? 'en' : 'zh';
+  document.documentElement.setAttribute('data-lang', lang);
+  document.getElementById('langBtn').textContent = lang === 'zh' ? 'EN' : '中文';
+  localStorage.setItem('t100-lang', lang);
+  render();
+}
+function setTheme(t){
+  theme = t;
+  document.documentElement.setAttribute('data-theme', t);
+  document.querySelectorAll('.dot').forEach(d => d.classList.toggle('on', d.dataset.t === t));
+  localStorage.setItem('t100-theme', t);
+}
+function setG(v){ g = v; document.querySelectorAll('[data-g]').forEach(b => b.classList.toggle('on', b.dataset.g === v)); render(); }
+function setS(v){ s = v; document.querySelectorAll('[data-s]').forEach(b => b.classList.toggle('on', b.dataset.s === v)); render(); }
+document.querySelectorAll('.dot').forEach(d => d.classList.toggle('on', d.dataset.t === theme));
+
+function starStr(n){ return '★★★★★'.slice(0, n) + '☆☆☆☆☆'.slice(0, 5 - n); }
+
+function cardHTML(d){
+  return `<article class="card">
+    <div class="top"><span class="rk">#${d.r}</span><h3>${lang === 'zh' ? d.c : d.ce}</h3></div>
+    <div class="cty">${lang === 'zh' ? d.k : d.ke} · ${d.reg}</div>
+    <div class="meta"><span class="tag gray">${d.g === 'A' ? (lang === 'zh' ? '亚洲' : 'Asia') : (lang === 'zh' ? '地球村' : 'Global Village')}</span><span class="star">${starStr(d.star)}</span></div>
+    <div class="st">${lang === 'zh' ? d.s : d.se}</div>
+    <div class="nt">${lang === 'zh' ? d.n : d.ne}</div>
+  </article>`;
+}
+
+function emptyHTML(){
+  return '<div class="empty"><span class="zh">没有符合条件的城市，请放宽筛选。</span><span class="en">No city matches — loosen the filters.</span></div>';
+}
+
+function render(){
+  const q = (document.getElementById('q').value || '').trim().toLowerCase();
+  const rows = DATA.filter(d => {
+    if (g !== 'all' && d.g !== g) return false;
+    if (s === '5' && d.star !== 5) return false;
+    if (s === '4' && d.star !== 4) return false;
+    if (s === '3' && d.star !== 3) return false;
+    if (s === 'low' && d.star > 2) return false;
+    if (q) {
+      const hay = [d.c, d.ce, d.k, d.ke].join(' ').toLowerCase();
+      if (hay.indexOf(q) === -1) return false;
+    }
+    return true;
+  });
+
+  // 速览表
+  const tbody = document.getElementById('tbody');
+  tbody.innerHTML = rows.length
+    ? rows.map(d => `<tr>
+        <td>${d.r}</td>
+        <td><b>${lang === 'zh' ? d.c : d.ce}</b> <span class="sm">${lang === 'zh' ? d.ce : d.c}</span></td>
+        <td>${lang === 'zh' ? d.k : d.ke}</td>
+        <td>${d.reg}</td>
+        <td><span class="star">${starStr(d.star)}</span></td>
+      </tr>`).join('')
+    : `<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:22px">${lang === 'zh' ? '没有符合条件的城市' : 'No matching city'}</td></tr>`;
+
+  // 分区卡片
+  const A = rows.filter(d => d.g === 'A');
+  const W = rows.filter(d => d.g === 'W');
+  document.getElementById('cardsA').innerHTML = A.length ? A.map(cardHTML).join('') : emptyHTML();
+  document.getElementById('cardsW').innerHTML = W.length ? W.map(cardHTML).join('') : emptyHTML();
+  document.getElementById('cntA').textContent = A.length;
+  document.getElementById('cntW').textContent = W.length;
+  document.getElementById('grpA').style.display = (g === 'W') ? 'none' : 'block';
+  document.getElementById('grpW').style.display = (g === 'A') ? 'none' : 'block';
+
+  document.getElementById('shown').textContent = rows.length + ' / 100';
+  document.getElementById('cnt').textContent = rows.length;
+}
+render();
+</script>
+</body>
+</html>
