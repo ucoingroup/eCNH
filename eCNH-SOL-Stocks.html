@@ -1,1 +1,954 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="green">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>eCNH × Solana × Tokenized Stocks | 发展路径全景</title>
+<style>
+  :root{
+    --radius: 14px;
+    --maxw: 1080px;
+  }
+  /* ============ 苹果绿主题 ============ */
+  [data-theme="green"]{
+    --bg:#f2fbf5; --bg-alt:#ffffff; --panel:#ffffff;
+    --text:#1c2b24; --muted:#5b6e64;
+    --accent:#34c759; --accent-soft:rgba(52,199,89,.12);
+    --accent2:#0a8f4d; --border:#dceee2;
+    --shadow:0 4px 20px rgba(28,43,36,.07);
+    --font:-apple-system,BlinkMacSystemFont,"SF Pro SC","PingFang SC","Segoe UI",sans-serif;
+    --hero-bg:linear-gradient(160deg,#eaf9ef 0%,#f2fbf5 60%,#dff3e6 100%);
+    --chip-bg:#eaf7ee; --seal:none;
+  }
+  /* ============ 科技蓝主题 ============ */
+  [data-theme="blue"]{
+    --bg:#0b1220; --bg-alt:#0e1728; --panel:#121e33;
+    --text:#e8eef8; --muted:#8fa3c0;
+    --accent:#38bdf8; --accent-soft:rgba(56,189,248,.13);
+    --accent2:#7dd3fc; --border:#1f3050;
+    --shadow:0 4px 24px rgba(0,0,0,.45);
+    --font:"SF Mono","JetBrains Mono","Cascadia Code","PingFang SC",Consolas,monospace;
+    --hero-bg:linear-gradient(160deg,#0e1a30 0%,#0b1220 55%,#101d38 100%);
+    --chip-bg:#16233c; --seal:none;
+  }
+  /* ============ 华夏古典主题 ============ */
+  [data-theme="han"]{
+    --bg:#f6f0e3; --bg-alt:#fbf7ec; --panel:#fbf7ec;
+    --text:#3a2a1e; --muted:#7a6650;
+    --accent:#9e2b25; --accent-soft:rgba(158,43,37,.10);
+    --accent2:#b8860b; --border:#e0d2b4;
+    --shadow:0 4px 18px rgba(122,102,80,.14);
+    --font:"KaiTi","STKaiti","楷体","Noto Serif SC","Songti SC",serif;
+    --hero-bg:linear-gradient(160deg,#f9f3e4 0%,#f6f0e3 55%,#f1e6cd 100%);
+    --chip-bg:#f3ead2; --seal:block;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:var(--font);
+    line-height:1.7; transition:background .3s,color .3s;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+  /* ---------- 顶栏 ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:color-mix(in srgb,var(--bg) 88%, transparent);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+  }
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 20px;max-width:var(--maxw);margin:0 auto;flex-wrap:wrap}
+  .logo{font-weight:700;font-size:1.05rem;letter-spacing:.5px}
+  .logo b{color:var(--accent)}
+  .controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .theme-btns{display:flex;gap:6px}
+  .tbtn{
+    border:1px solid var(--border);background:var(--chip-bg);color:var(--text);
+    padding:6px 12px;border-radius:999px;cursor:pointer;font-size:.82rem;font-family:inherit;
+    transition:.2s;
+  }
+  .tbtn:hover{border-color:var(--accent)}
+  .tbtn.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+  select{
+    background:var(--chip-bg);color:var(--text);border:1px solid var(--border);
+    padding:6px 10px;border-radius:999px;font-size:.85rem;font-family:inherit;cursor:pointer;
+  }
+  /* ---------- Hero ---------- */
+  .hero{background:var(--hero-bg);border-bottom:1px solid var(--border);padding:64px 0 48px;text-align:center}
+  .hero .badge{
+    display:inline-block;background:var(--accent-soft);color:var(--accent2);
+    padding:5px 14px;border-radius:999px;font-size:.8rem;margin-bottom:18px;border:1px solid var(--border);
+  }
+  .hero h1{font-size:clamp(1.6rem,4.5vw,2.6rem);line-height:1.3;margin-bottom:14px}
+  .hero h1 b{color:var(--accent)}
+  .hero p.sub{color:var(--muted);max-width:640px;margin:0 auto 26px;font-size:1rem}
+  .ca-chip{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--panel);border:1px dashed var(--accent);color:var(--text);
+    padding:8px 14px;border-radius:10px;font-size:.8rem;max-width:92%;overflow-wrap:anywhere;
+    cursor:pointer;box-shadow:var(--shadow);
+  }
+  .ca-chip small{color:var(--muted);white-space:nowrap}
+  .stats{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:30px}
+  .stat{
+    background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);
+    padding:14px 22px;min-width:150px;box-shadow:var(--shadow);
+  }
+  .stat .v{font-size:1.3rem;font-weight:700;color:var(--accent)}
+  .stat .k{font-size:.78rem;color:var(--muted);margin-top:2px}
+  /* ---------- 通用 section ---------- */
+  section{padding:56px 0;scroll-margin-top:70px}
+  section.alt{background:var(--bg-alt)}
+  /* ---------- 增强组件 ---------- */
+  .progress{position:fixed;top:0;left:0;height:3px;background:var(--accent);width:0;z-index:99;transition:width .1s}
+  .nav{display:flex;gap:16px;margin-inline-start:10px}
+  .nav a{color:var(--muted);text-decoration:none;font-size:.85rem;transition:.2s;white-space:nowrap}
+  .nav a:hover{color:var(--accent)}
+  @media(max-width:900px){.nav{display:none}}
+  #toTop{
+    position:fixed;bottom:24px;inset-inline-end:24px;width:42px;height:42px;border-radius:50%;
+    border:1px solid var(--border);background:var(--panel);color:var(--text);cursor:pointer;
+    font-size:1.05rem;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:.3s;z-index:98;
+  }
+  #toTop.show{opacity:1;pointer-events:auto}
+  #toTop:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .filter-input{
+    width:100%;max-width:340px;padding:8px 14px;margin-bottom:14px;border:1px solid var(--border);
+    border-radius:999px;background:var(--panel);color:var(--text);font-family:inherit;font-size:.88rem;outline:none;
+  }
+  .filter-input:focus{border-color:var(--accent)}
+  @media print{
+    header,.toast,#toTop,.progress,.theme-btns,select,.filter-input,.nav{display:none!important}
+    body{background:#fff;color:#000}
+    section{padding:20px 0}
+    .card,.tbl-box{box-shadow:none;break-inside:avoid}
+  }
+  h2{font-size:1.5rem;margin-bottom:8px}
+  h2 span.bar-mark{display:inline-block;width:10px;height:10px;border-radius:3px;background:var(--accent);margin-inline-end:10px;transform:rotate(45deg)}
+  .sec-sub{color:var(--muted);margin-bottom:28px;max-width:760px}
+  .grid{display:grid;gap:16px}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+  .g4{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .card{
+    background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);
+    padding:22px;box-shadow:var(--shadow);position:relative;
+  }
+  .card h3{font-size:1.02rem;margin-bottom:8px;color:var(--text)}
+  .card h3 .num{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:26px;height:26px;border-radius:8px;background:var(--accent);color:#fff;
+    font-size:.85rem;margin-inline-end:9px;flex:none;transform:translateY(-2px);
+  }
+  .card p{font-size:.9rem;color:var(--muted)}
+  /* ---------- 表格 ---------- */
+  .tbl-box{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);background:var(--panel)}
+  table{width:100%;border-collapse:collapse;font-size:.88rem;min-width:560px}
+  th,td{padding:11px 14px;text-align:start;border-bottom:1px solid var(--border)}
+  th{background:var(--accent-soft);color:var(--text);font-weight:600;white-space:nowrap}
+  tr:last-child td{border-bottom:none}
+  td.num{font-variant-numeric:tabular-nums}
+  .up{color:#d92c2c;font-weight:600}
+  .down{color:#0a9c53;font-weight:600}
+  .tag{display:inline-block;padding:2px 8px;border-radius:6px;font-size:.72rem;background:var(--accent-soft);color:var(--accent2);margin-inline-start:6px}
+  /* ---------- 华夏古典装饰 ---------- */
+  .han-deco{display:none}
+  [data-theme="han"] .han-deco{display:block}
+  [data-theme="han"] .hero h1{letter-spacing:2px}
+  [data-theme="han"] .card{border:1px solid var(--accent2)}
+  [data-theme="han"] h2::after{
+    content:"";display:block;width:64px;height:3px;margin-top:8px;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
+  }
+  .seal{
+    display:none;width:52px;height:52px;margin:18px auto 0;
+    background:var(--accent);color:#fff;font-size:.7rem;line-height:1.2;
+    display:none;align-items:center;justify-content:center;text-align:center;
+    border-radius:6px;letter-spacing:2px;box-shadow:var(--shadow);
+  }
+  [data-theme="han"] .seal{display:flex}
+  /* ---------- 风险区 ---------- */
+  .risk li{margin:10px 0;font-size:.92rem;color:var(--muted)}
+  .risk b{color:var(--text)}
+  .warnbox{
+    border:1px solid var(--accent2);background:var(--accent-soft);
+    border-radius:var(--radius);padding:16px 20px;margin-top:22px;font-size:.9rem;color:var(--text);
+  }
+  /* ---------- 页脚 ---------- */
+  footer{border-top:1px solid var(--border);padding:36px 0 48px;color:var(--muted);font-size:.82rem}
+  footer a{color:var(--accent);text-decoration:none}
+  .links{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px}
+  [dir="rtl"] .logo,[dir="rtl"] .controls{flex-direction:row}
+  .toast{
+    position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
+    background:var(--accent);color:#fff;padding:8px 18px;border-radius:999px;
+    font-size:.85rem;opacity:0;pointer-events:none;transition:.3s;z-index:99;
+  }
+  .toast.show{opacity:1}
+  @media(max-width:640px){.hero{padding:44px 0 34px}.bar{justify-content:center}}
+</style>
+</head>
+<body>
 
+<div class="progress" id="progress"></div>
+
+<header>
+  <div class="bar">
+    <div class="logo">eCNH <b>×</b> SOL <b>×</b> Stocks</div>
+    <nav class="nav" aria-label="Section navigation">
+      <a href="#what" data-i="nav_what">核心概念</a>
+      <a href="#stocks" data-i="nav_stocks">市场速览</a>
+      <a href="#paths" data-i="nav_paths">发展路径</a>
+      <a href="#risk" data-i="nav_risk">风险与口径</a>
+    </nav>
+    <div class="controls">
+      <div class="theme-btns" id="themeBtns">
+        <button class="tbtn on" data-theme-name="green" data-i="th_green">苹果绿</button>
+        <button class="tbtn" data-theme-name="blue" data-i="th_blue">科技蓝</button>
+        <button class="tbtn" data-theme-name="han" data-i="th_han">华夏古典</button>
+      </div>
+      <select id="langSel" aria-label="Language"></select>
+    </div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <span class="badge" data-i="hero_badge">Solana 链上 · 离岸华夏币 × 代币化股票</span>
+    <h1 data-i="hero_title">当<b>离岸华夏币 eCNH</b> 遇上 <b>Solana 代币化股票</b></h1>
+    <p class="sub" data-i="hero_sub">eCNH（Offshore Chinese Yuan）是 Solana 上的社区离岸华夏币代币；Orb Markets 等平台让美股与一级市场资产以代币形式在 Solana 上 24/7 交易。两者结合，正在打开"华夏币计价 × 全球权益资产"的新叙事。</p>
+    <div class="ca-chip" id="caChip" title="Click to copy / 点击复制">
+      <small data-i="ca_label">eCNH 合约地址（CA）</small>
+      <span id="caText">7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5</span>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="v">10</div><div class="k" data-i="stat_langs">界面语言</div></div>
+      <div class="stat"><div class="v">3</div><div class="k" data-i="stat_themes">设计主题</div></div>
+      <div class="stat"><div class="v">$188M</div><div class="k" data-i="stat_vol">Orb 股票板块 24H 成交（快照）</div></div>
+      <div class="stat"><div class="v">8</div><div class="k" data-i="stat_paths">发展路径</div></div>
+    </div>
+    <div class="seal">共建共享</div>
+  </div>
+</div>
+
+<!-- 什么是 eCNH -->
+<section id="what">
+  <div class="wrap">
+    <h2><span class="bar-mark"></span><span data-i="what_title">什么是 eCNH？</span></h2>
+    <p class="sec-sub" data-i="what_sub">先厘清概念，再谈发展——这是讨论一切"eCNH × 股票"路径的前提。</p>
+    <div class="grid g2">
+      <div class="card">
+        <h3 data-i="what_c1t">社区离岸华夏币代币</h3>
+        <p data-i="what_c1p">eCNH 全称 Offshore Chinese Yuan，发行于 Solana 链，定位为"链上离岸华夏币"结算层：面向东南亚跨境电商、中东合规通道、欧洲链上支付、非洲汇款等场景。注意：它并非中国人民银行发行的法定数字货币（e-CNY），也不是任何官方机构发行的法币稳定币。</p>
+      </div>
+      <div class="card">
+        <h3 data-i="what_c2t">声称的稳定机制（待验证）</h3>
+        <p data-i="what_c2p">社区资料称其采用"Andromeda"机制，锚定 1 eCNH ≈ 1 CNH（离岸华夏币）。但第三方数据源显示的价格口径严重冲突（详见风险区），锚定是否有效尚无法证实。</p>
+      </div>
+      <div class="card">
+        <h3 data-i="what_c3t">Solana 上的代币化股票</h3>
+        <p data-i="what_c3p">Orb Markets 聚合了 Solana 上的股票支持代币市场：xStocks 系列（NVDAx、TSLAx、AAPLx、SPYx、QQQx 等）与 Backpack / PreStocks 发行版（含 Anthropic、SpaceX 等未上市公司份额），可 24/7 链上交易，24H 总成交约 $188.19M（2026-11-09 快照）。</p>
+      </div>
+      <div class="card">
+        <h3 data-i="what_c4t">为什么"结合"有想象力</h3>
+        <p data-i="what_c4p">全球离岸华夏币（CNH）存款规模庞大，而链上华夏币计价资产几乎空白。若 eCNH 能承接代币化股票的计价与结算，就相当于在 Solana 上搭建了一个"离岸华夏币证券账户"的雏形。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 代币化股票市场速览 -->
+<section id="stocks" class="alt">
+  <div class="wrap">
+    <h2><span class="bar-mark"></span><span data-i="st_title">Solana 代币化股票市场速览</span></h2>
+    <p class="sec-sub" data-i="st_sub">以下为 Orb Markets（orbmarkets.io/markets/stocks）2026-11-09 页面快照中的代表性标的，仅供展示，非实时行情。</p>
+    <input type="text" class="filter-input" id="stockFilter" data-i-ph="filter_ph" placeholder="筛选代码 / 名称…" aria-label="filter">
+    <div class="tbl-box">
+      <table>
+        <thead>
+          <tr>
+            <th data-i="th_sym">代码</th>
+            <th data-i="th_name">名称 / 发行方</th>
+            <th data-i="th_price">价格 (USD)</th>
+            <th data-i="th_chg">24H 涨跌</th>
+            <th data-i="th_note">备注</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>NVDAx</td><td data-i="n_nvda">英伟达 · xStocks</td><td class="num">177.09</td><td class="num down">-5.5%</td><td data-i="n_top1">24H 成交 $35.39M，板块第一</td></tr>
+          <tr><td>TSLAx</td><td data-i="n_tsla">特斯拉 · xStocks</td><td class="num">357.58</td><td class="num up">+0.1%</td><td>—</td></tr>
+          <tr><td>SPYx</td><td data-i="n_spy">标普 500 ETF · xStocks</td><td class="num">737.59</td><td class="num up">+0.2%</td><td data-i="n_spy_n">指数型锚</td></tr>
+          <tr><td>AAPLx</td><td data-i="n_aapl">苹果 · xStocks</td><td class="num">344.24</td><td class="num up">+0.6%</td><td>—</td></tr>
+          <tr><td>GOOGLx</td><td data-i="n_goog">Alphabet · xStocks</td><td class="num">287.44</td><td class="num up">+1.3%</td><td>—</td></tr>
+          <tr><td>QQQx</td><td data-i="n_qqq">纳斯达克 100 ETF · xStocks</td><td class="num">656.61</td><td class="num">0%</td><td>—</td></tr>
+          <tr><td>ANTHROPIC</td><td data-i="n_ant">Anthropic（未上市）· PreStocks</td><td class="num">91.77</td><td class="num up">+2.9%</td><td data-i="n_pre">一级市场份额代币</td></tr>
+          <tr><td>SPCX</td><td data-i="n_spcx">SpaceX（未上市）· Backpack</td><td class="num">135.21</td><td class="num up">+0.1%</td><td data-i="n_pre2">一级市场份额代币</td></tr>
+          <tr><td>CRCLx</td><td data-i="n_crcl">Circle · xStocks</td><td class="num">65.29</td><td class="num down">-3.1%</td><td>—</td></tr>
+          <tr><td>COINx</td><td data-i="n_coin">Coinbase · xStocks</td><td class="num">130.46</td><td class="num down">-1.9%</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:12px;font-size:.78rem;color:var(--muted)" data-i="st_note">涨跌配色遵循中国市场惯例：红涨绿跌。数据来源：Orb Markets 页面快照（2026-11-09），非实时。</p>
+  </div>
+</section>
+
+<!-- 发展路径 -->
+<section id="paths">
+  <div class="wrap">
+    <h2><span class="bar-mark"></span><span data-i="p_title">eCNH + SOL + 代币化股票：八条发展路径</span></h2>
+    <p class="sec-sub" data-i="p_sub">从结算层到合规层，从流动性到产品矩阵——这是一个生态可能的长出方式。</p>
+    <div class="grid g4">
+      <div class="card"><h3><span class="num">1</span><span data-i="p1t">华夏币计价层</span></h3><p data-i="p1p">推动 eCNH 成为代币化股票的计价与结算货币：交易对从"股票/USDC"扩展到"股票/eCNH"，让用户以离岸华夏币直接持有全球权益资产。</p></div>
+      <div class="card"><h3><span class="num">2</span><span data-i="p2t">流动性共建</span></h3><p data-i="p2p">在 Orca / Meteora 等平台建立 eCNH × xStocks 流动池，以做市激励、DAO 补贴和流动性挖矿吸引专业做市商，先解决"池子太浅"的死结。</p></div>
+      <div class="card"><h3><span class="num">3</span><span data-i="p3t">跨境入金桥梁</span></h3><p data-i="p3p">面向东南亚、中东、非洲等离岸华夏币流通活跃地区，打造"链上华夏币 → 美股敞口"的一站式通道，降低多币种换汇摩擦。</p></div>
+      <div class="card"><h3><span class="num">4</span><span data-i="p4t">红利与票息结算</span></h3><p data-i="p4p">代币化股票的分红、代币化国债的票息以 eCNH 链上发放，形成"华夏币资产收益 → 华夏币再投资"的闭环。</p></div>
+      <div class="card"><h3><span class="num">5</span><span data-i="p5t">结构化产品</span></h3><p data-i="p5p">以 eCNH 计价开发双币投资、区间定投、领口期权等结构化组合，把波动巨大的股票代币包装成风险分层的华夏币产品。</p></div>
+      <div class="card"><h3><span class="num">6</span><span data-i="p6t">指数化 RWA 篮子</span></h3><p data-i="p6p">发行 eCNH 结算的科技股篮子指数代币（如"链上纳斯达克 100 华夏币版"），一键配置，降低单票风险与门槛。</p></div>
+      <div class="card"><h3><span class="num">7</span><span data-i="p7t">现金管理闭环</span></h3><p data-i="p7p">跨境电商与出口商的 eCNH 应收账款，可自动配置到代币化短债与蓝筹股票篮子，让"链上华夏币"从支付工具升级为生息资产。</p></div>
+      <div class="card"><h3><span class="num">8</span><span data-i="p8t">合规先行</span></h3><p data-i="p8p">参照香港《稳定币条例》与离岸华夏币监管框架，推动发行方备案、储备审计与交易平台牌照，让 eCNH 从社区项目走向受监管的离岸华夏币稳定币。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 风险与口径 -->
+<section id="risk" class="alt">
+  <div class="wrap">
+    <h2><span class="bar-mark"></span><span data-i="r_title">数据口径与风险提示</span></h2>
+    <p class="sec-sub" data-i="r_sub">不夸大、不回避——这一节比八条路径更重要。</p>
+    <ul class="risk">
+      <li data-i="r1"><b>性质澄清：</b>eCNH 不是中国人民银行发行的法定数字货币（e-CNY），也不是任何持牌机构发行的法币稳定币，而是社区第三方项目代币。</li>
+      <li data-i="r2"><b>价格口径严重冲突（待澄清）：</b>同一 CA 在不同数据源显示 $0.00078（SolanaCompass）、$0.09（DexScreener 某池）、"1 eCNH ≈ 0.1403 USDC"（社区资料）三种口径，市值数据（$78B / $9T 级别）明显不可信，请勿据此计算。</li>
+      <li data-i="r3"><b>流动性极薄：</b>第三方监测（FreshTokenWatch，2026-11）显示该代币风险评分 76/100、状态 Warning，共 8 个交易池、多数 24H 成交额不足 $1，价格极易被操纵。</li>
+      <li data-i="r4"><b>代币化股票特有风险：</b>发行方托管与赎回风险、美股交易时段与链上 24/7 的价差、发行辖区监管差异。</li>
+      <li data-i="r5"><b>合规不确定性：</b>离岸华夏币资产涉及跨境资本管理政策，相关路径的合规性在不同司法辖区差异巨大，落地前必须取得专业法律意见。</li>
+    </ul>
+    <div class="warnbox" data-i="r_disc">免责声明：本页面为信息整理与叙事探讨，不构成任何投资建议、要约或收益承诺。加密资产与代币化股票波动剧烈，可能损失全部本金。请自行核实合约地址与当地法律法规，风险自担。</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div data-i="f_src">数据来源：Orb Markets（orbmarkets.io）、SolanaCompass、DexScreener、FreshTokenWatch、BitcoinTalk 社区帖；快照时间 2026-11-09。标注"待澄清"之处说明数据源之间存在不可调和的口径冲突，未做任何取舍合并。</div>
+    <div class="links">
+      <a href="https://orbmarkets.io/markets/stocks" target="_blank" rel="noopener">Orb Markets · Stocks</a>
+      <a href="https://orbmarkets.io/token/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5" target="_blank" rel="noopener">Orb Markets · eCNH</a>
+      <a href="https://solscan.io/token/7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5" target="_blank" rel="noopener">Solscan</a>
+    </div>
+    <div style="margin-top:14px" data-i="f_note">eCNH CA：7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 —— 认准合约地址，谨防假币。</div>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Copied ✓</div>
+<button id="toTop" aria-label="Back to top">↑</button>
+
+<script>
+/* ================= i18n ================= */
+const I18N = {
+  zh: {
+    th_green:"苹果绿", th_blue:"科技蓝", th_han:"华夏古典",
+    nav_what:"核心概念", nav_stocks:"市场速览", nav_paths:"发展路径", nav_risk:"风险与口径",
+    filter_ph:"筛选代码 / 名称…",
+    hero_badge:"Solana 链上 · 离岸华夏币 × 代币化股票",
+    hero_title:'当<b>离岸华夏币 eCNH</b> 遇上 <b>Solana 代币化股票</b>',
+    hero_sub:"eCNH（Offshore Chinese Yuan）是 Solana 上的社区离岸华夏币代币；Orb Markets 等平台让美股与一级市场资产以代币形式在 Solana 上 24/7 交易。两者结合，正在打开“华夏币计价 × 全球权益资产”的新叙事。",
+    ca_label:"eCNH 合约地址（CA）· 点击复制",
+    stat_langs:"界面语言",
+    stat_themes:"设计主题",
+    stat_vol:"Orb 股票板块 24H 成交（快照）",
+    stat_paths:"发展路径",
+    what_title:"什么是 eCNH？",
+    what_sub:"先厘清概念，再谈发展——这是讨论一切“eCNH × 股票”路径的前提。",
+    what_c1t:"社区离岸华夏币代币",
+    what_c1p:"eCNH 全称 Offshore Chinese Yuan，发行于 Solana 链，定位为“链上离岸华夏币”结算层：面向东南亚跨境电商、中东合规通道、欧洲链上支付、非洲汇款等场景。注意：它并非中国人民银行发行的法定数字货币（e-CNY），也不是任何官方机构发行的法币稳定币。",
+    what_c2t:"声称的稳定机制（待验证）",
+    what_c2p:"社区资料称其采用“Andromeda”机制，锚定 1 eCNH ≈ 1 CNH（离岸华夏币）。但第三方数据源显示的价格口径严重冲突（详见风险区），锚定是否有效尚无法证实。",
+    what_c3t:"Solana 上的代币化股票",
+    what_c3p:"Orb Markets 聚合了 Solana 上的股票支持代币市场：xStocks 系列（NVDAx、TSLAx、AAPLx、SPYx、QQQx 等）与 Backpack / PreStocks 发行版（含 Anthropic、SpaceX 等未上市公司份额），可 24/7 链上交易，24H 总成交约 $188.19M（2026-11-09 快照）。",
+    what_c4t:"为什么“结合”有想象力",
+    what_c4p:"全球离岸华夏币（CNH）存款规模庞大，而链上华夏币计价资产几乎空白。若 eCNH 能承接代币化股票的计价与结算，就相当于在 Solana 上搭建了一个“离岸华夏币证券账户”的雏形。",
+    st_title:"Solana 代币化股票市场速览",
+    st_sub:"以下为 Orb Markets（orbmarkets.io/markets/stocks）2026-11-09 页面快照中的代表性标的，仅供展示，非实时行情。",
+    th_sym:"代码",
+    th_name:"名称 / 发行方",
+    th_price:"价格 (USD)",
+    th_chg:"24H 涨跌",
+    th_note:"备注",
+    n_nvda:"英伟达 · xStocks",
+    n_top1:"24H 成交 $35.39M，板块第一",
+    n_tsla:"特斯拉 · xStocks",
+    n_spy:"标普 500 ETF · xStocks",
+    n_spy_n:"指数型锚",
+    n_aapl:"苹果 · xStocks",
+    n_goog:"Alphabet · xStocks",
+    n_qqq:"纳斯达克 100 ETF · xStocks",
+    n_ant:"Anthropic（未上市）· PreStocks",
+    n_pre:"一级市场份额代币",
+    n_spcx:"SpaceX（未上市）· Backpack",
+    n_pre2:"一级市场份额代币",
+    n_crcl:"Circle · xStocks",
+    n_coin:"Coinbase · xStocks",
+    st_note:"涨跌配色遵循中国市场惯例：红涨绿跌。数据来源：Orb Markets 页面快照（2026-11-09），非实时。",
+    p_title:"eCNH + SOL + 代币化股票：八条发展路径",
+    p_sub:"从结算层到合规层，从流动性到产品矩阵——这是一个生态可能的长出方式。",
+    p1t:"华夏币计价层",
+    p1p:"推动 eCNH 成为代币化股票的计价与结算货币：交易对从“股票/USDC”扩展到“股票/eCNH”，让用户以离岸华夏币直接持有全球权益资产。",
+    p2t:"流动性共建",
+    p2p:"在 Orca / Meteora 等平台建立 eCNH × xStocks 流动池，以做市激励、DAO 补贴和流动性挖矿吸引专业做市商，先解决“池子太浅”的死结。",
+    p3t:"跨境入金桥梁",
+    p3p:"面向东南亚、中东、非洲等离岸华夏币流通活跃地区，打造“链上华夏币 → 美股敞口”的一站式通道，降低多币种换汇摩擦。",
+    p4t:"红利与票息结算",
+    p4p:"代币化股票的分红、代币化国债的票息以 eCNH 链上发放，形成“华夏币资产收益 → 华夏币再投资”的闭环。",
+    p5t:"结构化产品",
+    p5p:"以 eCNH 计价开发双币投资、区间定投、领口期权等结构化组合，把波动巨大的股票代币包装成风险分层的华夏币产品。",
+    p6t:"指数化 RWA 篮子",
+    p6p:"发行 eCNH 结算的科技股篮子指数代币（如“链上纳斯达克 100 华夏币版”），一键配置，降低单票风险与门槛。",
+    p7t:"现金管理闭环",
+    p7p:"跨境电商与出口商的 eCNH 应收账款，可自动配置到代币化短债与蓝筹股票篮子，让“链上华夏币”从支付工具升级为生息资产。",
+    p8t:"合规先行",
+    p8p:"参照香港《稳定币条例》与离岸华夏币监管框架，推动发行方备案、储备审计与交易平台牌照，让 eCNH 从社区项目走向受监管的离岸华夏币稳定币。",
+    r_title:"数据口径与风险提示",
+    r_sub:"不夸大、不回避——这一节比八条路径更重要。",
+    r1:"<b>性质澄清：</b>eCNH 不是中国人民银行发行的法定数字货币（e-CNY），也不是任何持牌机构发行的法币稳定币，而是社区第三方项目代币。",
+    r2:"<b>价格口径严重冲突（待澄清）：</b>同一 CA 在不同数据源显示 $0.00078（SolanaCompass）、$0.09（DexScreener 某池）、“1 eCNH ≈ 0.1403 USDC”（社区资料）三种口径，市值数据（$78B / $9T 级别）明显不可信，请勿据此计算。",
+    r3:"<b>流动性极薄：</b>第三方监测（FreshTokenWatch，2026-11）显示该代币风险评分 76/100、状态 Warning，共 8 个交易池、多数 24H 成交额不足 $1，价格极易被操纵。",
+    r4:"<b>代币化股票特有风险：</b>发行方托管与赎回风险、美股交易时段与链上 24/7 的价差、发行辖区监管差异。",
+    r5:"<b>合规不确定性：</b>离岸华夏币资产涉及跨境资本管理政策，相关路径的合规性在不同司法辖区差异巨大，落地前必须取得专业法律意见。",
+    r_disc:"免责声明：本页面为信息整理与叙事探讨，不构成任何投资建议、要约或收益承诺。加密资产与代币化股票波动剧烈，可能损失全部本金。请自行核实合约地址与当地法律法规，风险自担。",
+    f_src:"数据来源：Orb Markets（orbmarkets.io）、SolanaCompass、DexScreener、FreshTokenWatch、BitcoinTalk 社区帖；快照时间 2026-11-09。标注“待澄清”之处说明数据源之间存在不可调和的口径冲突，未做任何取舍合并。",
+    f_note:"eCNH CA：7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 —— 认准合约地址，谨防假币。",
+    copied:"已复制 ✓"
+  },
+  en: {
+    nav_what:"Concepts", nav_stocks:"Market Snapshot", nav_paths:"Growth Paths", nav_risk:"Risks & Data", filter_ph:"Filter symbol / name…",
+    th_green:"Apple Green", th_blue:"Tech Blue", th_han:"Huaxia Classic",
+    hero_badge:"On Solana · Offshore Huaxia × Tokenized Stocks",
+    hero_title:'When <b>Offshore Huaxia eCNH</b> Meets <b>Solana Tokenized Stocks</b>',
+    hero_sub:"eCNH (Offshore Chinese Yuan) is a community offshore-Huaxia token on Solana; platforms like Orb Markets let US equities and pre-IPO assets trade 24/7 as on-chain tokens. Together they open a new narrative: Huaxia-denominated global equity exposure.",
+    ca_label:"eCNH Contract Address (CA) · Click to copy",
+    stat_langs:"UI Languages", stat_themes:"Design Themes", stat_vol:"Orb Stocks 24H Volume (snapshot)", stat_paths:"Growth Paths",
+    what_title:"What is eCNH?",
+    what_sub:"Concepts first, then development — the prerequisite for any 'eCNH × stocks' discussion.",
+    what_c1t:"Community Offshore-Huaxia Token",
+    what_c1p:"eCNH, short for Offshore Chinese Yuan, is issued on Solana and positioned as an on-chain offshore-Huaxia settlement layer for cross-border e-commerce in Southeast Asia, compliance rails in the Middle East, on-chain payments in Europe, and remittances in Africa. Note: it is NOT the PBoC's digital yuan (e-CNY) nor a fiat stablecoin issued by any official institution.",
+    what_c2t:"Claimed Stability Mechanism (Unverified)",
+    what_c2p:"Community materials describe an 'Andromeda' mechanism pegging 1 eCNH ≈ 1 CNH. Third-party price feeds, however, conflict severely (see Risk section) — the peg's effectiveness cannot be verified.",
+    what_c3t:"Tokenized Stocks on Solana",
+    what_c3p:"Orb Markets aggregates stock-backed token markets on Solana: the xStocks family (NVDAx, TSLAx, AAPLx, SPYx, QQQx...) plus Backpack / PreStocks issues (including pre-IPO Anthropic and SpaceX), tradable 24/7. Total 24H volume ≈ $188.19M (snapshot 2026-11-09).",
+    what_c4t:"Why the Combination Matters",
+    what_c4p:"Offshore Huaxia (CNH) deposits are vast globally, yet on-chain Huaxia-denominated assets are nearly nonexistent. If eCNH becomes the pricing and settlement layer for tokenized stocks, it sketches a proto 'offshore-Huaxia brokerage account' on Solana.",
+    st_title:"Solana Tokenized Stocks at a Glance",
+    st_sub:"Representative listings from Orb Markets (orbmarkets.io/markets/stocks), snapshot 2026-11-09. For illustration only, not live quotes.",
+    th_sym:"Symbol", th_name:"Name / Issuer", th_price:"Price (USD)", th_chg:"24H Change", th_note:"Note",
+    n_nvda:"Nvidia · xStocks", n_top1:"24H volume $35.39M, sector #1",
+    n_tsla:"Tesla · xStocks", n_spy:"S&P 500 ETF · xStocks", n_spy_n:"Index anchor",
+    n_aapl:"Apple · xStocks", n_goog:"Alphabet · xStocks", n_qqq:"Nasdaq 100 ETF · xStocks",
+    n_ant:"Anthropic (pre-IPO) · PreStocks", n_pre:"Pre-IPO share token",
+    n_spcx:"SpaceX (pre-IPO) · Backpack", n_pre2:"Pre-IPO share token",
+    n_crcl:"Circle · xStocks", n_coin:"Coinbase · xStocks",
+    st_note:"Color convention follows Chinese markets: red = up, green = down. Source: Orb Markets page snapshot (2026-11-09), not real-time.",
+    p_title:"eCNH + SOL + Tokenized Stocks: Eight Growth Paths",
+    p_sub:"From settlement to compliance, from liquidity to product matrix — how such an ecosystem could grow.",
+    p1t:"Huaxia Pricing Layer", p1p:"Drive eCNH to become the pricing & settlement currency for tokenized stocks: extend pairs from stock/USDC to stock/eCNH, letting users hold global equities directly in offshore Huaxia.",
+    p2t:"Liquidity Co-Building", p2p:"Create eCNH × xStocks pools on Orca / Meteora with market-maker incentives, DAO subsidies and liquidity mining to attract professional MM — first untangle the 'shallow pool' knot.",
+    p3t:"Cross-Border On-Ramp", p3p:"For regions with active offshore-Huaxia circulation (SE Asia, Middle East, Africa), build a one-stop 'on-chain Huaxia → US equity exposure' channel to cut multi-currency friction.",
+    p4t:"Dividend & Coupon Settlement", p4p:"Pay tokenized-stock dividends and tokenized-Treasury coupons on-chain in eCNH, closing the loop of 'Huaxia asset income → Huaxia reinvestment'.",
+    p5t:"Structured Products", p5p:"Develop dual-currency investments, range DCA, collar strategies denominated in eCNH — packaging volatile stock tokens into risk-tiered Huaxia products.",
+    p6t:"Indexed RWA Baskets", p6p:"Issue tech-stock basket index tokens settled in eCNH (e.g., an 'on-chain Nasdaq 100, Huaxia version') for one-click allocation and lower single-stock risk.",
+    p7t:"Cash-Management Loop", p7p:"Cross-border sellers' eCNH receivables can auto-allocate into tokenized short-duration debt and blue-chip baskets, upgrading on-chain Huaxia from a payment tool to a yield asset.",
+    p8t:"Compliance First", p8p:"Follow Hong Kong's Stablecoins Ordinance and offshore-Huaxia regulatory frameworks: issuer registration, reserve audits, and trading-platform licenses — from community project to regulated offshore-Huaxia stablecoin.",
+    r_title:"Data Caveats & Risk Warnings",
+    r_sub:"No hype, no evasion — this section matters more than the eight paths.",
+    r1:"<b>Nature clarified:</b> eCNH is not the PBoC's digital yuan (e-CNY), nor a fiat stablecoin issued by any licensed institution — it is a community third-party project token.",
+    r2:"<b>Severely conflicting price data (to be clarified):</b> the same CA shows $0.00078 (SolanaCompass), $0.09 (a DexScreener pool), and '1 eCNH ≈ 0.1403 USDC' (community material). Market-cap figures ($78B / $9T scale) are clearly unreliable — do not compute from them.",
+    r3:"<b>Extremely thin liquidity:</b> third-party monitoring (FreshTokenWatch, Nov 2026) shows risk score 76/100, status Warning, 8 pools with most 24H volume under $1 — prices are highly manipulable.",
+    r4:"<b>Tokenized-stock risks:</b> issuer custody & redemption risk, gaps between US market hours and on-chain 24/7 pricing, and issuer-jurisdiction regulatory differences.",
+    r5:"<b>Compliance uncertainty:</b> offshore-Huaxia assets touch cross-border capital management policy; legality differs vastly across jurisdictions — obtain professional legal advice before implementation.",
+    r_disc:"Disclaimer: This page is an information synthesis and narrative exploration. It is not investment advice, an offer, or a promise of returns. Crypto and tokenized stocks are highly volatile; you may lose your entire principal. Verify contract addresses and local laws yourself; all risk is your own.",
+    f_src:"Sources: Orb Markets (orbmarkets.io), SolanaCompass, DexScreener, FreshTokenWatch, BitcoinTalk community posts; snapshot 2026-11-09. Items marked 'to be clarified' reflect irreconcilable conflicts between data sources — no cherry-picking was done.",
+    f_note:"eCNH CA: 7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 — always verify the contract address; beware of fake tokens.",
+    copied:"Copied ✓"
+  },
+  es: {
+    nav_what:"Conceptos", nav_stocks:"Mercado", nav_paths:"Vías de desarrollo", nav_risk:"Riesgos y datos", filter_ph:"Filtrar símbolo / nombre…",
+    th_green:"Verde Apple", th_blue:"Azul Tech", th_han:"Clásico Chino",
+    hero_badge:"En Solana · Huaxia offshore × Acciones tokenizadas",
+    hero_title:'Cuando el <b>Huaxia offshore eCNH</b> se encuentra con las <b>acciones tokenizadas de Solana</b>',
+    hero_sub:"eCNH (Offshore Chinese Yuan) es un token comunitario de Huaxia offshore en Solana; plataformas como Orb Markets permiten operar acciones estadounidenses y activos pre-IPO 24/7 como tokens on-chain. Juntos abren una nueva narrativa: exposición a renta variable global denominada en Huaxia.",
+    ca_label:"Dirección del contrato eCNH (CA) · Clic para copiar",
+    stat_langs:"Idiomas", stat_themes:"Temas de diseño", stat_vol:"Volumen 24H Orb Stocks (instantánea)", stat_paths:"Vías de desarrollo",
+    what_title:"¿Qué es eCNH?",
+    what_sub:"Primero los conceptos, luego el desarrollo — prerrequisito de cualquier debate 'eCNH × acciones'.",
+    what_c1t:"Token comunitario de Huaxia offshore",
+    what_c1p:"eCNH, por Offshore Chinese Yuan, se emite en Solana y se posiciona como capa de liquidación de Huaxia offshore on-chain: e-commerce transfronterizo en el Sudeste Asiático, cumplimiento en Medio Oriente, pagos on-chain en Europa y remesas en África. Ojo: NO es el yuan digital del PBoC (e-CNY) ni un stablecoin fiat de institución oficial.",
+    what_c2t:"Mecanismo de estabilidad declarado (sin verificar)",
+    what_c2p:"Materiales comunitarios describen un mecanismo 'Andromeda' con paridad 1 eCNH ≈ 1 CNH. Pero las fuentes de precios de terceros entran en conflicto grave (véase Riesgos); la efectividad del anclaje no puede verificarse.",
+    what_c3t:"Acciones tokenizadas en Solana",
+    what_c3p:"Orb Markets agrega mercados de tokens respaldados por acciones en Solana: la familia xStocks (NVDAx, TSLAx, AAPLx, SPYx, QQQx...) y emisiones de Backpack / PreStocks (incluidas Anthropic y SpaceX pre-IPO), operables 24/7. Volumen total 24H ≈ $188.19M (instantánea 2026-11-09).",
+    what_c4t:"Por qué importa la combinación",
+    what_c4p:"Los depósitos en CNH son enormes a escala global, pero los activos denominados en Huaxia on-chain casi no existen. Si eCNH se convierte en la capa de precios y liquidación de las acciones tokenizadas, se dibuja un prototipo de 'cuenta de valores en Huaxia offshore' sobre Solana.",
+    st_title:"Acciones tokenizadas en Solana de un vistazo",
+    st_sub:"Listados representativos de Orb Markets (orbmarkets.io/markets/stocks), instantánea 2026-11-09. Solo ilustrativo, no cotizaciones en vivo.",
+    th_sym:"Símbolo", th_name:"Nombre / Emisor", th_price:"Precio (USD)", th_chg:"Cambio 24H", th_note:"Nota",
+    n_nvda:"Nvidia · xStocks", n_top1:"Volumen 24H $35.39M, n.º 1 del sector",
+    n_tsla:"Tesla · xStocks", n_spy:"ETF S&P 500 · xStocks", n_spy_n:"Ancla indexada",
+    n_aapl:"Apple · xStocks", n_goog:"Alphabet · xStocks", n_qqq:"ETF Nasdaq 100 · xStocks",
+    n_ant:"Anthropic (pre-IPO) · PreStocks", n_pre:"Token de participaciones pre-IPO",
+    n_spcx:"SpaceX (pre-IPO) · Backpack", n_pre2:"Token de participaciones pre-IPO",
+    n_crcl:"Circle · xStocks", n_coin:"Coinbase · xStocks",
+    st_note:"Colores según convención china: rojo = subida, verde = bajada. Fuente: instantánea de Orb Markets (2026-11-09), no en tiempo real.",
+    p_title:"eCNH + SOL + Acciones tokenizadas: ocho vías de desarrollo",
+    p_sub:"De la liquidación al cumplimiento, de la liquidez a la matriz de productos — cómo podría crecer este ecosistema.",
+    p1t:"Capa de precios en Huaxia", p1p:"Impulsar que eCNH sea la moneda de precios y liquidación de las acciones tokenizadas: extender los pares de acción/USDC a acción/eCNH, permitiendo mantener renta variable global directamente en Huaxia offshore.",
+    p2t:"Coconstrucción de liquidez", p2p:"Crear pools eCNH × xStocks en Orca / Meteora con incentivos a market makers, subsidios DAO y minería de liquidez para atraer MM profesionales — primero resolver el nudo de los 'pools poco profundos'.",
+    p3t:"Puente de entrada transfronterizo", p3p:"Para regiones con circulación activa de Huaxia offshore (Sudeste Asiático, Medio Oriente, África), crear un canal único 'Huaxia on-chain → exposición a acciones de EE. UU.' que reduzca la fracción multimoneda.",
+    p4t:"Liquidación de dividendos y cupones", p4p:"Pagar dividendos de acciones tokenizadas y cupones de bonos tokenizados on-chain en eCNH, cerrando el ciclo 'renta de activos en Huaxia → reinversión en Huaxia'.",
+    p5t:"Productos estructurados", p5p:"Desarrollar inversiones bicurrency, DCA por rango y collars denominados en eCNH, empaquetando tokens volátiles en productos Huaxia con riesgo escalonado.",
+    p6t:"Cestas RWA indexadas", p6p:"Emitir índices de cestas tecnológicas liquidados en eCNH (p. ej., un 'Nasdaq 100 on-chain en Huaxia') para asignación con un clic y menor riesgo por acción.",
+    p7t:"Ciclo de gestión de efectivo", p7p:"Las cuentas por cobrar en eCNH de vendedores transfronterizos pueden asignarse automáticamente a deuda tokenizada de corto plazo y cestas blue-chip, elevando el Huaxia on-chain de herramienta de pago a activo con rendimiento.",
+    p8t:"Cumplimiento primero", p8p:"Seguir la Ordenanza de Stablecoins de Hong Kong y los marcos regulatorios del Huaxia offshore: registro de emisores, auditorías de reservas y licencias de plataformas — de proyecto comunitario a stablecoin regulada.",
+    r_title:"Advertencias de datos y riesgos",
+    r_sub:"Sin exagerar ni evadir — esta sección importa más que las ocho vías.",
+    r1:"<b>Naturaleza aclarada:</b> eCNH no es el yuan digital del PBoC (e-CNY) ni un stablecoin fiat emitido por entidad con licencia — es un token de proyecto comunitario de terceros.",
+    r2:"<b>Datos de precio en grave conflicto (por aclarar):</b> el mismo CA muestra $0.00078 (SolanaCompass), $0.09 (un pool de DexScreener) y '1 eCNH ≈ 0.1403 USDC' (material comunitario). Las cifras de capitalización ($78B / $9T) son claramente poco fiables — no calcule con ellas.",
+    r3:"<b>Liquidez sumamente escasa:</b> monitoreo de terceros (FreshTokenWatch, nov. 2026): puntaje de riesgo 76/100, estado Warning, 8 pools con volumen 24H menor a $1 la mayoría — precios altamente manipulables.",
+    r4:"<b>Riesgos de acciones tokenizadas:</b> custodia y redención del emisor, brechas entre horarios de mercado de EE. UU. y precios 24/7 on-chain, diferencias regulatorias por jurisdicción del emisor.",
+    r5:"<b>Incertidumbre regulatoria:</b> los activos en Huaxia offshore tocan políticas de gestión de capital transfronterizo; la legalidad varía enormemente por jurisdicción — obtenga asesoría legal profesional antes de implementar.",
+    r_disc:"Aviso legal: esta página es una síntesis informativa y exploración narrativa. No es asesoramiento de inversión, oferta ni promesa de rendimientos. Las criptomonedas y acciones tokenizadas son muy volátiles; puede perder todo su capital. Verifique direcciones de contrato y leyes locales; el riesgo es suyo.",
+    f_src:"Fuentes: Orb Markets (orbmarkets.io), SolanaCompass, DexScreener, FreshTokenWatch, publicaciones comunitarias de BitcoinTalk; instantánea 2026-11-09. Lo marcado 'por aclarar' refleja conflictos irreconciliables entre fuentes — sin selección parcial.",
+    f_note:"CA de eCNH: 7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 — verifique siempre la dirección del contrato; cuidado con tokens falsos.",
+    copied:"Copiado ✓"
+  },
+  fr: {
+    nav_what:"Concepts", nav_stocks:"Aperçu du marché", nav_paths:"Voies de développement", nav_risk:"Risques & données", filter_ph:"Filtrer symbole / nom…",
+    th_green:"Vert Apple", th_blue:"Bleu Tech", th_han:"Classique Chinois",
+    hero_badge:"Sur Solana · Huaxia offshore × Actions tokenisées",
+    hero_title:'Quand le <b>Huaxia offshore eCNH</b> rencontre les <b>actions tokenisées de Solana</b>',
+    hero_sub:"eCNH (Offshore Chinese Yuan) est un jeton communautaire de Huaxia offshore sur Solana ; des plateformes comme Orb Markets permettent de négocier 24/7 des actions américaines et des actifs pré-IPO sous forme de jetons on-chain. Ensemble, elles ouvrent une nouvelle narratif : une exposition aux actions mondiales libellée en Huaxia.",
+    ca_label:"Adresse du contrat eCNH (CA) · Clic pour copier",
+    stat_langs:"Langues", stat_themes:"Thèmes de design", stat_vol:"Volume 24H Orb Stocks (instantané)", stat_paths:"Voies de développement",
+    what_title:"Qu'est-ce que eCNH ?",
+    what_sub:"D'abord les concepts, ensuite le développement — prérequis de toute discussion « eCNH × actions ».",
+    what_c1t:"Jeton communautaire de Huaxia offshore",
+    what_c1p:"eCNH, pour Offshore Chinese Yuan, est émis sur Solana et se positionne comme couche de règlement Huaxia offshore on-chain : e-commerce transfrontalier en Asie du Sud-Est, conformité au Moyen-Orient, paiements on-chain en Europe, transferts en Afrique. Attention : ce N'EST PAS le yuan numérique de la PBoC (e-CNY) ni un stablecoin fiat émis par une institution officielle.",
+    what_c2t:"Mécanisme de stabilité revendiqué (non vérifié)",
+    what_c2p:"Des documents communautaires décrivent un mécanisme « Andromeda » indexant 1 eCNH ≈ 1 CNH. Mais les sources de prix tierces se contredisent gravement (voir Risques) ; l'efficacité de l'ancrage ne peut être vérifiée.",
+    what_c3t:"Actions tokenisées sur Solana",
+    what_c3p:"Orb Markets agrège les marchés de jetons adossés à des actions sur Solana : la famille xStocks (NVDAx, TSLAx, AAPLx, SPYx, QQQx...) et les émissions Backpack / PreStocks (dont Anthropic et SpaceX pré-IPO), négociables 24/7. Volume total 24H ≈ 188,19 M$ (instantané 2026-11-09).",
+    what_c4t:"Pourquoi cette combinaison compte",
+    what_c4p:"Les dépôts en CNH sont considérables à l'échelle mondiale, mais les actifs libellés en Huaxia on-chain sont quasi inexistants. Si eCNH devient la couche de tarification et de règlement des actions tokenisées, cela esquisse un prototype de « compte-titres en Huaxia offshore » sur Solana.",
+    st_title:"Les actions tokenisées Solana en un coup d'œil",
+    st_sub:"Cotations représentatives d'Orb Markets (orbmarkets.io/markets/stocks), instantané 2026-11-09. Illustratif uniquement, pas des cours en direct.",
+    th_sym:"Symbole", th_name:"Nom / Émetteur", th_price:"Prix (USD)", th_chg:"Variation 24H", th_note:"Remarque",
+    n_nvda:"Nvidia · xStocks", n_top1:"Volume 24H 35,39 M$, n°1 du secteur",
+    n_tsla:"Tesla · xStocks", n_spy:"ETF S&P 500 · xStocks", n_spy_n:"Ancre indicielle",
+    n_aapl:"Apple · xStocks", n_goog:"Alphabet · xStocks", n_qqq:"ETF Nasdaq 100 · xStocks",
+    n_ant:"Anthropic (pré-IPO) · PreStocks", n_pre:"Jeton de participations pré-IPO",
+    n_spcx:"SpaceX (pré-IPO) · Backpack", n_pre2:"Jeton de participations pré-IPO",
+    n_crcl:"Circle · xStocks", n_coin:"Coinbase · xStocks",
+    st_note:"Couleurs selon la convention chinoise : rouge = hausse, vert = baisse. Source : instantané Orb Markets (2026-11-09), pas en temps réel.",
+    p_title:"eCNH + SOL + actions tokenisées : huit voies de développement",
+    p_sub:"Du règlement à la conformité, de la liquidité à la matrice produit — comment cet écosystème pourrait grandir.",
+    p1t:"Couche de tarification Huaxia", p1p:"Faire de eCNH la monnaie de cotation et de règlement des actions tokenisées : étendre les paires de action/USDC à action/eCNH, permettant de détenir des actions mondiales directement en Huaxia offshore.",
+    p2t:"Co-construction de liquidité", p2p:"Créer des pools eCNH × xStocks sur Orca / Meteora avec incentives pour market makers, subventions DAO et liquidity mining — d'abord dénouer le nœud des « pools trop peu profonds ».",
+    p3t:"Pont d'accès transfrontalier", p3p:"Pour les régions à circulation active de Huaxia offshore (Asie du Sud-Est, Moyen-Orient, Afrique), créer un canal unique « Huaxia on-chain → exposition actions US » réduisant la friction multidevises.",
+    p4t:"Règlement des dividendes et coupons", p4p:"Payer les dividendes d'actions tokenisées et les coupons de bons tokenisés on-chain en eCNH, bouclant le cycle « revenus d'actifs Huaxia → réinvestissement en Huaxia ».",
+    p5t:"Produits structurés", p5p:"Développer des investissements bicurrency, du DCA par intervalle et des collars libellés en eCNH, emballant des jetons d'actions volatils en produits Huaxia à risques stratifiés.",
+    p6t:"Paniers RWA indexés", p6p:"Émettre des indices de paniers tech réglés en eCNH (p. ex. un « Nasdaq 100 on-chain version Huaxia ») pour une allocation en un clic et moins de risque par titre.",
+    p7t:"Boucle de gestion de trésorerie", p7p:"Les créances eCNH des vendeurs transfrontaliers peuvent être allouées automatiquement à de la dette tokenisée court terme et à des paniers blue-chip, faisant du Huaxia on-chain un actif rémunérateur.",
+    p8t:"Conformité d'abord", p8p:"Suivre l'Ordonnance sur les Stablecoins de Hong Kong et les cadres réglementaires du Huaxia offshore : enregistrement des émetteurs, audits des réserves et licences de plateformes — du projet communautaire au stablecoin régulé.",
+    r_title:"Réserves de données et avertissements",
+    r_sub:"Sans exagération ni évitement — cette section compte plus que les huit voies.",
+    r1:"<b>Nature clarifiée :</b> eCNH n'est ni le yuan numérique de la PBoC (e-CNY), ni un stablecoin fiat émis par une institution agréée — c'est un jeton communautaire tiers.",
+    r2:"<b>Données de prix en conflit grave (à clarifier) :</b> le même CA affiche 0,00078 $ (SolanaCompass), 0,09 $ (un pool DexScreener) et « 1 eCNH ≈ 0,1403 USDC » (documents communautaires). Les capitalisations (78 Md$ / 9 T$) sont manifestement peu fiables — n'en tirez aucun calcul.",
+    r3:"<b>Liquidité extrêmement mince :</b> surveillance tierce (FreshTokenWatch, nov. 2026) : score de risque 76/100, statut Warning, 8 pools dont la plupart sous 1 $ de volume 24H — prix hautement manipulables.",
+    r4:"<b>Risques propres aux actions tokenisées :</b> garde et rachat par l'émetteur, écarts entre horaires du marché US et cotation 24/7 on-chain, différences réglementaires selon la juridiction de l'émetteur.",
+    r5:"<b>Incertitude de conformité :</b> les actifs en Huaxia offshore touchent aux politiques de gestion transfrontalière des capitaux ; la légalité varie énormément selon les juridictions — obtenez un avis juridique professionnel avant toute mise en œuvre.",
+    r_disc:"Avertissement : cette page est une synthèse d'information et une exploration narrative. Elle ne constitue ni un conseil en investissement, ni une offre, ni une promesse de rendement. Les cryptos et actions tokenisées sont très volatiles ; vous pouvez perdre l'intégralité de votre capital. Vérifiez vous-même les adresses de contrat et les lois locales ; tout risque est à votre charge.",
+    f_src:"Sources : Orb Markets (orbmarkets.io), SolanaCompass, DexScreener, FreshTokenWatch, publications communautaires BitcoinTalk ; instantané 2026-11-09. Les mentions « à clarifier » reflètent des conflits irréconciliables entre sources — aucun tri arbitraire.",
+    f_note:"CA eCNH : 7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 — vérifiez toujours l'adresse du contrat ; méfiez-vous des faux jetons.",
+    copied:"Copié ✓"
+  },
+  ar: {
+    nav_what:"المفاهيم", nav_stocks:"نظرة على السوق", nav_paths:"مسارات التطوير", nav_risk:"المخاطر والبيانات", filter_ph:"تصفية الرمز / الاسم…",
+    th_green:"أخضر آبل", th_blue:"أزرق تقني", th_han:"طراز صيني كلاسيكي",
+    hero_badge:"على Solana · هواكسيا الخارجي × الأسهم المرمّزة",
+    hero_title:'عندما يلتقي <b>هواكسيا الخارجي eCNH</b> مع <b>الأسهم المرمّزة على Solana</b>',
+    hero_sub:"eCNH (هواكسيا الصيني الخارجي) هو رمز مجتمعي لهواكسيا الخارجي على سلسلة Solana؛ وتتيح منصات مثل Orb Markets تداول الأسهم الأمريكية وأصول ما قبل الـIPO على مدار الساعة كرموز على السلسلة. معًا يفتحان سردية جديدة: تعرض عالمي للأسهم مقوّمًا بهواكسيا.",
+    ca_label:"عقد eCNH (CA) · انقر للنسخ",
+    stat_langs:"اللغات", stat_themes:"الثيمات", stat_vol:"حجم تداول Orb 24 ساعة (لقطة)", stat_paths:"مسارات التطوير",
+    what_title:"ما هو eCNH؟",
+    what_sub:"المفاهيم أولاً ثم التطوير — شرط مسبق لأي نقاش حول «eCNH × الأسهم».",
+    what_c1t:"رمز مجتمعي لهواكسيا الخارجي",
+    what_c1p:"eCNH اختصار Offshore Chinese Yuan، يُصدر على Solana ويُقدَّم كطبقة تسوية لهواكسيا الخارجي على السلسلة: التجارة الإلكترونية العابرة للحدود في جنوب شرق آسيا، الامتثال في الشرق الأوسط، المدفوعات على السلسلة في أوروبا، والتحويلات في أفريقيا. انتبه: إنه ليس اليوان الرقمي للبنك المركزي الصيني (e-CNY) ولا عملة مستقرة رسمية من أي جهة رسمية.",
+    what_c2t:"آلية الاستقرار المزعومة (غير موثقة)",
+    what_c2p:"تصف المواد المجتمعية آلية «Andromeda» بربط 1 eCNH ≈ 1 CNH. لكن مصادر الأسعار الخارجية تتعارض بشدة (انظر المخاطر)؛ ولا يمكن التحقق من فعالية الربط.",
+    what_c3t:"الأسهم المرمّزة على Solana",
+    what_c3p:"يجمع Orb Markets أسواق الرموز المدعومة بالأسهم على Solana: عائلة xStocks (NVDAx، TSLAx، AAPLx، SPYx، QQQx...) وإصدارات Backpack / PreStocks (بما فيها Anthropic وSpaceX قبل الاكتتاب)، قابلة للتداول 24/7. إجمالي حجم 24 ساعة ≈ 188.19 مليون دولار (لقطة 2026-11-09).",
+    what_c4t:"لماذا يهم هذا الجمع؟",
+    what_c4p:"ودائع هواكسيا الخارجي ضخمة عالميًا، بينما الأصول المقومة بهواكسيا على السلسلة شبه معدومة. إذا أصبح eCNH طبقة التسعير والتسوية للأسهم المرمّزة، فإنه يرسم نموذجًا أوليًا لـ«حساب أوراق مالية بهواكسيا الخارجي» على Solana.",
+    st_title:"نظرة سريعة على الأسهم المرمّزة في Solana",
+    st_sub:"قوائم ممثلة من Orb Markets (orbmarkets.io/markets/stocks)، لقطة 2026-11-09. للتوضيح فقط وليست أسعارًا لحظية.",
+    th_sym:"الرمز", th_name:"الاسم / المُصدر", th_price:"السعر (دولار)", th_chg:"تغير 24 ساعة", th_note:"ملاحظة",
+    n_nvda:"إنفيديا · xStocks", n_top1:"حجم 24 ساعة 35.39 مليون دولار، الأول في القطاع",
+    n_tsla:"تسلا · xStocks", n_spy:"ETF S&P 500 · xStocks", n_spy_n:"مرتكز مؤشري",
+    n_aapl:"آبل · xStocks", n_goog:"Alphabet · xStocks", n_qqq:"ETF ناسداك 100 · xStocks",
+    n_ant:"Anthropic (قبل الاكتتاب) · PreStocks", n_pre:"رمز حصص ما قبل الاكتتاب",
+    n_spcx:"SpaceX (قبل الاكتتاب) · Backpack", n_pre2:"رمز حصص ما قبل الاكتتاب",
+    n_crcl:"Circle · xStocks", n_coin:"Coinbase · xStocks",
+    st_note:"الألوان وفق العادة الصينية: الأحمر = صعود، الأخضر = هبوط. المصدر: لقطة Orb Markets (2026-11-09)، وليست لحظية.",
+    p_title:"eCNH + SOL + الأسهم المرمّزة: ثمانية مسارات تطوير",
+    p_sub:"من التسوية إلى الامتثال، ومن السيولة إلى مصفوفة المنتجات — كيف يمكن لهذا النظام البيئي أن ينمو.",
+    p1t:"طبقة التسعير بهواكسيا", p1p:"دفع eCNH ليصبح عملة التسعير والتسوية للأسهم المرمّزة: توسيع الأزواج من سهم/USDC إلى سهم/eCNH، ليحتفظ المستخدمون بأسهم عالمية مباشرة بهواكسيا الخارجي.",
+    p2t:"بناء السيولة مشتركًا", p2p:"إنشاء مجمعات eCNH × xStocks على Orca / Meteora بحوافز لصنّاع السوق ودعم من DAO وتعدين السيولة لجذب محترفي الصناعة — وحل أولاً عقدة «المجمعات الضحلة».",
+    p3t:"جسر الإدخال العابر للحدود", p3p:"للمناطق ذات تداول هواكسيا الخارجي النشط (جنوب شرق آسيا، الشرق الأوسط، أفريقيا)، بناء قناة موحدة «يوان على السلسلة → تعرض لأسهم أمريكية» تقلل احتكاك العملات المتعددة.",
+    p4t:"تسوية الأرباح والكوبونات", p4p:"دفع أرباح الأسهم المرمّزة وكوبونات السندات المرمّزة على السلسلة بعملة eCNH، لإغلاق دائرة «دخل أصول بهواكسيا → إعادة استثمار بهواكسيا».",
+    p5t:"منتجات مهيكلة", p5p:"تطوير استثمارات بعملتين وشراء دوري بنطاق واستراتيجيات محمية مقوّمة بـeCNH، لتغليف رموز الأسهم المتقلبة في منتجات بهواكسيا بمخاطر متدرجة.",
+    p6t:"سلال RWA مفهرسة", p6p:"إصدار رموز مؤشرات لسلال أسهم تقنية تُسوّى بـeCNH (مثل «ناسداك 100 على السلسلة بهواكسيا») للتخصيص بنقرة واحدة ومخاطر أقل للسهم الواحد.",
+    p7t:"حلقة إدارة النقد", p7p:"يمكن تخصيص مستحقات البائعين العابرين للحدود بـeCNH تلقائيًا في ديون قصيرة الأجل مرمّزة وسلال أسهم رائدة، ليرتقي هواكسيا على السلسلة من أداة دفع إلى أصل مدر للعائد.",
+    p8t:"الامتثال أولاً", p8p:"اتباع مرسوم العملات المستقرة في هونغ كونغ وأطر تنظيم هواكسيا الخارجي: تسجيل المصدرين، تدقيق الاحتياطيات، وتراخيص منصات التداول — من مشروع مجتمعي إلى عملة مستقرة منظمة.",
+    r_title:"تحفظات البيانات وتحذيرات المخاطر",
+    r_sub:"بلا مبالغة ولا تهرّب — هذا القسم أهم من المسارات الثمانية.",
+    r1:"<b>توضيح الطبيعة:</b> eCNH ليس اليوان الرقمي للبنك المركزي الصيني (e-CNY) ولا عملة مستقرة صادرة عن جهة مرخصة — بل رمز مشروع مجتمعي من طرف ثالث.",
+    r2:"<b>تعارض حاد في بيانات السعر (بحاجة لتوضيح):</b> العقد نفسه يظهر 0.00078 دولار (SolanaCompass) و0.09 دولار (مجمع DexScreener) و«1 eCNH ≈ 0.1403 USDC» (مواد مجتمعية). أرقام القيمة السوقية (78 مليار / 9 تريليون) غير موثوقة بوضوح — لا تحسب بها.",
+    r3:"<b>سيولة شحيحة للغاية:</b> مراقبة خارجية (FreshTokenWatch، نوفمبر 2026): درجة مخاطر 76/100، حالة تحذير، 8 مجمعات معظمها بحجم أقل من دولار — أسعار قابلة للتلاعب بسهولة.",
+    r4:"<b>مخاطر خاصة بالأسهم المرمّزة:</b> حفظ واسترداد المُصدر، فجوات بين ساعات السوق الأمريكي والتسعير اللحظي على السلسلة، واختلافات تنظيمية حسب ولاية المُصدر.",
+    r5:"<b>لايقين تنظيمي:</b> أصول هواكسيا الخارجي تماس سياسات إدارة رأس المال العابرة للحدود؛ وشرعيتها تختلف اختلافًا هائلًا بين الولايات — احصل على رأي قانوني مهني قبل التنفيذ.",
+    r_disc:"إخلاء مسؤولية: هذه الصفحة تجميع معلوماتي واستكشاف سردي. ليست نصيحة استثمارية ولا عرضًا ولا وعدًا بعوائد. العملات المشفرة والأسهم المرمّزة شديدة التقلب؛ وقد تخسر رأس مالك بالكامل. تحقق بنفسك من عناوين العقود وقوانين بلدك؛ والمخاطرة على عاتقك.",
+    f_src:"المصادر: Orb Markets (orbmarkets.io)، SolanaCompass، DexScreener، FreshTokenWatch، منشورات مجتمع BitcoinTalk؛ لقطة 2026-11-09. ما وُسم «بحاجة لتوضيح» يعكس تعارضات لا يمكن التوفيق بينها بين المصادر — دون انتقاء.",
+    f_note:"عقد eCNH: 7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 — تحقق دائمًا من عنوان العقد؛ واحذر الرموز المزيفة.",
+    copied:"تم النسخ ✓"
+  },
+  ru: {
+    nav_what:"Концепции", nav_stocks:"Обзор рынка", nav_paths:"Пути развития", nav_risk:"Риски и данные", filter_ph:"Фильтр: тикер / название…",
+    th_green:"Яблочно-зелёная", th_blue:"Техно-синяя", th_han:"Классический Китай",
+    hero_badge:"На Solana · офшорная хуася-монета × токенизированные акции",
+    hero_title:'Когда <b>офшорная хуася-монета eCNH</b> встречается с <b>токенизированными акциями Solana</b>',
+    hero_sub:"eCNH (Offshore Chinese Yuan) —-community-токен офшорной хуася-монеты на Solana; платформы вроде Orb Markets позволяют торговать 24/7 американскими акциями и pre-IPO активами в виде on-chain токенов. Вместе они открывают новый нарратив: экспозицию на мировые акции в номинале хуася.",
+    ca_label:"Адрес контракта eCNH (CA) · нажмите, чтобы скопировать",
+    stat_langs:"Языки интерфейса", stat_themes:"Темы оформления", stat_vol:"Объём Orb Stocks за 24ч (снимок)", stat_paths:"Пути развития",
+    what_title:"Что такое eCNH?",
+    what_sub:"Сначала понятия, потом развитие — обязательное условие любого разговора о «eCNH × акции».",
+    what_c1t:"Community-токен офшорной хуася-монеты",
+    what_c1p:"eCNH (Offshore Chinese Yuan) выпущен на Solana и позиционируется как on-chain слой расчётов в офшорной хуася-монете: трансграничная e-commerce в Юго-Восточной Азии, комплаенс на Ближнем Востоке, on-chain платежи в Европе, переводы в Африке. Внимание: это НЕ цифровой юань Народного банка Китая (e-CNY) и не фиатный стейблкоин какого-либо официального учреждения.",
+    what_c2t:"Заявленный механизм стабилизации (не проверен)",
+    what_c2p:"Материалы сообщества описывают механизм «Andromeda» с привязкой 1 eCNH ≈ 1 CNH. Однако сторонние источники цен резко противоречат друг другу (см. риски); эффективность привязки проверить невозможно.",
+    what_c3t:"Токенизированные акции на Solana",
+    what_c3p:"Orb Markets агрегирует рынки токенов, обеспеченных акциями, на Solana: семейство xStocks (NVDAx, TSLAx, AAPLx, SPYx, QQQx...) и выпуски Backpack / PreStocks (включая pre-IPO Anthropic и SpaceX), доступные 24/7. Общий объём за 24ч ≈ $188,19 млн (снимок 2026-11-09).",
+    what_c4t:"Почему сочетание перспективно",
+    what_c4p:"Депозиты в офшорной хуася-монете (CNH) огромны в мировом масштабе, но активов в хуася on-chain почти нет. Если eCNH станет слоем котирования и расчётов для токенизированных акций, это набросает прототип «офшорного брокерского счёта в хуася» на Solana.",
+    st_title:"Токенизированные акции Solana: обзор",
+    st_sub:"Представительные листинги с Orb Markets (orbmarkets.io/markets/stocks), снимок 2026-11-09. Только для иллюстрации, не живые котировки.",
+    th_sym:"Тикер", th_name:"Название / эмитент", th_price:"Цена (USD)", th_chg:"Изм. за 24ч", th_note:"Примечание",
+    n_nvda:"Nvidia · xStocks", n_top1:"Объём 24ч $35,39 млн, №1 в сегменте",
+    n_tsla:"Tesla · xStocks", n_spy:"ETF S&P 500 · xStocks", n_spy_n:"Индексный якорь",
+    n_aapl:"Apple · xStocks", n_goog:"Alphabet · xStocks", n_qqq:"ETF Nasdaq 100 · xStocks",
+    n_ant:"Anthropic (pre-IPO) · PreStocks", n_pre:"Токен долей pre-IPO",
+    n_spcx:"SpaceX (pre-IPO) · Backpack", n_pre2:"Токен долей pre-IPO",
+    n_crcl:"Circle · xStocks", n_coin:"Coinbase · xStocks",
+    st_note:"Цвета по китайской конвенции: красный = рост, зелёный = падение. Источник: снимок Orb Markets (2026-11-09), не реальное время.",
+    p_title:"eCNH + SOL + токенизированные акции: восемь путей развития",
+    p_sub:"От расчётов до комплаенса, от ликвидности до продуктовой матрицы — как может расти такая экосистема.",
+    p1t:"слой котирования в хуася котирования", p1p:"Продвигать eCNH как валюту котирования и расчётов по токенизированным акциям: расширить пары с акция/USDC до акция/eCNH, позволяя держать мировые акции напрямую в офшорной хуася-монете.",
+    p2t:"Совместное построение ликвидности", p2p:"Создать пулы eCNH × xStocks на Orca / Meteora с вознаграждениями маркет-мейкерам, субсидиями DAO и майнингом ликвидности — сначала развязать узел «слишком мелких пулов».",
+    p3t:"Трансграничный мост", p3p:"Для регионов с активным оборотом офшорной хуася-монеты (Юго-Восточная Азия, Ближний Восток, Африка) построить единый канал «on-chain хуася → экспозиция на акции США», снижающий мультивалютное трение.",
+    p4t:"Выплата дивидендов и купонов", p4p:"Выплачивать дивиденды токенизированных акций и купоны токенизированных облигаций on-chain в eCNH, замыкая цикл «доход в хуася → реинвестирование в хуася».",
+    p5t:"Структурированные продукты", p5p:"Разработать двухвалютные инвестиции, интервальный DCA и collar-стратегии в номинале eCNH, упаковывая волатильные токены акций в продукты в хуася со стратификацией риска.",
+    p6t:"Индексные RWA-корзины", p6p:"Выпускать индексные токены tech-корзин с расчётом в eCNH (например, «Nasdaq 100 on-chain, версия в хуася») для аллокации в один клик и меньшего риска на бумагу.",
+    p7t:"Замкнутый кэш-менеджмент", p7p:"Дебиторку продавцов трансграничной торговли в eCNH можно автоматически размещать в токенизированных коротких облигациях и корзинах blue-chip, превращая on-chain хуася из платёжного инструмента в доходный актив.",
+    p8t:"Комплаенс прежде всего", p8p:"Следовать ордонансу Гонконга о стейблкоинах и регуляторным рамкам офшорной хуася-монеты: регистрация эмитентов, аудит резервов и лицензии торговых платформ — от community-проекта к регулируемому стейблкоину.",
+    r_title:"Оговорки по данным и предупреждения о рисках",
+    r_sub:"Без преувеличений и умолчаний — этот раздел важнее восьми путей.",
+    r1:"<b>Уточнение природы:</b> eCNH — не цифровой юань НБК (e-CNY) и не фиатный стейблкоин лицензированного учреждения, а токен стороннего community-проекта.",
+    r2:"<b>Резкий конфликт ценовых данных (требует уточнения):</b> один и тот же CA показывает $0,00078 (SolanaCompass), $0,09 (пул на DexScreener) и «1 eCNH ≈ 0,1403 USDC» (материалы сообщества). Данные капитализации ($78 млрд / $9 трлн) явно недостоверны — не считайте по ним.",
+    r3:"<b>Крайне тонкая ликвидность:</b> сторонний мониторинг (FreshTokenWatch, ноябрь 2026): риск-скор 76/100, статус Warning, 8 пулов, у большинства объём за 24ч менее $1 — цены легко манипулируемы.",
+    r4:"<b>Риски токенизированных акций:</b> кастодия и выкуп эмитентом, разрывы между часами рынка США и on-chain котировками 24/7, регуляторные различия юрисдикции эмитента.",
+    r5:"<b>Регуляторная неопределённость:</b> активы в офшорной хуася-монете затрагивают политику трансграничного управления капиталом; легальность сильно различается по юрисдикциям — получите профессиональное юридическое заключение.",
+    r_disc:"Дисклеймер: эта страница — информационная сводка и исследование нарратива. Это не инвестиционная рекомендация, оферта или обещание доходности. Криптоактивы и токенизированные акции крайне волатильны; вы можете потерять весь капитал. Проверяйте адреса контрактов и местные законы самостоятельно; все риски — ваши.",
+    f_src:"Источники: Orb Markets (orbmarkets.io), SolanaCompass, DexScreener, FreshTokenWatch, посты BitcoinTalk; снимок 2026-11-09. Пометки «требует уточнения» отражают непримиримые расхождения источников — без выборочного подхода.",
+    f_note:"CA eCNH: 7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 — всегда проверяйте адрес контракта; остерегайтесь поддельных токенов.",
+    copied:"Скопировано ✓"
+  },
+  pt: {
+    nav_what:"Conceitos", nav_stocks:"Mercado em resumo", nav_paths:"Caminhos de desenvolvimento", nav_risk:"Riscos e dados", filter_ph:"Filtrar código / nome…",
+    th_green:"Verde Apple", th_blue:"Azul Tech", th_han:"Clássico Chinês",
+    hero_badge:"Na Solana · Huaxia offshore × Ações tokenizadas",
+    hero_title:'Quando o <b>Huaxia offshore eCNH</b> encontra as <b>ações tokenizadas da Solana</b>',
+    hero_sub:"eCNH (Offshore Chinese Yuan) é um token comunitário de Huaxia offshore na Solana; plataformas como a Orb Markets permitem negociar 24/7 ações americanas e ativos pré-IPO como tokens on-chain. Juntos, abrem uma nova narrativa: exposição a ações globais denominadas em Huaxia.",
+    ca_label:"Endereço do contrato eCNH (CA) · Clique para copiar",
+    stat_langs:"Idiomas", stat_themes:"Temas de design", stat_vol:"Volume 24H Orb Stocks (instantâneo)", stat_paths:"Caminhos de desenvolvimento",
+    what_title:"O que é eCNH?",
+    what_sub:"Conceitos primeiro, desenvolvimento depois — pré-requisito de qualquer discussão 'eCNH × ações'.",
+    what_c1t:"Token comunitário de Huaxia offshore",
+    what_c1p:"eCNH, sigla de Offshore Chinese Yuan, é emitido na Solana e posicionado como camada de liquidação de Huaxia offshore on-chain: e-commerce transfronteiriço no Sudeste Asiático, conformidade no Oriente Médio, pagamentos on-chain na Europa e remessas na África. Atenção: NÃO é o yuan digital do PBoC (e-CNY) nem um stablecoin fiduciário emitido por instituição oficial.",
+    what_c2t:"Mecanismo de estabilidade alegado (não verificado)",
+    what_c2p:"Materiais da comunidade descrevem um mecanismo 'Andromeda' com paridade 1 eCNH ≈ 1 CNH. Mas fontes de preços de terceiros conflitam gravemente (ver Riscos); a eficácia da paridade não pode ser verificada.",
+    what_c3t:"Ações tokenizadas na Solana",
+    what_c3p:"A Orb Markets agrega mercados de tokens lastreados em ações na Solana: a família xStocks (NVDAx, TSLAx, AAPLx, SPYx, QQQx...) e emissões Backpack / PreStocks (incluindo Anthropic e SpaceX pré-IPO), negociáveis 24/7. Volume total 24H ≈ US$188,19 mi (instantâneo 2026-11-09).",
+    what_c4t:"Por que a combinação importa",
+    what_c4p:"Depósitos em Huaxia offshore são vastos globalmente, mas ativos denominados em Huaxia on-chain quase não existem. Se o eCNH se tornar a camada de precificação e liquidação das ações tokenizadas, esboça-se um proto 'conta de valores em Huaxia offshore' na Solana.",
+    st_title:"Ações tokenizadas na Solana em resumo",
+    st_sub:"Listagens representativas da Orb Markets (orbmarkets.io/markets/stocks), instantâneo 2026-11-09. Apenas ilustrativo, não cotações em tempo real.",
+    th_sym:"Código", th_name:"Nome / Emissor", th_price:"Preço (USD)", th_chg:"Variação 24H", th_note:"Nota",
+    n_nvda:"Nvidia · xStocks", n_top1:"Volume 24H US$35,39 mi, nº 1 do setor",
+    n_tsla:"Tesla · xStocks", n_spy:"ETF S&P 500 · xStocks", n_spy_n:"Âncora de índice",
+    n_aapl:"Apple · xStocks", n_goog:"Alphabet · xStocks", n_qqq:"ETF Nasdaq 100 · xStocks",
+    n_ant:"Anthropic (pré-IPO) · PreStocks", n_pre:"Token de participações pré-IPO",
+    n_spcx:"SpaceX (pré-IPO) · Backpack", n_pre2:"Token de participações pré-IPO",
+    n_crcl:"Circle · xStocks", n_coin:"Coinbase · xStocks",
+    st_note:"Cores pela convenção chinesa: vermelho = alta, verde = baixa. Fonte: instantâneo da Orb Markets (2026-11-09), não em tempo real.",
+    p_title:"eCNH + SOL + ações tokenizadas: oito caminhos de desenvolvimento",
+    p_sub:"Da liquidação à conformidade, da liquidez à matriz de produtos — como esse ecossistema poderia crescer.",
+    p1t:"Camada de precificação em Huaxia", p1p:"Impulsionar o eCNH como moeda de precificação e liquidação das ações tokenizadas: estender pares de ação/USDC para ação/eCNH, permitindo deter ações globais diretamente em Huaxia offshore.",
+    p2t:"Coconstrução de liquidez", p2p:"Criar pools eCNH × xStocks na Orca / Meteora com incentivos a market makers, subsídios de DAO e mineração de liquidez — primeiro desatar o nó dos 'pools rasos'.",
+    p3t:"Ponte de entrada transfronteiriça", p3p:"Para regiões com circulação ativa de Huaxia offshore (Sudeste Asiático, Oriente Médio, África), criar um canal único 'Huaxia on-chain → exposição a ações dos EUA' reduzindo o atrito multimoeda.",
+    p4t:"Liquidação de dividendos e cupons", p4p:"Pagar dividendos de ações tokenizadas e cupons de títulos tokenizados on-chain em eCNH, fechando o ciclo 'renda de ativos em Huaxia → reinvestimento em Huaxia'.",
+    p5t:"Produtos estruturados", p5p:"Desenvolver investimentos bicurrency, DCA por faixa e collars denominados em eCNH, empacotando tokens voláteis em produtos Huaxia com risco estratificado.",
+    p6t:"Cestas RWA indexadas", p6p:"Emitir índices de cestas tech liquidados em eCNH (p. ex., um 'Nasdaq 100 on-chain versão Huaxia') para alocação em um clique e menor risco por papel.",
+    p7t:"Ciclo de gestão de caixa", p7p:"Recebíveis em eCNH de vendedores transfronteiriços podem ser alocados automaticamente em dívida tokenizada de curto prazo e cestas blue-chip, elevando o Huaxia on-chain de ferramenta de pagamento a ativo remunerado.",
+    p8t:"Conformidade primeiro", p8p:"Seguir a Ordenança de Stablecoins de Hong Kong e os marcos regulatórios do Huaxia offshore: registro de emissores, auditoria de reservas e licenças de plataformas — de projeto comunitário a stablecoin regulada.",
+    r_title:"Ressalvas de dados e avisos de risco",
+    r_sub:"Sem exagero nem evasão — esta seção importa mais que os oito caminhos.",
+    r1:"<b>Natureza esclarecida:</b> eCNH não é o yuan digital do PBoC (e-CNY) nem um stablecoin fiduciário de instituição licenciada — é um token comunitário de terceiros.",
+    r2:"<b>Dados de preço em grave conflito (a esclarecer):</b> o mesmo CA mostra US$0,00078 (SolanaCompass), US$0,09 (um pool DexScreener) e '1 eCNH ≈ 0,1403 USDC' (material comunitário). Capitalizações (US$78 bi / US$9 tri) são claramente não confiáveis — não calcule com elas.",
+    r3:"<b>Liquidez extremamente rasa:</b> monitoramento de terceiros (FreshTokenWatch, nov. 2026): risco 76/100, status Warning, 8 pools com a maioria abaixo de US$1 de volume 24H — preços altamente manipuláveis.",
+    r4:"<b>Riscos das ações tokenizadas:</b> custódia e resgate pelo emissor, defasagem entre horários do mercado americano e preços on-chain 24/7, diferenças regulatórias da jurisdição do emissor.",
+    r5:"<b>Incerteza regulatória:</b> ativos em Huaxia offshore tocam políticas de gestão de capital transfronteiriço; a legalidade varia enormemente entre jurisdições — obtenha parecer jurídico profissional antes de implementar.",
+    r_disc:"Aviso legal: esta página é uma síntese informativa e exploração narrativa. Não é recomendação de investimento, oferta ou promessa de retornos. Cripto e ações tokenizadas são altamente voláteis; você pode perder todo o capital. Verifique endereços de contrato e leis locais; o risco é seu.",
+    f_src:"Fontes: Orb Markets (orbmarkets.io), SolanaCompass, DexScreener, FreshTokenWatch, postagens comunitárias do BitcoinTalk; instantâneo 2026-11-09. Itens marcados 'a esclarecer' refletem conflitos irreconciliáveis entre fontes — sem escolhas arbitrárias.",
+    f_note:"CA do eCNH: 7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 — sempre verifique o endereço do contrato; cuidado com tokens falsos.",
+    copied:"Copiado ✓"
+  },
+  de: {
+    nav_what:"Konzepte", nav_stocks:"Marktüberblick", nav_paths:"Entwicklungspfade", nav_risk:"Risiken & Daten", filter_ph:"Symbol / Name filtern…",
+    th_green:"Apfelgrün", th_blue:"Techno-Blau", th_han:"Klassisches China",
+    hero_badge:"Auf Solana · Offshore-Huaxia × tokenisierte Aktien",
+    hero_title:'Wenn <b>Offshore-Huaxia eCNH</b> auf <b>tokenisierte Aktien auf Solana</b> trifft',
+    hero_sub:"eCNH (Offshore Chinese Yuan) ist ein Community-Token für Offshore-Huaxia auf Solana; Plattformen wie Orb Markets ermöglichen 24/7-Handel mit US-Aktien und Pre-IPO-Assets als On-Chain-Token. Zusammen eröffnet dies ein neues Narrativ: globale Aktienexposition in Huaxia-Denominierung.",
+    ca_label:"eCNH-Vertragsadresse (CA) · Klick zum Kopieren",
+    stat_langs:"Sprachen", stat_themes:"Design-Themes", stat_vol:"Orb Stocks 24H-Volumen (Snapshot)", stat_paths:"Entwicklungspfade",
+    what_title:"Was ist eCNH?",
+    what_sub:"Erst die Begriffe, dann die Entwicklung — Voraussetzung jeder 'eCNH × Aktien'-Diskussion.",
+    what_c1t:"Community-Token für Offshore-Huaxia",
+    what_c1p:"eCNH (Offshore Chinese Yuan) wird auf Solana emittiert und als On-Chain-Abwicklungsschicht für Offshore-Huaxia positioniert: grenzüberschreitender E-Commerce in Südostasien, Compliance im Nahen Osten, On-Chain-Zahlungen in Europa, Remittances in Afrika. Achtung: Es ist NICHT der digitale Yuan der PBoC (e-CNY) und kein Fiat-Stablecoin einer offiziellen Institution.",
+    what_c2t:"Behaupteter Stabilisierungsmechanismus (unverifiziert)",
+    what_c2p:"Community-Materialien beschreiben einen 'Andromeda'-Mechanismus mit Kopplung 1 eCNH ≈ 1 CNH. Doch Drittanbieter-Preisquellen widersprechen sich gravierend (siehe Risiken); die Wirksamkeit der Kopplung ist nicht überprüfbar.",
+    what_c3t:"Tokenisierte Aktien auf Solana",
+    what_c3p:"Orb Markets aggregiert aktienbasierte Token-Märkte auf Solana: die xStocks-Familie (NVDAx, TSLAx, AAPLx, SPYx, QQQx ...) sowie Backpack-/PreStocks-Emissionen (inkl. Pre-IPO Anthropic und SpaceX), 24/7 handelbar. Gesamtumsatz 24H ≈ 188,19 Mio. $ (Snapshot 2026-11-09).",
+    what_c4t:"Warum die Kombination zählt",
+    what_c4p:"Offshore-Huaxia-Einlagen (CNH) sind global gewaltig, doch Huaxia-denominierte On-Chain-Assets fehlen fast völlig. Wird eCNH zur Preis- und Abwicklungsschicht für tokenisierte Aktien, zeichnet sich ein Proto-'Offshore-Huaxia-Wertpapierkonto' auf Solana ab.",
+    st_title:"Tokenisierte Aktien auf Solana im Überblick",
+    st_sub:"Repräsentative Listings von Orb Markets (orbmarkets.io/markets/stocks), Snapshot 2026-11-09. Nur zur Veranschaulichung, keine Echtzeitkurse.",
+    th_sym:"Symbol", th_name:"Name / Emittent", th_price:"Preis (USD)", th_chg:"24H-Änderung", th_note:"Hinweis",
+    n_nvda:"Nvidia · xStocks", n_top1:"24H-Volumen 35,39 Mio. $, Sektor Nr. 1",
+    n_tsla:"Tesla · xStocks", n_spy:"S&P-500-ETF · xStocks", n_spy_n:"Indexanker",
+    n_aapl:"Apple · xStocks", n_goog:"Alphabet · xStocks", n_qqq:"Nasdaq-100-ETF · xStocks",
+    n_ant:"Anthropic (Pre-IPO) · PreStocks", n_pre:"Pre-IPO-Anteilstoken",
+    n_spcx:"SpaceX (Pre-IPO) · Backpack", n_pre2:"Pre-IPO-Anteilstoken",
+    n_crcl:"Circle · xStocks", n_coin:"Coinbase · xStocks",
+    st_note:"Farben nach chinesischer Konvention: Rot = steigend, Grün = fallend. Quelle: Orb-Markets-Snapshot (2026-11-09), nicht echtzeitnah.",
+    p_title:"eCNH + SOL + tokenisierte Aktien: acht Entwicklungspfade",
+    p_sub:"Von der Abwicklung bis zur Compliance, von der Liquidität bis zur Produktmatrix — so könnte ein Ökosystem wachsen.",
+    p1t:"Huaxia-Preisschicht", p1p:"eCNH als Preis- und Abwicklungswährung für tokenisierte Aktien etablieren: Pairs von Aktie/USDC auf Aktie/eCNH erweitern, damit Anleger globale Aktien direkt in Offshore-Huaxia halten.",
+    p2t:"Gemeinsamer Liquiditätsaufbau", p2p:"eCNH-×-xStocks-Pools auf Orca / Meteora mit Market-Maker-Anreizen, DAO-Zuschüssen und Liquiditäts-Mining aufbauen — zuerst den Knoten 'zu flache Pools' lösen.",
+    p3t:"Grenzüberschreitende On-Ramp", p3p:"Für Regionen mit aktivem Offshore-Huaxia-Umlauf (Südostasien, Naher Osten, Afrika) einen One-Stop-Kanal 'On-Chain-Huaxia → US-Aktienexposition' schaffen und Multiwährungsreibung senken.",
+    p4t:"Dividenden- und Kuponsabwicklung", p4p:"Dividenden tokenisierter Aktien und Kupons tokenisierter Anleihen on-chain in eCNH auszahlen und den Kreislauf 'Huaxia-Ertrag → Huaxia-Reinvestition' schließen.",
+    p5t:"Strukturierte Produkte", p5p:"Dual-Currency-Investments, Range-DCA und Collar-Strategien in eCNH entwickeln — volatile Aktien-Token zu risikostaffelnden Huaxia-Produkten verpacken.",
+    p6t:"Indexierte RWA-Körbe", p6p:"Tech-Aktienkorb-Indextoken mit eCNH-Abwicklung emittieren (z. B. 'Nasdaq 100 on-chain, Huaxia-Version') für One-Click-Allokation und geringeres Einzelrisiko.",
+    p7t:"Closed-Loop-Cashmanagement", p7p:"eCNH-Forderungen grenzüberschreitender Händler automatisch in tokenisierte Kurzläufer und Blue-Chip-Körbe investieren — On-Chain-Huaxia vom Zahlungsmittel zum verzinslichen Asset.",
+    p8t:"Compliance zuerst", p8p:"An Hongkongs Stablecoins-Ordinance und Offshore-Huaxia-Regulierungsrahmen orientieren: Emittentenregistrierung, Reserve-Audits und Plattformlizenzen — vom Community-Projekt zum regulierten Stablecoin.",
+    r_title:"Datenvorbehalte & Risikohinweise",
+    r_sub:"Ohne Übertreibung und Auslassung — dieser Abschnitt zählt mehr als die acht Pfade.",
+    r1:"<b>Naturklärung:</b> eCNH ist weder der digitale Yuan der PBoC (e-CNY) noch ein Fiat-Stablecoin einer lizenzierten Institution, sondern ein Community-Token eines Drittanbieters.",
+    r2:"<b>Schwerwiegend widersprüchliche Preisdaten (zu klären):</b> dieselbe CA zeigt 0,00078 $ (SolanaCompass), 0,09 $ (ein DexScreener-Pool) und '1 eCNH ≈ 0,1403 USDC' (Community-Material). Marktkapitalisierungen (78 Mrd. $ / 9 Bio. $) sind eindeutig unzuverlässig — nicht damit rechnen.",
+    r3:"<b>Extrem dünne Liquidität:</b> Drittanbieter-Monitoring (FreshTokenWatch, Nov. 2026): Risikoscore 76/100, Status Warning, 8 Pools, die meisten mit 24H-Volumen unter 1 $ — Preise leicht manipulierbar.",
+    r4:"<b>Spezifische Risiken tokenisierter Aktien:</b> Custody- und Rücknahmrisiko des Emittenten, Abweichungen zwischen US-Handelszeiten und 24/7-On-Chain-Kursen, regulatorische Unterschiede der Emittentenjurisdiktion.",
+    r5:"<b>Regulatorische Unsicherheit:</b> Offshore-Huaxia-Assets berühren grenzüberschreitende Kapitalverkehrs­politik; die Rechtmäßigkeit variiert je nach Jurisdiktion stark — vor Umsetzung professionelle Rechtsberatung einholen.",
+    r_disc:"Haftungsausschluss: Diese Seite ist eine Informationssynthese und narrative Exploration. Keine Anlageberatung, kein Angebot und keine Renditezusage. Krypto und tokenisierte Aktien sind hochvolatil; Totalverlust möglich. Vertragsadressen und lokale Gesetze selbst prüfen; alle Risiken liegen beim Nutzer.",
+    f_src:"Quellen: Orb Markets (orbmarkets.io), SolanaCompass, DexScreener, FreshTokenWatch, BitcoinTalk-Community-Posts; Snapshot 2026-11-09. Als 'zu klären' markierte Punkte spiegeln unvereinbare Quellenkonflikte wider — ohne willkürliche Auswahl.",
+    f_note:"eCNH-CA: 7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 — Vertragsadresse immer verifizieren; Vorsicht vor Faketokens.",
+    copied:"Kopiert ✓"
+  },
+  ja: {
+    nav_what:"基本概念", nav_stocks:"市場概観", nav_paths:"発展パス", nav_risk:"リスクとデータ", filter_ph:"ティッカー / 名称で絞り込み…",
+    th_green:"アップルグリーン", th_blue:"テックブルー", th_han:"中華クラシック",
+    hero_badge:"Solana 上 · オフショア華夏幣 × トークン化株式",
+    hero_title:'<b>オフショア華夏幣 eCNH</b> と <b>Solana のトークン化株式</b>が出会うとき',
+    hero_sub:"eCNH（Offshore Chinese Yuan）は Solana 上のコミュニティ系オフショア華夏幣トークン。Orb Markets などのプラットフォームは米国株式やプレIPO資産を24時間365日オンチェーンで取引可能にします。両者の組み合わせは「華夏幣建て × グローバル株式」という新しい物語を切り拓きます。",
+    ca_label:"eCNH コントラクトアドレス（CA）· クリックでコピー",
+    stat_langs:"表示言語", stat_themes:"デザインテーマ", stat_vol:"Orb 株式セクター 24H 出来高（スナップショット）", stat_paths:"発展パス",
+    what_title:"eCNH とは？",
+    what_sub:"まず概念を整理し、それから発展を語る——これが「eCNH × 株式」を論じる前提です。",
+    what_c1t:"コミュニティ系オフショア華夏幣トークン",
+    what_c1p:"eCNH（Offshore Chinese Yuan）は Solana 鏈で発行され、「オンチェーン・オフショア華夏幣」の決済層として位置づけられています：東南アジアの越境EC、中東のコンプライアンス通道、欧州のオンチェーン決済、アフリカの送金など。注意：これは中国人民銀行が発行するデジタル人民元（e-CNY）ではなく、いかなる公式機関が発行する法定通貨ステーブルコインでもありません。",
+    what_c2t:"主張される安定メカニズム（未検証）",
+    what_c2p:"コミュニティ資料は「Andromeda」メカニズムにより 1 eCNH ≈ 1 CNH（オフショア華夏幣）にペッグすると説明しています。しかし第三者データソースの価格には深刻な食い違いがあり（リスク欄参照）、ペッグの有効性は検証できません。",
+    what_c3t:"Solana 上のトークン化株式",
+    what_c3p:"Orb Markets は Solana 上の株式裏付けトークン市場を集約しています：xStocks シリーズ（NVDAx、TSLAx、AAPLx、SPYx、QQQx など）と Backpack / PreStocks の発行版（Anthropic、SpaceX など未上場企業のシェア含む）は24時間取引可能で、24H 総出来高は約 $188.19M（2026-11-09 スナップショット）。",
+    what_c4t:"なぜこの「組み合わせ」に想像力があるのか",
+    what_c4p:"世界のオフショア華夏幣（CNH）預金は巨大ですが、オンチェーン華夏幣建て資産はほぼ空白です。eCNH がトークン化株式の建値・決済を担えれば、それは Solana 上に「オフショア華夏幣証券口座」の原型を築くことに相当します。",
+    st_title:"Solana のトークン化株式マーケット概観",
+    st_sub:"以下は Orb Markets（orbmarkets.io/markets/stocks）2026-11-09 スナップショットの代表的銘柄です。表示専用で、リアルタイム quotations ではありません。",
+    th_sym:"ティッカー", th_name:"名称 / 発行体", th_price:"価格 (USD)", th_chg:"24H 変動", th_note:"備考",
+    n_nvda:"Nvidia · xStocks", n_top1:"24H 出来高 $35.39M、セクション1位",
+    n_tsla:"テスラ · xStocks", n_spy:"S&P 500 ETF · xStocks", n_spy_n:"インデックス・アンカー",
+    n_aapl:"アップル · xStocks", n_goog:"Alphabet · xStocks", n_qqq:"ナスダック100 ETF · xStocks",
+    n_ant:"Anthropic（未上場）· PreStocks", n_pre:"プレIPOシェアトークン",
+    n_spcx:"SpaceX（未上場）· Backpack", n_pre2:"プレIPOシェアトークン",
+    n_crcl:"Circle · xStocks", n_coin:"Coinbase · xStocks",
+    st_note:"色分けは中国市場の慣例に従います：赤＝上昇、緑＝下落。出典：Orb Markets ページスナップショット（2026-11-09）、リアルタイムではありません。",
+    p_title:"eCNH + SOL + トークン化株式：8つの発展パス",
+    p_sub:"決済層からコンプライアンス層、流動性からプロダクトマトリクスまで——生態系が育ちうる姿です。",
+    p1t:"華夏幣建値レイヤー", p1p:"eCNH をトークン化株式の建値・決済通貨に：「株式/USDC」から「株式/eCNH」へペアを拡張し、ユーザーがオフショア華夏幣でグローバル株式を直接保有できるようにします。",
+    p2t:"流動性の共同構築", p2p:"Orca / Meteora 等で eCNH × xStocks の流動性プールを設け、マーケットメイカー奨励・DAO 補助・流動性マイニングで専門の MM を誘致——まず「プールが浅すぎる」難題を解きます。",
+    p3t:"越境入金ブリッジ", p3p:"オフショア華夏幣の流通が活発な東南アジア・中東・アフリカ向けに、「オンチェーン華夏幣 → 米国株式エクスポージャー」のワンストップ通道を作り、多通貨換匯の摩擦を減らします。",
+    p4t:"配当・クーポンの決済", p4p:"トークン化株式の配当やトークン化国債のクーポンを eCNH でオンチェーン支払いし、「華夏幣資産の収益 → 華夏幣での再投資」のループを閉じます。",
+    p5t:"構造化商品", p5p:"eCNH 建てのデュアルカレンシー投資、レンジ積立、カラー戦略などを開発し、変動の大きい株式トークンをリスク階層化された華夏幣商品にパッケージします。",
+    p6t:"インデックス型 RWA バスケット", p6p:"eCNH 決済のテック株バスケット指数トークン（例：「オンチェーン・ナスダック100 華夏幣版」）を発行し、ワンクリック配分で個別銘柄のリスクと参入障壁を下げます。",
+    p7t:"キャッシュマネジメントのループ", p7p:"越境EC・輸出業者の eCNH 売掛金を、トークン化短期債とブルーチップ・バスケットに自動配分し、「オンチェーン華夏幣」を決済ツールから利回り資産へ昇格させます。",
+    p8t:"コンプライアンス先行", p8p:"香港《ステーブルコイン条例》とオフショア華夏幣の規制フレームワークを参照し、発行体の届出・準備金監査・取引所ライセンスを推進し、eCNH をコミュニティプロジェクトから規制されたオフショア華夏幣ステーブルコインへ進めます。",
+    r_title:"データの出どころとリスク警告",
+    r_sub:"誇張せず、隠さない——このセクションは8つのパスより重要です。",
+    r1:"<b>性質の明確化：</b>eCNH は中国人民銀行が発行するデジタル人民元（e-CNY）ではなく、ライセンスを持つ機関が発行する法定通貨ステーブルコインでもなく、コミュニティのサードパーティ・プロジェクトトークンです。",
+    r2:"<b>価格データの深刻な食い違い（要確認）：</b>同一 CA が SolanaCompass で $0.00078、DexScreener の某プールで $0.09、コミュニティ資料で「1 eCNH ≈ 0.1403 USDC」と表示されています。時価総額（$780億 / $9兆 級）は明らかに信頼できず、これに基づく計算は避けるべきです。",
+    r3:"<b>流動性が極めて薄い：</b>第三者監視（FreshTokenWatch、2026-11）ではリスクスコア 76/100、Warning 状態、8つの取引プールの大半は24H出来高 $1 未満——価格は非常に操作されやすい状態です。",
+    r4:"<b>トークン化株式特有のリスク：</b>発行体のカストディ・償還リスク、米国市場の取引時間とオンチェーン24時間の価格ギャップ、発行轄区ごとの規制差。",
+    r5:"<b>コンプライアンスの不確実性：</b>オフショア華夏幣資産は越境資本管理政策に関わり、法域によって合法性的な差が極めて大きい——実施前に専門家の法務意見を必ず取得してください。",
+    r_disc:"免責事項：本ページは情報整理とナラティブの探求であり、投資助言・勧誘・収益の約束を一切構成するものではありません。暗号資産とトークン化株式は変動が激しく、元本を全額失う可能性があります。コントラクトアドレスと現地法規を必ずご自身で確認のうえ、リスクは自己責任でお願いします。",
+    f_src:"出典：Orb Markets（orbmarkets.io）、SolanaCompass、DexScreener、FreshTokenWatch、BitcoinTalk コミュニティ投稿；スナップショット 2026-11-09。「要確認」の表記は、データソース間の調整不能な口径の食い違いを示すもので、いかなる取捨選択も行っていません。",
+    f_note:"eCNH CA：7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 —— コントラクトアドレスを必ず確認し、偽トークンにご注意ください。",
+    copied:"コピーしました ✓"
+  },
+  ko: {
+    nav_what:"핵심 개념", nav_stocks:"시장 요약", nav_paths:"발전 경로", nav_risk:"리스크와 데이터", filter_ph:"티커 / 이름 필터…",
+    th_green:"애플 그린", th_blue:"테크 블루", th_han:"중화 클래식",
+    hero_badge:"Solana 온체인 · 오프쇼어 화샤코인 × 토큰화 주식",
+    hero_title:'<b>오프쇼어 화샤코인 eCNH</b>와 <b>Solana 토큰화 주식</b>이 만날 때',
+    hero_sub:"eCNH(Offshore Chinese Yuan)는 Solana 위 커뮤니티 기반 오프쇼어 화샤코인 토큰이며, Orb Markets 같은 플랫폼은 미국 주식과 pre-IPO 자산을 24/7 온체인 토큰으로 거래할 수 있게 합니다. 두 자산의 결합은 '화샤코인 표시 × 글로벌 주식'이라는 새로운 서사를 열고 있습니다.",
+    ca_label:"eCNH 컨트랙트 주소(CA) · 클릭하여 복사",
+    stat_langs:"인터페이스 언어", stat_themes:"디자인 테마", stat_vol:"Orb 주식 섹터 24H 거래량(스냅샷)", stat_paths:"발전 경로",
+    what_title:"eCNH란 무엇인가?",
+    what_sub:"개념부터 정리하고 발전을 논하자 — 모든 'eCNH × 주식' 논의의 전제입니다.",
+    what_c1t:"커뮤니티 오프쇼어 화샤코인 토큰",
+    what_c1p:"eCNH(Offshore Chinese Yuan)는 Solana 체인에서 발행되어 '온체인 오프쇼어 화샤코인' 결제 레이어로 포지셔닝되어 있습니다: 동남아 국경 간 이커머스, 중동 컴플라이언스 채널, 유럽 온체인 결제, 아프리카 송금 등. 주의: 이는 중국 인민은행이 발행하는 디지털 위안화(e-CNY)가 아니며, 그 어떤 공식 기관이 발행하는 법정화폐 스테이블코인도 아닙니다.",
+    what_c2t:"주장되는 안정 메커니즘 (미검증)",
+    what_c2p:"커뮤니티 자료는 'Andromeda' 메커니즘으로 1 eCNH ≈ 1 CNH(오프쇼어 화샤코인)에 페그된다고 설명합니다. 그러나 제3자 데이터 소스의 가격은 심각하게 상충하며(위험 섹션 참조), 페그의 유효성은 검증할 수 없습니다.",
+    what_c3t:"Solana 위의 토큰화 주식",
+    what_c3p:"Orb Markets는 Solana 위의 주식 담보 토큰 시장을 집계합니다: xStocks 계열(NVDAx, TSLAx, AAPLx, SPYx, QQQx 등)과 Backpack / PreStocks 발행판(Anthropic, SpaceX 등 비상장 기업 지분 포함)은 24시간 거래 가능하며, 24H 총 거래량은 약 $188.19M(2026-11-09 스냅샷)입니다.",
+    what_c4t:"이 '결합'에 상상력이 있는 이유",
+    what_c4p:"전 세계 오프쇼어 화샤코인(CNH) 예치금은 방대하지만, 온체인 화샤코인 표시 자산은 거의 공백입니다. eCNH가 토큰화 주식의 가격 책정과 결제를 담당할 수 있다면, 그것은 Solana 위에 '오프쇼어 화샤코인 증권 계좌'의 원형을 세우는 것에 해당합니다.",
+    st_title:"Solana 토큰화 주식 시장 한눈에 보기",
+    st_sub:"아래는 Orb Markets(orbmarkets.io/markets/stocks) 2026-11-09 페이지 스냅샷의 대표 종목입니다. 표시 전용이며 실시간 시세가 아닙니다.",
+    th_sym:"티커", th_name:"이름 / 발행사", th_price:"가격 (USD)", th_chg:"24H 등락", th_note:"비고",
+    n_nvda:"엔비디아 · xStocks", n_top1:"24H 거래량 $35.39M, 섹터 1위",
+    n_tsla:"테슬라 · xStocks", n_spy:"S&P 500 ETF · xStocks", n_spy_n:"지수 앵커",
+    n_aapl:"애플 · xStocks", n_goog:"Alphabet · xStocks", n_qqq:"나스닥 100 ETF · xStocks",
+    n_ant:"Anthropic (pre-IPO) · PreStocks", n_pre:"pre-IPO 지분 토큰",
+    n_spcx:"SpaceX (pre-IPO) · Backpack", n_pre2:"pre-IPO 지분 토큰",
+    n_crcl:"Circle · xStocks", n_coin:"Coinbase · xStocks",
+    st_note:"색상은 중국 시장 관례를 따릅니다: 빨강 = 상승, 초록 = 하락. 출처: Orb Markets 페이지 스냅샷(2026-11-09), 실시간 아님.",
+    p_title:"eCNH + SOL + 토큰화 주식: 8가지 발전 경로",
+    p_sub:"결제 레이어에서 컴플라이언스까지, 유동성에서 상품 매트릭스까지 — 이 생태계가 자라날 수 있는 방식입니다.",
+    p1t:"화샤코인 가격 책정 레이어", p1p:"eCNH가 토큰화 주식의 가격 책정·결제 통화가 되도록 추진: '주식/USDC' 페어를 '주식/eCNH'로 확장하여 사용자가 오프쇼어 화샤코인로 글로벌 주식을 직접 보유하게 합니다.",
+    p2t:"유동성 공동 구축", p2p:"Orca / Meteora 등에 eCNH × xStocks 유동성 풀을 만들고, 마켓메이커 인센티브·DAO 보조·유동성 마이닝으로 전문 MM을 유치 — 먼저 '풀이 너무 얕은' 난제를 풉니다.",
+    p3t:"국경 간 입금 브리지", p3p:"오프쇼어 화샤코인 유통이 활발한 동남아·중동·아프리카 지역을 대상으로 '온체인 화샤코인 → 미국 주식 익스포저' 원스톱 채널을 구축해 다중 통화 환전 마찰을 줄입니다.",
+    p4t:"배당·쿠폰 결제", p4p:"토큰화 주식의 배당과 토큰화 국채의 쿠폰을 eCNH로 온체인 지급하여 '화샤코인 자산 수익 → 화샤코인 재투자' 루프를 닫습니다.",
+    p5t:"구조화 상품", p5p:"eCNH 표시의 듀얼커런시 투자, 구간 적립, 칼라 전략 등을 개발하여 변동성 큰 주식 토큰을 리스크 계층화된 화샤코인 상품으로 패키징합니다.",
+    p6t:"인덱스형 RWA 바스켓", p6p:"eCNH 결제 기술주 바스켓 지수 토큰(예: '온체인 나스닥 100 화샤코인 버전')을 발행해 원클릭 배분으로 개별 종목 리스크와 진입 장벽을 낮춥니다.",
+    p7t:"캐시매니지먼트 루프", p7p:"국경 간 이커머스·수출업체의 eCNH 매출채권을 토큰화 단기채와 블루칩 바스켓에 자동 배분하여, '온체인 화샤코인'를 결제 수단에서 이자 자산으로 승격시킵니다.",
+    p8t:"컴플라이언스 우선", p8p:"홍콩 《스테이블코인 조례》와 오프쇼어 화샤코인 규제 프레임워크를 참조하여 발행사 등록·준비금 감사·거래소 라이선스를 추진하고, eCNH를 커뮤니티 프로젝트에서 규제된 오프쇼어 화샤코인 스테이블코인으로 발전시킵니다.",
+    r_title:"데이터 기준과 리스크 경고",
+    r_sub:"과장하지 않고, 숨기지 않는다 — 이 섹션이 8가지 경로보다 더 중요합니다.",
+    r1:"<b>성질 명확화:</b> eCNH는 중국 인민은행이 발행하는 디지털 위안화(e-CNY)도, 라이선스 기관이 발행하는 법정화폐 스테이블코인도 아닌, 커뮤니티 제3자 프로젝트 토큰입니다.",
+    r2:"<b>가격 데이터의 심각한 상충 (확인 필요):</b> 동일 CA가 SolanaCompass에서 $0.00078, DexScreener 일부 풀에서 $0.09, 커뮤니티 자료에서 '1 eCNH ≈ 0.1403 USDC'로 표시됩니다. 시가총액($780억 / $9조급)은 명백히 신뢰할 수 없으므로 이에 근거한 계산을 하지 마십시오.",
+    r3:"<b>유동성이 극도로 얕음:</b> 제3자 모니터링(FreshTokenWatch, 2026-11)에 따르면 리스크 점수 76/100, Warning 상태, 8개 풀 대부분의 24H 거래량이 $1 미만 — 가격이 쉽게 조작될 수 있습니다.",
+    r4:"<b>토큰화 주식 고유 리스크:</b> 발행사의 커스터디·상환 리스크, 미국 시장 거래 시간과 온체인 24/7 가격의 괴리, 발행 관할별 규제 차이.",
+    r5:"<b>컴플라이언스 불확실성:</b> 오프쇼어 화샤코인 자산은 국경 간 자본 관리 정책과 얽혀 있으며, 관할권별 합법성 차이가 매우 큽니다 — 실행 전 반드시 전문가의 법률 의견을 확보하십시오.",
+    r_disc:"면책 조항: 본 페이지는 정보 정리와 서사 탐구이며, 어떠한 투자 조언·청약·수익 약속도 구성하지 않습니다. 암호화 자산과 토큰화 주식은 변동성이 극심하여 원금 전액을 잃을 수 있습니다. 컨트랙트 주소와 현지 법규를 반드시 본인이 확인하고, 리스크는 본인 부담입니다.",
+    f_src:"출처: Orb Markets(orbmarkets.io), SolanaCompass, DexScreener, FreshTokenWatch, BitcoinTalk 커뮤니티 게시물; 스냅샷 2026-11-09. '확인 필요' 표기는 데이터 소스 간 조정 불가능한 기준 충돌을 나타내며, 어떠한 임의 취사선택도 하지 않았습니다.",
+    f_note:"eCNH CA: 7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5 — 반드시 컨트랙트 주소를 확인하고 가짜 토큰을 조심하십시오.",
+    copied:"복사됨 ✓"
+  }
+};
+
+const LANGS = [
+  ["zh","中文"],["en","English"],["es","Español"],["fr","Français"],["ar","العربية"],
+  ["ru","Русский"],["pt","Português"],["de","Deutsch"],["ja","日本語"],["ko","한국어"]
+];
+
+function applyLang(code){
+  const dict = I18N[code];
+  document.documentElement.lang = code;
+  document.documentElement.dir = (code === "ar") ? "rtl" : "ltr";
+  document.querySelectorAll("[data-i]").forEach(el=>{
+    const k = el.getAttribute("data-i");
+    if(dict[k] !== undefined) el.innerHTML = dict[k];
+  });
+  document.querySelectorAll("[data-i-ph]").forEach(el=>{
+    const k = el.getAttribute("data-i-ph");
+    if(dict[k] !== undefined) el.setAttribute("placeholder", dict[k]);
+  });
+  // 表格内含 data-i 的单元格也一并处理（上面已覆盖）
+  document.title = code==="zh" ? "eCNH × Solana × 代币化股票 | 发展路径全景"
+    : code==="ja" ? "eCNH × Solana × トークン化株式 | 発展パス"
+    : code==="ko" ? "eCNH × Solana × 토큰화 주식 | 발전 경로"
+    : code==="ru" ? "eCNH × Solana × токенизированные акции | пути развития"
+    : "eCNH × Solana × Tokenized Stocks | Growth Paths";
+  localStorage.setItem("ecnh_lang", code);
+}
+
+const langSel = document.getElementById("langSel");
+LANGS.forEach(([c,n])=>{
+  const o = document.createElement("option");
+  o.value = c; o.textContent = n;
+  langSel.appendChild(o);
+});
+langSel.addEventListener("change", ()=>applyLang(langSel.value));
+const urlLang = new URLSearchParams(location.search).get("lang");
+langSel.value = (urlLang && I18N[urlLang]) ? urlLang : (localStorage.getItem("ecnh_lang") || "zh");
+applyLang(langSel.value);
+
+/* ================= 主题切换 ================= */
+document.getElementById("themeBtns").addEventListener("click", e=>{
+  const btn = e.target.closest(".tbtn");
+  if(!btn) return;
+  document.documentElement.setAttribute("data-theme", btn.dataset.themeName);
+  document.querySelectorAll(".tbtn").forEach(b=>b.classList.toggle("on", b===btn));
+  localStorage.setItem("ecnh_theme", btn.dataset.themeName);
+});
+const urlTheme = new URLSearchParams(location.search).get("theme");
+const savedTheme = (urlTheme && ["green","blue","han"].includes(urlTheme)) ? urlTheme : localStorage.getItem("ecnh_theme");
+if(savedTheme){
+  document.documentElement.setAttribute("data-theme", savedTheme);
+  document.querySelectorAll(".tbtn").forEach(b=>b.classList.toggle("on", b.dataset.themeName===savedTheme));
+}
+
+/* ================= 阅读进度 / 返回顶部 / 表格筛选 ================= */
+const progress = document.getElementById("progress");
+const toTop = document.getElementById("toTop");
+window.addEventListener("scroll", ()=>{
+  const h = document.documentElement;
+  const max = h.scrollHeight - h.clientHeight;
+  progress.style.width = (max > 0 ? h.scrollTop / max * 100 : 0) + "%";
+  toTop.classList.toggle("show", h.scrollTop > 600);
+}, {passive:true});
+toTop.addEventListener("click", ()=>window.scrollTo({top:0, behavior:"smooth"}));
+
+document.getElementById("stockFilter").addEventListener("input", e=>{
+  const q = e.target.value.trim().toLowerCase();
+  document.querySelectorAll("#stocks tbody tr").forEach(tr=>{
+    tr.style.display = tr.textContent.toLowerCase().includes(q) ? "" : "none";
+  });
+});
+
+/* ================= CA 复制 ================= */
+const CA = "7GQnqthWKa5v2GqXYWhmgWZY5mCRrniwK3Xuinm9GKw5";
+document.getElementById("caChip").addEventListener("click", ()=>{
+  navigator.clipboard.writeText(CA).then(()=>{
+    const t = document.getElementById("toast");
+    t.textContent = I18N[langSel.value].copied || "Copied ✓";
+    t.classList.add("show");
+    setTimeout(()=>t.classList.remove("show"), 1600);
+  });
+});
+</script>
+</body>
+</html>
